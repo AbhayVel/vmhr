@@ -50,7 +50,7 @@ namespace HrSystem
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}");
+                    pattern: "{controller=Applications}/{action=Index}/{id?}");
             });
         }
     }
