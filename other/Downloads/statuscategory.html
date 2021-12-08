@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+
+<title></title>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.css">
+<link rel="stylesheet" href="https://cdn.datatables.net/1.10.24/css/dataTables.bootstrap4.min.css">
+<style>
+body{
+margin: 0;
+padding: 0;
+font-family: "Roboto", sans-serif;
+}
+
+header{
+position: fixed;
+background: #22242A;
+padding: 35px;
+width: 100%;
+height: 30px;
+}
+
+.left_area h3{
+color: #fff;
+
+margin: -37px;
+margin-left: 40px;
+text-transform: uppercase;
+font-size: 22px;
+font-weight: 900;
+}
+.left area span{
+color: #1DC4E7;
+
+}
+
+.logout_btn{
+padding: 20px;
+background: #198303;
+text-decoration: none;
+float: right;
+margin-top: -7px;
+margin-right: -15px;
+border-radius: 2px;
+font-size: 15px;
+font-weight: 600;
+color: #fff;
+transition: 0.5s;
+transition-property: background;
+}
+
+.logout_btn:hover{
+background: #0D9DBB;
+}
+
+.sidebar{
+background: #2F323A;
+margin-top: 70px;
+padding-top: 30px;
+position: fixed;
+left: 0;
+width: 250px;
+height: 100%;
+transition: 0.5s;
+transition-property: left;
+}
+
+.sidebar .profile_image{
+width: 100px;
+height: 100px;
+border-radius: 100px;
+margin-bottom: 10px;
+}
+
+.sidebar h4{
+color: #ccc;
+margin-top: 0;
+margin-bottom: 20px;
+}
+
+.sidebar a{
+color: #fff;
+display: block;
+width: 100%;
+line-height: 60px;
+text-decoration: none;
+padding-left: 40px;
+box-sizing: border-box;
+transition: 0.5s;
+transition-property: background;
+}
+
+.sidebar a:hover{
+background: #19B3D3;
+}
+
+.sidebar i{
+padding-right: 10px;
+
+}
+label #sidebar_btn{
+z-index: 1;
+color: #fff;
+position: fixed;
+cursor: pointer;
+left: 300px;
+font-size: 20px;
+margin: -19px 0;
+transition: 0.5s;
+transiotion-property: color;
+}
+
+label #sidebar_btn:hover{
+color: #19B3D3;
+}
+
+
+#check:checked ~ .sidebar{
+left: -190px;
+}
+
+#check:checked ~ .sidebar a span{
+display: none;
+}
+
+#check:checked ~ .sidebar a{
+font-size: 20px;
+margin-left: 170px;
+width: 80px;
+}
+
+.content{
+ box-sizing: border-box;
+padding-top: 80px;
+
+margin-left: 250px;
+
+background-position: center;
+background-size: cover;
+height: 100vh;
+
+}
+
+#check:checked ~ .content{
+margin-left: 60px;
+}
+
+#check{
+display: none;
+}
+
+.status__page {
+    width: 85%;
+    height: 50vh;
+    background-image: linear-gradient(to bottom,#0BB6EC, #098BE1, #085CD6);
+    box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.7);
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+	margin-left: 30px;
+}
+.status__page form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.status__page h2 {
+    color: #fff;
+    margin-bottom: 20px;
+}
+.status__page form input {
+    outline-style: none;
+    outline-width: 0px;
+    border-style: none;
+    color: #303030;
+    width: 250px;
+    height: 50px;
+    border-radius: 30px;
+    padding: 10px 30px;
+    margin-bottom: 10px;
+    font-weight: 500;
+}
+.status__page form button {
+    outline-style: none;
+    outline-width: 0px;
+    border-style: none;
+    width: 200px;
+    height: 40px;
+    border-radius: 30px;
+    font-weight: 600;
+    font-size: 15px;
+    color: lightgray;
+    background-color: #303030;
+    margin-bottom: 25px;
+    cursor: pointer;
+
+}
+.status__page form label {
+font-size: 30px;
+
+}
+
+
+</style>
+</head>
+<body>
+<input type="checkbox" id="check">
+<!--header area start-->
+<header>
+<label for="check">
+<i class="fas fa-bars" id="sidebar_btn"></i>
+</label>
+<div class="left_area">
+<h3>VM3<span>Tech</span></h3>
+</div>
+<div class="right_area">
+<a href="#" class="logout_btn">Logout</a>
+</div>
+</header>
+<!--header area end-->
+<!--sidebar start-->
+<div class="sidebar">
+<center>
+<img src="usercircle.jpg" class="profile_image" alt="">
+<h4>Admin</h4>
+</center>
+<a href="file:///C:/Users/Admin/Desktop/HR/admindashboard.html"><i class="fas fa-home"></i><span>Home</span></a>
+<a href="file:///C:/Users/Admin/Desktop/HR/applications.html"><i class="fas fa-user-tie"></i><span>Applications</span></a>
+<a href="file:///C:/Users/Admin/Desktop/HR/vacancy.html"><i class="fas fa-list"></i><span>Vacancy</span></a>
+<a href="file:///C:/Users/Admin/Desktop/HR/statuscategory.html"><i class="fas fa-list"></i><span>Status Category</span></a>
+<a href="file:///C:/Users/Admin/Desktop/HR/users.html"><i class="fas fa-users"></i><span>Users</span></a>
+<a href="file:///C:/Users/Admin/Desktop/HR/setting.html"><i class="fas fa-cogs"></i><span>Settings</span></a>
+</div>
+<!--sidebar end-->
+
+<div class="content">
+
+
+<div class="row">
+<div class="col-sm-3 col-md-6 col-lg-4">
+<div class="status__page">
+        
+       <u> <h2>Status Form</h2></u>
+	
+        <form>
+	<label for="status">Status</label>
+            <input type="text" id="status" name="status" />
+            
+            <button>Save</button><button>Cancel</button>
+            
+        </form>
+   </div> 
+
+</div>
+<div class="col-sm-9 col-md-6 col-lg-8">
+<table id="example" class="table table-striped table-bordered" style="width:80%">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Name</th>
+                
+                <th>Action</th>
+                
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>1</td>
+                <td>PASSED II</td>
+                
+               
+                <td><button type="button" class="btn btn-warning">Edit</button>
+			<button type="button" class="btn btn-danger">Delete</button>
+			</td>
+                
+            </tr>
+<tr>
+                <td>2</td>
+
+                <td>For Initial Interview</td>
+                
+                <td><button type="button" class="btn btn-warning">Edit</button>
+			<button type="button" class="btn btn-danger">Delete</button>
+			</td>
+                
+            </tr>
+<tr>
+                <td>3</td>
+
+                <td>For Final Interview</td>
+                
+                <td><button type="button" class="btn btn-warning">Edit</button>
+			<button type="button" class="btn btn-danger">Delete</button>
+			</td>
+                
+            </tr>
+<tr>
+                <td>4</td>
+
+                <td>FAILED II</td>
+                
+                <td><button type="button" class="btn btn-warning">Edit</button>
+			<button type="button" class="btn btn-danger">Delete</button>
+			</td>
+                
+            </tr>
+<tr>
+                <td>5</td>
+
+                <td>Job Offer</td>
+                
+                <td><button type="button" class="btn btn-warning">Edit</button>
+			<button type="button" class="btn btn-danger">Delete</button>
+			</td>
+                
+            </tr>
+</tbody>
+
+    </table>
+</div>
+</div>
+</div>
+
+ 
+</body>
+</html>
