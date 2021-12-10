@@ -1,4 +1,7 @@
-﻿using HrSystem.Models;
+﻿using HREntity;
+using HRModels;
+using HRService;
+using HrSystem.Models;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -9,86 +12,23 @@ namespace HrSystem.Controllers
 {
     public class ApplicationsController : Controller
     {
-        public IActionResult Index(string columnName, string orderBy)
+
+        ApplicationService ApplicationService = new ApplicationService();
+        public IActionResult Index(ApplicationModel applicationModel)
         {
 
-            List<Application> lstApplication = new List<Application>();
+            var lstApplication = ApplicationService.GetAll(applicationModel.ColumnName, applicationModel.OrderBy);
 
-            lstApplication.Add(new Application
+            if ("asc".Equals(applicationModel.OrderBy))
             {
-                Id = 1,
-                Name="Abhijeet",
-                AppliedFor="MVC.net",
-                Experience="1year",
-                Status = "Active"
-            });
-
-
-
-
-            lstApplication.Add(new Application
-            {
-                Id = 2,
-                Name = "Other",
-                AppliedFor = "web",
-                Experience = "3years",
-                Status = "Active"
-            });
-
-            lstApplication.Add(new Application
-            {
-                Id = 3,
-                Name = "Nikita",
-                AppliedFor = "web",
-                Experience = "3years",
-                Status = "Active"
-            });
-
-            //if (columnName.Equals("name", StringComparison.OrdinalIgnoreCase))
-            //{
-            //    if (orderBy.Equals("asc"))
-            //    {
-            //        lstApplication = lstApplication.OrderBy(x => x.Name).ToList();
-            //    }
-            //    else
-            //    {
-            //        lstApplication = lstApplication.OrderByDescending(x => x.Name).ToList();
-            //    }
-            //}
-
-            if ("name".Equals(columnName, StringComparison.OrdinalIgnoreCase))
-            {
-                if (orderBy.Equals("asc"))
-                {
-                    lstApplication = lstApplication.OrderBy(x => x.Name).ToList();
-                } else
-                {
-                    lstApplication = lstApplication.OrderByDescending(x => x.Name).ToList();
-                }
-            }
-
-            if ("id".Equals(columnName, StringComparison.OrdinalIgnoreCase))
-            {
-                if (orderBy.Equals("asc"))
-                {
-                    lstApplication = lstApplication.OrderBy(x => x.Id).ToList();
-                }
-                else
-                {
-                    lstApplication = lstApplication.OrderByDescending(x => x.Id).ToList();
-                }
-            }
-
-            if ("asc".Equals(orderBy))
-            {
-                orderBy = "desc";
+                applicationModel.OrderBy = "desc";
             } else
             {
-                orderBy = "asc";
+                applicationModel.OrderBy = "asc";
             }
 
 
-            ViewBag.orderBy = orderBy;
+            ViewBag.orderBy = applicationModel.OrderBy;
 
             return View(lstApplication);
         }
