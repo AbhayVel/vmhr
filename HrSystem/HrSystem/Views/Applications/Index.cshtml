@@ -1,59 +1,93 @@
 ﻿@model List<Application>
-    <center><h2>Application List</h2></center>
-    <center><button type="button" class="btn btn-primary">+ New Applicant</button></center>
-    <br>
-    <hr>
- 
-    <div class="container">
-        <table id="example" class="table table-striped table-bordered" style="width:100%">
-            <thead>
+@using HRModels
+<center><h2>Application List</h2></center>
+<center><button type="button" class="btn btn-primary">+ New Applicant</button></center>
+<br>
+<hr>
+@{ 
+
+    
+    PageModel pageModel = ViewBag.pageModel as PageModel;
+}
+<div class="container">
+    <table id="example" class="table table-striped table-bordered" style="width:100%">
+        <thead>
+            <tr>
+                <th><a href="/applications/index?columnName=id&orderBy=@ViewBag.orderBy">#</a></th>
+                <th><a href="/applications/index?columnName=name&orderBy=@ViewBag.orderBy">Applicant Information</a></th>
+                <th>Document</th>
+                <th>Status</th>
+                <th>Action</th>
+
+            </tr>
+        </thead>
+        <tbody>
+            @for (int i = 0; i < Model.Count; i++)
+            {
                 <tr>
-                    <th><a href="/applications/index?columnName=id&orderBy=@ViewBag.orderBy">#</a></th>
-                    <th><a href="/applications/index?columnName=name&orderBy=@ViewBag.orderBy">Applicant Information</a></th>
-                    <th>Document</th>
-                    <th>Status</th>
-                    <th>Action</th>
+                    <td>@Model[i].Id</td>
+                    <td>
+                        Name : @Model[i].Name<br>
+                        Applied for : @Model[i].AppliedFor<br>
+                        Experience : @Model[i].Experience
+                    </td>
+                    <td><a href="https://www.w3schools.com/">Smith_Resume</a></td>
+                    <td><span class="badge badge-success">New</span></td>
+                    <td>
+                        <button type="button" class="btn btn-success">View</button>
+                        <button type="button" class="btn btn-warning">Edit</button>
+                        <button type="button" class="btn btn-danger">Delete</button>
+                    </td>
 
                 </tr>
-            </thead>
-            <tbody>
-                @for (int i = 0; i < Model.Count; i++)
-                {
-                    <tr>
-                        <td>@Model[i].Id</td>
-                        <td>
-                            Name : @Model[i].Name<br>
-                            Applied for : @Model[i].AppliedFor<br>
-                            Experience : @Model[i].Experience
-                        </td>
-                        <td><a href="https://www.w3schools.com/">Smith_Resume</a></td>
-                        <td><span class="badge badge-success">New</span></td>
-                        <td>
-                            <button type="button" class="btn btn-success">View</button>
-                            <button type="button" class="btn btn-warning">Edit</button>
-                            <button type="button" class="btn btn-danger">Delete</button>
-                        </td>
+            }
 
-                    </tr>
-                }
 
-             
-            </tbody>
-            <tfoot>
-                <tr>
-                    <th>#</th>
-                    <th>Applicant Information</th>
-                    <th>Document</th>
-                    <th>Status</th>
-                    <th>Action</th>
+        </tbody>
+        <tfoot>
+            <tr>
+                <th>#</th>
+                <th>Applicant Information</th>
+                <th>Document</th>
+                <th>Status</th>
+                <th>Action</th>
 
-                </tr>
-            </tfoot>
-        </table>
+            </tr>
+        </tfoot>
+    </table>
+    <div class="row">
+        <div class="col-sm-12 col-md-5">
+            <div class="dataTables_info" id="example_info" role="status" aria-live="polite">
+                Showing <span>@(pageModel.StartIndex +1)</span> to <span>@(pageModel.EndIndex +1)</span> of <span>@pageModel.TotalRowCount</span> entries
+            </div>
+        </div><div class="col-sm-12 col-md-7">
+            <div class="dataTables_paginate paging_simple_numbers" id="example_paginate">
+                <ul class="pagination">
+                    <li class="paginate_button page-item previous" id="example_previous"><a href="#" aria-controls="example" data-dt-idx="0" tabindex="0" class="page-link">Previous</a></li>
+
+                    @for (int i = 1; i <= pageModel.PageCount; i = i + 1)
+                    {
+                        if (i == pageModel.CurrentPage)
+                        {
+                            <li class="paginate_button page-item active"><a href="/applications/index?currentPage=@i" aria-controls="example" data-dt-idx="1" tabindex="0" class="page-link">@i</a></li>
+
+                        }
+                        else
+                        {
+                            <li class="paginate_button page-item"><a href="/applications/index?currentPage=@i" aria-controls="example" data-dt-idx="1" tabindex="0" class="page-link">@i</a></li>
+
+                        }
+
+                    }
+                    <li class="paginate_button page-item next disabled" id="example_next"><a href="#" aria-controls="example" data-dt-idx="3" tabindex="0" class="page-link">Next</a></li>
+                </ul>
+            </div>
+        </div>
     </div>
 
-    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
-    <script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
-    <script src="https://cdn.datatables.net/1.10.24/js/dataTables.bootstrap4.min.js"></script>
-     
- 
+</div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+<script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.24/js/dataTables.bootstrap4.min.js"></script>
+

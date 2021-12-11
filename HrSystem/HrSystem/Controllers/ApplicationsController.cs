@@ -14,10 +14,13 @@ namespace HrSystem.Controllers
     {
 
         ApplicationService ApplicationService = new ApplicationService();
-        public IActionResult Index(ApplicationModel applicationModel)
+        public IActionResult Index(ApplicationModel applicationModel, PageModel pageModel)
         {
-
-            var lstApplication = ApplicationService.GetAll(applicationModel.ColumnName, applicationModel.OrderBy);
+          //  PageModel pageModel = new PageModel();
+          //  pageModel.CurrentPage = 1;
+            //pageModel.TotalRowCount = lstApplication.Count;
+            pageModel.RowPerPage = 4;
+            var lstApplication = ApplicationService.GetAll(applicationModel.ColumnName, applicationModel.OrderBy,pageModel);
 
             if ("asc".Equals(applicationModel.OrderBy))
             {
@@ -28,46 +31,22 @@ namespace HrSystem.Controllers
             }
 
 
+            
+
             ViewBag.orderBy = applicationModel.OrderBy;
+
+            ViewBag.pageModel = pageModel;
 
             return View(lstApplication);
         }
 
 
 
-        public IActionResult Jquery()
+        public IActionResult Jquery(ApplicationModel applicationModel)
         {
 
-            List<Application> lstApplication = new List<Application>();
+            var lstApplication = ApplicationService.GetAll(applicationModel.ColumnName, applicationModel.OrderBy, null);
 
-            lstApplication.Add(new Application
-            {
-                Id = 1,
-                Name = "Abhijeet",
-                AppliedFor = "MVC.net",
-                Experience = "1year",
-                Status = "Active"
-            });
-
-
-            lstApplication.Add(new Application
-            {
-                Id = 2,
-                Name = "Nikita",
-                AppliedFor = "web",
-                Experience = "3years",
-                Status = "Active"
-            });
-
-
-            lstApplication.Add(new Application
-            {
-                Id = 3,
-                Name = "Other",
-                AppliedFor = "web",
-                Experience = "3years",
-                Status = "Active"
-            });
 
             return View(lstApplication);
         }

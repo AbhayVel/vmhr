@@ -1,4 +1,5 @@
 ﻿using HREntity;
+using HRModels;
 using HRRepository;
 using System;
 using System.Collections.Generic;
@@ -10,9 +11,9 @@ namespace HRService
     {
         ApplicationRepository ApplicationRepository = new ApplicationRepository();
 
-        public List<Application> GetAll(string columnName, string orderBy)
+        public List<Application> GetAll(string columnName, string orderBy, PageModel pageModel)
         {
-            return ApplicationRepository.GetAll(columnName, orderBy);
+            return ApplicationRepository.GetAll(columnName, orderBy, pageModel);
         }
     }
 }

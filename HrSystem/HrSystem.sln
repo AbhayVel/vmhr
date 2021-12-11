@@ -5,15 +5,17 @@ VisualStudioVersion = 16.0.31424.327
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HrSystem", "HrSystem\HrSystem.csproj", "{177B763C-2CF5-467F-B413-7560AD552384}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HRService", "HRService\HRService.csproj", "{FE3C5095-C3D1-4266-9FC2-D00D113B335F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HRService", "HRService\HRService.csproj", "{FE3C5095-C3D1-4266-9FC2-D00D113B335F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HRRepository", "HRRepository\HRRepository.csproj", "{D4C83EEF-70FA-41CF-B357-5411CF67222D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HRRepository", "HRRepository\HRRepository.csproj", "{D4C83EEF-70FA-41CF-B357-5411CF67222D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HRDB", "HRDB\HRDB.csproj", "{A281C134-95EB-4F69-9639-D056BD7BF6E1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HRDB", "HRDB\HRDB.csproj", "{A281C134-95EB-4F69-9639-D056BD7BF6E1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HREntity", "HREntity\HREntity.csproj", "{A03B88E0-362B-4099-BCB3-202E8182C732}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HREntity", "HREntity\HREntity.csproj", "{A03B88E0-362B-4099-BCB3-202E8182C732}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HRModels", "HRModels\HRModels.csproj", "{18F0B329-C20D-452C-99F6-C21B849B01D6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HRModels", "HRModels\HRModels.csproj", "{18F0B329-C20D-452C-99F6-C21B849B01D6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Examples", "Examples\Examples.csproj", "{CEB3F8DB-EF99-4177-9D9F-72DF4267C9FA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -45,6 +47,10 @@ Global
 		{18F0B329-C20D-452C-99F6-C21B849B01D6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{18F0B329-C20D-452C-99F6-C21B849B01D6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{18F0B329-C20D-452C-99F6-C21B849B01D6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CEB3F8DB-EF99-4177-9D9F-72DF4267C9FA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CEB3F8DB-EF99-4177-9D9F-72DF4267C9FA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CEB3F8DB-EF99-4177-9D9F-72DF4267C9FA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CEB3F8DB-EF99-4177-9D9F-72DF4267C9FA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
