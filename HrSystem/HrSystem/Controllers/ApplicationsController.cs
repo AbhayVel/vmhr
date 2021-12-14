@@ -22,18 +22,19 @@ namespace HrSystem.Controllers
             pageModel.RowPerPage = 4;
             var lstApplication = ApplicationService.GetAll(applicationModel.ColumnName, applicationModel.OrderBy,pageModel);
 
-            if ("asc".Equals(applicationModel.OrderBy))
-            {
-                applicationModel.OrderBy = "desc";
-            } else
-            {
-                applicationModel.OrderBy = "asc";
-            }
+            //if ("asc".Equals(applicationModel.OrderBy))
+            //{
+            //    applicationModel.OrderBy = "desc";
+            //} else
+            //{
+            //    applicationModel.OrderBy = "asc";
+            //}
 
 
             
 
             ViewBag.orderBy = applicationModel.OrderBy;
+            ViewBag.columnName = applicationModel.ColumnName;
 
             ViewBag.pageModel = pageModel;
 
