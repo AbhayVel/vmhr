@@ -11,9 +11,9 @@ namespace HRService
     {
         ApplicationRepository ApplicationRepository = new ApplicationRepository();
 
-        public List<Application> GetAll(string columnName, string orderBy, PageModel pageModel)
+        public List<Application> GetAll(ApplicationModel applicationModel, PageModel pageModel)
         {
-            return ApplicationRepository.GetAll(columnName, orderBy, pageModel);
+            return ApplicationRepository.GetAll(applicationModel, pageModel);
         }
     }
 }

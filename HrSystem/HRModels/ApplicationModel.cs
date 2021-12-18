@@ -41,5 +41,10 @@ namespace HRModels
             }
         }
 
+
+        public string IdSearch { get; set; }
+
+        public string NameSearch { get; set; }
+
     }
 }

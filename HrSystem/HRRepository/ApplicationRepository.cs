@@ -10,8 +10,15 @@ namespace HRRepository
    public class ApplicationRepository
     {
 
-        public List<Application> GetAll(string columnName, string orderBy, PageModel pageModel)
+        public List<Application> GetAll(string columnName, string orderBy, string IdSearch, string NameSearch, PageModel pageModel)
         {
+            return null;
+        }
+
+            public List<Application> GetAll(ApplicationModel applicationModel, PageModel pageModel)
+        {
+            string columnName = applicationModel.ColumnName;
+            string orderBy = applicationModel.OrderBy;
 
             List<Application> lstApplication = new List<Application>();
 
@@ -117,6 +124,24 @@ namespace HRRepository
                 Status = "Active"
             });
 
+            IEnumerable<Application> applicationIEnum = lstApplication;
+            if (!string.IsNullOrWhiteSpace(applicationModel.IdSearch))
+            {
+                int value = 0;
+                if(Int32.TryParse(applicationModel.IdSearch,out value))
+                {
+                    applicationIEnum = applicationIEnum.Where(x => x.Id ==value);
+                }
+            }
+
+            if (!string.IsNullOrWhiteSpace(applicationModel.NameSearch))
+            {  
+                
+                    applicationIEnum = applicationIEnum.Where(x => x.Name.Contains(applicationModel.NameSearch,StringComparison.OrdinalIgnoreCase));
+                
+            }
+
+            lstApplication = applicationIEnum.ToList();
             if ("name".Equals(columnName, StringComparison.OrdinalIgnoreCase))
             {
                 if (orderBy.Equals("asc"))
@@ -146,10 +171,16 @@ namespace HRRepository
                 pageModel.TotalRowCount = lstApplication.Count;
 
                 int pageCount =(int)Math.Ceiling( pageModel.TotalRowCount* 1.0 / pageModel.RowPerPage*1.0);
-
+                if(pageModel.CurrentPage > pageCount)
+                {
+                    pageModel.CurrentPage = 1;
+                }
                 int startIndex = (pageModel.CurrentPage - 1) * pageModel.RowPerPage;
+                if (startIndex > pageModel.TotalRowCount - 1)
+                {
+                    startIndex = 0;
+                }
 
-                 
                 int endIndex = startIndex + pageModel.RowPerPage -1;
                 if(endIndex > pageModel.TotalRowCount - 1)
                 {
