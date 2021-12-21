@@ -1,5 +1,8 @@
-﻿using HrSystem.Models;
+﻿using HRModels;
+using HRService;
+using HrSystem.Models;
 using Microsoft.AspNetCore.Mvc;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -7,73 +10,35 @@ namespace HrSystem.Controllers
 {
    public class UsersController : Controller
    {
-      public IActionResult Index(string columnName, string orderBy)
+      UserService UserService = new UserService();
+      
+
+      public IActionResult Index(UserModel userModel, PageModel pageModel)
       {
-         List<Users> lstUser = new List<Users>();
-         lstUser.Add(new Users
-         {
-            UserId = 1,
-            Name = "Abhi",
-            UserName = "Admin",
-            Action="Active"
-         });
-         lstUser.Add(new Users
-         {
-            UserId = 2,
-            Name = "Nikita",
-            UserName = "Admin2",
-            Action = "Active"
+         //PageModel pageModel = new PageModel();
+         //pageModel.CurrentPage = 1;
+         //pageModel.TotalRowCount = lstUser.Count;
+         pageModel.RowPerPage = 4;
+         var lstUser = UserService.GetAll(userModel, pageModel);
 
-         });
-         lstUser.Add(new Users
-         {
-            UserId = 4,
-            Name = "Suraj",
-            UserName = "Admin4",
-            Action = "Active"
-
-         });
-         lstUser.Add(new Users
-         {
-            UserId = 3,
-            Name = "Aniket",
-            UserName = "Admin3",
-            Action = "Active"
-
-         });
+         //if ("asc".Equals(userModel.OrderBy))
+         //{
+         //   userModel.OrderBy = "desc";
+         //}
+         //else
+         //{
+         //   userModel.OrderBy = "asc";
+         //}
          
-         if ("id".Equals(columnName))
-         {
-            if (orderBy.Equals("asc"))
-            {
-               lstUser = lstUser.OrderBy(X => X.UserId).ToList();
-            }
-            else
-            {
-               lstUser = lstUser.OrderByDescending(X => X.UserId).ToList();
-            }
-         }
-         if ("name".Equals(columnName))
-         {
-            if (orderBy.Equals("asc"))
-            {
-               lstUser = lstUser.OrderBy(X => X.Name).ToList();
-            }
-            else
-            {
-               lstUser = lstUser.OrderByDescending(X => X.Name).ToList();
-            }
-         }
-         if("asc".Equals(orderBy))
-         {
-            orderBy = "desc";
-         }else
-         {
-            orderBy = "asc";
-         }
-         ViewBag.OrderBy = orderBy;
+         ViewBag.orderBy = userModel.OrderBy;
+         ViewBag.columnName = userModel.ColumnName;
+         ViewBag.pageModel = pageModel;
+         ViewBag.userModel = userModel;
 
          return View(lstUser);
       }
+
+
    }
+
 }
