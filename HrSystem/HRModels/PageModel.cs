@@ -4,10 +4,12 @@ using System.Text;
 
 namespace HRModels
 {
- public   class PageModel
+    public class PageModel
     {
         int _currentPage;
-        public int CurrentPage { get
+        public int CurrentPage
+        {
+            get
             {
                 if (_currentPage <= 0)
                 {
@@ -32,7 +34,34 @@ namespace HRModels
         public int EndIndex { get; set; }
 
 
+        public void SetValues<T>(List<T> data)
+        {
+            PageModel pageModel = this;
+            pageModel.TotalRowCount = data.Count;
+            int pageCount = (int)Math.Ceiling(pageModel.TotalRowCount * 1.0 / pageModel.RowPerPage * 1.0);
+            if (pageModel.CurrentPage > pageCount)
+            {
+                pageModel.CurrentPage = 1;
+            }
+            int startIndex = (pageModel.CurrentPage - 1) * pageModel.RowPerPage;
+            if (startIndex > pageModel.TotalRowCount - 1)
+            {
+                startIndex = 0;
+            }
+            int endIndex = startIndex + pageModel.RowPerPage - 1;
 
+            if (endIndex > pageModel.TotalRowCount - 1)
+            {
+                endIndex = pageModel.RowPerPage - 1;
+            }
+            pageModel.StartIndex = startIndex;
+            pageModel.PageCount = pageCount;
+            pageModel.EndIndex = endIndex;
+        }
 
     }
+
+
+
 }
+

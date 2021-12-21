@@ -24,9 +24,9 @@ namespace HrSystem.Controllers
             
 
            
-            ViewBag.orderBy = vacancyModel.orderBy;
+            ViewBag.orderBy = vacancyModel.OrderBy;
             ViewBag.vacancyModel = vacancyModel;
-            ViewBag.columnName = vacancyModel.columnName; 
+            ViewBag.columnName = vacancyModel.ColumnName; 
             ViewBag.pageModel = pageModel;
 
             return View(lstVacancy);

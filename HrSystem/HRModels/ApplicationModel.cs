@@ -1,50 +1,38 @@
-﻿using System;
+﻿using HREntity;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace HRModels
 {
-    public class ApplicationModel
+    public class ApplicationModel : BaseModel
     {
-        string _columnName;
-
-        string _orderBy;
-
-        public string ColumnName {
-           get
-            {
-                if (string.IsNullOrWhiteSpace(_columnName))
-                {
-                    return "Id";
-                }
-                return _columnName;
-            }
-
-            set
-            {
-
-                _columnName = value;
-            }
-        }
-
-        public string OrderBy { 
-            get
-            {
-                if (string.IsNullOrWhiteSpace(_orderBy))
-                {
-                    return "desc";
-                }
-                return _orderBy;
-            }
-
-            set
-            {
-                _orderBy = value;
-            }
-        }
-
-
         public string IdSearch { get; set; }
 
         public string NameSearch { get; set; }
+
+
+        public IEnumerable<T> Where<T>(IEnumerable<T> list) where T : Application
+        {
+            ApplicationModel applicationModel = this;
+            if (!string.IsNullOrWhiteSpace(this.IdSearch))
+            {
+                int value = 0;
+                if (Int32.TryParse(applicationModel.IdSearch, out value))
+                {                   
+                    list = list.Where(x => x.Id == value);
+                }
+            }
+
+            if (!string.IsNullOrWhiteSpace(NameSearch))
+            {
+
+                list = list.Where(x => x.Name.Contains(applicationModel.NameSearch, StringComparison.OrdinalIgnoreCase));
+
+            }
+
+            return list;
+        }
 
     }
 }

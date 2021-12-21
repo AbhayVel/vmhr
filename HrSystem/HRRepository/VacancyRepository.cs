@@ -14,8 +14,8 @@ namespace HRRepository
 
         public List<Vacancy>  GetAll(VacancyModel vacancyModel, PageModel pageModel)
         {
-            string columnName = vacancyModel.columnName;
-            string orderBy = vacancyModel.orderBy;
+            string columnName = vacancyModel.ColumnName;
+            string orderBy = vacancyModel.OrderBy;
 
             List<Vacancy> lstVacancy = new List<Vacancy>();
             lstVacancy.Add(new Vacancy
@@ -146,6 +146,7 @@ namespace HRRepository
                
                     vacancyIEnum = vacancyIEnum.Where(x => x.Position.Contains(vacancyModel.PositionSearch,StringComparison.OrdinalIgnoreCase));
              }
+
             if ("position".Equals(columnName, StringComparison.OrdinalIgnoreCase))
             {
                 if (orderBy.Equals("asc"))
@@ -175,35 +176,8 @@ namespace HRRepository
 
             if (!(pageModel is null))
             {
-                pageModel.TotalRowCount = lstVacancy.Count;
-                int pageCount = (int)Math.Ceiling(pageModel.TotalRowCount*1.0 / pageModel.RowPerPage * 1.0);
-                if (pageModel.CurrentPage > pageCount)
-                {
-                    pageModel.CurrentPage = 1;
-                }
-                int startIndex = (pageModel.CurrentPage - 1) * pageModel.RowPerPage;
-                if (startIndex > pageModel.TotalRowCount - 1)
-                {
-                    startIndex = 0;
-                }
-                //if (startIndex > pageModel.TotalRowCount - 1)
-                //{
-                //   startIndex = 0;
-                //}
-                int endIndex = startIndex + pageModel.RowPerPage-1;
-
-                if(endIndex>pageModel.TotalRowCount-1)
-                {
-                    endIndex = pageModel.RowPerPage - 1;
-                }
-                pageModel.StartIndex = startIndex;
-                pageModel.PageCount = pageCount;
-                pageModel.EndIndex = endIndex;
-
+                pageModel.SetValues(lstVacancy);
                 lstVacancy = lstVacancy.Skip(pageModel.StartIndex).Take(pageModel.RowPerPage).ToList();
-
-
-
             }
             return lstVacancy;
         }
