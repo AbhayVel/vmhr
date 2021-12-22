@@ -64,7 +64,7 @@ namespace HRRepository
             lstApplication.Add(new Application
             {
                 Id = 5,
-                Name = "Nikita3",
+                Name = "Niikita3",
                 AppliedFor = "web",
                 Experience = "3years",
                 Status = "Active"
@@ -124,49 +124,21 @@ namespace HRRepository
                 Status = "Active"
             });
 
-            IEnumerable<Application> applicationIEnum = lstApplication;
-            if (!string.IsNullOrWhiteSpace(applicationModel.IdSearch))
+            lstApplication.Add(new Application
             {
-                int value = 0;
-                if(Int32.TryParse(applicationModel.IdSearch,out value))
-                {
-                    applicationIEnum = applicationIEnum.Where(x => x.Id ==value);
-                }
-            }
+                Id = 11,
+                Name = "vijay2",
+                AppliedFor = "MVC.net",
+                Experience = "1year",
+                Status = "Active"
+            });
 
-            if (!string.IsNullOrWhiteSpace(applicationModel.NameSearch))
-            {  
-                
-                    applicationIEnum = applicationIEnum.Where(x => x.Name.Contains(applicationModel.NameSearch,StringComparison.OrdinalIgnoreCase));
-                
-            }
 
-            lstApplication = applicationIEnum.ToList();
-            if ("name".Equals(columnName, StringComparison.OrdinalIgnoreCase))
-            {
-                if (orderBy.Equals("asc"))
-                {
-                    lstApplication = lstApplication.OrderBy(x => x.Name).ToList();
-                }
-                else
-                {
-                    lstApplication = lstApplication.OrderByDescending(x => x.Name).ToList();
-                }
-            }
+            lstApplication = applicationModel.Where(lstApplication).ToList();
+            lstApplication = applicationModel.Sort(lstApplication).ToList();
 
-            if ("id".Equals(columnName, StringComparison.OrdinalIgnoreCase))
-            {
-                if (orderBy.Equals("asc"))
-                {
-                    lstApplication = lstApplication.OrderBy(x => x.Id).ToList();
-                }
-                else
-                {
-                    lstApplication = lstApplication.OrderByDescending(x => x.Id).ToList();
-                }
-            }
 
-            if(!(pageModel is  null))
+            if (!(pageModel is  null))
             {
                 pageModel.SetValues(lstApplication);
                 lstApplication = lstApplication.Skip(pageModel.StartIndex).Take(pageModel.RowPerPage).ToList();

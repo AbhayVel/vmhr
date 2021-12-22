@@ -34,5 +34,34 @@ namespace HRModels
             return list;
         }
 
+
+        public IEnumerable<T> Sort<T>(IEnumerable<T> list) where T : Application
+        {
+            if ("name".Equals(ColumnName, StringComparison.OrdinalIgnoreCase))
+            {
+                if (OrderBy.Equals("asc"))
+                {
+                    list = list.OrderBy(x => x.Name);
+                }
+                else
+                {
+                    list = list.OrderByDescending(x => x.Name);
+                }
+            }
+
+            if ("id".Equals(ColumnName, StringComparison.OrdinalIgnoreCase))
+            {
+                if (OrderBy.Equals("asc"))
+                {
+                    list = list.OrderBy(x => x.Id);
+                }
+                else
+                {
+                    list = list.OrderByDescending(x => x.Id);
+                }
+            }
+
+            return list;
+        }
     }
 }

@@ -52,7 +52,7 @@ namespace HRModels
 
             if (endIndex > pageModel.TotalRowCount - 1)
             {
-                endIndex = pageModel.RowPerPage - 1;
+                endIndex = pageModel.TotalRowCount - 1;
             }
             pageModel.StartIndex = startIndex;
             pageModel.PageCount = pageCount;
