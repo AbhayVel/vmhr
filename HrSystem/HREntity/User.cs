@@ -26,7 +26,7 @@ namespace HREntity
         public string Password { get; set; }
 
 
-        public int Type { get; set; }
+        public byte Type { get; set; }
        
      
         public string Action { get; set; }

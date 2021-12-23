@@ -1,4 +1,6 @@
-﻿using System;
+﻿using HRDB;
+using HREntity;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -9,25 +11,30 @@ namespace Examples
         static void Main(string[] args)
         {
 
-            List<int> lst = new List<int> { 23, 3, 4, 5, 6, 7, 8, 2, 12, 45, 62, 24 };
+            HrSystemDBContext hrdb = new HrSystemDBContext();
 
-            List<int> lst2 = lst.Skip(3).Take(2).ToList();
-            Console.WriteLine("Hello World!");
+            var data = hrdb.Users.ToList();
 
-            bool isAdult = false;
-            bool result = IsAdultAndCanMarry(19,"F", out isAdult);
-            try
-            {
-                int i = Int32.Parse("89x");
+          User user=  hrdb.Users.FirstOrDefault(x => x.UserId == 2);
 
-            }
-           catch(Exception ex)
-            {
+            user.Password = "xyz";
+            hrdb.SaveChanges();
+            user = hrdb.Users.FirstOrDefault(x => x.UserId == 3);
+            hrdb.Users.Remove(user);
+            hrdb.SaveChanges();
+            //User user = new User
+            //{
+            //    Name = "AV",
+            //    address = "a",
+            //    Type = 1,
+            //    UserName = "aa",
+            //    Action = "Active",
+            //    contact = "a",
+            //    Password = "abc"
+            //};
 
-            }
-            int j = 0;
-           bool result2= Int32.TryParse("89", out j);
-
+            //hrdb.Users.Add(user);
+            //hrdb.SaveChanges();
 
         }
 
