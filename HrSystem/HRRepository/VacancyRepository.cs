@@ -23,7 +23,7 @@ namespace HRRepository
                 Id = 1,
                 Position = "DotNet Developer",
                 Skills = "C#",
-                Experience = "2 year",
+                Experience = 2,
                 Availability = 5,
                 Status = "Active"
             });
@@ -33,7 +33,7 @@ namespace HRRepository
                 Id = 2,
                 Position = "Software Developer",
                 Skills = "Java",
-                Experience = "3 year",
+                Experience = 3,
                 Availability = 5,
                 Status = "Active"
             });
@@ -42,7 +42,7 @@ namespace HRRepository
                 Id = 3,
                 Position = "Web Developer",
                 Skills = "HTML",
-                Experience = "2 year",
+                Experience = 2,
                 Availability = 7,
                 Status = "Active"
             });
@@ -51,7 +51,7 @@ namespace HRRepository
                 Id = 4,
                 Position = "DotNet Developer",
                 Skills = "C#",
-                Experience = "4 year",
+                Experience = 4,
                 Availability = 2,
                 Status = "Active"
             });
@@ -60,7 +60,7 @@ namespace HRRepository
                 Id = 5,
                 Position = "DotNet Developer",
                 Skills = "C#",
-                Experience = "4 year",
+                Experience = 4,
                 Availability = 2,
                 Status = "Active"
             });
@@ -69,7 +69,7 @@ namespace HRRepository
                 Id = 6,
                 Position = "Java Developer",
                 Skills = "C#",
-                Experience = "4 year",
+                Experience = 4,
                 Availability = 2,
                 Status = "Active"
             });
@@ -78,7 +78,7 @@ namespace HRRepository
                 Id = 7,
                 Position = "UI Developer",
                 Skills = "C#",
-                Experience = "4 year",
+                Experience = 4,
                 Availability = 2,
                 Status = "Active"
             });
@@ -88,7 +88,7 @@ namespace HRRepository
                 Id = 8,
                 Position = "UI Developer",
                 Skills = "C#",
-                Experience = "4 year",
+                Experience = 4,
                 Availability = 2,
                 Status = "Active"
             });
@@ -98,7 +98,7 @@ namespace HRRepository
                 Id = 9,
                 Position = "UI Developer2",
                 Skills = "C#",
-                Experience = "4 year",
+                Experience = 4,
                 Availability = 2,
                 Status = "Active"
             });
@@ -107,7 +107,7 @@ namespace HRRepository
                 Id = 10,
                 Position = "DotNet Developer",
                 Skills = "C#",
-                Experience = "4 year",
+                Experience = 3,
                 Availability = 2,
                 Status = "Active"
             });
@@ -117,7 +117,7 @@ namespace HRRepository
                 Id = 11,
                 Position = "DotNet Developer",
                 Skills = "C#",
-                Experience = "2 year",
+                Experience = 3,
                 Availability = 2,
                 Status = "Active"
             });
@@ -126,7 +126,7 @@ namespace HRRepository
                 Id = 12,
                 Position = "DotNet Developer4",
                 Skills = "C#",
-                Experience = "4 year",
+                Experience = 4,
                 Availability = 2,
                 Status = "Active"
             });
