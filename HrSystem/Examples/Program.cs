@@ -13,15 +13,61 @@ namespace Examples
 
             HrSystemDBContext hrdb = new HrSystemDBContext();
 
-            var data = hrdb.Users.ToList();
+            //var data = hrdb.Users.ToList();
+            //var Vdata = hrdb.vacancies.ToList();
+            var Adata = hrdb.application.ToList();
 
-          User user=  hrdb.Users.FirstOrDefault(x => x.UserId == 2);
+            Application applications = new Application
+            {
+                FullName = "Manisha S. Olimbe",
+                AppliedFor = "DotNet Devoloper",
+                Experience = 1,
+                Status = "Active",
+                Resume = "Manisha_Resume"
+            };
 
+            hrdb.application.Add(applications);
+            hrdb.SaveChanges();
+            applications = hrdb.application.FirstOrDefault(x => x.Id == 4);
+            applications.Experience=2;
+            hrdb.SaveChanges();
+            applications = hrdb.application.FirstOrDefault(x => x.Id == 16);
+            hrdb.application.Remove(applications);
+            hrdb.SaveChanges();
+
+
+            /*Vacancy vacancy = new Vacancy
+            {
+
+
+                Position = "JavaDevoloper",
+                Availability = 5,
+                Description="aaaa",
+                Status = "Active",
+                Experience = 2,
+                Skills="Java,CPP"
+                
+               
+            };
+             hrdb.vacancies.Add(vacancy);
+              hrdb.SaveChanges();
+                 vacancy= hrdb.vacancies.FirstOrDefault(x => x.Id == 1);
+
+            vacancy.Availability = 10;
+            hrdb.SaveChanges();
+            vacancy = hrdb.vacancies.FirstOrDefault(x => x.Id == 5);
+            hrdb.vacancies.Remove(vacancy);
+            hrdb.SaveChanges();*/
+
+
+
+
+            User user = hrdb.Users.FirstOrDefault(x => x.UserId == 2);
             user.Password = "xyz";
             hrdb.SaveChanges();
             user = hrdb.Users.FirstOrDefault(x => x.UserId == 3);
-            hrdb.Users.Remove(user);
-            hrdb.SaveChanges();
+            //hrdb.Users.Remove(user);
+            //hrdb.SaveChanges();
             //User user = new User
             //{
             //    Name = "AV",
@@ -36,7 +82,7 @@ namespace Examples
             //hrdb.Users.Add(user);
             //hrdb.SaveChanges();
 
-        }
+        } 
 
 
         public static Tuple<bool,bool> IsAdultAndCanMarry(int age, string gender)

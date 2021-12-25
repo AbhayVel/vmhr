@@ -27,7 +27,7 @@ namespace HRModels
             if (!string.IsNullOrWhiteSpace(NameSearch))
             {
 
-                list = list.Where(x => x.Name.Contains(applicationModel.NameSearch, StringComparison.OrdinalIgnoreCase));
+                list = list.Where(x => x.FullName.Contains(applicationModel.NameSearch, StringComparison.OrdinalIgnoreCase));
 
             }
 
@@ -41,11 +41,11 @@ namespace HRModels
             {
                 if (OrderBy.Equals("asc"))
                 {
-                    list = list.OrderBy(x => x.Name);
+                    list = list.OrderBy(x => x.FullName);
                 }
                 else
                 {
-                    list = list.OrderByDescending(x => x.Name);
+                    list = list.OrderByDescending(x => x.FullName);
                 }
             }
 
