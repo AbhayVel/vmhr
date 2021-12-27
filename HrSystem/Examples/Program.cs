@@ -17,23 +17,23 @@ namespace Examples
             //var Vdata = hrdb.vacancies.ToList();
             var Adata = hrdb.application.ToList();
 
-            Application applications = new Application
-            {
-                FullName = "Manisha S. Olimbe",
-                AppliedFor = "DotNet Devoloper",
-                Experience = 1,
-                Status = "Active",
-                Resume = "Manisha_Resume"
-            };
+            //Application applications = new Application
+            //{
+            //    FirstName = "Manisha",
+            //    AppliedFor = "DotNet Devoloper",
+            //    Experience = 1,
+            //    Status = "Active",
+            //    Resume = "Manisha_Resume"
+            //};
 
-            hrdb.application.Add(applications);
-            hrdb.SaveChanges();
-            applications = hrdb.application.FirstOrDefault(x => x.Id == 4);
-            applications.Experience=2;
-            hrdb.SaveChanges();
-            applications = hrdb.application.FirstOrDefault(x => x.Id == 16);
-            hrdb.application.Remove(applications);
-            hrdb.SaveChanges();
+            //hrdb.application.Add(applications);
+            //hrdb.SaveChanges();
+            //applications = hrdb.application.FirstOrDefault(x => x.Id == 4);
+            //applications.Experience=2;
+            //hrdb.SaveChanges();
+            //applications = hrdb.application.FirstOrDefault(x => x.Id == 15);
+            //hrdb.application.Remove(applications);
+            //hrdb.SaveChanges();
 
 
             /*Vacancy vacancy = new Vacancy
@@ -82,7 +82,7 @@ namespace Examples
             //hrdb.Users.Add(user);
             //hrdb.SaveChanges();
 
-        } 
+        }
 
 
         public static Tuple<bool,bool> IsAdultAndCanMarry(int age, string gender)
