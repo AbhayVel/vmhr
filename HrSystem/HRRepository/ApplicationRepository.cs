@@ -25,7 +25,7 @@ namespace HRRepository
             lstApplication.Add(new Application
             {
                 Id = 1,
-                FullName = "Abhijeet",
+                FirstName = "Abhijeet",
                 AppliedFor = "MVC.net",
                 Experience = 5,
                 Status = "Active"
@@ -37,7 +37,7 @@ namespace HRRepository
             lstApplication.Add(new Application
             {
                 Id = 2,
-                FullName = "Other",
+                FirstName = "Other",
                 AppliedFor = "web",
                 Experience = 3,
                 Status = "Active"
@@ -46,7 +46,7 @@ namespace HRRepository
             lstApplication.Add(new Application
             {
                 Id = 3,
-                FullName = "Nikita",
+                FirstName = "Nikita",
                 AppliedFor = "web",
                 Experience = 3,
                 Status = "Active"
@@ -55,7 +55,7 @@ namespace HRRepository
             lstApplication.Add(new Application
             {
                 Id = 4,
-                FullName = "Nikita2",
+                FirstName = "Nikita2",
                 AppliedFor = "web",
                 Experience = 3,
                 Status = "Active"
@@ -64,7 +64,7 @@ namespace HRRepository
             lstApplication.Add(new Application
             {
                 Id = 5,
-                FullName = "Niikita3",
+                FirstName = "Niikita3",
                 AppliedFor = "web",
                 Experience = 3,
                 Status = "Active"
@@ -73,7 +73,7 @@ namespace HRRepository
             lstApplication.Add(new Application
             {
                 Id = 6,
-                FullName = "Nikita4",
+                FirstName = "Nikita4",
                 AppliedFor = "web",
                 Experience = 3,
                 Status = "Active"
@@ -82,7 +82,7 @@ namespace HRRepository
             lstApplication.Add(new Application
             {
                 Id = 7,
-                FullName = "Abhijeet2",
+                FirstName = "Abhijeet2",
                 AppliedFor = "MVC.net",
                 Experience = 1,
                 Status = "Active"
@@ -91,7 +91,7 @@ namespace HRRepository
             lstApplication.Add(new Application
             {
                 Id = 8,
-                FullName = "Abhijeet3",
+                FirstName = "Abhijeet3",
                 AppliedFor = "MVC.net",
                 Experience = 1,
                 Status = "Active"
@@ -100,7 +100,7 @@ namespace HRRepository
             lstApplication.Add(new Application
             {
                 Id = 9,
-                FullName = "Abhijeet4",
+                FirstName = "Abhijeet4",
                 AppliedFor = "MVC.net",
                 Experience = 1,
                 Status = "Active"
@@ -109,7 +109,7 @@ namespace HRRepository
             lstApplication.Add(new Application
             {
                 Id = 10,
-                FullName = "Amay",
+                FirstName = "Amay",
                 AppliedFor = "MVC.net",
                 Experience = 1,
                 Status = "Active"
@@ -118,7 +118,7 @@ namespace HRRepository
             lstApplication.Add(new Application
             {
                 Id = 11,
-                FullName = "vijay",
+                FirstName = "vijay",
                 AppliedFor = "MVC.net",
                 Experience = 1,
                 Status = "Active"
@@ -127,7 +127,7 @@ namespace HRRepository
             lstApplication.Add(new Application
             {
                 Id = 11,
-                FullName = "vijay2",
+                FirstName = "vijay2",
                 AppliedFor = "MVC.net",
                 Experience = 1,
                 Status = "Active"
