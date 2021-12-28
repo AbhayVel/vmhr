@@ -1,45 +1,67 @@
-﻿using System;
+﻿using HREntity;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace HRModels
 {
-    public class ApplicationModel
+    public class ApplicationModel : BaseModel
     {
-        string _columnName;
+        public string IdSearch { get; set; }
 
-        string _orderBy;
+        public string NameSearch { get; set; }
 
-        public string ColumnName {
-           get
+
+        public IEnumerable<T> Where<T>(IEnumerable<T> list) where T : Application
+        {
+            ApplicationModel applicationModel = this;
+            if (!string.IsNullOrWhiteSpace(this.IdSearch))
             {
-                if (string.IsNullOrWhiteSpace(_columnName))
-                {
-                    return "Id";
+                int value = 0;
+                if (Int32.TryParse(applicationModel.IdSearch, out value))
+                {                   
+                    list = list.Where(x => x.Id == value);
                 }
-                return _columnName;
             }
 
-            set
+            if (!string.IsNullOrWhiteSpace(NameSearch))
             {
 
-                _columnName = value;
+                list = list.Where(x => x.FirstName.Contains(applicationModel.NameSearch, StringComparison.OrdinalIgnoreCase));
+
             }
+
+            return list;
         }
 
-        public string OrderBy { 
-            get
+
+        public IEnumerable<T> Sort<T>(IEnumerable<T> list) where T : Application
+        {
+            if ("name".Equals(ColumnName, StringComparison.OrdinalIgnoreCase))
             {
-                if (string.IsNullOrWhiteSpace(_orderBy))
+                if (OrderBy.Equals("asc"))
                 {
-                    return "desc";
+                    list = list.OrderBy(x => x.FirstName);
                 }
-                return _orderBy;
+                else
+                {
+                    list = list.OrderByDescending(x => x.FirstName);
+                }
             }
 
-            set
+            if ("id".Equals(ColumnName, StringComparison.OrdinalIgnoreCase))
             {
-                _orderBy = value;
+                if (OrderBy.Equals("asc"))
+                {
+                    list = list.OrderBy(x => x.Id);
+                }
+                else
+                {
+                    list = list.OrderByDescending(x => x.Id);
+                }
             }
-        }
 
+            return list;
+        }
     }
 }

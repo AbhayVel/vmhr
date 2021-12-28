@@ -16,25 +16,13 @@ namespace HrSystem.Controllers
         ApplicationService ApplicationService = new ApplicationService();
         public IActionResult Index(ApplicationModel applicationModel, PageModel pageModel)
         {
-          //  PageModel pageModel = new PageModel();
-          //  pageModel.CurrentPage = 1;
-            //pageModel.TotalRowCount = lstApplication.Count;
+         
             pageModel.RowPerPage = 4;
-            var lstApplication = ApplicationService.GetAll(applicationModel.ColumnName, applicationModel.OrderBy,pageModel);
-
-            if ("asc".Equals(applicationModel.OrderBy))
-            {
-                applicationModel.OrderBy = "desc";
-            } else
-            {
-                applicationModel.OrderBy = "asc";
-            }
-
-
-            
+            var lstApplication = ApplicationService.GetAll(applicationModel,pageModel);
 
             ViewBag.orderBy = applicationModel.OrderBy;
-
+            ViewBag.columnName = applicationModel.ColumnName;
+            ViewBag.applicationModel = applicationModel;
             ViewBag.pageModel = pageModel;
 
             return View(lstApplication);
@@ -45,7 +33,7 @@ namespace HrSystem.Controllers
         public IActionResult Jquery(ApplicationModel applicationModel)
         {
 
-            var lstApplication = ApplicationService.GetAll(applicationModel.ColumnName, applicationModel.OrderBy, null);
+            var lstApplication = ApplicationService.GetAll(applicationModel, null);
 
 
             return View(lstApplication);
