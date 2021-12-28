@@ -26,7 +26,7 @@ namespace HRRepository
             {
                 Id = 1,
                 FirstName = "Abhijeet",
-                AppliedFor = "MVC.net",
+                
                 Experience = 5,
                 Status = "Active"
             });
@@ -38,7 +38,7 @@ namespace HRRepository
             {
                 Id = 2,
                 FirstName = "Other",
-                AppliedFor = "web",
+                
                 Experience = 3,
                 Status = "Active"
             });
@@ -47,7 +47,7 @@ namespace HRRepository
             {
                 Id = 3,
                 FirstName = "Nikita",
-                AppliedFor = "web",
+                
                 Experience = 3,
                 Status = "Active"
             });
@@ -56,7 +56,7 @@ namespace HRRepository
             {
                 Id = 4,
                 FirstName = "Nikita2",
-                AppliedFor = "web",
+                
                 Experience = 3,
                 Status = "Active"
             });
@@ -65,7 +65,7 @@ namespace HRRepository
             {
                 Id = 5,
                 FirstName = "Niikita3",
-                AppliedFor = "web",
+                
                 Experience = 3,
                 Status = "Active"
             });
@@ -74,7 +74,7 @@ namespace HRRepository
             {
                 Id = 6,
                 FirstName = "Nikita4",
-                AppliedFor = "web",
+                
                 Experience = 3,
                 Status = "Active"
             });
@@ -83,7 +83,7 @@ namespace HRRepository
             {
                 Id = 7,
                 FirstName = "Abhijeet2",
-                AppliedFor = "MVC.net",
+               
                 Experience = 1,
                 Status = "Active"
             });
@@ -92,7 +92,7 @@ namespace HRRepository
             {
                 Id = 8,
                 FirstName = "Abhijeet3",
-                AppliedFor = "MVC.net",
+               
                 Experience = 1,
                 Status = "Active"
             });
@@ -101,7 +101,7 @@ namespace HRRepository
             {
                 Id = 9,
                 FirstName = "Abhijeet4",
-                AppliedFor = "MVC.net",
+               
                 Experience = 1,
                 Status = "Active"
             });
@@ -110,7 +110,7 @@ namespace HRRepository
             {
                 Id = 10,
                 FirstName = "Amay",
-                AppliedFor = "MVC.net",
+               
                 Experience = 1,
                 Status = "Active"
             });
@@ -119,7 +119,7 @@ namespace HRRepository
             {
                 Id = 11,
                 FirstName = "vijay",
-                AppliedFor = "MVC.net",
+               
                 Experience = 1,
                 Status = "Active"
             });
@@ -128,7 +128,7 @@ namespace HRRepository
             {
                 Id = 11,
                 FirstName = "vijay2",
-                AppliedFor = "MVC.net",
+               
                 Experience = 1,
                 Status = "Active"
             });
