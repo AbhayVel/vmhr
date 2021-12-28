@@ -5,7 +5,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace HREntity
 {
     [Table("Stage")]
-    public class StatusCategory
+    public class Stage
     {   [Key]
         public int Id { get; set; }
 

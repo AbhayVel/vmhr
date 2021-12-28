@@ -8,12 +8,12 @@ namespace HRDB
 {
     public class HrSystemDBContext : DbContext
     {
-        public object applications;
+         
 
         private string _connectionString { get; set; }
         public HrSystemDBContext() : base()
         {
-             _connectionString = @"Data Source=DESKTOP-2DKE6C9\SQLEXPRESS;Initial Catalog=HRSystem;Integrated Security=True";
+             _connectionString = @"Data Source=DESKTOP-C0FBNF9\SQLEXPRESS;Initial Catalog=HRSystem;Integrated Security=True";
         }
 
 
@@ -28,10 +28,10 @@ namespace HRDB
 
         public DbSet<User> Users { get; set; }
 
-        public DbSet<Vacancy> vacancies { get; set; }
+        public DbSet<Vacancy> Vacancies { get; set; }
         
-        public DbSet<Application> application { get; set; }
-
+        public DbSet<Application> Applications { get; set; }
+        public DbSet<Stage> Stages { get; set; }
 
     }
 }

@@ -16,22 +16,9 @@ namespace HrSystem.Controllers
         ApplicationService ApplicationService = new ApplicationService();
         public IActionResult Index(ApplicationModel applicationModel, PageModel pageModel)
         {
-          //  PageModel pageModel = new PageModel();
-          //  pageModel.CurrentPage = 1;
-            //pageModel.TotalRowCount = lstApplication.Count;
+         
             pageModel.RowPerPage = 4;
             var lstApplication = ApplicationService.GetAll(applicationModel,pageModel);
-
-            //if ("asc".Equals(applicationModel.OrderBy))
-            //{
-            //    applicationModel.OrderBy = "desc";
-            //} else
-            //{
-            //    applicationModel.OrderBy = "asc";
-            //}
-
-
-            
 
             ViewBag.orderBy = applicationModel.OrderBy;
             ViewBag.columnName = applicationModel.ColumnName;
