@@ -11,11 +11,11 @@ namespace Examples
         static void Main(string[] args)
         {
 
-            HrSystemDBContext hrdb = new HrSystemDBContext();
+            //HrSystemDBContext hrdb = new HrSystemDBContext();
 
             //var data = hrdb.Users.ToList();
             //var Vdata = hrdb.vacancies.ToList();
-            var Adata = hrdb.application.ToList();
+            //var Adata = hrdb.application.ToList();
 
             //Application applications = new Application
             //{
@@ -62,10 +62,10 @@ namespace Examples
 
 
 
-            User user = hrdb.Users.FirstOrDefault(x => x.UserId == 2);
-            user.Password = "xyz";
-            hrdb.SaveChanges();
-            user = hrdb.Users.FirstOrDefault(x => x.UserId == 3);
+            //User user = hrdb.Users.FirstOrDefault(x => x.UserId == 2);
+            //user.Password = "xyz";
+            //hrdb.SaveChanges();
+            //user = hrdb.Users.FirstOrDefault(x => x.UserId == 3);
             //hrdb.Users.Remove(user);
             //hrdb.SaveChanges();
             //User user = new User

@@ -30,6 +30,13 @@ namespace HREntity
         public int? StageId { get; set; }
         public DateTime DateCreated { get; set; }
 
+        [ForeignKey("VacancyId")]
+        public virtual Vacancy Vacancy { get; set; }
+
+
+        [ForeignKey("StageId")]
+        public virtual Stage Stage { get; set; }
+
 
 
     }

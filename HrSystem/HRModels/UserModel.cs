@@ -53,6 +53,35 @@ namespace HRModels
 
             return list;
         }
+        public IEnumerable<T> Sort<T>(IEnumerable<T> list) where T : User
+        {
+            if ("UserId".Equals(ColumnName, StringComparison.OrdinalIgnoreCase))
+            {
+                if (OrderBy.Equals("asc"))
+                {
+                    list = list.OrderBy(X => X.UserId);
+                }
+                else
+                {
+                    list = list.OrderByDescending(X => X.UserId);
+                }
+            }
+            if ("Name".Equals(ColumnName, StringComparison.OrdinalIgnoreCase))
+            {
+                if (OrderBy.Equals("asc"))
+                {
+                    list = list.OrderBy(X => X.Name);
+                }
+                else
+                {
+                    list = list.OrderByDescending(X => X.Name);
+                }
+            }
+
+
+
+            return list;
+        }
 
     }
 }

@@ -12,7 +12,7 @@ namespace HRModels
         public string NameSearch { get; set; }
 
 
-        public IEnumerable<T> Where<T>(IEnumerable<T> list) where T : Application
+        public IEnumerable<T> Where<T>(IEnumerable<T> list)  where T : Application
         {
             ApplicationModel applicationModel = this;
             if (!string.IsNullOrWhiteSpace(this.IdSearch))

@@ -55,8 +55,9 @@
                     <td>@Model[i].Id</td>
                     <td>
                         Name : @Model[i].FirstName<br>
-                        Applied for : @Model[i].VacancyId<br>
-                        Experience : @Model[i].Experience
+                        Applied for : @Model[i].Vacancy?.Position<br>
+                        Experience : @Model[i].Experience<br>
+                        Stage : @Model[i].Stage?.StatusLabel
                     </td>
                     <td><a href="https://www.w3schools.com/">Smith_Resume</a></td>
                     <td><span class="badge badge-success">New</span></td>

@@ -28,9 +28,9 @@ namespace HRDB
 
         public DbSet<User> Users { get; set; }
 
-        public DbSet<Vacancy> vacancies { get; set; }
+        public DbSet<Vacancy> Vacancies { get; set; }
         
-        public DbSet<Application> application { get; set; }
+        public DbSet<Application> Application { get; set; }
 
 
     }
