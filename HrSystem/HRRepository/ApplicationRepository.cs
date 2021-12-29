@@ -11,6 +11,20 @@ namespace HRRepository
 {
    public class ApplicationRepository
     {
+
+        string Query = @"Select   a.id, FirstName, MiddleName, LastName, Email, Phone, Gender, Address, a.Experience, a.Status, Resume, VacancyId, StageId, DateCreated   
+                        from [dbo].[application] a 
+                        inner join [dbo].[Stage] s  on s.id=a.StageId
+                        inner join [dbo].[vacancy] v on v.id=a.VacancyId
+                        Where 1=1  ";
+
+        string QueryCount = @"Select   count(1) as countValue   
+                        from [dbo].[application] a 
+                        inner join [dbo].[Stage] s  on s.id=a.StageId
+                        inner join [dbo].[vacancy] v on v.id=a.VacancyId
+                        Where 1=1  ";
+
+
         HrSystemDBContext hrSystemDBContext = new HrSystemDBContext();
      public   ApplicationRepository()
         {
@@ -21,7 +35,51 @@ namespace HRRepository
             return null;
         }
 
-            public List<Application> GetAll(ApplicationModel applicationModel, PageModel pageModel)
+
+        public List<Application> GetAll(ApplicationModel applicationModel, PageModel pageModel)
+        {
+            string columnName = applicationModel.ColumnName;
+            string orderBy = applicationModel.OrderBy;
+
+            ;
+
+
+            string where = applicationModel.Where();
+            string sort = applicationModel.Sort();
+
+         var dbCOnnection=   hrSystemDBContext.Database.GetDbConnection();
+            if(dbCOnnection.State != System.Data.ConnectionState.Open)
+            {
+                dbCOnnection.Open();
+            }
+          
+            var dbCOmmand = dbCOnnection.CreateCommand();
+            dbCOmmand.CommandText = QueryCount + where;
+
+          var rowsCount=(int)  dbCOmmand.ExecuteScalar();
+
+            string page = "";
+
+
+
+
+
+
+
+
+            if (!(pageModel is null))
+            {               
+                page = pageModel.SetValues(rowsCount);
+            }
+
+            var lstApplication = hrSystemDBContext.Applications.FromSqlRaw(Query + where + sort + page ).ToList();
+            return lstApplication.ToList();
+        }
+
+
+
+
+        public List<Application> GetAllWIthEntity(ApplicationModel applicationModel, PageModel pageModel)
         {
             string columnName = applicationModel.ColumnName;
             string orderBy = applicationModel.OrderBy;
