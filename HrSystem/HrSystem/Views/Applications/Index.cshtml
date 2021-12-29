@@ -1,7 +1,8 @@
 ﻿@model List<Application>
 @using HRModels
 <center><h2>Application List</h2></center>
-<center><button type="button" class="btn btn-primary">+ New Applicant</button></center>
+<a href="#"><center><button type="button" class="btn btn-primary">+ New Applicant</button></center></a>
+
 <br>
 <hr>
 @{ 
@@ -20,7 +21,7 @@
         </div>
         <div class="col-6">
             <div class="form-group">
-                <label  for="Name">Name</label>
+                <label  for="FirstName">FirstName</label>
                 <input type="text" class="form-control" value="@applicationModel.NameSearch" name="NameSearch" id="NameSearch">
             </div>
         </div>
@@ -54,7 +55,7 @@
                 <tr>
                     <td>@Model[i].Id</td>
                     <td>
-                        Name : @Model[i].Name<br>
+                        FirstName : @Model[i].FirstName<br>
                         Applied for : @Model[i].AppliedFor<br>
                         Experience : @Model[i].Experience
                     </td>

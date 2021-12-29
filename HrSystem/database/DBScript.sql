@@ -5,22 +5,23 @@
 
 
 
+
 -- Table structure for table application
 --
 
-CREATE TABLE application (
+CREATE TABLE applications (
   id int  NOT NULL identity(1,1),
   firstname varchar(100) NOT NULL,
   middlename varchar(100) NOT NULL,
   lastname varchar(100) NOT NULL,
   gender varchar(10) NOT NULL,
   email varchar(100) NOT NULL,
-  contact varchar(50) NOT NULL,
+  phone varchar(50) NOT NULL,
   address text NOT NULL,
-  cover_letter text NOT NULL,
-  position_id int  NOT NULL,
-  resume_path text NOT NULL,
-  process_id tinyint  NOT NULL DEFAULT 0 ,
+ appliedfor varchar(20) Not Null,
+  exprience varchar(50) Not Null,
+  resume varchar(100) NOT NULL,
+  process_id int  NOT NULL DEFAULT 0 ,
   date_created datetime NOT NULL DEFAULT current_timestamp
 ) ;
 
@@ -28,7 +29,7 @@ CREATE TABLE application (
 -- Dumping data for table application
 --
 
---INSERT INTO application (id, firstname, middlename, lastname, gender, email, contact, address, cover_letter, position_id, resume_path, process_id, date_created)
+--INSERT INTO applications(id, firstname, middlename, lastname, gender, email, contact, address, cover_letter, position_id, resume_path, process_id, date_created)
 --VALUES
 
 -- --------------------------------------------------------

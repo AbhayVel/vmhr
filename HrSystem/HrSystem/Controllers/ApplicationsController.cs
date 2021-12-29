@@ -51,5 +51,6 @@ namespace HrSystem.Controllers
 
             return View(lstApplication);
         }
+     
     }
 }

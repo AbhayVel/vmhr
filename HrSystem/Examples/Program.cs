@@ -8,38 +8,74 @@ namespace Examples
 {
     class Program
     {
-        static void Main(string[] args)
+      private static Application application;
+
+      static void Main(string[] args)
         {
 
             HrSystemDBContext hrdb = new HrSystemDBContext();
 
-            var data = hrdb.Users.ToList();
+          //  var data = hrdb.Users.ToList();
 
-          User user=  hrdb.Users.FirstOrDefault(x => x.UserId == 2);
+          //User user=  hrdb.Users.FirstOrDefault(x => x.UserId == 2);
 
-            user.Password = "xyz";
-            hrdb.SaveChanges();
-            user = hrdb.Users.FirstOrDefault(x => x.UserId == 3);
-            hrdb.Users.Remove(user);
-            hrdb.SaveChanges();
-            //User user = new User
-            //{
-            //    Name = "AV",
-            //    address = "a",
-            //    Type = 1,
-            //    UserName = "aa",
-            //    Action = "Active",
-            //    contact = "a",
-            //    Password = "abc"
-            //};
+         var Adata = hrdb.Applications.ToList();
 
-            //hrdb.Users.Add(user);
-            //hrdb.SaveChanges();
+         //Application application = hrdb.Applications.FirstOrDefault(x => x.Id==4);
+         //application.FirstName = "abi";
+         //hrdb.SaveChanges();
+         //Application application = new Application
+         //{
+         //   FirstName = "suraj",
+         //   MiddleName = "D",
+         //   LastName = "Bhendawade",
+         //   Gender = "M",
+         //   Email = "surj@gmail.com",
+         //   Phone = "090990",
+         //   Address = "kolhapur",
+         //   Resume = "upload",
+         //   AppliedFor = ".net",
+         //   Experience = "1",
+         //   DateCreated =  DateTime.Now,
+         //   Status = "active"
 
-        }
+         //};
+         //hrdb.Applications.Add(application);
+         //hrdb.SaveChanges();
+
+         application = hrdb.Applications.FirstOrDefault(x => x.Id == 5);
+         hrdb.Applications.Remove(application);
+         hrdb.SaveChanges();
+
+         //user.Password = "xyz";
+         //hrdb.SaveChanges();
+         //user = hrdb.Users.FirstOrDefault(x => x.UserId == 3);
+         //hrdb.Users.Remove(user);
+         //hrdb.SaveChanges();
+         //User user = new User
+         //{
+         //    Name = "AV",
+         //    address = "a",
+         //    Type = 1,
+         //    UserName = "aa",
+         //    Action = "Active",
+         //    contact = "a",
+         //    Password = "abc"
+         //};
+
+         //hrdb.Users.Add(user);
+         //hrdb.SaveChanges();
 
 
-        public static Tuple<bool,bool> IsAdultAndCanMarry(int age, string gender)
+
+
+
+
+
+      }
+
+
+      public static Tuple<bool,bool> IsAdultAndCanMarry(int age, string gender)
         {
             bool isAdult = false;
             bool isMarry = false;

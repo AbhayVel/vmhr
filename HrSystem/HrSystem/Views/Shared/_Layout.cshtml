@@ -11,7 +11,7 @@
         body {
             margin: 0;
             padding: 0;
-            font-family: "Roboto", sans-serif;
+            font-family: "Roboto", sans-serif;        
         }
 
         header {
@@ -146,6 +146,61 @@
         #check {
             display: none;
         }
+        .status__page {
+    width: 95%;
+    height: 50vh;
+    background-image: linear-gradient(to bottom,#0BB6EC, #098BE1, #085CD6);
+    box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.7);
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+	margin-left: 10px;
+}
+.status__page form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.status__page h2 {
+    color: #fff;
+    margin-bottom: 40px;
+}
+.status__page form input {
+    outline-style: none;
+    outline-width: 0px;
+    border-style: none;
+    color: #303030;
+    width: 250px;
+    height: 50px;
+    border-radius: 30px;
+    padding: 10px 30px;
+    margin-bottom: 10px;
+    font-weight: 500;
+}
+.status__page form button {
+    outline-style: none;
+    outline-width: 0px;
+    border-style: none;
+    width: 200px;
+    height: 40px;
+    border-radius: 30px;
+    font-weight: 600;
+    font-size: 15px;
+    color: lightgray;
+    background-color: #303030;
+    margin-bottom: 25px;
+    cursor: pointer;
+
+}
+.status__page form label {
+font-size: 30px;
+
+}
+         
+         
+  
     </style>
 
 </head>
@@ -173,9 +228,9 @@
         <a href="file:///C:/Users/Admin/Desktop/HR/admindashboard.html"><i class="fas fa-home"></i><span>Home</span></a>
         <a href="~/Applications"><i class="fas fa-user-tie"></i><span>Applications</span></a>
         <a href="~/Vacancy"><i class="fas fa-list"></i><span>Vacancy</span></a>
-        <a href="file:///C:/Users/Admin/Desktop/HR/statuscategory.html"><i class="fas fa-list"></i><span>Status Category</span></a>
+        <a href="~/Statuscategory"><i class="fas fa-list"></i><span>Status Category</span></a>
         <a href="~/Users"><i class="fas fa-users"></i><span>Users</span></a>
-        <a href="file:///C:/Users/Admin/Desktop/HR/setting.html"><i class="fas fa-cogs"></i><span>Settings</span></a>
+        <a href="https://localhost:44358/Settings/Index"><i class="fas fa-cogs"></i><span>Settings</span></a>
     </div>
     <!--sidebar end-->
     <div class="content">

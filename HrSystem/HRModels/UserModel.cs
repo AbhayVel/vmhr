@@ -9,49 +9,61 @@ namespace HRModels
    
    public class UserModel : BaseModel
     {
+      
 
-        public override string ColumnName
-        {
-            get
-            {
-                if (string.IsNullOrWhiteSpace(_columnName))
-                {
-                    return "UserId";
-                }
-                return _columnName;
-            }
-
-            set
-            {
-
-                _columnName = value;
-            }
-        }
-
-
-        public string UserIdSearch { get; set; }
+      public string UserIdSearch { get; set; }
       public string NameSearch { get; set; }
 
 
-        public IEnumerable<T> Where<T>(IEnumerable<T> list) where T : User
-        {
-            
-            if (!string.IsNullOrWhiteSpace(UserIdSearch))
+      public IEnumerable<T> Where<T>(IEnumerable<T> list) where T : User
+      {
+         UserModel userModel = this;
+         if (!string.IsNullOrWhiteSpace(this.UserIdSearch))
+         {
+            int value = 0;
+            if (Int32.TryParse(userModel.UserIdSearch, out value))
             {
-                int value = 0;
-                if (Int32.TryParse(UserIdSearch, out value))
-                {
-                    list = list.Where(x => x.UserId == value);
-                }
+               list = list.Where(x => x.UserId == value);
             }
-            if (!string.IsNullOrWhiteSpace(NameSearch))
+         }
+
+         if (!string.IsNullOrWhiteSpace(NameSearch))
+         {
+
+            list = list.Where(x => x.Name.Contains(userModel.NameSearch, StringComparison.OrdinalIgnoreCase));
+
+         }
+
+         return list;
+      }
+
+
+      public IEnumerable<T> Sort<T>(IEnumerable<T> list) where T : User
+      {
+         if ("name".Equals(ColumnName, StringComparison.OrdinalIgnoreCase))
+         {
+            if (OrderBy.Equals("asc"))
             {
-
-                list = list.Where(x => x.Name.Contains(NameSearch, StringComparison.OrdinalIgnoreCase));
-
+               list = list.OrderBy(x => x.Name);
             }
+            else
+            {
+               list = list.OrderByDescending(x => x.Name);
+            }
+         }
 
-            return list;
+         if ("id".Equals(ColumnName, StringComparison.OrdinalIgnoreCase))
+         {
+            if (OrderBy.Equals("asc"))
+            {
+               list = list.OrderBy(x => x.UserId);
+            }
+            else
+            {
+               list = list.OrderByDescending(x => x.UserId);
+            }
+         }
+         return list;
         }
 
     }

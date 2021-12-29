@@ -31,7 +31,5 @@ namespace HREntity
      
         public string Action { get; set; }
 
-       
-
-    }
+   }
 }
