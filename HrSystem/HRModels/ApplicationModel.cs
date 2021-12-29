@@ -11,6 +11,11 @@ namespace HRModels
 
         public string NameSearch { get; set; }
 
+        public string AppliedForSearch { get; set; }
+
+        public string StageStatusSearch { get; set; }
+
+
 
         public IEnumerable<T> Where<T>(IEnumerable<T> list) where T : Application
         {
@@ -28,6 +33,20 @@ namespace HRModels
             {
 
                 list = list.Where(x => x.FirstName.Contains(applicationModel.NameSearch, StringComparison.OrdinalIgnoreCase));
+
+            }
+
+            if (!string.IsNullOrWhiteSpace(AppliedForSearch))
+            {
+
+                list = list.Where(x => x.Vacancy.Position.Contains(applicationModel.AppliedForSearch, StringComparison.OrdinalIgnoreCase));
+
+            }
+
+            if (!string.IsNullOrWhiteSpace(StageStatusSearch))
+            {
+
+                list = list.Where(x => x.Stage.StatusLabel.Contains(applicationModel.StageStatusSearch, StringComparison.OrdinalIgnoreCase));
 
             }
 
