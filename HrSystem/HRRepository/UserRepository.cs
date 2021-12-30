@@ -1,4 +1,5 @@
-﻿using HREntity;
+﻿using HRDB;
+using HREntity;
 using HRModels;
 using System;
 using System.Collections.Generic;
@@ -9,13 +10,17 @@ namespace HRRepository
 {
    public class UserRepository
    {
-   
+        HrSystemDBContext hrSystemDBContext = new HrSystemDBContext();
 
-      public List<User> GetAll(UserModel userModel, PageModel pageModel)
+        public UserRepository()
+        {
+        }
+
+        public List<User> GetAll(UserModel userModel, PageModel pageModel)
       {
          string columnName = userModel.ColumnName;
          string orderBy= userModel.OrderBy;
-         List<User> lstUser = new List<User>();
+         /*List<User> lstUser = new List<User>();
          lstUser.Add(new User
          {
             UserId = 1,
@@ -101,55 +106,19 @@ namespace HRRepository
             UserName = "Admin3",
             Action = "Active"
 
-         });
-         IEnumerable<User> userIEnum = lstUser;
-         if (!string.IsNullOrWhiteSpace(userModel.UserIdSearch))
-         {
-            int value = 0;
-            if(Int32.TryParse(userModel.UserIdSearch, out value))
-            {
-               userIEnum=userIEnum.Where(x => x.UserId == value);
-            }
-         }
-         if (!string.IsNullOrWhiteSpace(userModel.NameSearch))
-         {
-            
-               userIEnum = userIEnum.Where(x => x.Name.Contains(userModel.NameSearch, StringComparison.OrdinalIgnoreCase) );
-            
-         }
+         });*/
+          var  lstUser = userModel.Where(hrSystemDBContext.Users);
+            lstUser = userModel.Sort(lstUser);
 
-         lstUser=userIEnum.ToList();
-         if ("UserId".Equals(columnName,StringComparison.OrdinalIgnoreCase))
-         {
-            if (orderBy.Equals("asc"))
-            {
-               lstUser = lstUser.OrderBy(X => X.UserId).ToList();
-            }
-            else
-            {
-               lstUser = lstUser.OrderByDescending(X => X.UserId).ToList();
-            }
-         }
-         if ("Name".Equals(columnName,StringComparison.OrdinalIgnoreCase))
-         {
-            if (orderBy.Equals("asc"))
-            {
-               lstUser = lstUser.OrderBy(X => X.Name).ToList();
-            }
-            else
-            {
-               lstUser = lstUser.OrderByDescending(X => X.Name).ToList();
-            }
-         }
 
-         if(!(pageModel is null))
+            if (!(pageModel is null))
          {
-                pageModel.SetValues(lstUser);
+                pageModel.SetValues(lstUser.ToList());
 
                 lstUser = lstUser.Skip(pageModel.StartIndex).Take(pageModel.RowPerPage).ToList();
          }
 
-         return lstUser;
+         return lstUser.ToList();
 
       }
    }

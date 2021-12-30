@@ -6,8 +6,8 @@ using System.Text;
 
 namespace HRModels
 {
-   
-   public class UserModel : BaseModel
+
+    public class UserModel : BaseModel
     {
 
         public override string ColumnName
@@ -30,12 +30,12 @@ namespace HRModels
 
 
         public string UserIdSearch { get; set; }
-      public string NameSearch { get; set; }
+        public string NameSearch { get; set; }
 
 
         public IEnumerable<T> Where<T>(IEnumerable<T> list) where T : User
         {
-            
+
             if (!string.IsNullOrWhiteSpace(UserIdSearch))
             {
                 int value = 0;
@@ -54,5 +54,31 @@ namespace HRModels
             return list;
         }
 
+        public IEnumerable<T> Sort<T>(IEnumerable<T> list) where T: User   
+            {
+            if ("UserId".Equals(ColumnName, StringComparison.OrdinalIgnoreCase))
+            {
+                if (OrderBy.Equals("asc"))
+                {
+                    list = list.OrderBy(X => X.UserId);
+                }
+                else
+                {
+                    list = list.OrderByDescending(X => X.UserId);
+                }
+            }
+            if ("Name".Equals(ColumnName, StringComparison.OrdinalIgnoreCase))
+            {
+                if (OrderBy.Equals("asc"))
+                {
+                    list = list.OrderBy(X => X.Name).ToList();
+                }
+                else
+                {
+                    list = list.OrderByDescending(X => X.Name).ToList();
+                }
+            }
+            return list;
+        }
     }
 }
