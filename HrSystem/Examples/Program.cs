@@ -16,7 +16,7 @@ namespace Examples
 
 
           var data=  hrdb.Applications.Include("Stage").ToList();
-            int k = 0;
+           // int k = 0;
             //var data = hrdb.Users.ToList();
             //var Vdata = hrdb.vacancies.ToList();
          //   var Adata = hrdb.application.ToList();
