@@ -33,7 +33,24 @@ namespace HRRepository
             }
             return lstVacancy.ToList();
         }
-         
+
+
+        public IEnumerable<T> SetVacancies<T>(IEnumerable<T> lstIVacancy) where T : IVacancy
+        {
+            var lstVacanyIds = lstIVacancy.Select(x => x.VacancyId).Distinct().ToList();
+
+          var lstVacancy = hrSystemDBContext.Vacancies.Where(x => lstVacanyIds.Contains(x.Id)).ToList();
+
+            foreach (var item in lstIVacancy)
+            {
+                item.Vacancy = lstVacancy.FirstOrDefault(x => x.Id == item.VacancyId);
+            }
+
+            return lstIVacancy;
+        }
+
+
+
 
     }
 }
