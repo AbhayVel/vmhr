@@ -29,7 +29,7 @@ namespace HREntity
         public byte Type { get; set; }
        
      
-        public string Action { get; set; }
+        
 
        
 

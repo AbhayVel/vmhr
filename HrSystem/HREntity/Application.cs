@@ -5,7 +5,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace HREntity
 {
     [Table("application")]
-    public class Application
+    public class Application : IVacancy
     {
         [Key]
 

@@ -4,6 +4,12 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace HREntity
 {
+
+  public  interface IVacancy
+    {
+        public int? VacancyId { get; set; }
+        public Vacancy Vacancy { get; set; }
+    }
     [Table("vacancy")]
     public class Vacancy
     {   [Key]
