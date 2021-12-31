@@ -1,12 +1,18 @@
 ﻿@model List<Application>
 @using HRModels
 
- 
+
 <center><h2>Application List</h2></center>
-<center><button type="button" class="btn btn-primary">+ New Applicant</button></center>
+<center>
+    <a href="~/Applications/Add">
+       + New Applicant
+    </a>
+</center>
+
+    </a>
 <br>
 <hr>
-@{ 
+@{
 
     ApplicationModel applicationModel = ViewBag.applicationModel as ApplicationModel;
     PageModel pageModel = ViewBag.pageModel as PageModel;
@@ -41,13 +47,13 @@
         </div>
 
     </div>
-    
+
 
     <input type="hidden" name="columnName" id="columnName" value="@ViewBag.columnName" />
     <input type="hidden" name="orderBy" id="orderBy" value="@ViewBag.orderBy" />
     <input type="hidden" name="currentPage" id="currentPage" value="@pageModel.CurrentPage" />
 
-    <button type="submit"  id="btnSubmit">Search</button>
+    <button type="submit" id="btnSubmit">Search</button>
 
 </form>
 <div class="container">
@@ -71,13 +77,13 @@
                         Name : @Model[i].FirstName<br>
                         Applied for : @Model[i]?.Vacancy?.Position<br>
                         Experience : @Model[i]?.Experience <br>
-                       Stage : @Model[i]?.Stage?.StatusLabel<br>
+                        Stage : @Model[i]?.Stage?.StatusLabel<br>
                     </td>
                     <td><a href="https://www.w3schools.com/">Smith_Resume</a></td>
                     <td><span class="badge badge-success">New</span></td>
                     <td>
                         <button type="button" class="btn btn-success">View</button>
-                        <button type="button" class="btn btn-warning">Edit</button>
+                        <a  href="~/Applications/Edit/@Model[i].Id">   Edit</a>
                         <button type="button" class="btn btn-danger">Delete</button>
                     </td>
 
@@ -155,7 +161,7 @@
         } else {
             document.getElementById("orderBy").value = "asc";
         }
-       
+
 
         pageSubmit();
         return false;

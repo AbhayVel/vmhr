@@ -19,5 +19,11 @@ namespace HRService
 
             return lstApplication;
         }
+
+
+        public Application Get(int id)
+        {
+            return ApplicationRepository.Get(id);
+        }
     }
 }
