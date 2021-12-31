@@ -7,6 +7,9 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.24/css/dataTables.bootstrap4.min.css">
+
+    <link rel="stylesheet" href="~/css/Create.css">
+
     <style>
         body {
             margin: 0;
@@ -146,6 +149,7 @@
         #check {
             display: none;
         }
+
         .status__page {
             width: 85%;
             height: 50vh;
@@ -229,12 +233,16 @@
         <a href="~/Vacancy"><i class="fas fa-list"></i><span>Vacancy</span></a>
         <a href="~/StatusCategory"><i class="fas fa-list"></i><span>Status Category</span></a>
         <a href="~/Users"><i class="fas fa-users"></i><span>Users</span></a>
-        <a href="file:///C:/Users/Admin/Desktop/HR/setting.html"><i class="fas fa-cogs"></i><span>Settings</span></a>
+        <a href="#"><i class="fas fa-cogs"></i><span>Settings</span></a>
     </div>
     <!--sidebar end-->
     <div class="content">
         @RenderBody();
-        </div>
+
+        <script type="text/javascript" src="~/lib/jquery/dist/jquery.js"></script>
+        <script type="text/javascript" src="~/lib/jquery-validation/dist/jquery.validate.js"></script>
+        <script type="text/javascript" src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+    </div>
 </body>
 </html>
  

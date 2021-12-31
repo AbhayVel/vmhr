@@ -24,6 +24,10 @@ namespace HRRepository
                         inner join [dbo].[vacancy] v on v.id=a.VacancyId
                         Where 1=1  ";
 
+        public Application Get(int id)
+        {
+            return hrSystemDBContext.Applications.FirstOrDefault(x => x.Id == id);
+        }
 
         HrSystemDBContext hrSystemDBContext = new HrSystemDBContext();
      public   ApplicationRepository()
