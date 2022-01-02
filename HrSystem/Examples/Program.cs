@@ -1,5 +1,6 @@
 ﻿using HRDB;
 using HREntity;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,53 +16,74 @@ namespace Examples
 
             HrSystemDBContext hrdb = new HrSystemDBContext();
 
-          //  var data = hrdb.Users.ToList();
 
-          //User user=  hrdb.Users.FirstOrDefault(x => x.UserId == 2);
+          var data=  hrdb.Applications.Include("Stage").ToList();
+           // int k = 0;
+            //var data = hrdb.Users.ToList();
+            //var Vdata = hrdb.vacancies.ToList();
+         //   var Adata = hrdb.application.ToList();
 
-         var Adata = hrdb.Applications.ToList();
+            //Application applications = new Application
+            //{
+            //    FirstName = "Manisha",
+            //    AppliedFor = "DotNet Devoloper",
+            //    Experience = 1,
+            //    Status = "Active",
+            //    Resume = "Manisha_Resume"
+            //};
 
-         //Application application = hrdb.Applications.FirstOrDefault(x => x.Id==4);
-         //application.FirstName = "abi";
-         //hrdb.SaveChanges();
-         //Application application = new Application
-         //{
-         //   FirstName = "suraj",
-         //   MiddleName = "D",
-         //   LastName = "Bhendawade",
-         //   Gender = "M",
-         //   Email = "surj@gmail.com",
-         //   Phone = "090990",
-         //   Address = "kolhapur",
-         //   Resume = "upload",
-         //   AppliedFor = ".net",
-         //   Experience = "1",
-         //   DateCreated =  DateTime.Now,
-         //   Status = "active"
+            //hrdb.application.Add(applications);
+            //hrdb.SaveChanges();
+            //applications = hrdb.application.FirstOrDefault(x => x.Id == 4);
+            //applications.Experience=2;
+            //hrdb.SaveChanges();
+            //applications = hrdb.application.FirstOrDefault(x => x.Id == 15);
+            //hrdb.application.Remove(applications);
+            //hrdb.SaveChanges();
 
-         //};
-         //hrdb.Applications.Add(application);
-         //hrdb.SaveChanges();
 
-         application = hrdb.Applications.FirstOrDefault(x => x.Id == 5);
-         hrdb.Applications.Remove(application);
-         hrdb.SaveChanges();
+            /*Vacancy vacancy = new Vacancy
+            {
 
-         //user.Password = "xyz";
-         //hrdb.SaveChanges();
-         //user = hrdb.Users.FirstOrDefault(x => x.UserId == 3);
-         //hrdb.Users.Remove(user);
-         //hrdb.SaveChanges();
-         //User user = new User
-         //{
-         //    Name = "AV",
-         //    address = "a",
-         //    Type = 1,
-         //    UserName = "aa",
-         //    Action = "Active",
-         //    contact = "a",
-         //    Password = "abc"
-         //};
+
+                Position = "JavaDevoloper",
+                Availability = 5,
+                Description="aaaa",
+                Status = "Active",
+                Experience = 2,
+                Skills="Java,CPP"
+                
+               
+            };
+             hrdb.vacancies.Add(vacancy);
+              hrdb.SaveChanges();
+                 vacancy= hrdb.vacancies.FirstOrDefault(x => x.Id == 1);
+
+            vacancy.Availability = 10;
+            hrdb.SaveChanges();
+            vacancy = hrdb.vacancies.FirstOrDefault(x => x.Id == 5);
+            hrdb.vacancies.Remove(vacancy);
+            hrdb.SaveChanges();*/
+
+
+
+
+            //User user = hrdb.Users.FirstOrDefault(x => x.UserId == 2);
+            //user.Password = "xyz";
+            //hrdb.SaveChanges();
+            //user = hrdb.Users.FirstOrDefault(x => x.UserId == 3);
+            //hrdb.Users.Remove(user);
+            //hrdb.SaveChanges();
+            //User user = new User
+            //{
+            //    Name = "AV",
+            //    address = "a",
+            //    Type = 1,
+            //    UserName = "aa",
+            //    Action = "Active",
+            //    contact = "a",
+            //    Password = "abc"
+            //};
 
          //hrdb.Users.Add(user);
          //hrdb.SaveChanges();

@@ -11,6 +11,83 @@ namespace HRModels
 
         public string NameSearch { get; set; }
 
+        public string AppliedForSearch { get; set; }
+
+        public string StageStatusSearch { get; set; }
+
+
+        public string Where() 
+        {
+            string where = "";
+            ApplicationModel applicationModel = this;
+            if (!string.IsNullOrWhiteSpace(this.IdSearch))
+            {
+                int value = 0;
+                if (Int32.TryParse(applicationModel.IdSearch, out value))
+                {
+                    where = $"{where} and  a.Id ={value}";
+                    //list = list.Where(x => x.Id == value);
+                }
+            }
+
+            if (!string.IsNullOrWhiteSpace(NameSearch))
+            {
+                where = $"{where} and  a.FirstName  like '{NameSearch.Replace("'","''")}'";
+                //list = list.Where(x => x.FirstName.Contains(applicationModel.NameSearch, StringComparison.OrdinalIgnoreCase));
+
+            }
+
+            if (!string.IsNullOrWhiteSpace(AppliedForSearch))
+            {
+
+                where = $"{where} and v.Position  like '{AppliedForSearch.Replace("'", "''")}'";
+                // list = list.Where(x => x.Vacancy.Position.Contains(applicationModel.AppliedForSearch, StringComparison.OrdinalIgnoreCase));
+
+            }
+
+            if (!string.IsNullOrWhiteSpace(StageStatusSearch))
+            {
+                where = $"{where} and s.StatusLabel  like '{StageStatusSearch.Replace("'", "''")}'";
+                //  list = list.Where(x => x.Stage.StatusLabel.Contains(applicationModel.StageStatusSearch, StringComparison.OrdinalIgnoreCase));
+
+            }
+
+            return " " + where + " ";
+
+        }
+
+
+
+        public string Sort()
+        {
+            string orderBy = "";
+            if ("name".Equals(ColumnName, StringComparison.OrdinalIgnoreCase))
+            {
+                if (OrderBy.Equals("asc"))
+                {
+                    orderBy = "a.FirstName asc";
+                }
+                else
+                {
+                    orderBy = "a.FirstName desc";
+                }
+            }
+
+            if ("id".Equals(ColumnName, StringComparison.OrdinalIgnoreCase))
+            {
+                if (OrderBy.Equals("asc"))
+                {
+                    orderBy = "a.id asc";
+                }
+                else
+                {
+                    orderBy = "a.id desc";
+                }
+            }
+
+            return "   order by " +  orderBy +" ";
+        }
+
 
         public IEnumerable<T> Where<T>(IEnumerable<T> list) where T : Application
         {
@@ -28,6 +105,20 @@ namespace HRModels
             {
 
                 list = list.Where(x => x.FirstName.Contains(applicationModel.NameSearch, StringComparison.OrdinalIgnoreCase));
+
+            }
+
+            if (!string.IsNullOrWhiteSpace(AppliedForSearch))
+            {
+
+                list = list.Where(x => x.Vacancy.Position.Contains(applicationModel.AppliedForSearch, StringComparison.OrdinalIgnoreCase));
+
+            }
+
+            if (!string.IsNullOrWhiteSpace(StageStatusSearch))
+            {
+
+                list = list.Where(x => x.Stage.StatusLabel.Contains(applicationModel.StageStatusSearch, StringComparison.OrdinalIgnoreCase));
 
             }
 

@@ -8,32 +8,14 @@ using System.Linq;
 
 namespace HRModels
 {
-    public class VacancyModel : BaseModel
+    public class StageModel : BaseModel
     {
 
-        public override string OrderBy
+       public string IdSearch { get; set; }
+
+      public IEnumerable<T> Where<T>(IEnumerable<T> list) where T: Stage
         {
-            get
-            {
-                if (string.IsNullOrWhiteSpace(_orderBy))
-                {
-                    return "asc";
-                }
-                return _orderBy;
-            }
-
-            set
-            {
-                _orderBy = value;
-            }
-        }
-        public string IdSearch { get; set; }
-
-        public string PositionSearch { get; set; }
-
-        public IEnumerable<T> Where<T>(IEnumerable<T> list) where T: Vacancy
-        {
-            VacancyModel vacancyModel = this;
+            StageModel stageModel = this;
             if (!string.IsNullOrWhiteSpace(IdSearch))
             {
                 int value = 0;
@@ -44,27 +26,23 @@ namespace HRModels
 
             }
 
-            if (!string.IsNullOrWhiteSpace(PositionSearch))
-            {
-
-                list = list.Where(x => x.Position.Contains(PositionSearch, StringComparison.OrdinalIgnoreCase));
-            }
+            
 
             return list;
         }
         
-        public IEnumerable<T> Sort<T>(IEnumerable<T> list) where T : Vacancy
+        public IEnumerable<T> Sort<T>(IEnumerable<T> list) where T : Stage
         {
-            if ("position".Equals(ColumnName, StringComparison.OrdinalIgnoreCase))
+            if ("StatusLabel".Equals(ColumnName, StringComparison.OrdinalIgnoreCase))
             {
                 if (OrderBy.Equals("asc"))
                 {
-                    list = list.OrderBy(x => x.Position);
+                    list = list.OrderBy(x => x.StatusLabel);
                 }
 
                 else
                 {
-                    list = list.OrderByDescending(x => x.Position);
+                    list = list.OrderByDescending(x => x.StatusLabel);
                 }
             }
             list = list.ToList();
