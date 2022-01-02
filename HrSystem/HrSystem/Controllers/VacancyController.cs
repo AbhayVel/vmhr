@@ -16,15 +16,10 @@ namespace HrSystem.Controllers
         public IActionResult Index(VacancyModel vacancyModel,PageModel pageModel)
        
         {
-            //PageModel pageModel = new PageModel();
-            //pageModel.CurrentPage = 1;  
-           // pageModel.TotalRowCount = lstVacancy.Count;
+            
             pageModel.RowPerPage = 4 ;
             var lstVacancy = VacancyService.GetAll(vacancyModel,pageModel);
-            
-
-           
-            ViewBag.orderBy = vacancyModel.OrderBy;
+              ViewBag.orderBy = vacancyModel.OrderBy;
             ViewBag.vacancyModel = vacancyModel;
             ViewBag.columnName = vacancyModel.ColumnName; 
             ViewBag.pageModel = pageModel;
