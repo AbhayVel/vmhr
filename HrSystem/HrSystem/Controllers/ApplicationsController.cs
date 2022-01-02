@@ -16,6 +16,7 @@ namespace HrSystem.Controllers
 
         ApplicationService ApplicationService = new ApplicationService();
         VacancyService VacancyService = new VacancyService();
+        StageService StageService = new StageService();
         public IActionResult Index(ApplicationModel applicationModel, PageModel pageModel)
         {
          
@@ -35,14 +36,28 @@ namespace HrSystem.Controllers
             var application = new Application();
 
              
-            var vacancyList= VacancyService.GetWithSelect();
-
+            var vacancyList = VacancyService.GetWithSelect();
+            var stageList = StageService.GetWithSelect();
             ViewBag.VacancyId = vacancyList.Select(x => new SelectListItem(x.Position, x.Id.ToString()));
+            ViewBag.StageId = stageList.Select(x => new SelectListItem(x.StatusLabel, x.Id.ToString()));
             return View(application);
         }
 
 
-        public IActionResult Edit(int id)
+        public IActionResult Delete(int id)
+        {
+            var application = ApplicationService.Get(id);
+            if(application == null)
+            {
+                return Redirect("/applications/index");
+            }
+
+
+            ApplicationService.Delete(id);
+            return Redirect("/applications/index");
+        }
+
+            public IActionResult Edit(int id)
         {
             var application = ApplicationService.Get(id);
 
@@ -53,8 +68,11 @@ namespace HrSystem.Controllers
 
 
             var vacancyList = VacancyService.GetWithSelect();
-
+            var stageList = StageService.GetWithSelect();
             ViewBag.VacancyId = vacancyList.Select(x => new SelectListItem(x.Position, x.Id.ToString()));
+            ViewBag.StageId = stageList.Select(x => new SelectListItem(x.StatusLabel, x.Id.ToString()));
+
+
             return View("add",application);
         }
 
@@ -67,8 +85,10 @@ namespace HrSystem.Controllers
                 return View("Add", application);
             }
 
+
+            ApplicationService.Save(application);
             //Save 
-            return Index(new ApplicationModel(),new PageModel());
+            return Redirect("/applications/index");
         }
 
 

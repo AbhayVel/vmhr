@@ -9,7 +9,7 @@ using System.Text;
 
 namespace HRRepository
 {
-   public class ApplicationRepository
+    public class ApplicationRepository
     {
 
         string Query = @"Select   a.id, FirstName, MiddleName, LastName, Email, Phone, Gender, Address, a.Experience, a.Status, Resume, VacancyId, StageId, DateCreated   
@@ -23,6 +23,38 @@ namespace HRRepository
                         inner join [dbo].[Stage] s  on s.id=a.StageId
                         inner join [dbo].[vacancy] v on v.id=a.VacancyId
                         Where 1=1  ";
+
+        public Application Save(Application application)
+        {
+            if (application.Id == 0 || application.Id is null)
+            {
+                hrSystemDBContext.Applications.Add(application);
+            } else
+            {
+                hrSystemDBContext.Attach(application);
+                hrSystemDBContext.Entry(application).State = EntityState.Modified;
+            }
+
+            hrSystemDBContext.SaveChanges();
+
+            return application;
+        }
+
+        public void Delete(Application application)
+        {
+            hrSystemDBContext.Remove(application);
+
+            hrSystemDBContext.SaveChanges();
+        }
+
+        public void Delete(int id)
+        {
+            var application = Get(id);
+            if (!(application is  null))
+            {
+                Delete(application);
+            }
+        }
 
         public Application Get(int id)
         {
