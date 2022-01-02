@@ -9,33 +9,6 @@ namespace HRModels
 
     public class UserModel : BaseModel
     {
-      
-
-      public string UserIdSearch { get; set; }
-      public string NameSearch { get; set; }
-
-
-      public IEnumerable<T> Where<T>(IEnumerable<T> list) where T : User
-      {
-         UserModel userModel = this;
-         if (!string.IsNullOrWhiteSpace(this.UserIdSearch))
-         {
-            int value = 0;
-            if (Int32.TryParse(userModel.UserIdSearch, out value))
-            {
-               list = list.Where(x => x.UserId == value);
-            }
-         }
-
-         if (!string.IsNullOrWhiteSpace(NameSearch))
-         {
-
-            list = list.Where(x => x.Name.Contains(userModel.NameSearch, StringComparison.OrdinalIgnoreCase));
-
-         }
-
-         return list;
-      }
 
 
         public string UserIdSearch { get; set; }
@@ -44,25 +17,29 @@ namespace HRModels
 
         public IEnumerable<T> Where<T>(IEnumerable<T> list) where T : User
         {
-
-            if (!string.IsNullOrWhiteSpace(UserIdSearch))
+            UserModel userModel = this;
+            if (!string.IsNullOrWhiteSpace(this.UserIdSearch))
             {
                 int value = 0;
-                if (Int32.TryParse(UserIdSearch, out value))
+                if (Int32.TryParse(userModel.UserIdSearch, out value))
                 {
                     list = list.Where(x => x.UserId == value);
                 }
             }
-            else
+
+            if (!string.IsNullOrWhiteSpace(NameSearch))
             {
-               list = list.OrderByDescending(x => x.UserId);
+
+                list = list.Where(x => x.Name.Contains(userModel.NameSearch, StringComparison.OrdinalIgnoreCase));
+
             }
-         }
-         return list;
+
+            return list;
         }
 
-        public IEnumerable<T> Sort<T>(IEnumerable<T> list) where T: User   
-            {
+
+        public IEnumerable<T> Sort<T>(IEnumerable<T> list) where T : User
+        {
             if ("UserId".Equals(ColumnName, StringComparison.OrdinalIgnoreCase))
             {
                 if (OrderBy.Equals("asc"))
@@ -87,5 +64,9 @@ namespace HRModels
             }
             return list;
         }
+
     }
-}
+
+
+
+    }

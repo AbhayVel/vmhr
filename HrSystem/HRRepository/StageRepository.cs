@@ -37,9 +37,9 @@ namespace HRRepository
 
         public IEnumerable<T> SetStages<T>(IEnumerable<T> lstIstage) where T : IStage
         {
-            var lstVacanyIds = lstIstage.Select(x => x.StageId).Distinct().ToList();
+            var lstSTageIds = lstIstage.Select(x => x.StageId).Distinct().ToList();
 
-          var lststage = hrSystemDBContext.Stages.Where(x => lstVacanyIds.Contains(x.Id)).ToList();
+          var lststage = hrSystemDBContext.Stages.Where(x => lstSTageIds.Contains(x.Id)).ToList();
 
             foreach (var item in lstIstage)
             {
