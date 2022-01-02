@@ -17,10 +17,12 @@ namespace HREntity
     {   [Key]
         public int Id { get; set; }
 
+        public int? StageID { get; set; }
 
+        
         public string StatusLabel { get; set; }
 
-        public int? Status { get; set; }
+       
 
        
     }
