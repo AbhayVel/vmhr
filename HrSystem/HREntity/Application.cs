@@ -5,16 +5,15 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace HREntity
 {
     [Table("application")]
-    public class Application : IVacancy
+    public class Application : IVacancy, IStage
     {
         [Key]
 
-        public int Id { get; set; }
+        public int? Id { get; set; }
 
         [Required]
         [MinLength(2)]
-        [MaxLength(50)]
-        [System.ComponentModel.DataAnnotations.EmailAddress]
+        [MaxLength(50)]       
         public string FirstName { get; set; }
         public string MiddleName { get; set; }
 
