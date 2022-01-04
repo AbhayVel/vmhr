@@ -11,10 +11,12 @@ namespace HRRepository
 {
    public  class StageRepository
     {
-        HrSystemDBContext hrSystemDBContext = new HrSystemDBContext();
+        HrSystemDBContext HrSystemDBContext { get; set; }
 
-        public StageRepository()
-        { 
+        public StageRepository(HrSystemDBContext hrSystemDBContext)
+        {
+
+            HrSystemDBContext = hrSystemDBContext;
         }
         public int TotalRowCount { get; private set; }
 
@@ -22,8 +24,9 @@ namespace HRRepository
         {
             string ColumnName = stageModel.ColumnName;
             string OrderBy = stageModel.OrderBy;
-           
-             var lststage = stageModel.Where(hrSystemDBContext.Stages);
+            HrSystemDBContext.Count = HrSystemDBContext.Count + 1;
+
+            var lststage = stageModel.Where(HrSystemDBContext.Stages);
             lststage = stageModel.Sort(lststage);
 
             if (!(pageModel is null))
@@ -38,8 +41,8 @@ namespace HRRepository
         public IEnumerable<T> SetStages<T>(IEnumerable<T> lstIstage) where T : IStage
         {
             var lstSTageIds = lstIstage.Select(x => x.StageId).Distinct().ToList();
-
-          var lststage = hrSystemDBContext.Stages.Where(x => lstSTageIds.Contains(x.Id)).ToList();
+            HrSystemDBContext.Count = HrSystemDBContext.Count + 1;
+            var lststage = HrSystemDBContext.Stages.Where(x => lstSTageIds.Contains(x.Id)).ToList();
 
             foreach (var item in lstIstage)
             {

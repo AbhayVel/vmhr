@@ -9,16 +9,26 @@ using System.Text;
 
 namespace HRRepository
 {
-    public class ApplicationRepository
+    public class ApplicationRepository : IApplicationRepository
     {
 
-        string Query = @"Select   a.id, FirstName, MiddleName, LastName, Email, Phone, Gender, Address, a.Experience, a.Status, Resume, VacancyId, StageId, DateCreated   
+        public HrSystemDBContext HrSystemDBContext { get; set; } //Instance variable 
+
+        static int Count = 0; //Class variable
+
+
+        public ApplicationRepository(HrSystemDBContext hrSystemDBContext)
+        {
+            HrSystemDBContext = hrSystemDBContext;
+        }
+
+        private string _query = @"Select   a.id, FirstName, MiddleName, LastName, Email, Phone, Gender, Address, a.Experience, a.Status, Resume, VacancyId, StageId, DateCreated   
                         from [dbo].[application] a 
                         inner join [dbo].[Stage] s  on s.id=a.StageId
                         inner join [dbo].[vacancy] v on v.id=a.VacancyId
                         Where 1=1  ";
 
-        string QueryCount = @"Select   count(1) as countValue   
+        private string _queryCount = @"Select   count(1) as countValue   
                         from [dbo].[application] a 
                         inner join [dbo].[Stage] s  on s.id=a.StageId
                         inner join [dbo].[vacancy] v on v.id=a.VacancyId
@@ -28,29 +38,30 @@ namespace HRRepository
         {
             if (application.Id == 0 || application.Id is null)
             {
-                hrSystemDBContext.Applications.Add(application);
-            } else
+                HrSystemDBContext.Applications.Add(application);
+            }
+            else
             {
-                hrSystemDBContext.Attach(application);
-                hrSystemDBContext.Entry(application).State = EntityState.Modified;
+                HrSystemDBContext.Attach(application);
+                HrSystemDBContext.Entry(application).State = EntityState.Modified;
             }
 
-            hrSystemDBContext.SaveChanges();
+            HrSystemDBContext.SaveChanges();
 
             return application;
         }
 
         public void Delete(Application application)
         {
-            hrSystemDBContext.Remove(application);
+            HrSystemDBContext.Remove(application);
 
-            hrSystemDBContext.SaveChanges();
+            HrSystemDBContext.SaveChanges();
         }
 
         public void Delete(int id)
         {
             var application = Get(id);
-            if (!(application is  null))
+            if (!(application is null))
             {
                 Delete(application);
             }
@@ -58,41 +69,38 @@ namespace HRRepository
 
         public Application Get(int id)
         {
-            return hrSystemDBContext.Applications.FirstOrDefault(x => x.Id == id);
+            return HrSystemDBContext.Applications.FirstOrDefault(x => x.Id == id);
         }
 
-        HrSystemDBContext hrSystemDBContext = new HrSystemDBContext();
-     public   ApplicationRepository()
-        {
 
-        }
+
         public List<Application> GetAll(string columnName, string orderBy, string IdSearch, string NameSearch, PageModel pageModel)
         {
             return null;
         }
 
 
-        public List<Application> GetAll(ApplicationModel applicationModel, PageModel pageModel)
+        public List<Application> GetAll(ApplicationModel applicationModel, PageModel pageModel) //parameter 
         {
-            string columnName = applicationModel.ColumnName;
+            string columnName = applicationModel.ColumnName; //local variable
             string orderBy = applicationModel.OrderBy;
 
-            ;
+            HrSystemDBContext.Count = HrSystemDBContext.Count + 1;
 
 
             string where = applicationModel.Where();
             string sort = applicationModel.Sort();
 
-         var dbCOnnection=   hrSystemDBContext.Database.GetDbConnection();
-            if(dbCOnnection.State != System.Data.ConnectionState.Open)
+            var dbCOnnection = HrSystemDBContext.Database.GetDbConnection();
+            if (dbCOnnection.State != System.Data.ConnectionState.Open)
             {
                 dbCOnnection.Open();
             }
-          
-            var dbCOmmand = dbCOnnection.CreateCommand();
-            dbCOmmand.CommandText = QueryCount + where;
 
-          var rowsCount=(int)  dbCOmmand.ExecuteScalar();
+            var dbCOmmand = dbCOnnection.CreateCommand();
+            dbCOmmand.CommandText = _queryCount + where;
+
+            var rowsCount = (int)dbCOmmand.ExecuteScalar();
 
             string page = "";
 
@@ -104,11 +112,11 @@ namespace HRRepository
 
 
             if (!(pageModel is null))
-            {               
+            {
                 page = pageModel.SetValues(rowsCount);
             }
 
-            var lstApplication = hrSystemDBContext.Applications.FromSqlRaw(Query + where + sort + page ).ToList();
+            var lstApplication = HrSystemDBContext.Applications.FromSqlRaw(_query + where + sort + page).ToList();
             return lstApplication.ToList();
         }
 
@@ -122,11 +130,11 @@ namespace HRRepository
 
             ;
 
-           var  lstApplication = applicationModel.Where(hrSystemDBContext.Applications.Include("Vacancy").Include("Stage"));
+            var lstApplication = applicationModel.Where(HrSystemDBContext.Applications.Include("Vacancy").Include("Stage"));
             lstApplication = applicationModel.Sort(lstApplication);
 
 
-            if (!(pageModel is  null))
+            if (!(pageModel is null))
             {
                 pageModel.SetValues(lstApplication.ToList());
                 lstApplication = lstApplication.Skip(pageModel.StartIndex).Take(pageModel.RowPerPage).ToList();

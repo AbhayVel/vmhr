@@ -8,8 +8,8 @@ namespace HRDB
 {
     public class HrSystemDBContext : DbContext
     {
-         
 
+        public int Count = 0; //instace variable 
         private string _connectionString { get; set; }
         public HrSystemDBContext() : base()
         {

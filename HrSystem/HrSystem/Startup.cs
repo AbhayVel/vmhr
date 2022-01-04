@@ -1,3 +1,6 @@
+using HRDB;
+using HRRepository;
+using HRService;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -24,6 +27,18 @@ namespace HrSystem
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
+
+
+            services.AddSingleton<HrSystemDBContext, HrSystemDBContext>();
+            
+
+            services.AddScoped<StageRepository, StageRepository>();
+            services.AddScoped<VacancyRepository, VacancyRepository>();
+            services.AddScoped<IApplicationRepository, ApplicationRepository>();
+            services.AddScoped<ApplicationService, ApplicationService>();
+            services.AddScoped<VacancyService, VacancyService>();
+            services.AddScoped<StageService, StageService>();
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
