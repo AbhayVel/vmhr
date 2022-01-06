@@ -9,7 +9,12 @@ namespace HRService
 {
     public class VacancyService
     {
-        VacancyRepository VacancyRepository = new HRRepository.VacancyRepository();
+        VacancyRepository VacancyRepository { get; set; }
+
+     public   VacancyService(VacancyRepository vacancyRepository)
+        {
+            VacancyRepository = vacancyRepository;
+        }
         public List<Vacancy> GetAll(VacancyModel vacancyModel, PageModel pageModel)
 
         {

@@ -43,21 +43,12 @@ namespace HRRepository
             UserName = "Admin4",
             Action = "Active"
 
-         });
-         lstUser.Add(new User
-         {
-            UserId = 4,
-            Name = "Aniket",
-            UserName = "Admin3",
-            Action = "Active"
 
-         });
-         lstUser.Add(new User
+         var lstUser = userModel.Where(hrSystemDBContext.Users);
+         lstUser = userModel.Sort(lstUser);
+         if (!(pageModel is null))
          {
-            UserId = 5,
-            Name = "xyz",
-            UserName = "Admin4",
-            Action = "Active"
+            pageModel.SetValues(lstUser.ToList()) ;
 
          });
          lstUser.Add(new User

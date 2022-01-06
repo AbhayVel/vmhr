@@ -10,9 +10,23 @@ namespace HRService
 {
     public class ApplicationService
     {
-        ApplicationRepository ApplicationRepository = new ApplicationRepository();
-        VacancyRepository VacancyRepository = new VacancyRepository();
-        StageRepository StageRepository = new StageRepository();
+        IApplicationRepository ApplicationRepository { get; set; }
+        VacancyRepository VacancyRepository { get; set; }
+        StageRepository StageRepository { get; set; }
+
+        public ApplicationService(IApplicationRepository applicationRepository,
+
+            VacancyRepository vacancyRepository,
+            StageRepository stageRepository
+
+            )
+        {
+            ApplicationRepository = applicationRepository;
+            VacancyRepository = vacancyRepository;
+            StageRepository = stageRepository;
+            
+        }
+
         public List<Application> GetAll(ApplicationModel applicationModel, PageModel pageModel)
         {
              var lstApplication= ApplicationRepository.GetAll(applicationModel, pageModel);

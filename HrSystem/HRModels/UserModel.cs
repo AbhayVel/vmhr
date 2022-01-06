@@ -10,24 +10,6 @@ namespace HRModels
     public class UserModel : BaseModel
     {
 
-        public override string ColumnName
-        {
-            get
-            {
-                if (string.IsNullOrWhiteSpace(_columnName))
-                {
-                    return "UserId";
-                }
-                return _columnName;
-            }
-
-            set
-            {
-
-                _columnName = value;
-            }
-        }
-
 
         public string UserIdSearch { get; set; }
         public string NameSearch { get; set; }
@@ -35,27 +17,29 @@ namespace HRModels
 
         public IEnumerable<T> Where<T>(IEnumerable<T> list) where T : User
         {
-
-            if (!string.IsNullOrWhiteSpace(UserIdSearch))
+            UserModel userModel = this;
+            if (!string.IsNullOrWhiteSpace(this.UserIdSearch))
             {
                 int value = 0;
-                if (Int32.TryParse(UserIdSearch, out value))
+                if (Int32.TryParse(userModel.UserIdSearch, out value))
                 {
                     list = list.Where(x => x.UserId == value);
                 }
             }
+
             if (!string.IsNullOrWhiteSpace(NameSearch))
             {
 
-                list = list.Where(x => x.Name.Contains(NameSearch, StringComparison.OrdinalIgnoreCase));
+                list = list.Where(x => x.Name.Contains(userModel.NameSearch, StringComparison.OrdinalIgnoreCase));
 
             }
 
             return list;
         }
 
-        public IEnumerable<T> Sort<T>(IEnumerable<T> list) where T: User   
-            {
+
+        public IEnumerable<T> Sort<T>(IEnumerable<T> list) where T : User
+        {
             if ("UserId".Equals(ColumnName, StringComparison.OrdinalIgnoreCase))
             {
                 if (OrderBy.Equals("asc"))
@@ -80,5 +64,9 @@ namespace HRModels
             }
             return list;
         }
+
     }
-}
+
+
+
+    }

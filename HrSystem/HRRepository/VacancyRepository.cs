@@ -9,12 +9,13 @@ using HRDB;
 
 namespace HRRepository
 {
-   public  class VacancyRepository
+    public class VacancyRepository
     {
-        HrSystemDBContext hrSystemDBContext = new HrSystemDBContext();
+        HrSystemDBContext HrSystemDBContext { get; set; }
 
-        public VacancyRepository()
-        { 
+        public VacancyRepository(HrSystemDBContext hrSystemDBContext)
+        {
+            HrSystemDBContext = hrSystemDBContext;
         }
         public int TotalRowCount { get; private set; }
 
@@ -22,8 +23,9 @@ namespace HRRepository
         {
             string ColumnName = vacancyModel.ColumnName;
             string OrderBy = vacancyModel.OrderBy;
-           // var lstVacancy = hrSystemDBContext.Vacancies;
-             var lstVacancy = vacancyModel.Where(hrSystemDBContext.Vacancies);
+            HrSystemDBContext.Count = HrSystemDBContext.Count + 1;
+            // var lstVacancy = hrSystemDBContext.Vacancies;
+            var lstVacancy = vacancyModel.Where(HrSystemDBContext.Vacancies);
             lstVacancy = vacancyModel.Sort(lstVacancy);
 
             if (!(pageModel is null))
@@ -38,8 +40,8 @@ namespace HRRepository
         public IEnumerable<T> SetVacancies<T>(IEnumerable<T> lstIVacancy) where T : IVacancy
         {
             var lstVacanyIds = lstIVacancy.Select(x => x.VacancyId).Distinct().ToList();
-
-          var lstVacancy = hrSystemDBContext.Vacancies.Where(x => lstVacanyIds.Contains(x.Id)).ToList();
+            HrSystemDBContext.Count = HrSystemDBContext.Count + 1;
+            var lstVacancy = HrSystemDBContext.Vacancies.Where(x => lstVacanyIds.Contains(x.Id)).ToList();
 
             foreach (var item in lstIVacancy)
             {

@@ -9,7 +9,12 @@ namespace HRService
 {
     public class StageService
     {
-        StageRepository StageRepository = new HRRepository.StageRepository();
+        StageRepository StageRepository { get; set; }
+
+       public StageService(StageRepository stageRepository)
+        {
+            StageRepository = stageRepository;
+        }
         public List<Stage> GetAll(StageModel stageModel, PageModel pageModel)
 
         {

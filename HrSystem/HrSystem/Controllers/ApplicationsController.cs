@@ -1,6 +1,7 @@
 ﻿using HREntity;
 using HRModels;
 using HRService;
+using HrSystem.FIlters;
 using HrSystem.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -11,12 +12,27 @@ using System.Threading.Tasks;
 
 namespace HrSystem.Controllers
 {
+
+    [HRActionFilter]
     public class ApplicationsController : Controller
     {
 
-        ApplicationService ApplicationService = new ApplicationService();
-        VacancyService VacancyService = new VacancyService();
-        StageService StageService = new StageService();
+        ApplicationService ApplicationService { get; set; }
+        VacancyService VacancyService { get; set; }
+        StageService StageService { get; set; }
+
+        public ApplicationsController(ApplicationService applicationService,
+            VacancyService vacancyService,
+            StageService stageService
+
+            )
+        {
+            ApplicationService = applicationService;
+            VacancyService = vacancyService;
+            StageService = stageService;
+        }
+
+        
         public IActionResult Index(ApplicationModel applicationModel, PageModel pageModel)
         {
          
@@ -100,5 +116,6 @@ namespace HrSystem.Controllers
 
             return View(lstApplication);
         }
+     
     }
 }

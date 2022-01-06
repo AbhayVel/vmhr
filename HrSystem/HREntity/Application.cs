@@ -3,6 +3,7 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace HREntity
+
 {
     [Table("application")]
     public class Application : IVacancy, IStage
@@ -46,6 +47,6 @@ namespace HREntity
         public virtual Stage Stage { get; set; }
 
 
-
-    }
+      
+   }
 }
