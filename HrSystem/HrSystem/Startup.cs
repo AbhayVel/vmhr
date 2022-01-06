@@ -121,8 +121,15 @@ namespace HrSystem
 
             app.UseAuthorization();
 
+
+            //app.UseMvc((x) =>
+            //{
+            //    x.F
+            //})
             app.UseEndpoints(endpoints =>
             {
+
+               
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Applications}/{action=Index}/{id?}");

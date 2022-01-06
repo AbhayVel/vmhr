@@ -1,6 +1,7 @@
 ﻿using HREntity;
 using HRModels;
 using HRService;
+using HrSystem.FIlters;
 using HrSystem.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -11,6 +12,8 @@ using System.Threading.Tasks;
 
 namespace HrSystem.Controllers
 {
+
+    [HRActionFilter]
     public class ApplicationsController : Controller
     {
 
@@ -28,6 +31,8 @@ namespace HrSystem.Controllers
             VacancyService = vacancyService;
             StageService = stageService;
         }
+
+        
         public IActionResult Index(ApplicationModel applicationModel, PageModel pageModel)
         {
          

@@ -11,10 +11,14 @@ namespace HrSystem.Controllers
 {
     public class VacancyController : Controller
     {
-        VacancyService VacancyService = new VacancyService();
+        VacancyService VacancyService { get; set; }
 
-        public IActionResult Index(VacancyModel vacancyModel,PageModel pageModel)
-       
+        public VacancyController(VacancyService vacancyService)
+        {
+            VacancyService = vacancyService;
+        }
+
+        public IActionResult Index(VacancyModel vacancyModel,PageModel pageModel)       
         {
             
             pageModel.RowPerPage = 4 ;
