@@ -17,6 +17,10 @@ namespace HRService
         }
 
 
+        public Vacancy Save(Vacancy vacancy)
+        {
+            return VacancyRepository.Save(vacancy);
+        }
         public List<Vacancy> GetWithSelect()
 
         {
@@ -24,6 +28,11 @@ namespace HRService
 
             lst.Insert(0, new Vacancy { Id = 0, Position = "Select" });
             return lst;
+        }
+
+        public Vacancy Get(int id)
+        {
+            return VacancyRepository.Get(id);
         }
 
     }

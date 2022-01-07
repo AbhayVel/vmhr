@@ -23,6 +23,7 @@ namespace HRService
             var lst= GetAll(new StageModel(), null);
 
             lst.Insert(0, new Stage { Id = 0, StatusLabel = "Select" });
+         
             return lst;
         }
 

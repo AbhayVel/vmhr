@@ -6,6 +6,7 @@ using System.Text;
 using System.Linq;
 using HRModels;
 using HRDB;
+using Microsoft.EntityFrameworkCore;
 
 namespace HRRepository
 {
@@ -16,6 +17,8 @@ namespace HRRepository
         public VacancyRepository()
         { 
         }
+        
+
         public int TotalRowCount { get; private set; }
 
         public List<Vacancy>  GetAll(VacancyModel vacancyModel, PageModel pageModel)
@@ -34,6 +37,10 @@ namespace HRRepository
             return lstVacancy.ToList();
         }
 
+        public Vacancy Get(int id)
+        {
+            return hrSystemDBContext.Vacancies.FirstOrDefault(x=>x.Id==id);
+        }
 
         public IEnumerable<T> SetVacancies<T>(IEnumerable<T> lstIVacancy) where T : IVacancy
         {
@@ -49,7 +56,22 @@ namespace HRRepository
             return lstIVacancy;
         }
 
+        public Vacancy Save(Vacancy vacancy)
+        {
+            if (vacancy.Id == 0 || vacancy.Id is null)
+            {
+                hrSystemDBContext.Vacancies.Add(vacancy);
+            }
+            else
+            {
+                hrSystemDBContext.Attach(vacancy);
+                hrSystemDBContext.Entry(vacancy).State = EntityState.Modified;
+            }
 
+            hrSystemDBContext.SaveChanges();
+
+            return vacancy;
+        }
 
 
     }

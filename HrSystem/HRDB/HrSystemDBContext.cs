@@ -32,6 +32,6 @@ namespace HRDB
         
         public DbSet<Application> Applications { get; set; }
         public DbSet<Stage> Stages { get; set; }
-
+       
     }
 }

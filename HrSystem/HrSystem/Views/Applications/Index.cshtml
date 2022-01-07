@@ -3,13 +3,11 @@
 
 
 <center><h2>Application List</h2></center>
-<center>
-    <a href="~/Applications/Add">
-       + New Applicant
-    </a>
-</center>
+<a href="~/Applications/Add">
+    <center><button type="button" class="btn btn-primary">+ New Application</button></center>
+</a>
 
-    </a>
+    
 <br>
 <hr>
 @{
@@ -83,8 +81,8 @@
                     <td><span class="badge badge-success">New</span></td>
                     <td>
                         <button type="button" class="btn btn-success">View</button>
-                        <a href="~/Applications/Edit/@Model[i].Id">   Edit</a>
-                        <a href="~/Applications/delete/@Model[i].Id"  onclick="isDelete()">   Delete</a>
+                        <a href="~/Applications/Edit/@Model[i].Id">  <button type="button" class="btn btn-warning">Edit</button></a>
+                        <a href="~/Applications/delete/@Model[i].Id"  onclick="isDelete()"> <button type="button" class="btn btn-danger">Delete</button></a>
                     </td>
 
                 </tr>

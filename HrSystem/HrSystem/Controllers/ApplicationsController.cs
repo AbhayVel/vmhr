@@ -58,7 +58,7 @@ namespace HrSystem.Controllers
         }
 
             public IActionResult Edit(int id)
-        {
+          {
             var application = ApplicationService.Get(id);
 
             if (application == null)
@@ -93,12 +93,10 @@ namespace HrSystem.Controllers
 
 
             public IActionResult Jquery(ApplicationModel applicationModel)
-        {
+             {
 
             var lstApplication = ApplicationService.GetAll(applicationModel, null);
-
-
-            return View(lstApplication);
-        }
+             return View(lstApplication);
+             }
     }
 }
