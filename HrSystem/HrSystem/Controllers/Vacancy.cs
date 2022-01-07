@@ -9,7 +9,7 @@ using HRModels;
 
 namespace HrSystem.Controllers
 {
-    public class VacancyController : Controller
+    public class Vacancy : Controller
     {
         VacancyService VacancyService = new VacancyService();
 
@@ -28,7 +28,24 @@ namespace HrSystem.Controllers
 
         }
 
-        public IActionResult Jquery(VacancyModel vacancyModel)
+      public IActionResult Add()
+      {
+         var vacancy = new HREntity.Vacancy();
+         return View(vacancy);
+      }
+      [HttpPost]
+      public IActionResult Save(HREntity.Vacancy vacancy)
+      {
+
+         
+         
+            return View("Add", vacancy);
+         
+
+
+        
+      }
+      public IActionResult Jquery(VacancyModel vacancyModel)
         {
             var lstVacancy = VacancyService.GetAll(vacancyModel,null);
              

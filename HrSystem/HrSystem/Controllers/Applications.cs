@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace HrSystem.Controllers
 {
-    public class ApplicationsController : Controller
+    public class Applications : Controller
     {
 
         ApplicationService ApplicationService = new ApplicationService();

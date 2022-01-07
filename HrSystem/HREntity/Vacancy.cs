@@ -15,7 +15,7 @@ namespace HREntity
     {   [Key]
         public int Id { get; set; }
 
-
+      [Required]
         public string Position { get; set; }
 
         public string Skills { get; set; }

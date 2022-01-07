@@ -3,7 +3,8 @@
 @using HRModels;
 
 <center><h2>Vacancy List</h2></center>
-<center><button type="button" class="btn btn-primary">+ New Vacancy</button></center>
+<a href="~/Vacancy/Add">
+<center><button type="button" class="btn btn-primary">+ New Vacancy</button></center></a>
 <br>
 @{
     VacancyModel vacancyModel = ViewBag.vacancyModel as VacancyModel;

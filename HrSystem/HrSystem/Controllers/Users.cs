@@ -1,4 +1,5 @@
-﻿using HRModels;
+﻿using HREntity;
+using HRModels;
 using HRService;
 using HrSystem.Models;
 using Microsoft.AspNetCore.Mvc;
@@ -8,7 +9,7 @@ using System.Linq;
 
 namespace HrSystem.Controllers
 {
-   public class UsersController : Controller
+   public class Users: Controller
    {
       UserService UserService = new UserService();
       
@@ -37,7 +38,23 @@ namespace HrSystem.Controllers
 
          return View(lstUser);
       }
+      public IActionResult Add()
+      {
+         var user= new User();
+         return View(user);
+      }
+      [HttpPost]
+      public IActionResult Save(Users user)
+      {
 
+
+
+         return View("Add", user);
+
+
+
+
+      }
 
    }
 

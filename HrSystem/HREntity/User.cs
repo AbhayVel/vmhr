@@ -20,9 +20,9 @@ namespace HREntity
         public string address { get; set; }
 
         public string contact { get; set; }
-
+      [Required]
         public string UserName { get; set; }
-
+      [Required]
         public string Password { get; set; }
 
 

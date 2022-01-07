@@ -9,7 +9,7 @@ using HRModels;
 
 namespace HrSystem.Controllers
 {
-    public class StageController : Controller
+    public class Stages : Controller
     {
         
 
@@ -21,12 +21,22 @@ namespace HrSystem.Controllers
             return View(null);
 
         }
+      public IActionResult Add()
+      {
+         var stage = new Stage();
+         return View(stage);
+      }
+      [HttpPost]
+      public IActionResult Save(Stage stage)
+      {
 
-        public IActionResult Jquery()
-        {
-            
-            return View(null);
 
-        }
-    }
+
+         return View("Add", stage);
+
+
+
+
+      }
+   }
 }
