@@ -9,14 +9,14 @@ namespace Examples
 {
     class Program
     {
-     
+
       static void Main(string[] args)
-        {
+      {
 
-            HrSystemDBContext hrdb = new HrSystemDBContext();
+         HrSystemDBContext hrdb = new HrSystemDBContext();
 
 
-         
-        }
-    }
-}
+
+      }
+   }
+   }
