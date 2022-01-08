@@ -1,6 +1,8 @@
-﻿using HRModels;
+﻿using HREntity;
+using HRModels;
 using HRService;
 using HrSystem.Models;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -10,10 +12,36 @@ namespace HrSystem.Controllers
 {
    public class UsersController : Controller
    {
-      UserService UserService = new UserService();
-      
+      IUserService UserService { get; set; }
 
-      public IActionResult Index(UserModel userModel, PageModel pageModel)
+      public UsersController(IUserService userService)
+      {
+         UserService = userService;
+      }
+
+        [HttpGet]
+      public IActionResult Login()
+      {
+         return View();
+      }
+
+
+
+        [HttpPost]
+        public IActionResult Login(User user)
+        {
+            if(user.UserName.Equals("abhay")  && user.Password.Equals("abc"))
+            {
+                HttpContext.Session.SetString("userName", user.UserName);
+                return Redirect("/Applications/Index");
+            } else
+            {
+                ViewBag.Message = "UserName/Password is in valid.";
+                return View();
+            }
+            
+        }
+        public IActionResult Index(UserModel userModel, PageModel pageModel)
       {
          //PageModel pageModel = new PageModel();
          //pageModel.CurrentPage = 1;
@@ -29,13 +57,58 @@ namespace HrSystem.Controllers
          //{
          //   userModel.OrderBy = "asc";
          //}
-         
+
          ViewBag.orderBy = userModel.OrderBy;
          ViewBag.columnName = userModel.ColumnName;
          ViewBag.pageModel = pageModel;
          ViewBag.userModel = userModel;
 
-         return View(lstUser);
+         return View("Index",lstUser);
+      }
+
+      public IActionResult Delete(int id)
+      {
+         var user = UserService.Get(id);
+         if (user == null)
+         {
+            return Redirect("/users/index");
+         }
+
+
+         UserService.Delete(id);
+         return Redirect("/applications/index");
+      }
+
+      public IActionResult Edit(int id)
+      {
+         var user = UserService.Get(id);
+
+         if (user == null)
+         {
+            user = new User();
+         }
+
+         return View("Add", user);
+      }
+      public IActionResult Add()
+      {
+         var user = new User();
+         return View(user);
+      }
+      [HttpPost]
+      public IActionResult Save(User user)
+      {
+
+
+         if (!ModelState.IsValid)
+         {
+            return View("Add", user);
+         }
+
+         UserService.Save(user);
+         //Save 
+         return Redirect("/Users/index");
+
       }
 
 

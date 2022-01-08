@@ -1,6 +1,7 @@
 ﻿@model List<User>
 @using HRModels
-<center><button type="button" class="btn btn-primary">+ New User</button></center>
+<a href="~/Users/Add"><center><button type="button" class="btn btn-primary">+ New User</button></center></a>
+
 <br >
 <hr>
 @{
@@ -13,8 +14,8 @@
 <div class="row">
 <div class="col-6">
 <div class="form-group">
-<lable for="UserId">UserId:</lable>
-<input type="text" class="form-control" value="@userModel.UserIdSearch" name="UserIdSearch" id="UserIdSearch"/>
+<lable for="Id">Id:</lable>
+<input type="text" class="form-control" value="@userModel.IdSearch" name="IdSearch" id="IdSearch"/>
 
 </div>
 
@@ -45,9 +46,11 @@
 <table id="example" class="table table-striped table-bordered" style="width:100%">
         <thead>
             <tr>
-                <th><a onclick="sort('UserId','@ViewBag.orderBy')"  href="/Users/Index?columnName=id&orderBy=@ViewBag.orderBy">UserId</a> </th>
+                <th><a onclick="sort('Id','@ViewBag.orderBy')"  href="/Users/Index?columnName=id&orderBy=@ViewBag.orderBy">UserId</a> </th>
                 <th><a onclick="sort('Name','@ViewBag.orderBy')"  href="/Users/Index?columnName=name&orderBy=@ViewBag.orderBy">Name</a></th>
                 <th>Username</th>
+                <th>Role</th>
+
                 <th>Action</th>
                 
             </tr>
@@ -56,12 +59,17 @@
                 @for(int i = 0; i < Model.Count; i++)
                 {
                 <tr>
-                <td>@Model[i].UserId</td> 
+                <td>@Model[i].Id</td> 
                 <td>@Model[i].Name</td>
                 <td>@Model[i].UserName</td>
+                 <td>@Model[i].Role</td>
+
                
-                <td><button type="button" class="btn btn-warning">Edit</button>
-			<button type="button" class="btn btn-danger">Delete</button>
+                <td><a href="~/Users/Edit/@Model[i].Id">
+               <button type="button" class="btn btn-warning">Edit</button></a>
+               <a href="~/Users/Delete/@Model[i].Id">
+               <button type="button" class="btn btn-danger">Delete</button></a>
+			
 			</td>
                 </tr>
                 

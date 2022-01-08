@@ -1,6 +1,7 @@
 using HRDB;
 using HRRepository;
 using HRService;
+using HrSystem.FIlters;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -27,20 +28,24 @@ namespace HrSystem
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddControllersWithViews();
+            services.AddControllersWithViews((options)=> {
+                options.Filters.Add(new HRExceptionFilter());
+                options.Filters.Add(new HRActionFilter());
+            });
+            services.AddSession();
 
-
-            services.AddSingleton<HrSystemDBContext, HrSystemDBContext>();
+            services.AddScoped<HrSystemDBContext, HrSystemDBContext>();
             
 
             services.AddScoped<StageRepository, StageRepository>();
             services.AddScoped<VacancyRepository, VacancyRepository>();
-            services.AddScoped<IApplicationRepository, ApplicationRepository>();
-            services.AddScoped<ApplicationService, ApplicationService>();
+            services.AddScoped<IUserRepository, UserRepository>();
+         services.AddScoped<IApplicationRepository, ApplicationRepository>();
+         services.AddScoped<ApplicationService, ApplicationService>();
             services.AddScoped<VacancyService, VacancyService>();
             services.AddScoped<StageService, StageService>();
-
-        }
+         services.AddScoped<IUserService, UserService>();
+      }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -57,7 +62,7 @@ namespace HrSystem
             }
             app.UseHttpsRedirection();
             app.UseStaticFiles();
-
+            app.UseSession();
             //1 .Use <-Imp 
             //2. run 
             //3. Map 
@@ -128,11 +133,10 @@ namespace HrSystem
             //})
             app.UseEndpoints(endpoints =>
             {
-
-               
+                              
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Applications}/{action=Index}/{id?}");
+                    pattern: "{controller=Users}/{action=Login}/{id?}");
             });
         }
     }

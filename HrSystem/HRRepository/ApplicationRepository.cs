@@ -14,10 +14,10 @@ namespace HRRepository
 
         public HrSystemDBContext HrSystemDBContext { get; set; } //Instance variable 
 
-        static int Count = 0; //Class variable
+       
 
 
-        public ApplicationRepository(HrSystemDBContext hrSystemDBContext)
+        public ApplicationRepository (HrSystemDBContext hrSystemDBContext)
         {
             HrSystemDBContext = hrSystemDBContext;
         }
@@ -28,7 +28,9 @@ namespace HRRepository
                         inner join [dbo].[vacancy] v on v.id=a.VacancyId
                         Where 1=1  ";
 
-        private string _queryCount = @"Select   count(1) as countValue   
+    
+
+      private string _queryCount = @"Select   count(1) as countValue   
                         from [dbo].[application] a 
                         inner join [dbo].[Stage] s  on s.id=a.StageId
                         inner join [dbo].[vacancy] v on v.id=a.VacancyId
@@ -105,12 +107,6 @@ namespace HRRepository
             string page = "";
 
 
-
-
-
-
-
-
             if (!(pageModel is null))
             {
                 page = pageModel.SetValues(rowsCount);
@@ -121,14 +117,12 @@ namespace HRRepository
         }
 
 
-
-
         public List<Application> GetAllWIthEntity(ApplicationModel applicationModel, PageModel pageModel)
         {
             string columnName = applicationModel.ColumnName;
             string orderBy = applicationModel.OrderBy;
 
-            ;
+            
 
             var lstApplication = applicationModel.Where(HrSystemDBContext.Applications.Include("Vacancy").Include("Stage"));
             lstApplication = applicationModel.Sort(lstApplication);

@@ -11,19 +11,19 @@ namespace HRModels
     {
 
 
-        public string UserIdSearch { get; set; }
+        public string IdSearch { get; set; }
         public string NameSearch { get; set; }
 
 
         public IEnumerable<T> Where<T>(IEnumerable<T> list) where T : User
         {
             UserModel userModel = this;
-            if (!string.IsNullOrWhiteSpace(this.UserIdSearch))
+            if (!string.IsNullOrWhiteSpace(this.IdSearch))
             {
                 int value = 0;
-                if (Int32.TryParse(userModel.UserIdSearch, out value))
+                if (Int32.TryParse(userModel.IdSearch, out value))
                 {
-                    list = list.Where(x => x.UserId == value);
+                    list = list.Where(x => x.Id == value);
                 }
             }
 
@@ -44,11 +44,11 @@ namespace HRModels
             {
                 if (OrderBy.Equals("asc"))
                 {
-                    list = list.OrderBy(X => X.UserId);
+                    list = list.OrderBy(X => X.Id);
                 }
                 else
                 {
-                    list = list.OrderByDescending(X => X.UserId);
+                    list = list.OrderByDescending(X => X.Id);
                 }
             }
             if ("Name".Equals(ColumnName, StringComparison.OrdinalIgnoreCase))
