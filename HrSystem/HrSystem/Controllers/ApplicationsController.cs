@@ -13,7 +13,7 @@ using System.Threading.Tasks;
 namespace HrSystem.Controllers
 {
 
-    [HRActionFilter]
+ 
     public class ApplicationsController : Controller
     {
 
@@ -32,6 +32,7 @@ namespace HrSystem.Controllers
             StageService = stageService;
         }
 
+  
         
         public IActionResult Index(ApplicationModel applicationModel, PageModel pageModel)
         {

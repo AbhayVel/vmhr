@@ -2,6 +2,7 @@
 using HRModels;
 using HRService;
 using HrSystem.Models;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -17,11 +18,30 @@ namespace HrSystem.Controllers
       {
          UserService = userService;
       }
+
+        [HttpGet]
       public IActionResult Login()
       {
          return View();
       }
-         public IActionResult Index(UserModel userModel, PageModel pageModel)
+
+
+
+        [HttpPost]
+        public IActionResult Login(User user)
+        {
+            if(user.UserName.Equals("abhay")  && user.Password.Equals("abc"))
+            {
+                HttpContext.Session.SetString("userName", user.UserName);
+                return Redirect("/Applications/Index");
+            } else
+            {
+                ViewBag.Message = "UserName/Password is in valid.";
+                return View();
+            }
+            
+        }
+        public IActionResult Index(UserModel userModel, PageModel pageModel)
       {
          //PageModel pageModel = new PageModel();
          //pageModel.CurrentPage = 1;

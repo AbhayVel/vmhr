@@ -6,11 +6,15 @@ using System.Collections.Generic;
 using System.Linq;
 using HREntity;
 using HRModels;
+using HrSystem.FIlters;
 
 namespace HrSystem.Controllers
 {
+
+    [HRExceptionFilter]
     public class VacancyController : Controller
     {
+    
         VacancyService VacancyService { get; set; }
 
         public VacancyController(VacancyService vacancyService)

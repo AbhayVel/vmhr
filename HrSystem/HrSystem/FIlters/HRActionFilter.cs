@@ -39,6 +39,8 @@ namespace HrSystem.FIlters
         public void OnActionExecuting(ActionExecutingContext context)
         {
             StartTime = DateTime.Now;
+            //string user = context.HttpContext.Session.GetString("userName");
+
         }
     }
 }
