@@ -14,7 +14,7 @@ namespace HRRepository
 
         public HrSystemDBContext HrSystemDBContext { get; set; } //Instance variable 
 
-        static int Count = 0; //Class variable
+       
 
 
         public ApplicationRepository(HrSystemDBContext hrSystemDBContext)
@@ -105,12 +105,6 @@ namespace HRRepository
             string page = "";
 
 
-
-
-
-
-
-
             if (!(pageModel is null))
             {
                 page = pageModel.SetValues(rowsCount);
@@ -121,14 +115,12 @@ namespace HRRepository
         }
 
 
-
-
         public List<Application> GetAllWIthEntity(ApplicationModel applicationModel, PageModel pageModel)
         {
             string columnName = applicationModel.ColumnName;
             string orderBy = applicationModel.OrderBy;
 
-            ;
+            
 
             var lstApplication = applicationModel.Where(HrSystemDBContext.Applications.Include("Vacancy").Include("Stage"));
             lstApplication = applicationModel.Sort(lstApplication);

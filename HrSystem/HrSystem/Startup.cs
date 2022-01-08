@@ -30,7 +30,7 @@ namespace HrSystem
             services.AddControllersWithViews();
 
 
-            services.AddSingleton<HrSystemDBContext, HrSystemDBContext>();
+            services.AddScoped<HrSystemDBContext, HrSystemDBContext>();
             
 
             services.AddScoped<StageRepository, StageRepository>();
