@@ -35,12 +35,13 @@ namespace HrSystem
 
             services.AddScoped<StageRepository, StageRepository>();
             services.AddScoped<VacancyRepository, VacancyRepository>();
-            services.AddScoped<IApplicationRepository, ApplicationRepository>();
-            services.AddScoped<ApplicationService, ApplicationService>();
+            services.AddScoped<IUserRepository, UserRepository>();
+         services.AddScoped<IApplicationRepository, ApplicationRepository>();
+         services.AddScoped<ApplicationService, ApplicationService>();
             services.AddScoped<VacancyService, VacancyService>();
             services.AddScoped<StageService, StageService>();
-
-        }
+         services.AddScoped<IUserService, UserService>();
+      }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)

@@ -7,12 +7,12 @@ using System.Text;
 namespace HREntity
 {
 
-    [Table("Users")]
+    [Table("User")]
    public class User
    {
         [Key]
-        [Column("Id")]
-        public int UserId { get; set; }
+        
+        public int? Id { get; set; }
 
         
         public string Name { get; set; }
@@ -20,13 +20,14 @@ namespace HREntity
         public string address { get; set; }
 
         public string contact { get; set; }
-
+      [Required]
         public string UserName { get; set; }
-
+      [Required]
+      
         public string Password { get; set; }
 
-
-        public byte Type { get; set; }
+      [Required]
+        public string Role { get; set; }
        
      
         

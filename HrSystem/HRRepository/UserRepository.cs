@@ -1,6 +1,7 @@
 ﻿using HRDB;
 using HREntity;
 using HRModels;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,109 +9,83 @@ using System.Text;
 
 namespace HRRepository
 {
-   public class UserRepository
+   public class UserRepository : IUserRepository
+   
    {
-        HrSystemDBContext hrSystemDBContext = new HrSystemDBContext();
+      public HrSystemDBContext HrSystemDBContext { get; set; } //Instance variable 
 
-        public UserRepository()
-        {
-        }
 
-        public List<User> GetAll(UserModel userModel, PageModel pageModel)
+      public UserRepository(HrSystemDBContext hrSystemDBContext)
+      {
+         HrSystemDBContext = hrSystemDBContext;
+      }
+
+      public User Get(int id)
+      {
+
+         return HrSystemDBContext.Users.FirstOrDefault(x => x.Id == id);
+      }
+
+      public User Save(User user)
+      {
+         if (user.Id == 0 || user.Id is null)
+         {
+            HrSystemDBContext.Users.Add(user);
+         }
+         else
+         {
+            HrSystemDBContext.Attach(user);
+            HrSystemDBContext.Entry(user).State = EntityState.Modified;
+         }
+
+         HrSystemDBContext.SaveChanges();
+
+         return user;
+      }
+
+      public void Delete(User user)
+      {
+         HrSystemDBContext.Remove(user);
+
+         HrSystemDBContext.SaveChanges();
+      }
+
+      public void Delete(int id)
+      {
+         var user = Get(id);
+         if (!(user is null))
+         {
+            Delete(user);
+         }
+      }
+
+
+
+      public List<User> GetAll(UserModel userModel, PageModel pageModel)
       {
          string columnName = userModel.ColumnName;
-         string orderBy= userModel.OrderBy;
-         /*List<User> lstUser = new List<User>();
-         lstUser.Add(new User
-         {
-            UserId = 1,
-            Name = "Abhi",
-            UserName = "Admin",
-            Action = "Active"
-         });
-         lstUser.Add(new User
-         {
-            UserId = 2,
-            Name = "Nikita",
-            UserName = "Admin2",
-            Action = "Active"
+         string orderBy = userModel.OrderBy;
 
-         });
-         lstUser.Add(new User
-         {
-            UserId = 3,
-            Name = "Suraj",
-            UserName = "Admin4",
-            Action = "Active"
-
-
-         var lstUser = userModel.Where(hrSystemDBContext.Users);
+         var lstUser = userModel.Where(HrSystemDBContext.Users);
          lstUser = userModel.Sort(lstUser);
+
+
          if (!(pageModel is null))
          {
-            pageModel.SetValues(lstUser.ToList()) ;
+            pageModel.SetValues(lstUser.ToList());
 
-         });
-         lstUser.Add(new User
-         {
-            UserId = 6,
-            Name = "babc",
-            UserName = "Admin5",
-            Action = "Active"
-
-         }); lstUser.Add(new User
-         {
-            UserId = 7,
-            Name = "karmveer",
-            UserName = "Admin6",
-            Action = "Active"
-
-         });
-         lstUser.Add(new User
-         {
-            UserId = 8,
-            Name = "Rohit",
-            UserName = "Admin3",
-            Action = "Active"
-
-         });
-         lstUser.Add(new User
-         {
-            UserId = 9,
-            Name = "abc",
-            UserName = "Admin3",
-            Action = "Active"
-
-         });
-         lstUser.Add(new User
-         {
-            UserId = 10,
-            Name = "hit",
-            UserName = "Admin3",
-            Action = "Active"
-
-         });
-         lstUser.Add(new User
-         {
-            UserId = 11,
-            Name = "Rohit",
-            UserName = "Admin3",
-            Action = "Active"
-
-         });*/
-          var  lstUser = userModel.Where(hrSystemDBContext.Users);
-            lstUser = userModel.Sort(lstUser);
-
-
-            if (!(pageModel is null))
-         {
-                pageModel.SetValues(lstUser.ToList());
-
-                lstUser = lstUser.Skip(pageModel.StartIndex).Take(pageModel.RowPerPage).ToList();
+            lstUser = lstUser.Skip(pageModel.StartIndex).Take(pageModel.RowPerPage).ToList();
          }
 
          return lstUser.ToList();
 
       }
+
+
    }
+
+
+
+
+
 }
