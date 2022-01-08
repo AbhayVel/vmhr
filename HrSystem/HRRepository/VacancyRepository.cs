@@ -6,20 +6,23 @@ using System.Text;
 using System.Linq;
 using HRModels;
 using HRDB;
+using Microsoft.EntityFrameworkCore;
 
 namespace HRRepository
 {
-    public class VacancyRepository
+    public class VacancyRepository : IVacancyRepository
     {
-        HrSystemDBContext HrSystemDBContext { get; set; }
+        public HrSystemDBContext HrSystemDBContext { get; set; }
 
         public VacancyRepository(HrSystemDBContext hrSystemDBContext)
         {
             HrSystemDBContext = hrSystemDBContext;
         }
+
         public int TotalRowCount { get; private set; }
 
-        public List<Vacancy>  GetAll(VacancyModel vacancyModel, PageModel pageModel)
+
+        public List<Vacancy> GetAll(VacancyModel vacancyModel, PageModel pageModel)
         {
             string ColumnName = vacancyModel.ColumnName;
             string OrderBy = vacancyModel.OrderBy;
@@ -36,6 +39,47 @@ namespace HRRepository
             return lstVacancy.ToList();
         }
 
+        public void Delete(Vacancy vacancy)
+        {
+
+            HrSystemDBContext.Remove(vacancy);
+            HrSystemDBContext.SaveChanges();
+        }
+
+
+
+
+        public void Delete(int id)
+        {
+            var vacancy = Get(id);
+            if (!(vacancy is null))
+            {
+                Delete(vacancy);
+            }
+        }
+
+
+        public Vacancy Save(Vacancy vacancy)
+        {
+            if (vacancy.Id == 0 || vacancy.Id is null)
+            {
+                HrSystemDBContext.Vacancies.Add(vacancy);
+            }
+            else
+            {
+                HrSystemDBContext.Attach(vacancy);
+                HrSystemDBContext.Entry(vacancy).State = EntityState.Modified;
+            }
+
+            HrSystemDBContext.SaveChanges();
+
+            return vacancy;
+        }
+
+        public Vacancy Get(int id)
+        {
+            return HrSystemDBContext.Vacancies.FirstOrDefault(x => x.Id == id);
+        }
 
         public IEnumerable<T> SetVacancies<T>(IEnumerable<T> lstIVacancy) where T : IVacancy
         {
@@ -50,7 +94,6 @@ namespace HRRepository
 
             return lstIVacancy;
         }
-
 
 
 

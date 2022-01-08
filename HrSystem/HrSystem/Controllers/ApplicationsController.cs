@@ -56,7 +56,7 @@ namespace HrSystem.Controllers
             var stageList = StageService.GetWithSelect();
             ViewBag.VacancyId = vacancyList.Select(x => new SelectListItem(x.Position, x.Id.ToString()));
             ViewBag.StageId = stageList.Select(x => new SelectListItem(x.StatusLabel, x.Id.ToString()));
-            return View(application);
+            return View("Index",application);
         }
 
 
