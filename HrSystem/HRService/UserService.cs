@@ -3,6 +3,8 @@ using HRModels;
 using HRRepository;
 using System;
 using System.Collections.Generic;
+using System.Security.Claims;
+using System.Security.Principal;
 using System.Text;
 
 namespace HRService
@@ -17,7 +19,25 @@ namespace HRService
       }
 
 
+        public ClaimsPrincipal Get(string userName, string password)
+        {
+            var user = UserRepository.Get(userName, password);
+            if(user is null)
+            {
+                return null;
+            } else
+            {
+                user.Password = "";
+                user.IsAuthenticated = true;
+                user.AuthenticationType = "cookies";
 
+                ClaimsIdentity claimsIdentity = new ClaimsIdentity(user);
+                claimsIdentity.AddClaim(new Claim(ClaimTypes.Role, user.Role));
+                ClaimsPrincipal claimsPrincipal = new ClaimsPrincipal(claimsIdentity);
+                 
+                return claimsPrincipal;
+            }
+        }
 
 
       public List<User> GetAll(UserModel userModel, PageModel pageModel)

@@ -2,14 +2,15 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Security.Principal;
 using System.Text;
 
 namespace HREntity
 {
 
     [Table("User")]
-   public class User
-   {
+   public class User : IIdentity
+    {
         [Key]
         
         public int? Id { get; set; }
@@ -28,9 +29,11 @@ namespace HREntity
 
       [Required]
         public string Role { get; set; }
-       
-     
-        
 
-   }
+        [NotMapped]
+        public string AuthenticationType { get; set; }
+
+        [NotMapped]
+        public bool IsAuthenticated { get; set; }
+    }
 }
