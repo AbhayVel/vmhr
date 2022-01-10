@@ -3,6 +3,7 @@ using HRModels;
 using HRService;
 using HrSystem.FIlters;
 using HrSystem.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using System;
@@ -13,7 +14,7 @@ using System.Threading.Tasks;
 namespace HrSystem.Controllers
 {
 
- 
+ [Authorize]
     public class ApplicationsController : Controller
     {
 
@@ -37,7 +38,7 @@ namespace HrSystem.Controllers
         public IActionResult Index(ApplicationModel applicationModel, PageModel pageModel)
         {
          
-            pageModel.RowPerPage = 4;
+          
             var lstApplication = ApplicationService.GetAll(applicationModel,pageModel);
 
             ViewBag.orderBy = applicationModel.OrderBy;
@@ -48,6 +49,8 @@ namespace HrSystem.Controllers
             return View("Index",lstApplication);
         }
 
+
+        [HRRoleAuthorization(Roles ="manager, hr, Admin")]
         public IActionResult Add()
         {
             var application = new Application();
@@ -57,7 +60,7 @@ namespace HrSystem.Controllers
             var stageList = StageService.GetWithSelect();
             ViewBag.VacancyId = vacancyList.Select(x => new SelectListItem(x.Position, x.Id.ToString()));
             ViewBag.StageId = stageList.Select(x => new SelectListItem(x.StatusLabel, x.Id.ToString()));
-            return View("Index",application);
+            return View("Add",application);
         }
 
 
@@ -74,7 +77,8 @@ namespace HrSystem.Controllers
             return Redirect("/applications/index");
         }
 
-            public IActionResult Edit(int id)
+        [HRRoleAuthorization(Roles = "manager, hr, Admin")]
+        public IActionResult Edit(int id)
         {
             var application = ApplicationService.Get(id);
 
@@ -93,6 +97,8 @@ namespace HrSystem.Controllers
             return View("add",application);
         }
 
+
+        [HRRoleAuthorization(Roles = "manager, hr, Admin")]
         [HttpPost]
         public IActionResult Save(Application application)
         {

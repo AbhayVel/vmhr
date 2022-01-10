@@ -2,11 +2,13 @@
 using HRModels;
 using HRService;
 using HrSystem.Models;
+using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace HrSystem.Controllers
 {
@@ -26,20 +28,48 @@ namespace HrSystem.Controllers
       }
 
 
+        [HttpGet]
+        public async Task<IActionResult> LogOutAsync()
+        {
+            await HttpContext.SignOutAsync();
+            return View("Login");
+        }
+
 
         [HttpPost]
-        public IActionResult Login(User user)
+        public async Task<IActionResult> LoginAsync(User user)
         {
-            if(user.UserName.Equals("abhay")  && user.Password.Equals("abc"))
+
+          var userLogin=  UserService.Get(user.UserName, user.Password);
+            if(userLogin != null)
             {
-                HttpContext.Session.SetString("userName", user.UserName);
+                try
+                {
+                    await HttpContext.SignInAsync("cookies", userLogin);
+                }
+                catch (Exception ex)
+                {
+
+                }
+              
+                HttpContext.User = userLogin;
                 return Redirect("/Applications/Index");
-            } else
+            }
+            else
             {
                 ViewBag.Message = "UserName/Password is in valid.";
                 return View();
             }
-            
+            //if (user.UserName.Equals("abhay")  && user.Password.Equals("abc"))
+            //{
+            //    HttpContext.Session.SetString("userName", user.UserName);
+            //    return Redirect("/Applications/Index");
+            //} else
+            //{
+            //    ViewBag.Message = "UserName/Password is in valid.";
+            //    return View();
+            //}
+
         }
         public IActionResult Index(UserModel userModel, PageModel pageModel)
       {
