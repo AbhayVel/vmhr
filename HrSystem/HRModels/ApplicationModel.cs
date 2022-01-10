@@ -15,6 +15,8 @@ namespace HRModels
 
         public string StageStatusSearch { get; set; }
 
+        public List<Application> Applications { get; set; }
+
 
         public string Where() 
         {

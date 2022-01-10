@@ -38,7 +38,7 @@ namespace HrSystem.Controllers
         public IActionResult Index(ApplicationModel applicationModel, PageModel pageModel)
         {
          
-            pageModel.RowPerPage = 4;
+          
             var lstApplication = ApplicationService.GetAll(applicationModel,pageModel);
 
             ViewBag.orderBy = applicationModel.OrderBy;

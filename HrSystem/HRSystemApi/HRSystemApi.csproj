@@ -1,0 +1,16 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\HRDB\HRDB.csproj" />
+    <ProjectReference Include="..\HREntity\HREntity.csproj" />
+    <ProjectReference Include="..\HRModels\HRModels.csproj" />
+    <ProjectReference Include="..\HRRepository\HRRepository.csproj" />
+    <ProjectReference Include="..\HRService\HRService.csproj" />
+  </ItemGroup>
+
+
+</Project>
