@@ -138,7 +138,7 @@ namespace HrSystem
                )
                 {
 
-                     context.Response.Redirect("Users/Login");
+                     context.Response.Redirect("/Users/Login");
 
 
                 }
