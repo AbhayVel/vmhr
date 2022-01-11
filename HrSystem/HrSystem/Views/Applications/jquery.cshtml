@@ -16,29 +16,7 @@
 
                 </tr>
             </thead>
-            <tbody>
-                @for (int i = 0; i < Model.Count; i++)
-                {
-                    <tr>
-                        <td>@Model[i].Id</td>
-                        <td>
-                            Name : @Model[i].FirstName<br>
-                            Applied for : @Model[i].VacancyId<br>
-                            Experience : @Model[i].Experience
-                        </td>
-                        <td><a href="https://www.w3schools.com/">Smith_Resume</a></td>
-                        <td><span class="badge badge-success">New</span></td>
-                        <td>
-                            <button type="button" class="btn btn-success">View</button>
-                            <button type="button" class="btn btn-warning">Edit</button>
-                            <button type="button" class="btn btn-danger">Delete</button>
-                        </td>
-
-                    </tr>
-                }
-
-             
-            </tbody>
+            
             <tfoot>
                 <tr>
                     <th>#</th>
@@ -56,8 +34,141 @@
     <script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.10.24/js/dataTables.bootstrap4.min.js"></script>
     <script>
-            $(document).ready(function () {
-                $('#example').DataTable();
+
+        var data = {
+            "applications": [
+                {
+                    "id": 12,
+                    "firstName": "Anushka",
+                    "middleName": "s",
+                    "lastName": "Joshi",
+                    "email": "anushka@gmail.com",
+                    "phone": "32653",
+                    "gender": "F",
+                    "address": "f         ",
+                    "experience": 1,
+                    "status": "Active",
+                    "resume": "Manisha_Resume",
+                    "vacancyId": 1,
+                    "stageId": 3,
+                    "dateCreated": "0001-01-01T00:00:00",
+                    "vacancy": {
+                        "id": 1,
+                        "position": "JavaDevoloper",
+                        "skills": "java",
+                        "availability": 7,
+                        "description": "aa",
+                        "experience": 1.000,
+                        "status": "Active",
+                        "dateCreated": "2021-12-22T00:00:00"
+                    },
+                    "stage": {
+                        "id": 3,
+                        "status": 1,
+                        "statusLabel": "For Final Interview"
+                    }
+                },
+                {
+                    "id": 11,
+                    "firstName": "Manish",
+                    "middleName": "a",
+                    "lastName": "Kulkarni",
+                    "email": "manish@gmail.com",
+                    "phone": "46323",
+                    "gender": "M",
+                    "address": "e         ",
+                    "experience": 1,
+                    "status": "Active",
+                    "resume": "Manisha_Resume",
+                    "vacancyId": 1,
+                    "stageId": 3,
+                    "dateCreated": "0001-01-01T00:00:00",
+                    "vacancy": {
+                        "id": 1,
+                        "position": "JavaDevoloper",
+                        "skills": "java",
+                        "availability": 7,
+                        "description": "aa",
+                        "experience": 1.000,
+                        "status": "Active",
+                        "dateCreated": "2021-12-22T00:00:00"
+                    },
+                    "stage": {
+                        "id": 3,
+                        "status": 1,
+                        "statusLabel": "For Final Interview"
+                    }
+                },
+                {
+                    "id": 8,
+                    "firstName": "Manisha ",
+                    "middleName": "v",
+                    "lastName": "Olimbe",
+                    "email": "mo@gmail.com",
+                    "phone": "657567",
+                    "gender": "F",
+                    "address": "d         ",
+                    "experience": 1,
+                    "status": "Active",
+                    "resume": "Manisha_Resume",
+                    "vacancyId": 1,
+                    "stageId": 3,
+                    "dateCreated": "0001-01-01T00:00:00",
+                    "vacancy": {
+                        "id": 1,
+                        "position": "JavaDevoloper",
+                        "skills": "java",
+                        "availability": 7,
+                        "description": "aa",
+                        "experience": 1.000,
+                        "status": "Active",
+                        "dateCreated": "2021-12-22T00:00:00"
+                    },
+                    "stage": {
+                        "id": 3,
+                        "status": 1,
+                        "statusLabel": "For Final Interview"
+                    }
+                },
+                {
+                    "id": 7,
+                    "firstName": "Pooja",
+                    "middleName": "d",
+                    "lastName": "Pagar",
+                    "email": "p@gmail.com",
+                    "phone": "3435465",
+                    "gender": "F",
+                    "address": "c         ",
+                    "experience": 3,
+                    "status": "Active",
+                    "resume": "P",
+                    "vacancyId": 3,
+                    "stageId": 2,
+                    "dateCreated": "2021-12-22T00:00:00",
+                    "vacancy": {
+                        "id": 3,
+                        "position": "DotNetDevoloper",
+                        "skills": "c#",
+                        "availability": 10,
+                        "description": "cc",
+                        "experience": 3.000,
+                        "status": "Active",
+                        "dateCreated": "2021-12-22T09:12:19.04"
+                    },
+                    "stage": {
+                        "id": 2,
+                        "status": 1,
+                        "statusLabel": "For Initial Interview"
+                    }
+                }
+            ]
+        }
+        $(document).ready(function () {
+
+
+            $('#example').DataTable({
+                
+            });
             });
     </script>
 
