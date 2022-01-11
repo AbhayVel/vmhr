@@ -129,32 +129,27 @@ namespace HrSystem
             ////////    });
 
             ////////});
-            //app.UseWhen((x) => (x.Request.Path.ToString().ToLower().Equals("/applications/index")
-            //    && x.Request.Form["IdSearch"].FirstOrDefault() == "-1"), async (n) =>
-            //    {
 
 
-            //        await context.Response.WriteAsync("I am rom middle ware direct return");
-            //    });
+            app.Use(async (context, next) =>
+            {
+                int i = 1;
+                if (context.Request.Path.ToString().ToLower().Equals("/")
+               )
+                {
 
-            //app.Use(async (context, next) =>
-            //{
-            //    int i = 1;
-            //    if (context.Request.Path.ToString().ToLower().Equals("/applications/index")  
-            //    && context.Request.Form["IdSearch"].FirstOrDefault()=="-1")                
-            //    {
-
-            //        await context.Response.WriteAsync("I am rom middle ware direct return");
+                     context.Response.Redirect("Users/Login");
 
 
-            //    } else
-            //    {
-            //        await next();
-            //    }
+                }
+                else
+                {
+                    await next();
+                }
 
-            //    i = i + 1;
+                i = i + 1;
 
-            //});
+            });
 
 
             //app.Run(async (context) =>
@@ -176,10 +171,12 @@ namespace HrSystem
             //})
             app.UseEndpoints(endpoints =>
             {
-                              
+
+                 
+
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Users}/{action=Login}/{id?}");
+                    pattern: "{controller}/{action=Index}/{id?}");
             });
         }
     }
