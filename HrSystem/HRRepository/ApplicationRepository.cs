@@ -138,5 +138,25 @@ namespace HRRepository
 
             return lstApplication.ToList();
         }
+
+        public List<Application> GetAll(ApplicationModel applicationModel)
+        {
+            string columnName = applicationModel.ColumnName;
+            string orderBy = applicationModel.OrderBy;
+
+
+
+            var lstApplication = applicationModel.Where(HrSystemDBContext.Applications.Include("Vacancy").Include("Stage"));
+            lstApplication = applicationModel.Sort(lstApplication);
+
+
+            
+
+
+            return lstApplication.ToList();
+        }
+
+
+
     }
 }
