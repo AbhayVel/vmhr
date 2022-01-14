@@ -13,8 +13,8 @@ namespace HRSystemApi.Controllers
 {
 
     [ApiController]
- [Route("[Controller]/[Action]")]
-    [Route("[Controller]")]
+ [Route("api/[Controller]/[Action]/{id?}")]
+    [Route("api/[Controller]")]
     public class ApplicationsController : ControllerBase
     {
 
@@ -49,8 +49,8 @@ namespace HRSystemApi.Controllers
 
 
         [HttpPost]
-        public ApplicationModel Search(ApplicationModel applicationModel)
-        {
+        public async Task<IActionResult> Search(ApplicationModel applicationModel)
+        { 
 
             
 
@@ -58,43 +58,56 @@ namespace HRSystemApi.Controllers
 
             applicationModel.Applications = lstApplication;
 
-            return applicationModel;
+            return Ok(applicationModel);
         }
 
 
 
-
-        public IActionResult Delete(int id)
+        [HttpDelete]         
+        public async Task<IActionResult> Delete(int id)
         {
             var application = ApplicationService.Get(id);
             if(application == null)
             {
-                return Redirect("/applications/index");
+                return NotFound();
             }
 
 
             ApplicationService.Delete(id);
-            return Redirect("/applications/index");
+            return Ok("User is deleted");
         }
 
-         
-         
+        [HttpGet]
+        public async Task<IActionResult> Get(int id)
+        {
+            var application = ApplicationService.Get(id);
+            if (application == null)
+            {
+                return NotFound();
+            }
 
 
-        
+            
+            return Ok(application);
+        }
+
+
+
+
+
         [HttpPost]
-        public Application Save(Application application)
+        public async Task<IActionResult>  Save(Application application)
         {
 
             if (!ModelState.IsValid)
             {
-                return application;
+                return Ok(ModelState);
             }
 
 
             ApplicationService.Save(application);
             //Save 
-            return application;
+            return Ok(application);
         }
 
 

@@ -10,7 +10,7 @@
 <hr />
 <div class="row">
     <div class="col-md-4">
-       
+
         <form asp-action="Save" method="post">
 
             @Html.HiddenFor(x => x.Id)
@@ -71,9 +71,17 @@
             </div>
             <div class="form-group">
                 <label asp-for="Resume" class="control-label"></label>
+                @*<input class="form-control" name="Resume" type="file" />*@
                 <input asp-for="Resume" class="form-control" />
                 <span asp-validation-for="Resume" class="text-danger"></span>
             </div>
+
+            @*<div class="col-md-10">
+
+                    <input class="form-control" name="files" type="file" />
+                </div>*@
+
+
             <div class="form-group">
                 <label asp-for="VacancyId" class="control-label"></label>
                 <select asp-for="VacancyId" class="form-control" asp-items="ViewBag.VacancyId"></select>
@@ -83,8 +91,9 @@
                 <select asp-for="StageId" class="form-control" asp-items="ViewBag.StageId"></select>
             </div>
             <div class="form-group">
+
                 <label asp-for="DateCreated" class="control-label"></label>
-                <input asp-for="DateCreated" class="form-control" />
+                <input asp-for="DateCreated" class="form-control" type="text" />
                 <span asp-validation-for="DateCreated" class="text-danger"></span>
             </div>
             <div class="form-group">
@@ -97,4 +106,17 @@
 <div>
     <a asp-action="Index">Back to List</a>
 </div>
+@section Scripts {
+    <script>
 
+        $(document).ready(function () {
+            $("#DateCreated").datepicker({
+                dateFormat: 'dd-mm-yy',
+                changeMonth: true,
+                changeYear: true,
+                yearRange: "2020:2030"
+            });
+
+        });
+    </script>
+}

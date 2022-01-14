@@ -4,10 +4,12 @@ using HRService;
 using HrSystem.FIlters;
 using HrSystem.Models;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -33,22 +35,23 @@ namespace HrSystem.Controllers
             StageService = stageService;
         }
 
-  
-        
+      
         public IActionResult Index(ApplicationModel applicationModel, PageModel pageModel)
         {
-         
-          
+        
+
             var lstApplication = ApplicationService.GetAll(applicationModel,pageModel);
 
             ViewBag.orderBy = applicationModel.OrderBy;
             ViewBag.columnName = applicationModel.ColumnName;
             ViewBag.applicationModel = applicationModel;
             ViewBag.pageModel = pageModel;
+        
 
             return View("Index",lstApplication);
         }
 
+       
 
         [HRRoleAuthorization(Roles ="manager, hr, Admin")]
         public IActionResult Add()

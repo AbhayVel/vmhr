@@ -8,6 +8,7 @@ namespace HREntity
     [Table("application")]
     public class Application : IVacancy, IStage
     {
+       
         [Key]
 
         public int? Id { get; set; }
@@ -33,9 +34,11 @@ namespace HREntity
         public int? Experience { get; set; }
         public string Status { get; set; }
         
+       
         public string Resume { get; set; }
         public int? VacancyId { get; set; }
         public int? StageId { get; set; }
+       
         public DateTime DateCreated { get; set; }
 
 

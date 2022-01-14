@@ -7,11 +7,13 @@ using System.Linq;
 using HREntity;
 using HRModels;
 using HrSystem.FIlters;
+using Microsoft.AspNetCore.Authorization;
 
 namespace HrSystem.Controllers
 {
 
     [HRExceptionFilter]
+    [Authorize]
     public class VacancyController : Controller
     {
     
