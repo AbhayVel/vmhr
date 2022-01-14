@@ -8,13 +8,23 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.24/css/dataTables.bootstrap4.min.css">
 
+    <link rel="stylesheet" type="text/css" href="~/css/jquery-ui.min.css">
+  
+
     <link rel="stylesheet" href="~/css/Create.css">
+
+
+
+
+
+
+
 
     <style>
         body {
             margin: 0;
             padding: 0;
-            font-family: "Roboto", sans-serif;        
+            font-family: "Roboto", sans-serif;
         }
 
         header {
@@ -208,6 +218,8 @@
 
 </head>
 <body>
+
+
     <input type="checkbox" id="check">
     <!--header area start-->
     <header>
@@ -216,7 +228,7 @@
         </label>
         <div class="left_area">
             <h3>VM3<span>Tech</span></h3>
-        </div> 
+        </div>
         <div class="right_area">
             <a href="/Users/Logout" class="logout_btn">Logout</a>
         </div>
@@ -242,7 +254,20 @@
         <script type="text/javascript" src="~/lib/jquery/dist/jquery.js"></script>
         <script type="text/javascript" src="~/lib/jquery-validation/dist/jquery.validate.js"></script>
         <script type="text/javascript" src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+        
+        <script src="https://code.jquery.com/ui/1.13.0/jquery-ui.js"
+                integrity="sha256-xH4q8N0pEzrZMaRmd7gQVcTZiFei+HfRTBPJ1OGXC0k="
+                crossorigin="anonymous"></script>
+
+        @*<script  scr="jquery-3.6.0.min"></script>*@
+
+
+        <script type="text/javascript" scr="~/js/jquery-ui.min.js"></script>
+
+
     </div>
+    @RenderSection("Scripts", required: false)
 </body>
+
 </html>
  
