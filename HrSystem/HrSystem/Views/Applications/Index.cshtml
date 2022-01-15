@@ -1,194 +1,184 @@
-﻿@model List<Application>
+@model List<Application>
 @using HRModels
 
 
 <center><h2>Application List</h2></center>
-@if (User.IsInRoleCheck("manager,hr,Admin"))
-{
-    <center>
-        <a href="~/Applications/Add">
-            <button type="button" class="btn btn-primary">
-                + New Applicant
-            </button>
-        </a>
-    </center>
+<center>
+    <a href="~/Applications/Add">
+       + New Applicant
+    </a>
+</center>
 
+    </a>
+<br>
+<hr>
+@{
+
+    ApplicationModel applicationModel = ViewBag.applicationModel as ApplicationModel;
+    PageModel pageModel = ViewBag.pageModel as PageModel;
 }
-    <br>
-    <hr>
-    @{
 
-        ApplicationModel applicationModel = ViewBag.applicationModel as ApplicationModel;
-        PageModel pageModel = ViewBag.pageModel as PageModel;
-    }
-
-    <form method="post" action="/Applications/Index">
-        <div class="row">
-            <div class="col-6">
-                <div class="form-group">
-                    <label for="Id">Id:</label>
-                    <input type="text" class="form-control" value="@applicationModel.IdSearch" name="IdSearch" id="IdSearch">
-                </div>
+<form method="post" action="/Applications/Index">
+    <div class="row">
+        <div class="col-6">
+            <div class="form-group">
+                <label for="Id">Id:</label>
+                <input type="text" class="form-control" value="@applicationModel.IdSearch" name="IdSearch" id="IdSearch">
             </div>
-            <div class="col-6">
-                <div class="form-group">
-                    <label for="Name">Name</label>
-                    <input type="text" class="form-control" value="@applicationModel.NameSearch" name="NameSearch" id="NameSearch">
-                </div>
+        </div>
+        <div class="col-6">
+            <div class="form-group">
+                <label for="Name">Name</label>
+                <input type="text" class="form-control" value="@applicationModel.NameSearch" name="NameSearch" id="NameSearch">
             </div>
-
-            <div class="col-6">
-                <div class="form-group">
-                    <label for="Id">Applied For:</label>
-                    <input type="text" class="form-control" value="@applicationModel.AppliedForSearch" name="AppliedForSearch" id="AppliedForSearch">
-                </div>
-            </div>
-            <div class="col-6">
-                <div class="form-group">
-                    <label for="Name">Status :</label>
-                    <input type="text" class="form-control" value="@applicationModel.StageStatusSearch" name="StageStatusSearch" id="StageStatusSearch">
-                </div>
-            </div>
-
         </div>
 
-
-        <input type="hidden" name="columnName" id="columnName" value="@ViewBag.columnName" />
-        <input type="hidden" name="orderBy" id="orderBy" value="@ViewBag.orderBy" />
-        <input type="hidden" name="currentPage" id="currentPage" value="@pageModel.CurrentPage" />
-
-        <button type="submit" id="btnSubmit">Search</button>
-
-    </form>
-    <div class="container">
-        <table id="example" class="table table-striped table-bordered" style="width:100%">
-            <thead>
-                <tr>
-                    <th><a onclick="sort('id', '@ViewBag.orderBy')" href="/applications/index?columnName=id&orderBy=@ViewBag.orderBy">#</a></th>
-                    <th><a onclick="sort('name', '@ViewBag.orderBy')" href="/applications/index?columnName=name&orderBy=@ViewBag.orderBy">Applicant Information</a></th>
-                    <th>Document</th>
-                    <th>Status</th>
-                    <th>Action</th>
-
-                </tr>
-            </thead>
-            <tbody>
-                @for (int i = 0; i < Model.Count; i++)
-                {
-                    <tr>
-                        <td>@Model[i].Id</td>
-                        <td>
-                            Name : @Model[i].FirstName<br>
-                            Applied for : @Model[i]?.Vacancy?.Position<br>
-                            Experience : @Model[i]?.Experience <br>
-                            Stage : @Model[i]?.Stage?.StatusLabel<br>
-                        </td>
-                        <td><a href="https://www.w3schools.com/">Smith_Resume</a></td>
-                        <td><span class="badge badge-success">New</span></td>
-                        <td>
-                            <button type="button" class="btn btn-success">View</button>
-                            @if (User.IsInRoleCheck("manager,hr,Admin"))
-                            {
-                                <a href="~/Applications/Edit/@Model[i].Id">
-                                    <button type="button" class="btn btn-warning"> Edit</button>
-                                </a>
-                            }
-
-                            <a href="~/Applications/delete/@Model[i].Id" onclick="isDelete()"> <button type="button" class="btn btn-warning">  Delete</button></a>
-                        </td>
-
-                    </tr>
-                }
-
-
-            </tbody>
-            <tfoot>
-                <tr>
-                    <th>#</th>
-                    <th>Applicant Information</th>
-                    <th>Document</th>
-                    <th>Status</th>
-                    <th>Action</th>
-
-                </tr>
-            </tfoot>
-        </table>
-        <div class="row">
-            <div class="col-sm-12 col-md-5">
-                <div class="dataTables_info" id="example_info" role="status" aria-live="polite">
-                    Showing <span>@(pageModel.StartIndex +1)</span> to <span>@(pageModel.EndIndex +1)</span> of <span>@pageModel.TotalRowCount</span> entries
-                </div>
-            </div><div class="col-sm-12 col-md-7">
-                <div class="dataTables_paginate paging_simple_numbers" id="example_paginate">
-                    <ul class="pagination">
-                        <li class="paginate_button page-item previous" id="example_previous"><a href="#" aria-controls="example" data-dt-idx="0" tabindex="0" class="page-link">Previous</a></li>
-
-                        @for (int i = 1; i <= pageModel.PageCount; i = i + 1)
-                        {
-                            if (i == pageModel.CurrentPage)
-                            {
-                                <li class="paginate_button page-item active"><a onclick="pageChange('@i')" href="/applications/index?currentPage=@i" aria-controls="example" data-dt-idx="1" tabindex="0" class="page-link">@i</a></li>
-
-                            }
-                            else
-                            {
-                                <li class="paginate_button page-item"><a onclick="pageChange('@i')" href="/applications/index?currentPage=@i" aria-controls="example" data-dt-idx="1" tabindex="0" class="page-link">@i</a></li>
-
-                            }
-
-                        }
-                        <li class="paginate_button page-item next disabled" id="example_next"><a href="#" aria-controls="example" data-dt-idx="3" tabindex="0" class="page-link">Next</a></li>
-                    </ul>
-                </div>
+        <div class="col-6">
+            <div class="form-group">
+                <label for="Id">Applied For:</label>
+                <input type="text" class="form-control" value="@applicationModel.AppliedForSearch" name="AppliedForSearch" id="AppliedForSearch">
+            </div>
+        </div>
+        <div class="col-6">
+            <div class="form-group">
+                <label for="Name">Status :</label>
+                <input type="text" class="form-control" value="@applicationModel.StageStatusSearch" name="StageStatusSearch" id="StageStatusSearch">
             </div>
         </div>
 
     </div>
 
-    <script>
 
-        function pageSubmit() {
-            document.getElementById("btnSubmit").click();
-        }
+    <input type="hidden" name="columnName" id="columnName" value="@ViewBag.columnName" />
+    <input type="hidden" name="orderBy" id="orderBy" value="@ViewBag.orderBy" />
+    <input type="hidden" name="currentPage" id="currentPage" value="@pageModel.CurrentPage" />
 
-        function pageChange(currentPage) {
+    <button type="submit" id="btnSubmit">Search</button>
+
+</form>
+<div class="container">
+    <table id="example" class="table table-striped table-bordered" style="width:100%">
+        <thead>
+            <tr>
+                <th><a onclick="sort('id', '@ViewBag.orderBy')" href="/applications/index?columnName=id&orderBy=@ViewBag.orderBy">#</a></th>
+                <th><a onclick="sort('name', '@ViewBag.orderBy')" href="/applications/index?columnName=name&orderBy=@ViewBag.orderBy">Applicant Information</a></th>
+                <th>Document</th>
+                <th>Status</th>
+                <th>Action</th>
+
+            </tr>
+        </thead>
+        <tbody>
+            @for (int i = 0; i < Model.Count; i++)
+            {
+                <tr>
+                    <td>@Model[i].Id</td>
+                    <td>
+                        Name : @Model[i].FirstName<br>
+                        Applied for : @Model[i]?.Vacancy?.Position<br>
+                        Experience : @Model[i]?.Experience <br>
+                        Stage : @Model[i]?.Stage?.StatusLabel<br>
+                    </td>
+                    <td><a href="/Applications/Download/@Model[i].Id" download name="resume">@Model[i].Resume</a></td>
+                    <td><span class="badge badge-success">New</span></td>
+                    <td>
+                        <button type="button" class="btn btn-success">View</button>
+                        <a href="~/Applications/Edit/@Model[i].Id">   Edit</a>
+                        <a href="~/Applications/delete/@Model[i].Id"  onclick="isDelete()">   Delete</a>
+                    </td>
+
+                </tr>
+            }
+
+
+        </tbody>
+        <tfoot>
+            <tr>
+                <th>#</th>
+                <th>Applicant Information</th>
+                <th>Document</th>
+                <th>Status</th>
+                <th>Action</th>
+
+            </tr>
+        </tfoot>
+    </table>
+    <div class="row">
+        <div class="col-sm-12 col-md-5">
+            <div class="dataTables_info" id="example_info" role="status" aria-live="polite">
+                Showing <span>@(pageModel.StartIndex +1)</span> to <span>@(pageModel.EndIndex +1)</span> of <span>@pageModel.TotalRowCount</span> entries
+            </div>
+        </div><div class="col-sm-12 col-md-7">
+            <div class="dataTables_paginate paging_simple_numbers" id="example_paginate">
+                <ul class="pagination">
+                    <li class="paginate_button page-item previous" id="example_previous"><a href="#" aria-controls="example" data-dt-idx="0" tabindex="0" class="page-link">Previous</a></li>
+
+                    @for (int i = 1; i <= pageModel.PageCount; i = i + 1)
+                    {
+                        if (i == pageModel.CurrentPage)
+                        {
+                            <li class="paginate_button page-item active"><a onclick="pageChange('@i')" href="/applications/index?currentPage=@i" aria-controls="example" data-dt-idx="1" tabindex="0" class="page-link">@i</a></li>
+
+                        }
+                        else
+                        {
+                            <li class="paginate_button page-item"><a onclick="pageChange('@i')" href="/applications/index?currentPage=@i" aria-controls="example" data-dt-idx="1" tabindex="0" class="page-link">@i</a></li>
+
+                        }
+
+                    }
+                    <li class="paginate_button page-item next disabled" id="example_next"><a href="#" aria-controls="example" data-dt-idx="3" tabindex="0" class="page-link">Next</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<script>
+
+    function pageSubmit() {
+        document.getElementById("btnSubmit").click();
+    }
+
+    function pageChange(currentPage) {
+        event.preventDefault();
+
+
+        document.getElementById("currentPage").value = currentPage;
+        pageSubmit();
+        return false;
+    }
+
+
+    function isDelete() {
+        if (confirm("do you want to delete user")) {
+
+        } else {
             event.preventDefault();
-
-
-            document.getElementById("currentPage").value = currentPage;
-            pageSubmit();
             return false;
         }
+    }
 
 
-        function isDelete() {
-            if (confirm("do you want to delete user")) {
+    function sort(columnName, orderBy) {
+        event.preventDefault();
 
-            } else {
-                event.preventDefault();
-                return false;
-            }
+
+        document.getElementById("columnName").value = columnName;
+        if ("asc" == orderBy) {
+            document.getElementById("orderBy").value = "desc";
+        } else {
+            document.getElementById("orderBy").value = "asc";
         }
 
 
-        function sort(columnName, orderBy) {
-            event.preventDefault();
+        pageSubmit();
+        return false;
+    }
+</script>
 
-
-            document.getElementById("columnName").value = columnName;
-            if ("asc" == orderBy) {
-                document.getElementById("orderBy").value = "desc";
-            } else {
-                document.getElementById("orderBy").value = "asc";
-            }
-
-
-            pageSubmit();
-            return false;
-        }
-    </script>
-
-    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
-    <script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
-    <script src="https://cdn.datatables.net/1.10.24/js/dataTables.bootstrap4.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+<script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.24/js/dataTables.bootstrap4.min.js"></script>
 

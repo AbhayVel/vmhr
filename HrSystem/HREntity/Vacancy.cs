@@ -24,7 +24,10 @@ namespace HREntity
         public string Skills { get; set; }
 
 
-        public int Availability { get; set; }
+
+        public string? Document { get; set; }
+
+        
 
         public string Description { get; set; }
 

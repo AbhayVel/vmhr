@@ -1,6 +1,7 @@
 ﻿using HRDB;
 using HREntity;
 using HRModels;
+using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -47,11 +48,16 @@ namespace HRRepository
                 HrSystemDBContext.Attach(application);
                 HrSystemDBContext.Entry(application).State = EntityState.Modified;
             }
-
-            HrSystemDBContext.SaveChanges();
+         //var Application = new Application()
+         ////{
+         ////   Resume = Save(application.Resume)
+         //};
+         //HrSystemDBContext.Applications.Add(application);
+         HrSystemDBContext.SaveChanges();
 
             return application;
         }
+      
 
         public void Delete(Application application)
         {
@@ -73,10 +79,17 @@ namespace HRRepository
         {
             return HrSystemDBContext.Applications.FirstOrDefault(x => x.Id == id);
         }
+     //public Application Upload(Application application)
+     // {
+     //    var Application = new Application()
+     //    {
+     //       Resume = Save(application.Resume)
+     //    };
+     //    re
+     // }
 
 
-
-        public List<Application> GetAll(string columnName, string orderBy, string IdSearch, string NameSearch, PageModel pageModel)
+      public List<Application> GetAll(string columnName, string orderBy, string IdSearch, string NameSearch, PageModel pageModel)
         {
             return null;
         }

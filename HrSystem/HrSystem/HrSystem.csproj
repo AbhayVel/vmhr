@@ -27,4 +27,8 @@
     <ProjectReference Include="..\HRService\HRService.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="wwwroot\Resume\" />
+  </ItemGroup>
+
 </Project>
