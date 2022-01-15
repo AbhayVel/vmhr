@@ -27,6 +27,16 @@ namespace HRService
             
         }
 
+        public List<Application> GetAll(ApplicationModel applicationModel)
+        {
+            if (applicationModel == null)
+            {
+                applicationModel = new ApplicationModel();
+            }            
+
+            return GetAll(applicationModel,applicationModel.PageModel) ;
+        }
+
         public List<Application> GetAll(ApplicationModel applicationModel, PageModel pageModel)
         {
              var lstApplication= ApplicationRepository.GetAll(applicationModel, pageModel);

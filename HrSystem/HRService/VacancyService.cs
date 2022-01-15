@@ -30,6 +30,23 @@ namespace HRService
             lst.Insert(0, new Vacancy { Id = 0, Position = "Select" });
             return lst;
         }
+        public Vacancy Save(Vacancy vacancy)
+        {
+            return VacancyRepository.Save(vacancy);
+        }
+        public void Delete(Vacancy vacancy)
+        {
+             VacancyRepository.Delete(vacancy);
+        }
+
+        public void Delete(int id)
+        {
+             VacancyRepository.Delete(id);
+        }
+        public Vacancy Get(int id)
+        {
+            return VacancyRepository.Get(id); 
+        }
 
     }
 

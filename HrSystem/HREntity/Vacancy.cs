@@ -13,18 +13,25 @@ namespace HREntity
     [Table("vacancy")]
     public class Vacancy
     {   [Key]
-        public int Id { get; set; }
+        public int? Id { get; set; }
 
-
+        [Required]
+        [MinLength(2)]
+        [MaxLength(50)]
         public string Position { get; set; }
 
+        [Required]
         public string Skills { get; set; }
+
 
 
         public string? Document { get; set; }
 
+        
+
         public string Description { get; set; }
-       
+
+        [Required]
         public decimal? Experience { get; set; }
 
       

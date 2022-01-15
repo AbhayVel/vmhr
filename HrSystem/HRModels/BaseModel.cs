@@ -10,6 +10,9 @@ namespace HRModels
 
         protected string _orderBy;
 
+
+        public PageModel PageModel { get; set; } = new PageModel();
+
         public virtual string ColumnName
         {
             get

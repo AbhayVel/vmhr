@@ -13,7 +13,9 @@ namespace HRDB
         private string _connectionString { get; set; }
         public HrSystemDBContext() : base()
         {
-             _connectionString = @"Data Source=DESKTOP-M39FDL2\SQLEXPRESS;Initial Catalog=HRSystem;Integrated Security=True";
+
+             _connectionString = @"Data Source=DESKTOP-C0FBNF9\SQLEXPRESS;Initial Catalog=HRSystem;Integrated Security=True";
+
         }
 
 

@@ -1,6 +1,7 @@
 using HRDB;
 using HRRepository;
 using HRService;
+using HrSystem.FIlters;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -27,8 +28,20 @@ namespace HrSystem
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddControllersWithViews();
+            services.AddControllersWithViews((options)=> {
+             //   options.Filters.Add(new HRAuthrizationFiltter());
+                options.Filters.Add(new HRExceptionFilter());
+                options.Filters.Add(new HRActionFilter());
+            });
+            services.AddSession();
 
+            services.AddAuthentication("cookies").
+                AddCookie("cookies", x =>
+                {
+                    x.LoginPath = "/Users/Login";
+                    x.LogoutPath = "/Users/logout";
+                    x.ExpireTimeSpan = TimeSpan.FromMinutes(20);
+                });
 
             services.AddScoped<HrSystemDBContext, HrSystemDBContext>();
             
@@ -58,6 +71,38 @@ namespace HrSystem
             }
             app.UseHttpsRedirection();
             app.UseStaticFiles();
+            app.UseSession();
+            app.Use(async (context, next) =>
+            {
+                await next();
+            });
+
+            //app.Use(async (context, next) =>
+            //{
+            //    var userId = context.Session.GetString("userName");
+            //  var path=  context.Request.Path.ToString();
+
+
+
+            //    if (string.IsNullOrEmpty(path) || "/".Equals(path) || "/Users/Login".Equals(path,StringComparison.OrdinalIgnoreCase))
+            //    {
+            //        await next();
+            //    }
+            //    else
+            //    {
+
+            //        if (userId == null)
+            //        {
+            //            context.Response.Redirect("/Users/Login");
+            //        } else
+            //        {
+            //            await next();
+            //        }
+            //    }
+
+
+
+            //});
 
             //1 .Use <-Imp 
             //2. run 
@@ -84,32 +129,27 @@ namespace HrSystem
             ////////    });
 
             ////////});
-            //app.UseWhen((x) => (x.Request.Path.ToString().ToLower().Equals("/applications/index")
-            //    && x.Request.Form["IdSearch"].FirstOrDefault() == "-1"), async (n) =>
-            //    {
 
 
-            //        await context.Response.WriteAsync("I am rom middle ware direct return");
-            //    });
-         
-            //app.Use(async (context, next) =>
-            //{
-            //    int i = 1;
-            //    if (context.Request.Path.ToString().ToLower().Equals("/applications/index")  
-            //    && context.Request.Form["IdSearch"].FirstOrDefault()=="-1")                
-            //    {
+            app.Use(async (context, next) =>
+            {
+                int i = 1;
+                if (context.Request.Path.ToString().ToLower().Equals("/")
+               )
+                {
 
-            //        await context.Response.WriteAsync("I am rom middle ware direct return");
+                     context.Response.Redirect("/Users/Login");
 
 
-            //    } else
-            //    {
-            //        await next();
-            //    }
-                
-            //    i = i + 1;
+                }
+                else
+                {
+                    await next();
+                }
 
-            //});
+                i = i + 1;
+
+            });
 
 
             //app.Run(async (context) =>
@@ -117,10 +157,12 @@ namespace HrSystem
             //    await context.Response.WriteAsync("I am From middle ware run");
 
             //});
-
+            app.UseAuthentication();
+           
             app.UseRouting();
-
             app.UseAuthorization();
+
+
 
 
             //app.UseMvc((x) =>
@@ -130,10 +172,11 @@ namespace HrSystem
             app.UseEndpoints(endpoints =>
             {
 
-               
+                 
+
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Applications}/{action=Index}/{id?}");
+                    pattern: "{controller}/{action=Index}/{id?}");
             });
         }
     }
