@@ -3,10 +3,12 @@ using HRModels;
 using HRService;
 using HrSystem.FIlters;
 using HrSystem.Models;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -46,8 +48,8 @@ namespace HrSystem.Controllers
 
             return View("Index",lstApplication);
         }
-
-        public IActionResult Add()
+      
+      public IActionResult Add()
         {
             var application = new Application();
 
@@ -72,7 +74,7 @@ namespace HrSystem.Controllers
             ApplicationService.Delete(id);
             return Redirect("/applications/index");
         }
-
+      
             public IActionResult Edit(int id)
         {
             var application = ApplicationService.Get(id);
@@ -93,7 +95,7 @@ namespace HrSystem.Controllers
         }
 
         [HttpPost]
-        public IActionResult Save(Application application)
+        public IActionResult Save(Application application, IFormFile file)
         {
 
             if (!ModelState.IsValid)
@@ -103,19 +105,72 @@ namespace HrSystem.Controllers
 
 
             ApplicationService.Save(application);
+         if(file != null)
+         {
+            var name = file.FileName;
+            var directory = System.IO.Path.Combine(@"C:\AllFiles", application.Id.ToString());
+            if (!System.IO.Directory.Exists(directory))
+            {
+               System.IO.Directory.CreateDirectory(directory);
+            }
+            var path = System.IO.Path.Combine(@"C:\AllFiles", application.Id.ToString(), name);
             //Save 
-            return Redirect("/applications/index");
+            using var stream = new FileStream(path, FileMode.CreateNew);
+            file.CopyTo(stream);
+            application.Resume = name;
+            ApplicationService.Save(application);
+         }
+         
+         return Redirect("/applications/index");
         }
 
+      public IActionResult Download(int id)
+      {
 
-            public IActionResult Jquery(ApplicationModel applicationModel)
-        {
+         var application = ApplicationService.Get(id);
 
-            var lstApplication = ApplicationService.GetAll(applicationModel, null);
+         if (application == null)
+         {
+            return NotFound();
+         }
+
+         var directory = System.IO.Path.Combine(@"C:\AllFiles");
+         var path = System.IO.Path.Combine(@"C:\AllFiles", application.Id.ToString(), application.Resume);
+
+         ////Save 
+         //using var stream = new FileStream(path, FileMode.Open);
+         string contentType = "application/pdf";
+         if (path.Contains(".pdf"))
+         {
+            contentType = "application/pdf";
+         }
+         else if (path.Contains(".docx"))
+         {
+            contentType = "application/docx";
+         }
+         else if (path.Contains(".txt"))
+         {
+            contentType = "application/txt";
+         }
+         byte[] fileBytes = System.IO.File.ReadAllBytes(path);
+         return File(fileBytes, contentType, application.Resume);
 
 
-            return View(lstApplication);
-        }
-     
-    }
-}
+      }
+      
+            }
+   }
+
+
+
+//public IActionResult Jquery(ApplicationModel applicationModel)
+//{
+
+//   var lstApplication = ApplicationService.GetAll(applicationModel, null);
+
+
+//   return View(lstApplication);
+//}
+
+
+

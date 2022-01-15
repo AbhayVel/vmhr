@@ -7,14 +7,15 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.24/css/dataTables.bootstrap4.min.css">
-
-    <link rel="stylesheet" href="~/css/Login.css">
+     <link rel="stylesheet" href="~/css/Date.css">
+    
 
     <style>
         body {
             margin: 0;
             padding: 0;
-            font-family: "Roboto", sans-serif;        
+            font-family: "Roboto", sans-serif;  
+            width:220em;
         }
 
         header {
@@ -204,7 +205,143 @@
             .status__page form label {
                 font-size: 30px;
             }
+            /*.row{  
+    padding: 5px 20px 15px 20px;
+  background-color: #f2f2f2;  
+  border: 1px solid lightblue;
+  border-radius: 4px;
+  
+}  
+.col-md-4{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 30px;
+    height: 200vh;
+    
+    margin-left: 100px;
+    
+  
+    
+  
+
+}
+.col-md-4 input  {
+    outline-style: none;
+    outline-width: 0px;
+    border-style: none;
+    color: #303030;
+    width: 300px;
+    height: 25px;
+    border-radius: 30px;
+    
+    margin-bottom: 10px;
+    font-weight: 500;
+}*/
+.row{  
+   
+  background-color: #f2f2f2;  
+  border: 1px solid lightblue;
+  border-radius: 4px;
+  
+}  
+
+
+#FirstName{
+                                            width:20em;
+                                            float:left;
+                                            margin-left:5px;
+                                            margin-right:10px;
+                                            margin-bottom:15px;
+
+}
+#MidName{
+  width:20em;
+                                            float:left; 
+                                             margin-left:10px;
+                                             margin-bottom:15px;
+}
+#LastName{
+                                              width:20em; 
+                                              margin-left:5px;
+                                            float:left;
+                                            margin-right:35px;
+                                            margin-bottom:15px;
+}
+
+#email{
+ width:20em;
+                                           
+                                            margin-left:5px;
+                                            margin-right:10px;
+
+}
+#phone{
+                                           width:20em;
+                                            float:left;
+                                           margin-left:342px;
+                                           margin-top:-87px;
+}
+#gender{
+                                            width:20em;
+                                            margin-left:5px;
+                                            float:right;
+                                            margin-right:77px;
+                                            margin-top:-87px;
+
+}
+#address{
+                                            width:20em;
+                                           
+                                            margin-left:5px;
+                                            margin-right:10px;
+
+}
+
+#experience{
+  width:20em;
+                                            float:left;
+                                           margin-left:342px;
+                                           margin-top:-87px;
+}
+#status{
+ width:20em;
+                                            margin-left:5px;
+                                            float:right;
+                                            margin-right:77px;
+                                            margin-top:-87px;
+
+}
+#resume{
+   width:20em;
+                                           
+                                            margin-left:5px;
+                                            margin-right:10px;
+}
+#vacancyid{
+width:20em;
+                                            float:left;
+                                           margin-left:342px;
+                                           margin-top:-87px;
+}
+#stageid{ width:20em;
+                                            margin-left:5px;
+                                            float:right;
+                                            margin-right:77px;
+                                            margin-top:-87px;
+
+
+}
+#datecreated{width:20em;
+                                           
+                                            margin-left:5px;
+                                            margin-right:10px;
+
+
+}
+
     </style>
+    
 
 </head>
 <body>
@@ -231,12 +368,15 @@
         <a href="~/Home"><i class="fas fa-home"></i><span>Home</span></a>
         <a href="~/Applications"><i class="fas fa-user-tie"></i><span>Applications</span></a>
         <a href="~/Vacancy"><i class="fas fa-list"></i><span>Vacancy</span></a>
-        <a href="~/Stage"><i class="fas fa-list"></i><span>Stage</span></a>
+        <a href="~/StatusCategory"><i class="fas fa-list"></i><span>Status Category</span></a>
         <a href="~/Users"><i class="fas fa-users"></i><span>Users</span></a>
         <a href="#"><i class="fas fa-cogs"></i><span>Settings</span></a>
     </div>
     <!--sidebar end-->
     <div class="content">
+
+   
+    
         @RenderBody();
 
         <script type="text/javascript" src="~/lib/jquery/dist/jquery.js"></script>

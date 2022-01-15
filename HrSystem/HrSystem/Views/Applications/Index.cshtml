@@ -79,7 +79,7 @@
                         Experience : @Model[i]?.Experience <br>
                         Stage : @Model[i]?.Stage?.StatusLabel<br>
                     </td>
-                    <td><a href="https://www.w3schools.com/">Smith_Resume</a></td>
+                    <td><a href="/Applications/Download/@Model[i].Id" download name="resume">@Model[i].Resume</a></td>
                     <td><span class="badge badge-success">New</span></td>
                     <td>
                         <button type="button" class="btn btn-success">View</button>
