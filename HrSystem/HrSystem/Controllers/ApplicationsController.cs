@@ -61,8 +61,10 @@ namespace HrSystem.Controllers
              
             var vacancyList = VacancyService.GetWithSelect();
             var stageList = StageService.GetWithSelect();
+            var applicationList = ApplicationService.GetWithSelect();
             ViewBag.VacancyId = vacancyList.Select(x => new SelectListItem(x.Position, x.Id.ToString()));
             ViewBag.StageId = stageList.Select(x => new SelectListItem(x.StatusLabel, x.Id.ToString()));
+            ViewBag.gender = applicationList.Select(x => new SelectListItem(x.Gender, x.Id.ToString()));
             return View("Add",application);
         }
 
