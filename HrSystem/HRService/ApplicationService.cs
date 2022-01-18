@@ -46,6 +46,15 @@ namespace HRService
             return lstApplication;
         }
 
+        public List<Application> GetWithSelect()
+
+        {
+            var lst = GetAll(new ApplicationModel(), null);
+
+            lst.Insert(0, new Application { Id = 0, Gender = "Select" });
+            return lst;
+        }
+
         public Application Save(Application application)
         {
             return ApplicationRepository.Save(application);
