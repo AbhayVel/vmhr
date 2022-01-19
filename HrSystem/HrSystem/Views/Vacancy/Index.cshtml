@@ -3,7 +3,8 @@
 @using HRModels;
 
 <center><h2>Vacancy List</h2></center>
-<center><button type="button" class="btn btn-primary">+ New Vacancy</button></center>
+<a href="~/Vacancy/Add">
+<center><button type="button" class="btn btn-primary">+ New Vacancy</button></center></a>
 <br>
 @{
     VacancyModel vacancyModel = ViewBag.vacancyModel as VacancyModel;
@@ -54,7 +55,7 @@
                         Skills :@Model[i].Skills<br>
                         Experience : @Model[i].Experience <br>
                     </td>
-                    <a href="#"><td><button type="button" class="btn btn-success">Download</button></td></a>
+                    <a href="~/Applications/Add"><td><button type="button" class="btn btn-success">Download</button></td></a>
                     
                     <td><span class="badge badge-success">Active</span></td>
                     <td>
@@ -141,4 +142,6 @@
 <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
 <script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
 <script src="https://cdn.datatables.net/1.10.24/js/dataTables.bootstrap4.min.js"></script>
+
+        <script type="text/javascript" scr="~/js/jquery-ui.min.js"></script>
 
