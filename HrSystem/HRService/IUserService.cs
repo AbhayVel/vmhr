@@ -13,5 +13,7 @@ namespace HRService
       List<User> GetAll(UserModel userModel, PageModel pageModel);
       User Save(User user);
       ClaimsPrincipal Get(string userName, string password);
+
+        ClaimsIdentity GetClaimIdentity(string userName, string password);
    }
 }

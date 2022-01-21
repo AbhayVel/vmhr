@@ -15,6 +15,7 @@ namespace HRSystemApi.Controllers
     [ApiController]
  [Route("api/[Controller]/[Action]/{id?}")]
     [Route("api/[Controller]")]
+    [Authorize]
     public class ApplicationsController : ControllerBase
     {
 
@@ -58,6 +59,11 @@ namespace HRSystemApi.Controllers
 
             applicationModel.Applications = lstApplication;
 
+            //if(lstApplication.Count == 0)
+            //{
+            //    return NoContent();
+            //}
+
             return Ok(applicationModel);
         }
 
@@ -69,7 +75,9 @@ namespace HRSystemApi.Controllers
             var application = ApplicationService.Get(id);
             if(application == null)
             {
-                return NotFound();
+                //  return NotFound();
+
+                return BadRequest();
             }
 
 
@@ -101,7 +109,9 @@ namespace HRSystemApi.Controllers
 
             if (!ModelState.IsValid)
             {
-                return Ok(ModelState);
+               // return Ok(ModelState);
+
+                return ValidationProblem(ModelState);
             }
 
 

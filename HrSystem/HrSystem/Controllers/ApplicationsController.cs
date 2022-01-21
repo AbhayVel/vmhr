@@ -19,6 +19,7 @@ using System.Threading.Tasks;
 namespace HrSystem.Controllers
 {
 
+   
  [Authorize]
     public class ApplicationsController : Controller
     {
@@ -38,8 +39,28 @@ namespace HrSystem.Controllers
             StageService = stageService;
         }
 
-  
-        
+
+        public IActionResult Index2()
+        {
+            ApplicationModel applicationModel = new ApplicationModel();
+            TryUpdateModelAsync(applicationModel);
+            PageModel pageModel = new PageModel();
+            TryUpdateModelAsync(pageModel);
+
+           
+
+            var lstApplication = ApplicationService.GetAll(applicationModel, pageModel);
+
+            ViewBag.orderBy = applicationModel.OrderBy;
+            ViewBag.columnName = applicationModel.ColumnName;
+            ViewBag.applicationModel = applicationModel;
+            ViewBag.pageModel = pageModel;
+
+            return View("Index", lstApplication);
+        }
+
+
+
         public IActionResult Index(ApplicationModel applicationModel, PageModel pageModel)
         {
          
@@ -116,7 +137,7 @@ namespace HrSystem.Controllers
         [HttpPost]
         public IActionResult Save(Application application, IFormFile file)
         {
-
+            TryValidateModel(application);
             if (!ModelState.IsValid)
             {
                 return View("Add", application);
@@ -143,6 +164,7 @@ namespace HrSystem.Controllers
          return Redirect("/applications/index");
         }
 
+         
       public IActionResult Download(int id)
       {
 
@@ -171,7 +193,8 @@ namespace HrSystem.Controllers
          {
             contentType = "application/txt";
          }
-         byte[] fileBytes = System.IO.File.ReadAllBytes(path);
+          //  using var stream = new FileStream(path, FileMode.Open);
+            byte[] fileBytes = System.IO.File.ReadAllBytes(path);
          return File(fileBytes, contentType, application.Resume);
 
 
