@@ -13,8 +13,8 @@ namespace HRDB
         private string _connectionString { get; set; }
         public HrSystemDBContext() : base()
         {
+
             _connectionString = Environment.GetEnvironmentVariable("ConnectionString");
-          //   _connectionString = @"Data Source=DESKTOP-C0FBNF9\SQLEXPRESS;Initial Catalog=HRSystem;Integrated Security=True";
 
         }
 

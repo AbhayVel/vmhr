@@ -25,7 +25,7 @@ namespace HREntity
 
 
 
-        public string? Document { get; set; }
+        
 
         
 

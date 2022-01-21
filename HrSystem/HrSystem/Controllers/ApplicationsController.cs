@@ -155,7 +155,7 @@ namespace HrSystem.Controllers
             }
             var path = System.IO.Path.Combine(@"C:\AllFiles", application.Id.ToString(), name);
             //Save 
-            using var stream = new FileStream(path, FileMode.CreateNew);
+            using var stream = new FileStream(path, FileMode.Open);
             file.CopyTo(stream);
             application.Resume = name;
             ApplicationService.Save(application);
