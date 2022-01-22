@@ -26,17 +26,16 @@ namespace HrSystem.Controllers
 
         ApplicationService ApplicationService { get; set; }
         VacancyService VacancyService { get; set; }
-        StageService StageService { get; set; }
+        
 
         public ApplicationsController(ApplicationService applicationService,
-            VacancyService vacancyService,
-            StageService stageService
+            VacancyService vacancyService 
 
             )
         {
             ApplicationService = applicationService;
             VacancyService = vacancyService;
-            StageService = stageService;
+           
         }
 
 
@@ -75,8 +74,32 @@ namespace HrSystem.Controllers
             return View("Index",lstApplication);
         }
 
-      
-      
+        public IActionResult Jquery()
+        {
+            //ApplicationModel applicationModel = new ApplicationModel();
+            //PageModel pageModel = null;
+
+            //var lstApplication = ApplicationService.GetAll(applicationModel, pageModel);
+
+            //ViewBag.orderBy = applicationModel.OrderBy;
+            //ViewBag.columnName = applicationModel.ColumnName;
+           
+
+            return View();
+        }
+
+        public IActionResult GetJSonData()
+        {
+            ApplicationModel applicationModel = new ApplicationModel();
+            PageModel pageModel = null;
+
+            var lstApplication = ApplicationService.GetAll(applicationModel, pageModel);
+
+            return Json(lstApplication);
+        }
+
+
+
 
 
 
@@ -86,12 +109,11 @@ namespace HrSystem.Controllers
         {
             var application = new Application();
 
-             
-            var vacancyList = VacancyService.GetWithSelect();
-            var stageList = StageService.GetWithSelect();
+            application.VacancyId = 1;
+           var vacancyList = VacancyService.GetWithSelect();
+           
             ViewBag.VacancyId = vacancyList.Select(x => new SelectListItem(x.Position, x.Id.ToString()));
-            ViewBag.StageId = stageList.Select(x => new SelectListItem(x.StatusLabel, x.Id.ToString()));
-            return View("Add",application);
+             return View("Add",application);
         }
 
 
@@ -124,10 +146,8 @@ namespace HrSystem.Controllers
 
 
             var vacancyList = VacancyService.GetWithSelect();
-            var stageList = StageService.GetWithSelect();
             ViewBag.VacancyId = vacancyList.Select(x => new SelectListItem(x.Position, x.Id.ToString()));
-            ViewBag.StageId = stageList.Select(x => new SelectListItem(x.StatusLabel, x.Id.ToString()));
-
+          
 
             return View("add",application);
         }
@@ -205,14 +225,7 @@ namespace HrSystem.Controllers
 
 
 
-//public IActionResult Jquery(ApplicationModel applicationModel)
-//{
 
-//   var lstApplication = ApplicationService.GetAll(applicationModel, null);
-
-
-//   return View(lstApplication);
-//}
 
 
 

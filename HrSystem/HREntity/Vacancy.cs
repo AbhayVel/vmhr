@@ -11,7 +11,7 @@ namespace HREntity
         public Vacancy Vacancy { get; set; }
     }
     [Table("vacancy")]
-    public class Vacancy
+    public class Vacancy  
     {   [Key]
         public int? Id { get; set; }
 

@@ -35,6 +35,8 @@ namespace HRDB
         
         public DbSet<Stage> Stages { get; set; }
       public DbSet<LoginUser> LoginUser { get; set; }
+
+       
       
    }
 }

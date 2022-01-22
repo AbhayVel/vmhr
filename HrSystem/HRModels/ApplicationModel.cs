@@ -34,7 +34,7 @@ namespace HRModels
 
             if (!string.IsNullOrWhiteSpace(NameSearch))
             {
-                where = $"{where} and  a.FirstName  like '{NameSearch.Replace("'","''")}'";
+                where = $"{where} and  a.FirstName  like '%{NameSearch.Replace("'","''")}%'";
                 //list = list.Where(x => x.FirstName.Contains(applicationModel.NameSearch, StringComparison.OrdinalIgnoreCase));
 
             }

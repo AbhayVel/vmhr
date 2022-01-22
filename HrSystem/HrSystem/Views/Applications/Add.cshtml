@@ -102,10 +102,8 @@
                 <select asp-for="VacancyId" class="form-control" asp-items="ViewBag.VacancyId"></select>
             </div></div>
             <div id="stageid">
-            <div class="form-group">
-                <label asp-for="StageId" class="control-label"></label>
-                <select asp-for="StageId" class="form-control" asp-items="ViewBag.StageId"></select>
-            </div> </div>
+            @await Component.InvokeAsync("Stage",Model) 
+            </div>
 
             <div id="datecreated">
             <div class="form-group">

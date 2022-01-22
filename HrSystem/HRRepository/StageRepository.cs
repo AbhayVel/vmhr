@@ -6,6 +6,7 @@ using System.Text;
 using System.Linq;
 using HRModels;
 using HRDB;
+using System.Threading.Tasks;
 
 namespace HRRepository
 {
@@ -20,21 +21,25 @@ namespace HRRepository
         }
         public int TotalRowCount { get; private set; }
 
-        public List<Stage>  GetAll(StageModel stageModel, PageModel pageModel)
+        public async Task<List<Stage>> GetAllAsync(StageModel stageModel, PageModel pageModel)
         {
-            string ColumnName = stageModel.ColumnName;
-            string OrderBy = stageModel.OrderBy;
-            HrSystemDBContext.Count = HrSystemDBContext.Count + 1;
 
-            var lststage = stageModel.Where(HrSystemDBContext.Stages);
-            lststage = stageModel.Sort(lststage);
 
-            if (!(pageModel is null))
-            {
-                pageModel.SetValues(lststage.ToList());
-                lststage = lststage.Skip(pageModel.StartIndex).Take(pageModel.RowPerPage);
-            }
-            return lststage.ToList();
+          return await HrSystemDBContext.GetStageAsync(null);
+
+            //string ColumnName = stageModel.ColumnName;
+            //string OrderBy = stageModel.OrderBy;
+            //HrSystemDBContext.Count = HrSystemDBContext.Count + 1;
+
+            //var lststage = stageModel.Where(HrSystemDBContext.Stages);
+            //lststage = stageModel.Sort(lststage);
+
+            //if (!(pageModel is null))
+            //{
+            //    pageModel.SetValues(lststage.ToList());
+            //    lststage = lststage.Skip(pageModel.StartIndex).Take(pageModel.RowPerPage);
+            //}
+            //return lststage.ToList();
         }
 
 
