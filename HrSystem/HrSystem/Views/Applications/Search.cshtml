@@ -1,0 +1,45 @@
+﻿
+@{
+
+    ApplicationModel applicationModel = ViewBag.applicationModel as ApplicationModel;
+    PageModel pageModel = ViewBag.pageModel as PageModel;
+}
+<form method="post" action="/Applications/Index">
+    <div class="row">
+        <div class="col-6">
+            <div class="form-group">
+                <label for="Id">Id:</label>
+                <input type="text" class="form-control" value="@applicationModel.IdSearch" name="IdSearch" id="IdSearch">
+            </div>
+        </div>
+        <div class="col-6">
+            <div class="form-group">
+                <label for="Name">Name</label>
+                <input type="text" class="form-control" value="@applicationModel.NameSearch" name="NameSearch" id="NameSearch">
+            </div>
+        </div>
+
+        <div class="col-6">
+            <div class="form-group">
+                <label for="Id">Applied For:</label>
+                <input type="text" class="form-control" value="@applicationModel.AppliedForSearch" name="AppliedForSearch" id="AppliedForSearch">
+            </div>
+        </div>
+        <div class="col-6">
+            <div class="form-group">
+                <label for="Name">Status :</label>
+                <input type="text" class="form-control" value="@applicationModel.StageStatusSearch" name="StageStatusSearch" id="StageStatusSearch">
+            </div>
+        </div>
+
+    </div>
+
+
+    <input type="hidden" name="columnName" id="columnName" value="@ViewBag.columnName" />
+    <input type="hidden" name="orderBy" id="orderBy" value="@ViewBag.orderBy" />
+    <input type="hidden" name="currentPage" id="currentPage" value="@pageModel.CurrentPage" />
+
+    <button type="submit" id="btnSubmit">Search</button>
+
+</form>
+

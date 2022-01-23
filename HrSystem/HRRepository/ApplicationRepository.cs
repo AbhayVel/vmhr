@@ -109,22 +109,23 @@ namespace HRRepository
             string where = applicationModel.Where();
             string sort = applicationModel.Sort();
 
-            var dbCOnnection = HrSystemDBContext.Database.GetDbConnection();
-            if (dbCOnnection.State != System.Data.ConnectionState.Open)
-            {
-                dbCOnnection.Open();
-            }
-
-            var dbCOmmand = dbCOnnection.CreateCommand();
-            dbCOmmand.CommandText = _queryCount + where;
-
-            var rowsCount = (int)dbCOmmand.ExecuteScalar();
+          
 
             string page = "";
 
 
             if (!(pageModel is null))
             {
+                var dbCOnnection = HrSystemDBContext.Database.GetDbConnection();
+                if (dbCOnnection.State != System.Data.ConnectionState.Open)
+                {
+                    dbCOnnection.Open();
+                }
+
+                var dbCOmmand = dbCOnnection.CreateCommand();
+                dbCOmmand.CommandText = _queryCount + where;
+
+                var rowsCount = (int)dbCOmmand.ExecuteScalar();
                 page = pageModel.SetValues(rowsCount);
             }
 

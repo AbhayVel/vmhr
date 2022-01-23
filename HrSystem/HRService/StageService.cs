@@ -4,6 +4,7 @@ using HRRepository;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace HRService
 {
@@ -15,17 +16,21 @@ namespace HRService
         {
             StageRepository = stageRepository;
         }
-        public List<Stage> GetAll(StageModel stageModel, PageModel pageModel)
+        public async System.Threading.Tasks.Task<List<Stage>> GetAllAsync(StageModel stageModel, PageModel pageModel)
 
         {
-            return StageRepository.GetAll(stageModel,pageModel);
+            return await StageRepository.GetAllAsync(stageModel,pageModel);
         }
 
 
       public List<Stage> GetWithSelect()
 
       {
-         var lst = GetAll(new StageModel(), null);
+         var lst = GetAll(new StageModel(), null)
+        public async Task<List<Stage>> GetWithSelectAsync()
+
+        {
+            var lst=await GetAllAsync(new StageModel(), null);
 
          lst.Insert(0, new Stage { Id = 0, StatusLabel = "Select" });
          return lst;

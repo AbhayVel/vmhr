@@ -101,7 +101,8 @@ namespace HrSystem.Controllers
          var user = UserService.Get(id);
          if (user == null)
          {
-            return Redirect("/users/index");
+                //   return Redirect("/users/index");
+                return RedirectToAction("index", "users");
          }
 
 

@@ -34,7 +34,11 @@ namespace HREntity
         public string Status { get; set; }
         
         public string Resume { get; set; }
+
+        [Display(Name = "Vacancy")]
         public int? VacancyId { get; set; }
+
+        [Display(Name = "Stage")]
         public int? StageId { get; set; }
         public DateTime DateCreated { get; set; }
 
@@ -43,6 +47,7 @@ namespace HREntity
         public virtual Vacancy Vacancy { get; set; }
 
 
+        
         [ForeignKey("StageId")]
         public virtual Stage Stage { get; set; }
 
