@@ -15,9 +15,6 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
-using HRDB;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Serialization;
 
 namespace HrSystem.Controllers
 {
@@ -29,100 +26,29 @@ namespace HrSystem.Controllers
 
       ApplicationService ApplicationService { get; set; }
       VacancyService VacancyService { get; set; }
-      StageService StageService { get; set; }
+
 
       public ApplicationsController(ApplicationService applicationService,
-          VacancyService vacancyService,
-          StageService stageService
+          VacancyService vacancyService
 
           )
       {
          ApplicationService = applicationService;
          VacancyService = vacancyService;
-         StageService = stageService;
-     
-   
- [Authorize]
-    public class ApplicationsController : Controller
-    {
 
-        ApplicationService ApplicationService { get; set; }
-        VacancyService VacancyService { get; set; }
-        
-
-        public ApplicationsController(ApplicationService applicationService,
-            VacancyService vacancyService 
-
-            )
-        {
-            ApplicationService = applicationService;
-            VacancyService = vacancyService;
-           
-        }
+      }
 
 
-        public IActionResult Index2()
-        {
-            ApplicationModel applicationModel = new ApplicationModel();
-            TryUpdateModelAsync(applicationModel);
-            PageModel pageModel = new PageModel();
-            TryUpdateModelAsync(pageModel);
-
-           
-
-            var lstApplication = ApplicationService.GetAll(applicationModel, pageModel);
-
-            ViewBag.orderBy = applicationModel.OrderBy;
-            ViewBag.columnName = applicationModel.ColumnName;
-            ViewBag.applicationModel = applicationModel;
-            ViewBag.pageModel = pageModel;
-
-            return View("Index", lstApplication);
-        }
-
-
-
-        public IActionResult Index(ApplicationModel applicationModel, PageModel pageModel)
-        {
-         
-          
-            var lstApplication = ApplicationService.GetAll(applicationModel,pageModel);
-
-
-
-      public IActionResult Index(ApplicationModel applicationModel, PageModel pageModel)
+      public IActionResult Index2()
       {
+         ApplicationModel applicationModel = new ApplicationModel();
+         TryUpdateModelAsync(applicationModel);
+         PageModel pageModel = new PageModel();
+         TryUpdateModelAsync(pageModel);
 
 
 
          var lstApplication = ApplicationService.GetAll(applicationModel, pageModel);
-
-        public IActionResult Jquery()
-        {
-            //ApplicationModel applicationModel = new ApplicationModel();
-            //PageModel pageModel = null;
-
-            //var lstApplication = ApplicationService.GetAll(applicationModel, pageModel);
-
-            //ViewBag.orderBy = applicationModel.OrderBy;
-            //ViewBag.columnName = applicationModel.ColumnName;
-           
-
-            return View();
-        }
-
-        public IActionResult GetJSonData()
-        {
-            ApplicationModel applicationModel = new ApplicationModel();
-            PageModel pageModel = null;
-
-            var lstApplication = ApplicationService.GetAll(applicationModel, pageModel);
-
-            return Json(lstApplication);
-        }
-
-
-
 
          ViewBag.orderBy = applicationModel.OrderBy;
          ViewBag.columnName = applicationModel.ColumnName;
@@ -134,6 +60,47 @@ namespace HrSystem.Controllers
 
 
 
+      public IActionResult Index(ApplicationModel applicationModel, PageModel pageModel)
+      {
+
+
+         var lstApplication = ApplicationService.GetAll(applicationModel, pageModel);
+
+         ViewBag.orderBy = applicationModel.OrderBy;
+         ViewBag.columnName = applicationModel.ColumnName;
+         ViewBag.applicationModel = applicationModel;
+         ViewBag.pageModel = pageModel;
+
+         return View("Index", lstApplication);
+      }
+
+      public IActionResult Jquery()
+      {
+         //ApplicationModel applicationModel = new ApplicationModel();
+         //PageModel pageModel = null;
+
+         //var lstApplication = ApplicationService.GetAll(applicationModel, pageModel);
+
+         //ViewBag.orderBy = applicationModel.OrderBy;
+         //ViewBag.columnName = applicationModel.ColumnName;
+
+
+         return View();
+      }
+
+      public IActionResult GetJSonData()
+      {
+         ApplicationModel applicationModel = new ApplicationModel();
+         PageModel pageModel = null;
+
+         var lstApplication = ApplicationService.GetAll(applicationModel, pageModel);
+
+         return Json(lstApplication);
+      }
+
+
+
+
 
 
       [HRRoleAuthorization(Roles = "manager, hr, Admin")]
@@ -141,18 +108,11 @@ namespace HrSystem.Controllers
 
       {
          var application = new Application();
-         application.VacancyId = 2;
-         application.StageId = 9;
-         var vacancyList = VacancyService.GetWithSelect();
-         var stageList = StageService.GetWithSelect();
-         //var genderList = ApplicationService.GetAll(new ApplicationModel(), null);
-         //var applicationList = ApplicationService.GetWithSelect();
 
+         application.VacancyId = 1;
+         var vacancyList = VacancyService.GetWithSelect();
 
          ViewBag.VacancyId = vacancyList.Select(x => new SelectListItem(x.Position, x.Id.ToString()));
-         ViewBag.StageId = stageList.Select(x => new SelectListItem(x.StatusLabel, x.Id.ToString()));
-         //ViewBag.Gender = genderList.Select(x => new SelectListItem(x.Gender, x.Id.ToString()));
-         //ViewBag.gender = applicationList.Select(x => new SelectListItem(x.Gender, x.Id.ToString()));
          return View("Add", application);
       }
 
@@ -176,7 +136,6 @@ namespace HrSystem.Controllers
       [HRRoleAuthorization(Roles = "manager, hr, Admin")]
       public IActionResult Edit(int id)
 
-
       {
          var application = ApplicationService.Get(id);
 
@@ -185,29 +144,24 @@ namespace HrSystem.Controllers
             application = new Application();
          }
 
-            var vacancyList = VacancyService.GetWithSelect();
-            ViewBag.VacancyId = vacancyList.Select(x => new SelectListItem(x.Position, x.Id.ToString()));
-          
 
-
-        
+         var vacancyList = VacancyService.GetWithSelect();
+         ViewBag.VacancyId = vacancyList.Select(x => new SelectListItem(x.Position, x.Id.ToString()));
 
 
          return View("add", application);
       }
 
-        [HRRoleAuthorization(Roles = "manager, hr, Admin")]
-        [HttpPost]
-        public IActionResult Save(Application application, IFormFile file)
-        {
-            TryValidateModel(application);
-            if (!ModelState.IsValid)
-            {
-                return View("Add", application);
-            }
 
-
-
+      [HRRoleAuthorization(Roles = "manager, hr, Admin")]
+      [HttpPost]
+      public IActionResult Save(Application application, IFormFile file)
+      {
+         TryValidateModel(application);
+         if (!ModelState.IsValid)
+         {
+            return View("Add", application);
+         }
 
 
          ApplicationService.Save(application);
@@ -221,7 +175,7 @@ namespace HrSystem.Controllers
             }
             var path = System.IO.Path.Combine(@"C:\AllFiles", application.Id.ToString(), name);
             //Save 
-            using var stream = new FileStream(path, FileMode.CreateNew);
+            using var stream = new FileStream(path, FileMode.Open);
             file.CopyTo(stream);
             application.Resume = name;
             ApplicationService.Save(application);
@@ -230,7 +184,7 @@ namespace HrSystem.Controllers
          return Redirect("/applications/index");
       }
 
-         
+
       public IActionResult Download(int id)
       {
 
@@ -259,12 +213,16 @@ namespace HrSystem.Controllers
          {
             contentType = "application/txt";
          }
-          //  using var stream = new FileStream(path, FileMode.Open);
-            byte[] fileBytes = System.IO.File.ReadAllBytes(path);
+         //  using var stream = new FileStream(path, FileMode.Open);
+         byte[] fileBytes = System.IO.File.ReadAllBytes(path);
          return File(fileBytes, contentType, application.Resume);
 
 
       }
+
+   }
+}
+
 
 
 

@@ -9,45 +9,19 @@
             <tr>
                 <th>#</th>
                 <th>Applicant Information</th>
-
-                <th>Document</th>
-                  <th>Stage</th>
-                   <th>Action</th>
-                 
-                     
-
-            </tr>
-            
-                           
-        </thead>
-        <tbody
-            <td>
-                            <button type="button" class="btn btn-success">View</button>
-                            <button type="button" class="btn btn-warning">Edit</button>
-                            <button type="button" class="btn btn-danger">Delete</button>
-                        </td>
-              
-
-      
-
+                <th>document</th>
+                <th>Stage</th>
             </tr>
         </thead>
         <tbody>
-
         </tbody>
 
         <tfoot>
             <tr>
                 <th>#</th>
                 <th>Applicant Information</th>
-
-                <th>Document</th>
+                <th>document</th>
                 <th>Stage</th>
-                <th>Action</th>
-               
-
-                
-
             </tr>
         </tfoot>
     </table>
@@ -62,17 +36,10 @@
     <script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.10.24/js/dataTables.bootstrap4.min.js"></script>
 
-
-    <script>
-      
-        $(document).ready(function () {
-
-
     <script>
 
       
         $(document).ready(function () {
-
 
             $.ajax({
                 url: '/applications/GetJSonData',
@@ -83,16 +50,10 @@
 
                 }
             })
-           
-        });
-
-                }
-            })
 
 
            
         });
-
 
         function fillData(data) {
             $('#example').DataTable({
@@ -104,36 +65,21 @@
                             debugger;
                             return `
                         Name : ${row.firstName} </br>
-
                         Applied for : ${row.vacancyId}</br>
                         Experience : ${row.experience}</br>
 
-                        
-`;
-                           // row.firstName + ' ' + row.lastName;
-                        } },
-                  {data: 'resume'},
-                  {data: 'stageId'},
-                {data: 'action'}
-
-                        LastName ${row.lastName}
-
 
 `;
 
                            // row.firstName + ' ' + row.lastName;
                         } },
-                    { data: 'lastName' }
-
+                    { data: 'resume'},
+                    {data: 'stageId'}
                 ]
             });
         }
     </script>
-
-
+    }
 }
-
-}
-
 
 
