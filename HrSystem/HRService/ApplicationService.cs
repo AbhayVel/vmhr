@@ -66,6 +66,13 @@ namespace HRService
         {
             return ApplicationRepository.Get(id);
         }
-     
-    }
+      //public List<Application> GetWithSelect()
+
+      //{
+      //   var lst = GetAll(new ApplicationModel(), null);
+
+      //   lst.Insert(0, new Application { Id = 0, Gender = "Select" });
+      //   return lst;
+      //}
+   }
 }

@@ -15,116 +15,125 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
+using HRDB;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Serialization;
 
 namespace HrSystem.Controllers
 {
 
- [Authorize]
-    public class ApplicationsController : Controller
-    {
+   [Authorize]
+   public class ApplicationsController : Controller
+   {
 
-        ApplicationService ApplicationService { get; set; }
-        VacancyService VacancyService { get; set; }
-        StageService StageService { get; set; }
+      ApplicationService ApplicationService { get; set; }
+      VacancyService VacancyService { get; set; }
+      StageService StageService { get; set; }
 
-        public ApplicationsController(ApplicationService applicationService,
-            VacancyService vacancyService,
-            StageService stageService
+      public ApplicationsController(ApplicationService applicationService,
+          VacancyService vacancyService,
+          StageService stageService
 
-            )
-        {
-            ApplicationService = applicationService;
-            VacancyService = vacancyService;
-            StageService = stageService;
-        }
-
-  
-        
-        public IActionResult Index(ApplicationModel applicationModel, PageModel pageModel)
-        {
-         
-          
-            var lstApplication = ApplicationService.GetAll(applicationModel,pageModel);
-
-            ViewBag.orderBy = applicationModel.OrderBy;
-            ViewBag.columnName = applicationModel.ColumnName;
-            ViewBag.applicationModel = applicationModel;
-            ViewBag.pageModel = pageModel;
-
-            return View("Index",lstApplication);
-        }
-
-      
-      
+          )
+      {
+         ApplicationService = applicationService;
+         VacancyService = vacancyService;
+         StageService = stageService;
+      }
 
 
 
-        [HRRoleAuthorization(Roles ="manager, hr, Admin")]
-        public IActionResult Add()
-
-        {
-            var application = new Application();
-
-             
-            var vacancyList = VacancyService.GetWithSelect();
-            var stageList = StageService.GetWithSelect();
-            ViewBag.VacancyId = vacancyList.Select(x => new SelectListItem(x.Position, x.Id.ToString()));
-            ViewBag.StageId = stageList.Select(x => new SelectListItem(x.StatusLabel, x.Id.ToString()));
-            return View("Add",application);
-        }
+      public IActionResult Index(ApplicationModel applicationModel, PageModel pageModel)
+      {
 
 
-        public IActionResult Delete(int id)
-        {
-            var application = ApplicationService.Get(id);
-            if(application == null)
-            {
-                return Redirect("/applications/index");
-            }
+         var lstApplication = ApplicationService.GetAll(applicationModel, pageModel);
+
+         ViewBag.orderBy = applicationModel.OrderBy;
+         ViewBag.columnName = applicationModel.ColumnName;
+         ViewBag.applicationModel = applicationModel;
+         ViewBag.pageModel = pageModel;
+
+         return View("Index", lstApplication);
+      }
 
 
-            ApplicationService.Delete(id);
+
+
+
+
+      [HRRoleAuthorization(Roles = "manager, hr, Admin")]
+      public IActionResult Add()
+
+      {
+         var application = new Application();
+         application.VacancyId = 2;
+         application.StageId = 9;
+         var vacancyList = VacancyService.GetWithSelect();
+         var stageList = StageService.GetWithSelect();
+         //var genderList = ApplicationService.GetAll(new ApplicationModel(), null);
+         //var applicationList = ApplicationService.GetWithSelect();
+
+
+         ViewBag.VacancyId = vacancyList.Select(x => new SelectListItem(x.Position, x.Id.ToString()));
+         ViewBag.StageId = stageList.Select(x => new SelectListItem(x.StatusLabel, x.Id.ToString()));
+         //ViewBag.Gender = genderList.Select(x => new SelectListItem(x.Gender, x.Id.ToString()));
+         //ViewBag.gender = applicationList.Select(x => new SelectListItem(x.Gender, x.Id.ToString()));
+         return View("Add", application);
+      }
+
+
+      public IActionResult Delete(int id)
+      {
+         var application = ApplicationService.Get(id);
+         if (application == null)
+         {
             return Redirect("/applications/index");
-        }
-
-      
+         }
 
 
-        [HRRoleAuthorization(Roles = "manager, hr, Admin")]
-        public IActionResult Edit(int id)
-
-        {
-            var application = ApplicationService.Get(id);
-
-            if (application == null)
-            {
-                application = new Application();
-            }
+         ApplicationService.Delete(id);
+         return Redirect("/applications/index");
+      }
 
 
-            var vacancyList = VacancyService.GetWithSelect();
-            var stageList = StageService.GetWithSelect();
-            ViewBag.VacancyId = vacancyList.Select(x => new SelectListItem(x.Position, x.Id.ToString()));
-            ViewBag.StageId = stageList.Select(x => new SelectListItem(x.StatusLabel, x.Id.ToString()));
 
 
-            return View("add",application);
-        }
+      [HRRoleAuthorization(Roles = "manager, hr, Admin")]
+      public IActionResult Edit(int id)
+
+      {
+         var application = ApplicationService.Get(id);
+
+         if (application == null)
+         {
+            application = new Application();
+         }
 
 
-        [HRRoleAuthorization(Roles = "manager, hr, Admin")]
-        [HttpPost]
-        public IActionResult Save(Application application, IFormFile file)
-        {
-
-            if (!ModelState.IsValid)
-            {
-                return View("Add", application);
-            }
+         var vacancyList = VacancyService.GetWithSelect();
+         var stageList = StageService.GetWithSelect();
+         ViewBag.VacancyId = vacancyList.Select(x => new SelectListItem(x.Position, x.Id.ToString()));
+         ViewBag.StageId = stageList.Select(x => new SelectListItem(x.StatusLabel, x.Id.ToString()));
 
 
-            ApplicationService.Save(application);
-         if(file != null)
+         return View("add", application);
+      }
+
+
+      [HRRoleAuthorization(Roles = "manager, hr, Admin")]
+      [HttpPost]
+      public IActionResult Save(Application application, IFormFile file)
+      {
+
+         if (!ModelState.IsValid)
+         {
+            return View("Add", application);
+         }
+
+
+         ApplicationService.Save(application);
+         if (file != null)
          {
             var name = file.FileName;
             var directory = System.IO.Path.Combine(@"C:\AllFiles", application.Id.ToString());
@@ -134,14 +143,14 @@ namespace HrSystem.Controllers
             }
             var path = System.IO.Path.Combine(@"C:\AllFiles", application.Id.ToString(), name);
             //Save 
-            using var stream = new FileStream(path, FileMode.Open);
+            using var stream = new FileStream(path, FileMode.CreateNew);
             file.CopyTo(stream);
             application.Resume = name;
             ApplicationService.Save(application);
          }
-         
+
          return Redirect("/applications/index");
-        }
+      }
 
       public IActionResult Download(int id)
       {
@@ -176,20 +185,43 @@ namespace HrSystem.Controllers
 
 
       }
-      
-            }
+
+
+
+      public IActionResult Jquery()
+      {
+         //ApplicationModel applicationModel = new ApplicationModel();
+         //PageModel pageModel = null;
+
+         //var lstApplication = ApplicationService.GetAll(applicationModel, pageModel);
+
+         //ViewBag.orderBy = applicationModel.OrderBy;
+         //ViewBag.columnName = applicationModel.ColumnName;
+
+
+         return View();
+      }
+
+      public IActionResult GetJSonData()
+      {
+         ApplicationModel applicationModel = new ApplicationModel();
+         PageModel pageModel = null;
+
+         var lstApplication = ApplicationService.GetAll(applicationModel, pageModel);
+
+         return Json(lstApplication);
+      }
+
+
+
+
+
+
    }
+}
 
 
 
-//public IActionResult Jquery(ApplicationModel applicationModel)
-//{
-
-//   var lstApplication = ApplicationService.GetAll(applicationModel, null);
-
-
-//   return View(lstApplication);
-//}
 
 
 
