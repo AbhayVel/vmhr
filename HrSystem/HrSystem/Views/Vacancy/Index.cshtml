@@ -55,13 +55,13 @@
                         Skills :@Model[i].Skills<br>
                         Experience : @Model[i].Experience <br>
                     </td>
-                    <a href="~/Applications/Add"><td><button type="button" class="btn btn-success">Download</button></td></a>
+                     <td><a href="~/applications/add"><button type="button" class="btn btn-success">Add Applicant</button></a></td>
                     
                     <td><span class="badge badge-success">Active</span></td>
                     <td>
                         <button type="button" class="btn btn-success">View</button>
-                        <button type="button" class="btn btn-warning">Edit</button>
-                        <button type="button" class="btn btn-danger">Delete</button>
+                      <a href="~/Vacancy/Edit/@Model[i].Id"> <button type="button" class="btn btn-warning">Edit</button></a>
+                    <a href="~/Vacancy/Delete/@Model[i].Id" onclick="isDelete()"> <button type="button" class="btn btn-warning">Delete</button></a>
                     </td>
 
                 </tr>

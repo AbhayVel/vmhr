@@ -23,15 +23,19 @@ namespace HRService
         }
 
 
+      public List<Stage> GetWithSelect()
+
+      {
+         var lst = GetAll(new StageModel(), null)
         public async Task<List<Stage>> GetWithSelectAsync()
 
         {
             var lst=await GetAllAsync(new StageModel(), null);
 
-            lst.Insert(0, new Stage { Id = 0, StatusLabel = "Select" });
-            return lst;
-        }
+         lst.Insert(0, new Stage { Id = 0, StatusLabel = "Select" });
+         return lst;
+      }
 
-    }
+   }
 
 }

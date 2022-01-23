@@ -3,6 +3,7 @@ using HREntity;
 using HRModels;
 using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,15 +13,17 @@ namespace HRRepository
 {
     public class ApplicationRepository : IApplicationRepository
     {
+     
 
-        public HrSystemDBContext HrSystemDBContext { get; set; } //Instance variable 
+   public HrSystemDBContext HrSystemDBContext { get; set; } //Instance variable 
 
        
 
 
         public ApplicationRepository (HrSystemDBContext hrSystemDBContext)
         {
-            HrSystemDBContext = hrSystemDBContext;
+        
+         HrSystemDBContext = hrSystemDBContext;
         }
 
         private string _query = @"Select   a.id, FirstName, MiddleName, LastName, Email, Phone, Gender, Address, a.Experience, a.Status, Resume, VacancyId, StageId, DateCreated   

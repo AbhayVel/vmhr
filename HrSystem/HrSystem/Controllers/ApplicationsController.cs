@@ -15,10 +15,32 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
+using HRDB;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Serialization;
 
 namespace HrSystem.Controllers
 {
 
+
+   [Authorize]
+   public class ApplicationsController : Controller
+   {
+
+      ApplicationService ApplicationService { get; set; }
+      VacancyService VacancyService { get; set; }
+      StageService StageService { get; set; }
+
+      public ApplicationsController(ApplicationService applicationService,
+          VacancyService vacancyService,
+          StageService stageService
+
+          )
+      {
+         ApplicationService = applicationService;
+         VacancyService = vacancyService;
+         StageService = stageService;
+     
    
  [Authorize]
     public class ApplicationsController : Controller
@@ -66,13 +88,14 @@ namespace HrSystem.Controllers
           
             var lstApplication = ApplicationService.GetAll(applicationModel,pageModel);
 
-            ViewBag.orderBy = applicationModel.OrderBy;
-            ViewBag.columnName = applicationModel.ColumnName;
-            ViewBag.applicationModel = applicationModel;
-            ViewBag.pageModel = pageModel;
 
-            return View("Index",lstApplication);
-        }
+
+      public IActionResult Index(ApplicationModel applicationModel, PageModel pageModel)
+      {
+
+
+
+         var lstApplication = ApplicationService.GetAll(applicationModel, pageModel);
 
         public IActionResult Jquery()
         {
@@ -101,57 +124,77 @@ namespace HrSystem.Controllers
 
 
 
+         ViewBag.orderBy = applicationModel.OrderBy;
+         ViewBag.columnName = applicationModel.ColumnName;
+         ViewBag.applicationModel = applicationModel;
+         ViewBag.pageModel = pageModel;
+
+         return View("Index", lstApplication);
+      }
 
 
-        [HRRoleAuthorization(Roles ="manager, hr, Admin")]
-        public IActionResult Add()
-
-        {
-            var application = new Application();
-
-            application.VacancyId = 1;
-           var vacancyList = VacancyService.GetWithSelect();
-           
-            ViewBag.VacancyId = vacancyList.Select(x => new SelectListItem(x.Position, x.Id.ToString()));
-             return View("Add",application);
-        }
 
 
-        public IActionResult Delete(int id)
-        {
-            var application = ApplicationService.Get(id);
-            if(application == null)
-            {
-                return Redirect("/applications/index");
-            }
+
+      [HRRoleAuthorization(Roles = "manager, hr, Admin")]
+      public IActionResult Add()
+
+      {
+         var application = new Application();
+         application.VacancyId = 2;
+         application.StageId = 9;
+         var vacancyList = VacancyService.GetWithSelect();
+         var stageList = StageService.GetWithSelect();
+         //var genderList = ApplicationService.GetAll(new ApplicationModel(), null);
+         //var applicationList = ApplicationService.GetWithSelect();
 
 
-            ApplicationService.Delete(id);
+         ViewBag.VacancyId = vacancyList.Select(x => new SelectListItem(x.Position, x.Id.ToString()));
+         ViewBag.StageId = stageList.Select(x => new SelectListItem(x.StatusLabel, x.Id.ToString()));
+         //ViewBag.Gender = genderList.Select(x => new SelectListItem(x.Gender, x.Id.ToString()));
+         //ViewBag.gender = applicationList.Select(x => new SelectListItem(x.Gender, x.Id.ToString()));
+         return View("Add", application);
+      }
+
+
+      public IActionResult Delete(int id)
+      {
+         var application = ApplicationService.Get(id);
+         if (application == null)
+         {
             return Redirect("/applications/index");
-        }
-
-      
+         }
 
 
-        [HRRoleAuthorization(Roles = "manager, hr, Admin")]
-        public IActionResult Edit(int id)
+         ApplicationService.Delete(id);
+         return Redirect("/applications/index");
+      }
 
-        {
-            var application = ApplicationService.Get(id);
 
-            if (application == null)
-            {
-                application = new Application();
-            }
 
+
+      [HRRoleAuthorization(Roles = "manager, hr, Admin")]
+      public IActionResult Edit(int id)
+
+
+      {
+         var application = ApplicationService.Get(id);
+
+         if (application == null)
+         {
+            application = new Application();
+         }
 
             var vacancyList = VacancyService.GetWithSelect();
             ViewBag.VacancyId = vacancyList.Select(x => new SelectListItem(x.Position, x.Id.ToString()));
           
 
-            return View("add",application);
-        }
 
+        
+
+
+         return View("add", application);
+      }
 
         [HRRoleAuthorization(Roles = "manager, hr, Admin")]
         [HttpPost]
@@ -164,8 +207,11 @@ namespace HrSystem.Controllers
             }
 
 
-            ApplicationService.Save(application);
-         if(file != null)
+
+
+
+         ApplicationService.Save(application);
+         if (file != null)
          {
             var name = file.FileName;
             var directory = System.IO.Path.Combine(@"C:\AllFiles", application.Id.ToString());
@@ -175,14 +221,14 @@ namespace HrSystem.Controllers
             }
             var path = System.IO.Path.Combine(@"C:\AllFiles", application.Id.ToString(), name);
             //Save 
-            using var stream = new FileStream(path, FileMode.Open);
+            using var stream = new FileStream(path, FileMode.CreateNew);
             file.CopyTo(stream);
             application.Resume = name;
             ApplicationService.Save(application);
          }
-         
+
          return Redirect("/applications/index");
-        }
+      }
 
          
       public IActionResult Download(int id)
@@ -219,10 +265,6 @@ namespace HrSystem.Controllers
 
 
       }
-      
-            }
-   }
-
 
 
 
