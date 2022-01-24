@@ -2,6 +2,7 @@
 using HRModels;
 using HRService;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using System;
@@ -12,6 +13,7 @@ using System.Threading.Tasks;
 namespace HRSystemApi.Controllers
 {
 
+    [EnableCors()]
     [ApiController]
  [Route("api/[Controller]/[Action]/{id?}")]
     [Route("api/[Controller]")]

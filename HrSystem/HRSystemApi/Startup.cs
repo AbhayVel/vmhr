@@ -35,6 +35,7 @@ namespace HRSystemApi
 
             services.AddScoped<HrSystemDBContext, HrSystemDBContext>();
 
+            services.AddCors();
 
             services.AddScoped<StageRepository, StageRepository>();
             services.AddScoped<VacancyRepository, VacancyRepository>();
@@ -84,6 +85,13 @@ namespace HRSystemApi
 
             app.UseHttpsRedirection();
 
+            app.UseCors(x =>
+            {
+                x.AllowCredentials()
+                .AllowAnyMethod()
+                .AllowAnyOrigin()
+                .AllowAnyHeader();
+            });
             app.UseRouting();
             app.UseAuthentication();
             app.UseAuthorization();
