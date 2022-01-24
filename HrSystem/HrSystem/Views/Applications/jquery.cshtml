@@ -9,8 +9,8 @@
             <tr>
                 <th>#</th>
                 <th>Applicant Information</th>
-                <th>Position</th>
-
+                <th>document</th>
+                <th>Stage</th>
             </tr>
         </thead>
         <tbody>
@@ -20,7 +20,8 @@
             <tr>
                 <th>#</th>
                 <th>Applicant Information</th>
-                
+                <th>document</th>
+                <th>Stage</th>
             </tr>
         </tfoot>
     </table>
@@ -64,19 +65,21 @@
                             debugger;
                             return `
                         Name : ${row.firstName} </br>
-                        LastName ${row.lastName}
+                        Applied for : ${row.vacancyId}</br>
+                        Experience : ${row.experience}</br>
 
 
 `;
 
                            // row.firstName + ' ' + row.lastName;
                         } },
-                    { data: 'lastName' }
+                    { data: 'resume'},
+                    {data: 'stageId'}
                 ]
             });
         }
     </script>
-
+    }
 }
 
 

@@ -10,8 +10,12 @@
 
             <div class="column">
                 <div class="card">
-                    <h3>New Applicant</h3>
-                    <p>3</p>
+                    
+                  @for (int i = 0; i < Model.Count; i++)
+                    {
+                         <h3>New Applicant:</h3> <p>@Model[i].Applications.ID</p>
+                    }
+               
 
                 </div>
             </div>
