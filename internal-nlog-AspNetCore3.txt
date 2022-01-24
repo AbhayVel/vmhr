@@ -1558,3 +1558,399 @@
 2022-01-15 10:02:59.4285 Info Adding target FileTarget(Name=allfile)
 2022-01-15 10:02:59.4285 Info Closing old configuration.
 2022-01-15 10:02:59.4285 Info Validating config: TargetNames=allfile, ConfigItems=24, FilePath=D:\vm3\vmhr\HrSystem\HrSystem\bin\Debug\netcoreapp3.1\nlog.config
+2022-01-22 09:12:00.8190 Info Message Template Auto Format enabled
+2022-01-22 09:12:00.8190 Info Loading assembly: NLog.Web.AspNetCore
+2022-01-22 09:12:00.9011 Info Adding target FileTarget(Name=allfile)
+2022-01-22 09:12:00.9332 Info Validating config: TargetNames=allfile, ConfigItems=24, FilePath=D:\vm3\vmhr\HrSystem\HrSystem\bin\Debug\netcoreapp3.1\nlog.config
+2022-01-22 09:12:00.9838 Info Configuring from an XML element in D:\vm3\vmhr\HrSystem\HrSystem\bin\Debug\netcoreapp3.1\nlog.config...
+2022-01-22 09:12:00.9838 Info Message Template Auto Format enabled
+2022-01-22 09:12:00.9838 Info Loading assembly: NLog.Web.AspNetCore
+2022-01-22 09:12:00.9838 Info Adding target FileTarget(Name=allfile)
+2022-01-22 09:12:00.9838 Info Closing old configuration.
+2022-01-22 09:12:01.0033 Info Validating config: TargetNames=allfile, ConfigItems=24, FilePath=D:\vm3\vmhr\HrSystem\HrSystem\bin\Debug\netcoreapp3.1\nlog.config
+2022-01-22 09:12:02.5628 Info Configuring from an XML element in D:\vm3\vmhr\HrSystem\HrSystem\bin\Debug\netcoreapp3.1\nlog.config...
+2022-01-22 09:12:02.5628 Info Message Template Auto Format enabled
+2022-01-22 09:12:02.5628 Info Loading assembly: NLog.Web.AspNetCore
+2022-01-22 09:12:02.5628 Info Adding target FileTarget(Name=allfile)
+2022-01-22 09:12:02.5628 Info Closing old configuration.
+2022-01-22 09:12:02.5628 Info Validating config: TargetNames=allfile, ConfigItems=24, FilePath=D:\vm3\vmhr\HrSystem\HrSystem\bin\Debug\netcoreapp3.1\nlog.config
+2022-01-22 09:12:02.5628 Info Configuring from an XML element in D:\vm3\vmhr\HrSystem\HrSystem\bin\Debug\netcoreapp3.1\nlog.config...
+2022-01-22 09:12:02.5628 Info Message Template Auto Format enabled
+2022-01-22 09:12:02.5701 Info Loading assembly: NLog.Web.AspNetCore
+2022-01-22 09:12:02.5701 Info Adding target FileTarget(Name=allfile)
+2022-01-22 09:12:02.5701 Info Closing old configuration.
+2022-01-22 09:12:02.5701 Info Validating config: TargetNames=allfile, ConfigItems=24, FilePath=D:\vm3\vmhr\HrSystem\HrSystem\bin\Debug\netcoreapp3.1\nlog.config
+2022-01-22 09:15:03.6615 Info Message Template Auto Format enabled
+2022-01-22 09:15:03.6693 Info Loading assembly: NLog.Web.AspNetCore
+2022-01-22 09:15:03.7095 Info Adding target FileTarget(Name=allfile)
+2022-01-22 09:15:03.7356 Info Validating config: TargetNames=allfile, ConfigItems=24, FilePath=D:\vm3\vmhr\HrSystem\HrSystem\bin\Debug\netcoreapp3.1\nlog.config
+2022-01-22 09:15:03.7785 Info Configuring from an XML element in D:\vm3\vmhr\HrSystem\HrSystem\bin\Debug\netcoreapp3.1\nlog.config...
+2022-01-22 09:15:03.7785 Info Message Template Auto Format enabled
+2022-01-22 09:15:03.7785 Info Loading assembly: NLog.Web.AspNetCore
+2022-01-22 09:15:03.7785 Info Adding target FileTarget(Name=allfile)
+2022-01-22 09:15:03.7785 Info Closing old configuration.
+2022-01-22 09:15:03.8016 Info Validating config: TargetNames=allfile, ConfigItems=24, FilePath=D:\vm3\vmhr\HrSystem\HrSystem\bin\Debug\netcoreapp3.1\nlog.config
+2022-01-22 09:15:04.1318 Info Configuring from an XML element in D:\vm3\vmhr\HrSystem\HrSystem\bin\Debug\netcoreapp3.1\nlog.config...
+2022-01-22 09:15:04.1318 Info Message Template Auto Format enabled
+2022-01-22 09:15:04.1318 Info Loading assembly: NLog.Web.AspNetCore
+2022-01-22 09:15:04.1318 Info Adding target FileTarget(Name=allfile)
+2022-01-22 09:15:04.1318 Info Closing old configuration.
+2022-01-22 09:15:04.1318 Info Validating config: TargetNames=allfile, ConfigItems=24, FilePath=D:\vm3\vmhr\HrSystem\HrSystem\bin\Debug\netcoreapp3.1\nlog.config
+2022-01-22 09:15:04.1318 Info Configuring from an XML element in D:\vm3\vmhr\HrSystem\HrSystem\bin\Debug\netcoreapp3.1\nlog.config...
+2022-01-22 09:15:04.1318 Info Message Template Auto Format enabled
+2022-01-22 09:15:04.1318 Info Loading assembly: NLog.Web.AspNetCore
+2022-01-22 09:15:04.1318 Info Adding target FileTarget(Name=allfile)
+2022-01-22 09:15:04.1318 Info Closing old configuration.
+2022-01-22 09:15:04.1318 Info Validating config: TargetNames=allfile, ConfigItems=24, FilePath=D:\vm3\vmhr\HrSystem\HrSystem\bin\Debug\netcoreapp3.1\nlog.config
+2022-01-22 09:29:39.4541 Info Message Template Auto Format enabled
+2022-01-22 09:29:39.4632 Info Loading assembly: NLog.Web.AspNetCore
+2022-01-22 09:29:39.5231 Info Adding target FileTarget(Name=allfile)
+2022-01-22 09:29:39.5485 Info Validating config: TargetNames=allfile, ConfigItems=24, FilePath=D:\vm3\vmhr\HrSystem\HrSystem\bin\Debug\netcoreapp3.1\nlog.config
+2022-01-22 09:29:39.5890 Info Configuring from an XML element in D:\vm3\vmhr\HrSystem\HrSystem\bin\Debug\netcoreapp3.1\nlog.config...
+2022-01-22 09:29:39.5890 Info Message Template Auto Format enabled
+2022-01-22 09:29:39.5890 Info Loading assembly: NLog.Web.AspNetCore
+2022-01-22 09:29:39.5890 Info Adding target FileTarget(Name=allfile)
+2022-01-22 09:29:39.5890 Info Closing old configuration.
+2022-01-22 09:29:39.6081 Info Validating config: TargetNames=allfile, ConfigItems=24, FilePath=D:\vm3\vmhr\HrSystem\HrSystem\bin\Debug\netcoreapp3.1\nlog.config
+2022-01-22 09:29:39.9546 Info Configuring from an XML element in D:\vm3\vmhr\HrSystem\HrSystem\bin\Debug\netcoreapp3.1\nlog.config...
+2022-01-22 09:29:39.9546 Info Message Template Auto Format enabled
+2022-01-22 09:29:39.9546 Info Loading assembly: NLog.Web.AspNetCore
+2022-01-22 09:29:39.9546 Info Adding target FileTarget(Name=allfile)
+2022-01-22 09:29:39.9546 Info Closing old configuration.
+2022-01-22 09:29:39.9614 Info Validating config: TargetNames=allfile, ConfigItems=24, FilePath=D:\vm3\vmhr\HrSystem\HrSystem\bin\Debug\netcoreapp3.1\nlog.config
+2022-01-22 09:29:39.9614 Info Configuring from an XML element in D:\vm3\vmhr\HrSystem\HrSystem\bin\Debug\netcoreapp3.1\nlog.config...
+2022-01-22 09:29:39.9614 Info Message Template Auto Format enabled
+2022-01-22 09:29:39.9614 Info Loading assembly: NLog.Web.AspNetCore
+2022-01-22 09:29:39.9614 Info Adding target FileTarget(Name=allfile)
+2022-01-22 09:29:39.9614 Info Closing old configuration.
+2022-01-22 09:29:39.9614 Info Validating config: TargetNames=allfile, ConfigItems=24, FilePath=D:\vm3\vmhr\HrSystem\HrSystem\bin\Debug\netcoreapp3.1\nlog.config
+2022-01-22 09:35:15.0422 Info Message Template Auto Format enabled
+2022-01-22 09:35:15.0422 Info Loading assembly: NLog.Web.AspNetCore
+2022-01-22 09:35:15.1133 Info Adding target FileTarget(Name=allfile)
+2022-01-22 09:35:15.1457 Info Validating config: TargetNames=allfile, ConfigItems=24, FilePath=D:\vm3\vmhr\HrSystem\HrSystem\bin\Debug\netcoreapp3.1\nlog.config
+2022-01-22 09:35:15.1963 Info Configuring from an XML element in D:\vm3\vmhr\HrSystem\HrSystem\bin\Debug\netcoreapp3.1\nlog.config...
+2022-01-22 09:35:15.1963 Info Message Template Auto Format enabled
+2022-01-22 09:35:15.1963 Info Loading assembly: NLog.Web.AspNetCore
+2022-01-22 09:35:15.1963 Info Adding target FileTarget(Name=allfile)
+2022-01-22 09:35:15.1963 Info Closing old configuration.
+2022-01-22 09:35:15.2151 Info Validating config: TargetNames=allfile, ConfigItems=24, FilePath=D:\vm3\vmhr\HrSystem\HrSystem\bin\Debug\netcoreapp3.1\nlog.config
+2022-01-22 09:35:15.6500 Info Configuring from an XML element in D:\vm3\vmhr\HrSystem\HrSystem\bin\Debug\netcoreapp3.1\nlog.config...
+2022-01-22 09:35:15.6500 Info Message Template Auto Format enabled
+2022-01-22 09:35:15.6500 Info Loading assembly: NLog.Web.AspNetCore
+2022-01-22 09:35:15.6500 Info Adding target FileTarget(Name=allfile)
+2022-01-22 09:35:15.6500 Info Closing old configuration.
+2022-01-22 09:35:15.6500 Info Validating config: TargetNames=allfile, ConfigItems=24, FilePath=D:\vm3\vmhr\HrSystem\HrSystem\bin\Debug\netcoreapp3.1\nlog.config
+2022-01-22 09:35:15.6500 Info Configuring from an XML element in D:\vm3\vmhr\HrSystem\HrSystem\bin\Debug\netcoreapp3.1\nlog.config...
+2022-01-22 09:35:15.6500 Info Message Template Auto Format enabled
+2022-01-22 09:35:15.6500 Info Loading assembly: NLog.Web.AspNetCore
+2022-01-22 09:35:15.6500 Info Adding target FileTarget(Name=allfile)
+2022-01-22 09:35:15.6500 Info Closing old configuration.
+2022-01-22 09:35:15.6500 Info Validating config: TargetNames=allfile, ConfigItems=24, FilePath=D:\vm3\vmhr\HrSystem\HrSystem\bin\Debug\netcoreapp3.1\nlog.config
+2022-01-22 09:37:22.3149 Info Message Template Auto Format enabled
+2022-01-22 09:37:22.3210 Info Loading assembly: NLog.Web.AspNetCore
+2022-01-22 09:37:22.3756 Info Adding target FileTarget(Name=allfile)
+2022-01-22 09:37:22.4017 Info Validating config: TargetNames=allfile, ConfigItems=24, FilePath=D:\vm3\vmhr\HrSystem\HrSystem\bin\Debug\netcoreapp3.1\nlog.config
+2022-01-22 09:37:22.4374 Info Configuring from an XML element in D:\vm3\vmhr\HrSystem\HrSystem\bin\Debug\netcoreapp3.1\nlog.config...
+2022-01-22 09:37:22.4374 Info Message Template Auto Format enabled
+2022-01-22 09:37:22.4374 Info Loading assembly: NLog.Web.AspNetCore
+2022-01-22 09:37:22.4374 Info Adding target FileTarget(Name=allfile)
+2022-01-22 09:37:22.4374 Info Closing old configuration.
+2022-01-22 09:37:22.4531 Info Validating config: TargetNames=allfile, ConfigItems=24, FilePath=D:\vm3\vmhr\HrSystem\HrSystem\bin\Debug\netcoreapp3.1\nlog.config
+2022-01-22 09:37:22.7967 Info Configuring from an XML element in D:\vm3\vmhr\HrSystem\HrSystem\bin\Debug\netcoreapp3.1\nlog.config...
+2022-01-22 09:37:22.7967 Info Message Template Auto Format enabled
+2022-01-22 09:37:22.7967 Info Loading assembly: NLog.Web.AspNetCore
+2022-01-22 09:37:22.7967 Info Adding target FileTarget(Name=allfile)
+2022-01-22 09:37:22.7967 Info Closing old configuration.
+2022-01-22 09:37:22.7967 Info Validating config: TargetNames=allfile, ConfigItems=24, FilePath=D:\vm3\vmhr\HrSystem\HrSystem\bin\Debug\netcoreapp3.1\nlog.config
+2022-01-22 09:37:22.7967 Info Configuring from an XML element in D:\vm3\vmhr\HrSystem\HrSystem\bin\Debug\netcoreapp3.1\nlog.config...
+2022-01-22 09:37:22.7967 Info Message Template Auto Format enabled
+2022-01-22 09:37:22.7967 Info Loading assembly: NLog.Web.AspNetCore
+2022-01-22 09:37:22.7967 Info Adding target FileTarget(Name=allfile)
+2022-01-22 09:37:22.7967 Info Closing old configuration.
+2022-01-22 09:37:22.7967 Info Validating config: TargetNames=allfile, ConfigItems=24, FilePath=D:\vm3\vmhr\HrSystem\HrSystem\bin\Debug\netcoreapp3.1\nlog.config
+2022-01-22 09:40:13.9930 Info Message Template Auto Format enabled
+2022-01-22 09:40:13.9930 Info Loading assembly: NLog.Web.AspNetCore
+2022-01-22 09:40:14.0568 Info Adding target FileTarget(Name=allfile)
+2022-01-22 09:40:14.0785 Info Validating config: TargetNames=allfile, ConfigItems=24, FilePath=D:\vm3\vmhr\HrSystem\HrSystem\bin\Debug\netcoreapp3.1\nlog.config
+2022-01-22 09:40:14.1202 Info Configuring from an XML element in D:\vm3\vmhr\HrSystem\HrSystem\bin\Debug\netcoreapp3.1\nlog.config...
+2022-01-22 09:40:14.1202 Info Message Template Auto Format enabled
+2022-01-22 09:40:14.1202 Info Loading assembly: NLog.Web.AspNetCore
+2022-01-22 09:40:14.1202 Info Adding target FileTarget(Name=allfile)
+2022-01-22 09:40:14.1202 Info Closing old configuration.
+2022-01-22 09:40:14.1392 Info Validating config: TargetNames=allfile, ConfigItems=24, FilePath=D:\vm3\vmhr\HrSystem\HrSystem\bin\Debug\netcoreapp3.1\nlog.config
+2022-01-22 09:40:14.4514 Info Configuring from an XML element in D:\vm3\vmhr\HrSystem\HrSystem\bin\Debug\netcoreapp3.1\nlog.config...
+2022-01-22 09:40:14.4514 Info Message Template Auto Format enabled
+2022-01-22 09:40:14.4514 Info Loading assembly: NLog.Web.AspNetCore
+2022-01-22 09:40:14.4514 Info Adding target FileTarget(Name=allfile)
+2022-01-22 09:40:14.4514 Info Closing old configuration.
+2022-01-22 09:40:14.4514 Info Validating config: TargetNames=allfile, ConfigItems=24, FilePath=D:\vm3\vmhr\HrSystem\HrSystem\bin\Debug\netcoreapp3.1\nlog.config
+2022-01-22 09:40:14.4514 Info Configuring from an XML element in D:\vm3\vmhr\HrSystem\HrSystem\bin\Debug\netcoreapp3.1\nlog.config...
+2022-01-22 09:40:14.4514 Info Message Template Auto Format enabled
+2022-01-22 09:40:14.4514 Info Loading assembly: NLog.Web.AspNetCore
+2022-01-22 09:40:14.4514 Info Adding target FileTarget(Name=allfile)
+2022-01-22 09:40:14.4514 Info Closing old configuration.
+2022-01-22 09:40:14.4514 Info Validating config: TargetNames=allfile, ConfigItems=24, FilePath=D:\vm3\vmhr\HrSystem\HrSystem\bin\Debug\netcoreapp3.1\nlog.config
+2022-01-22 09:47:44.6895 Info Message Template Auto Format enabled
+2022-01-22 09:47:44.6973 Info Loading assembly: NLog.Web.AspNetCore
+2022-01-22 09:47:44.7425 Info Adding target FileTarget(Name=allfile)
+2022-01-22 09:47:44.7631 Info Validating config: TargetNames=allfile, ConfigItems=24, FilePath=D:\vm3\vmhr\HrSystem\HrSystem\bin\Debug\netcoreapp3.1\nlog.config
+2022-01-22 09:47:44.8078 Info Configuring from an XML element in D:\vm3\vmhr\HrSystem\HrSystem\bin\Debug\netcoreapp3.1\nlog.config...
+2022-01-22 09:47:44.8078 Info Message Template Auto Format enabled
+2022-01-22 09:47:44.8078 Info Loading assembly: NLog.Web.AspNetCore
+2022-01-22 09:47:44.8078 Info Adding target FileTarget(Name=allfile)
+2022-01-22 09:47:44.8078 Info Closing old configuration.
+2022-01-22 09:47:44.8219 Info Validating config: TargetNames=allfile, ConfigItems=24, FilePath=D:\vm3\vmhr\HrSystem\HrSystem\bin\Debug\netcoreapp3.1\nlog.config
+2022-01-22 09:47:45.1230 Info Configuring from an XML element in D:\vm3\vmhr\HrSystem\HrSystem\bin\Debug\netcoreapp3.1\nlog.config...
+2022-01-22 09:47:45.1230 Info Message Template Auto Format enabled
+2022-01-22 09:47:45.1230 Info Loading assembly: NLog.Web.AspNetCore
+2022-01-22 09:47:45.1230 Info Adding target FileTarget(Name=allfile)
+2022-01-22 09:47:45.1230 Info Closing old configuration.
+2022-01-22 09:47:45.1230 Info Validating config: TargetNames=allfile, ConfigItems=24, FilePath=D:\vm3\vmhr\HrSystem\HrSystem\bin\Debug\netcoreapp3.1\nlog.config
+2022-01-22 09:47:45.1230 Info Configuring from an XML element in D:\vm3\vmhr\HrSystem\HrSystem\bin\Debug\netcoreapp3.1\nlog.config...
+2022-01-22 09:47:45.1230 Info Message Template Auto Format enabled
+2022-01-22 09:47:45.1230 Info Loading assembly: NLog.Web.AspNetCore
+2022-01-22 09:47:45.1230 Info Adding target FileTarget(Name=allfile)
+2022-01-22 09:47:45.1230 Info Closing old configuration.
+2022-01-22 09:47:45.1230 Info Validating config: TargetNames=allfile, ConfigItems=24, FilePath=D:\vm3\vmhr\HrSystem\HrSystem\bin\Debug\netcoreapp3.1\nlog.config
+2022-01-22 09:49:30.2776 Info Message Template Auto Format enabled
+2022-01-22 09:49:30.2776 Info Loading assembly: NLog.Web.AspNetCore
+2022-01-22 09:49:30.3327 Info Adding target FileTarget(Name=allfile)
+2022-01-22 09:49:30.3569 Info Validating config: TargetNames=allfile, ConfigItems=24, FilePath=D:\vm3\vmhr\HrSystem\HrSystem\bin\Debug\netcoreapp3.1\nlog.config
+2022-01-22 09:49:30.3903 Info Configuring from an XML element in D:\vm3\vmhr\HrSystem\HrSystem\bin\Debug\netcoreapp3.1\nlog.config...
+2022-01-22 09:49:30.3903 Info Message Template Auto Format enabled
+2022-01-22 09:49:30.3903 Info Loading assembly: NLog.Web.AspNetCore
+2022-01-22 09:49:30.3903 Info Adding target FileTarget(Name=allfile)
+2022-01-22 09:49:30.3903 Info Closing old configuration.
+2022-01-22 09:49:30.4024 Info Validating config: TargetNames=allfile, ConfigItems=24, FilePath=D:\vm3\vmhr\HrSystem\HrSystem\bin\Debug\netcoreapp3.1\nlog.config
+2022-01-22 09:49:30.7128 Info Configuring from an XML element in D:\vm3\vmhr\HrSystem\HrSystem\bin\Debug\netcoreapp3.1\nlog.config...
+2022-01-22 09:49:30.7128 Info Message Template Auto Format enabled
+2022-01-22 09:49:30.7128 Info Loading assembly: NLog.Web.AspNetCore
+2022-01-22 09:49:30.7128 Info Adding target FileTarget(Name=allfile)
+2022-01-22 09:49:30.7128 Info Closing old configuration.
+2022-01-22 09:49:30.7128 Info Validating config: TargetNames=allfile, ConfigItems=24, FilePath=D:\vm3\vmhr\HrSystem\HrSystem\bin\Debug\netcoreapp3.1\nlog.config
+2022-01-22 09:49:30.7128 Info Configuring from an XML element in D:\vm3\vmhr\HrSystem\HrSystem\bin\Debug\netcoreapp3.1\nlog.config...
+2022-01-22 09:49:30.7128 Info Message Template Auto Format enabled
+2022-01-22 09:49:30.7128 Info Loading assembly: NLog.Web.AspNetCore
+2022-01-22 09:49:30.7128 Info Adding target FileTarget(Name=allfile)
+2022-01-22 09:49:30.7128 Info Closing old configuration.
+2022-01-22 09:49:30.7128 Info Validating config: TargetNames=allfile, ConfigItems=24, FilePath=D:\vm3\vmhr\HrSystem\HrSystem\bin\Debug\netcoreapp3.1\nlog.config
+2022-01-22 10:10:43.9522 Info Message Template Auto Format enabled
+2022-01-22 10:10:43.9596 Info Loading assembly: NLog.Web.AspNetCore
+2022-01-22 10:10:43.9984 Info Adding target FileTarget(Name=allfile)
+2022-01-22 10:10:44.0199 Info Validating config: TargetNames=allfile, ConfigItems=24, FilePath=D:\vm3\vmhr\HrSystem\HrSystem\bin\Debug\netcoreapp3.1\nlog.config
+2022-01-22 10:10:44.0539 Info Configuring from an XML element in D:\vm3\vmhr\HrSystem\HrSystem\bin\Debug\netcoreapp3.1\nlog.config...
+2022-01-22 10:10:44.0539 Info Message Template Auto Format enabled
+2022-01-22 10:10:44.0539 Info Loading assembly: NLog.Web.AspNetCore
+2022-01-22 10:10:44.0539 Info Adding target FileTarget(Name=allfile)
+2022-01-22 10:10:44.0539 Info Closing old configuration.
+2022-01-22 10:10:44.0539 Info Validating config: TargetNames=allfile, ConfigItems=24, FilePath=D:\vm3\vmhr\HrSystem\HrSystem\bin\Debug\netcoreapp3.1\nlog.config
+2022-01-22 10:10:44.3860 Info Configuring from an XML element in D:\vm3\vmhr\HrSystem\HrSystem\bin\Debug\netcoreapp3.1\nlog.config...
+2022-01-22 10:10:44.3860 Info Message Template Auto Format enabled
+2022-01-22 10:10:44.3860 Info Loading assembly: NLog.Web.AspNetCore
+2022-01-22 10:10:44.3860 Info Adding target FileTarget(Name=allfile)
+2022-01-22 10:10:44.3860 Info Closing old configuration.
+2022-01-22 10:10:44.3860 Info Validating config: TargetNames=allfile, ConfigItems=24, FilePath=D:\vm3\vmhr\HrSystem\HrSystem\bin\Debug\netcoreapp3.1\nlog.config
+2022-01-22 10:10:44.3860 Info Configuring from an XML element in D:\vm3\vmhr\HrSystem\HrSystem\bin\Debug\netcoreapp3.1\nlog.config...
+2022-01-22 10:10:44.3860 Info Message Template Auto Format enabled
+2022-01-22 10:10:44.3860 Info Loading assembly: NLog.Web.AspNetCore
+2022-01-22 10:10:44.3860 Info Adding target FileTarget(Name=allfile)
+2022-01-22 10:10:44.3860 Info Closing old configuration.
+2022-01-22 10:10:44.3860 Info Validating config: TargetNames=allfile, ConfigItems=24, FilePath=D:\vm3\vmhr\HrSystem\HrSystem\bin\Debug\netcoreapp3.1\nlog.config
+2022-01-22 10:14:12.9354 Info Message Template Auto Format enabled
+2022-01-22 10:14:12.9354 Info Loading assembly: NLog.Web.AspNetCore
+2022-01-22 10:14:12.9890 Info Adding target FileTarget(Name=allfile)
+2022-01-22 10:14:13.0127 Info Validating config: TargetNames=allfile, ConfigItems=24, FilePath=D:\vm3\vmhr\HrSystem\HrSystem\bin\Debug\netcoreapp3.1\nlog.config
+2022-01-22 10:14:13.0454 Info Configuring from an XML element in D:\vm3\vmhr\HrSystem\HrSystem\bin\Debug\netcoreapp3.1\nlog.config...
+2022-01-22 10:14:13.0454 Info Message Template Auto Format enabled
+2022-01-22 10:14:13.0454 Info Loading assembly: NLog.Web.AspNetCore
+2022-01-22 10:14:13.0454 Info Adding target FileTarget(Name=allfile)
+2022-01-22 10:14:13.0454 Info Closing old configuration.
+2022-01-22 10:14:13.0602 Info Validating config: TargetNames=allfile, ConfigItems=24, FilePath=D:\vm3\vmhr\HrSystem\HrSystem\bin\Debug\netcoreapp3.1\nlog.config
+2022-01-22 10:14:13.3507 Info Configuring from an XML element in D:\vm3\vmhr\HrSystem\HrSystem\bin\Debug\netcoreapp3.1\nlog.config...
+2022-01-22 10:14:13.3507 Info Message Template Auto Format enabled
+2022-01-22 10:14:13.3507 Info Loading assembly: NLog.Web.AspNetCore
+2022-01-22 10:14:13.3507 Info Adding target FileTarget(Name=allfile)
+2022-01-22 10:14:13.3507 Info Closing old configuration.
+2022-01-22 10:14:13.3507 Info Validating config: TargetNames=allfile, ConfigItems=24, FilePath=D:\vm3\vmhr\HrSystem\HrSystem\bin\Debug\netcoreapp3.1\nlog.config
+2022-01-22 10:14:13.3507 Info Configuring from an XML element in D:\vm3\vmhr\HrSystem\HrSystem\bin\Debug\netcoreapp3.1\nlog.config...
+2022-01-22 10:14:13.3507 Info Message Template Auto Format enabled
+2022-01-22 10:14:13.3507 Info Loading assembly: NLog.Web.AspNetCore
+2022-01-22 10:14:13.3507 Info Adding target FileTarget(Name=allfile)
+2022-01-22 10:14:13.3507 Info Closing old configuration.
+2022-01-22 10:14:13.3507 Info Validating config: TargetNames=allfile, ConfigItems=24, FilePath=D:\vm3\vmhr\HrSystem\HrSystem\bin\Debug\netcoreapp3.1\nlog.config
+2022-01-22 10:15:27.5543 Info Message Template Auto Format enabled
+2022-01-22 10:15:27.5543 Info Loading assembly: NLog.Web.AspNetCore
+2022-01-22 10:15:27.6109 Info Adding target FileTarget(Name=allfile)
+2022-01-22 10:15:27.6380 Info Validating config: TargetNames=allfile, ConfigItems=24, FilePath=D:\vm3\vmhr\HrSystem\HrSystem\bin\Debug\netcoreapp3.1\nlog.config
+2022-01-22 10:15:27.6784 Info Configuring from an XML element in D:\vm3\vmhr\HrSystem\HrSystem\bin\Debug\netcoreapp3.1\nlog.config...
+2022-01-22 10:15:27.6784 Info Message Template Auto Format enabled
+2022-01-22 10:15:27.6784 Info Loading assembly: NLog.Web.AspNetCore
+2022-01-22 10:15:27.6784 Info Adding target FileTarget(Name=allfile)
+2022-01-22 10:15:27.6784 Info Closing old configuration.
+2022-01-22 10:15:27.6784 Info Validating config: TargetNames=allfile, ConfigItems=24, FilePath=D:\vm3\vmhr\HrSystem\HrSystem\bin\Debug\netcoreapp3.1\nlog.config
+2022-01-22 10:15:27.9991 Info Configuring from an XML element in D:\vm3\vmhr\HrSystem\HrSystem\bin\Debug\netcoreapp3.1\nlog.config...
+2022-01-22 10:15:27.9991 Info Message Template Auto Format enabled
+2022-01-22 10:15:27.9991 Info Loading assembly: NLog.Web.AspNetCore
+2022-01-22 10:15:27.9991 Info Adding target FileTarget(Name=allfile)
+2022-01-22 10:15:27.9991 Info Closing old configuration.
+2022-01-22 10:15:27.9991 Info Validating config: TargetNames=allfile, ConfigItems=24, FilePath=D:\vm3\vmhr\HrSystem\HrSystem\bin\Debug\netcoreapp3.1\nlog.config
+2022-01-22 10:15:27.9991 Info Configuring from an XML element in D:\vm3\vmhr\HrSystem\HrSystem\bin\Debug\netcoreapp3.1\nlog.config...
+2022-01-22 10:15:27.9991 Info Message Template Auto Format enabled
+2022-01-22 10:15:27.9991 Info Loading assembly: NLog.Web.AspNetCore
+2022-01-22 10:15:27.9991 Info Adding target FileTarget(Name=allfile)
+2022-01-22 10:15:28.0069 Info Closing old configuration.
+2022-01-22 10:15:28.0069 Info Validating config: TargetNames=allfile, ConfigItems=24, FilePath=D:\vm3\vmhr\HrSystem\HrSystem\bin\Debug\netcoreapp3.1\nlog.config
+2022-01-22 10:17:23.5085 Info Message Template Auto Format enabled
+2022-01-22 10:17:23.5085 Info Loading assembly: NLog.Web.AspNetCore
+2022-01-22 10:17:23.5854 Info Adding target FileTarget(Name=allfile)
+2022-01-22 10:17:23.6163 Info Validating config: TargetNames=allfile, ConfigItems=24, FilePath=D:\vm3\vmhr\HrSystem\HrSystem\bin\Debug\netcoreapp3.1\nlog.config
+2022-01-22 10:17:23.6618 Info Configuring from an XML element in D:\vm3\vmhr\HrSystem\HrSystem\bin\Debug\netcoreapp3.1\nlog.config...
+2022-01-22 10:17:23.6623 Info Message Template Auto Format enabled
+2022-01-22 10:17:23.6623 Info Loading assembly: NLog.Web.AspNetCore
+2022-01-22 10:17:23.6623 Info Adding target FileTarget(Name=allfile)
+2022-01-22 10:17:23.6623 Info Closing old configuration.
+2022-01-22 10:17:23.6814 Info Validating config: TargetNames=allfile, ConfigItems=24, FilePath=D:\vm3\vmhr\HrSystem\HrSystem\bin\Debug\netcoreapp3.1\nlog.config
+2022-01-22 10:17:23.9957 Info Configuring from an XML element in D:\vm3\vmhr\HrSystem\HrSystem\bin\Debug\netcoreapp3.1\nlog.config...
+2022-01-22 10:17:23.9957 Info Message Template Auto Format enabled
+2022-01-22 10:17:23.9957 Info Loading assembly: NLog.Web.AspNetCore
+2022-01-22 10:17:23.9957 Info Adding target FileTarget(Name=allfile)
+2022-01-22 10:17:23.9957 Info Closing old configuration.
+2022-01-22 10:17:23.9957 Info Validating config: TargetNames=allfile, ConfigItems=24, FilePath=D:\vm3\vmhr\HrSystem\HrSystem\bin\Debug\netcoreapp3.1\nlog.config
+2022-01-22 10:17:23.9957 Info Configuring from an XML element in D:\vm3\vmhr\HrSystem\HrSystem\bin\Debug\netcoreapp3.1\nlog.config...
+2022-01-22 10:17:23.9957 Info Message Template Auto Format enabled
+2022-01-22 10:17:23.9957 Info Loading assembly: NLog.Web.AspNetCore
+2022-01-22 10:17:23.9957 Info Adding target FileTarget(Name=allfile)
+2022-01-22 10:17:23.9957 Info Closing old configuration.
+2022-01-22 10:17:23.9957 Info Validating config: TargetNames=allfile, ConfigItems=24, FilePath=D:\vm3\vmhr\HrSystem\HrSystem\bin\Debug\netcoreapp3.1\nlog.config
+2022-01-22 10:18:38.2921 Info Message Template Auto Format enabled
+2022-01-22 10:18:38.2921 Info Loading assembly: NLog.Web.AspNetCore
+2022-01-22 10:18:38.3593 Info Adding target FileTarget(Name=allfile)
+2022-01-22 10:18:38.3908 Info Validating config: TargetNames=allfile, ConfigItems=24, FilePath=D:\vm3\vmhr\HrSystem\HrSystem\bin\Debug\netcoreapp3.1\nlog.config
+2022-01-22 10:18:38.4421 Info Configuring from an XML element in D:\vm3\vmhr\HrSystem\HrSystem\bin\Debug\netcoreapp3.1\nlog.config...
+2022-01-22 10:18:38.4421 Info Message Template Auto Format enabled
+2022-01-22 10:18:38.4421 Info Loading assembly: NLog.Web.AspNetCore
+2022-01-22 10:18:38.4435 Info Adding target FileTarget(Name=allfile)
+2022-01-22 10:18:38.4435 Info Closing old configuration.
+2022-01-22 10:18:38.4435 Info Validating config: TargetNames=allfile, ConfigItems=24, FilePath=D:\vm3\vmhr\HrSystem\HrSystem\bin\Debug\netcoreapp3.1\nlog.config
+2022-01-22 10:18:38.7670 Info Configuring from an XML element in D:\vm3\vmhr\HrSystem\HrSystem\bin\Debug\netcoreapp3.1\nlog.config...
+2022-01-22 10:18:38.7670 Info Message Template Auto Format enabled
+2022-01-22 10:18:38.7670 Info Loading assembly: NLog.Web.AspNetCore
+2022-01-22 10:18:38.7670 Info Adding target FileTarget(Name=allfile)
+2022-01-22 10:18:38.7670 Info Closing old configuration.
+2022-01-22 10:18:38.7737 Info Validating config: TargetNames=allfile, ConfigItems=24, FilePath=D:\vm3\vmhr\HrSystem\HrSystem\bin\Debug\netcoreapp3.1\nlog.config
+2022-01-22 10:18:38.7737 Info Configuring from an XML element in D:\vm3\vmhr\HrSystem\HrSystem\bin\Debug\netcoreapp3.1\nlog.config...
+2022-01-22 10:18:38.7737 Info Message Template Auto Format enabled
+2022-01-22 10:18:38.7737 Info Loading assembly: NLog.Web.AspNetCore
+2022-01-22 10:18:38.7737 Info Adding target FileTarget(Name=allfile)
+2022-01-22 10:18:38.7737 Info Closing old configuration.
+2022-01-22 10:18:38.7737 Info Validating config: TargetNames=allfile, ConfigItems=24, FilePath=D:\vm3\vmhr\HrSystem\HrSystem\bin\Debug\netcoreapp3.1\nlog.config
+2022-01-22 10:33:27.2574 Info Message Template Auto Format enabled
+2022-01-22 10:33:27.2574 Info Loading assembly: NLog.Web.AspNetCore
+2022-01-22 10:33:27.3160 Info Adding target FileTarget(Name=allfile)
+2022-01-22 10:33:27.3453 Info Validating config: TargetNames=allfile, ConfigItems=24, FilePath=D:\vm3\vmhr\HrSystem\HrSystem\bin\Debug\netcoreapp3.1\nlog.config
+2022-01-22 10:33:27.3805 Info Configuring from an XML element in D:\vm3\vmhr\HrSystem\HrSystem\bin\Debug\netcoreapp3.1\nlog.config...
+2022-01-22 10:33:27.3805 Info Message Template Auto Format enabled
+2022-01-22 10:33:27.3805 Info Loading assembly: NLog.Web.AspNetCore
+2022-01-22 10:33:27.3820 Info Adding target FileTarget(Name=allfile)
+2022-01-22 10:33:27.3820 Info Closing old configuration.
+2022-01-22 10:33:27.4001 Info Validating config: TargetNames=allfile, ConfigItems=24, FilePath=D:\vm3\vmhr\HrSystem\HrSystem\bin\Debug\netcoreapp3.1\nlog.config
+2022-01-22 10:33:27.7892 Info Configuring from an XML element in D:\vm3\vmhr\HrSystem\HrSystem\bin\Debug\netcoreapp3.1\nlog.config...
+2022-01-22 10:33:27.7892 Info Message Template Auto Format enabled
+2022-01-22 10:33:27.7892 Info Loading assembly: NLog.Web.AspNetCore
+2022-01-22 10:33:27.7892 Info Adding target FileTarget(Name=allfile)
+2022-01-22 10:33:27.7892 Info Closing old configuration.
+2022-01-22 10:33:27.7892 Info Validating config: TargetNames=allfile, ConfigItems=24, FilePath=D:\vm3\vmhr\HrSystem\HrSystem\bin\Debug\netcoreapp3.1\nlog.config
+2022-01-22 10:33:27.7892 Info Configuring from an XML element in D:\vm3\vmhr\HrSystem\HrSystem\bin\Debug\netcoreapp3.1\nlog.config...
+2022-01-22 10:33:27.7892 Info Message Template Auto Format enabled
+2022-01-22 10:33:27.7892 Info Loading assembly: NLog.Web.AspNetCore
+2022-01-22 10:33:27.7892 Info Adding target FileTarget(Name=allfile)
+2022-01-22 10:33:27.7892 Info Closing old configuration.
+2022-01-22 10:33:27.7892 Info Validating config: TargetNames=allfile, ConfigItems=24, FilePath=D:\vm3\vmhr\HrSystem\HrSystem\bin\Debug\netcoreapp3.1\nlog.config
+2022-01-22 10:35:31.0000 Info Message Template Auto Format enabled
+2022-01-22 10:35:31.0109 Info Loading assembly: NLog.Web.AspNetCore
+2022-01-22 10:35:31.0801 Info Adding target FileTarget(Name=allfile)
+2022-01-22 10:35:31.1196 Info Validating config: TargetNames=allfile, ConfigItems=24, FilePath=D:\vm3\vmhr\HrSystem\HrSystem\bin\Debug\netcoreapp3.1\nlog.config
+2022-01-22 10:35:31.1664 Info Configuring from an XML element in D:\vm3\vmhr\HrSystem\HrSystem\bin\Debug\netcoreapp3.1\nlog.config...
+2022-01-22 10:35:31.1664 Info Message Template Auto Format enabled
+2022-01-22 10:35:31.1664 Info Loading assembly: NLog.Web.AspNetCore
+2022-01-22 10:35:31.1664 Info Adding target FileTarget(Name=allfile)
+2022-01-22 10:35:31.1664 Info Closing old configuration.
+2022-01-22 10:35:31.1874 Info Validating config: TargetNames=allfile, ConfigItems=24, FilePath=D:\vm3\vmhr\HrSystem\HrSystem\bin\Debug\netcoreapp3.1\nlog.config
+2022-01-22 10:35:31.5676 Info Configuring from an XML element in D:\vm3\vmhr\HrSystem\HrSystem\bin\Debug\netcoreapp3.1\nlog.config...
+2022-01-22 10:35:31.5676 Info Message Template Auto Format enabled
+2022-01-22 10:35:31.5676 Info Loading assembly: NLog.Web.AspNetCore
+2022-01-22 10:35:31.5695 Info Adding target FileTarget(Name=allfile)
+2022-01-22 10:35:31.5695 Info Closing old configuration.
+2022-01-22 10:35:31.5695 Info Validating config: TargetNames=allfile, ConfigItems=24, FilePath=D:\vm3\vmhr\HrSystem\HrSystem\bin\Debug\netcoreapp3.1\nlog.config
+2022-01-22 10:35:31.5695 Info Configuring from an XML element in D:\vm3\vmhr\HrSystem\HrSystem\bin\Debug\netcoreapp3.1\nlog.config...
+2022-01-22 10:35:31.5695 Info Message Template Auto Format enabled
+2022-01-22 10:35:31.5695 Info Loading assembly: NLog.Web.AspNetCore
+2022-01-22 10:35:31.5695 Info Adding target FileTarget(Name=allfile)
+2022-01-22 10:35:31.5695 Info Closing old configuration.
+2022-01-22 10:35:31.5695 Info Validating config: TargetNames=allfile, ConfigItems=24, FilePath=D:\vm3\vmhr\HrSystem\HrSystem\bin\Debug\netcoreapp3.1\nlog.config
+2022-01-22 10:36:29.7100 Info Message Template Auto Format enabled
+2022-01-22 10:36:29.7100 Info Loading assembly: NLog.Web.AspNetCore
+2022-01-22 10:36:29.7769 Info Adding target FileTarget(Name=allfile)
+2022-01-22 10:36:29.8032 Info Validating config: TargetNames=allfile, ConfigItems=24, FilePath=D:\vm3\vmhr\HrSystem\HrSystem\bin\Debug\netcoreapp3.1\nlog.config
+2022-01-22 10:36:29.8363 Info Configuring from an XML element in D:\vm3\vmhr\HrSystem\HrSystem\bin\Debug\netcoreapp3.1\nlog.config...
+2022-01-22 10:36:29.8363 Info Message Template Auto Format enabled
+2022-01-22 10:36:29.8363 Info Loading assembly: NLog.Web.AspNetCore
+2022-01-22 10:36:29.8363 Info Adding target FileTarget(Name=allfile)
+2022-01-22 10:36:29.8363 Info Closing old configuration.
+2022-01-22 10:36:29.8520 Info Validating config: TargetNames=allfile, ConfigItems=24, FilePath=D:\vm3\vmhr\HrSystem\HrSystem\bin\Debug\netcoreapp3.1\nlog.config
+2022-01-22 10:36:30.2791 Info Configuring from an XML element in D:\vm3\vmhr\HrSystem\HrSystem\bin\Debug\netcoreapp3.1\nlog.config...
+2022-01-22 10:36:30.2791 Info Message Template Auto Format enabled
+2022-01-22 10:36:30.2791 Info Loading assembly: NLog.Web.AspNetCore
+2022-01-22 10:36:30.2791 Info Adding target FileTarget(Name=allfile)
+2022-01-22 10:36:30.2791 Info Closing old configuration.
+2022-01-22 10:36:30.2791 Info Validating config: TargetNames=allfile, ConfigItems=24, FilePath=D:\vm3\vmhr\HrSystem\HrSystem\bin\Debug\netcoreapp3.1\nlog.config
+2022-01-22 10:36:30.2791 Info Configuring from an XML element in D:\vm3\vmhr\HrSystem\HrSystem\bin\Debug\netcoreapp3.1\nlog.config...
+2022-01-22 10:36:30.2791 Info Message Template Auto Format enabled
+2022-01-22 10:36:30.2791 Info Loading assembly: NLog.Web.AspNetCore
+2022-01-22 10:36:30.2791 Info Adding target FileTarget(Name=allfile)
+2022-01-22 10:36:30.2791 Info Closing old configuration.
+2022-01-22 10:36:30.2791 Info Validating config: TargetNames=allfile, ConfigItems=24, FilePath=D:\vm3\vmhr\HrSystem\HrSystem\bin\Debug\netcoreapp3.1\nlog.config
+2022-01-22 10:46:57.3428 Info Message Template Auto Format enabled
+2022-01-22 10:46:57.3428 Info Loading assembly: NLog.Web.AspNetCore
+2022-01-22 10:46:57.4036 Info Adding target FileTarget(Name=allfile)
+2022-01-22 10:46:57.4293 Info Validating config: TargetNames=allfile, ConfigItems=24, FilePath=D:\vm3\vmhr\HrSystem\HrSystem\bin\Debug\netcoreapp3.1\nlog.config
+2022-01-22 10:46:57.4623 Info Configuring from an XML element in D:\vm3\vmhr\HrSystem\HrSystem\bin\Debug\netcoreapp3.1\nlog.config...
+2022-01-22 10:46:57.4623 Info Message Template Auto Format enabled
+2022-01-22 10:46:57.4623 Info Loading assembly: NLog.Web.AspNetCore
+2022-01-22 10:46:57.4623 Info Adding target FileTarget(Name=allfile)
+2022-01-22 10:46:57.4623 Info Closing old configuration.
+2022-01-22 10:46:57.4802 Info Validating config: TargetNames=allfile, ConfigItems=24, FilePath=D:\vm3\vmhr\HrSystem\HrSystem\bin\Debug\netcoreapp3.1\nlog.config
+2022-01-22 10:46:57.7862 Info Configuring from an XML element in D:\vm3\vmhr\HrSystem\HrSystem\bin\Debug\netcoreapp3.1\nlog.config...
+2022-01-22 10:46:57.7862 Info Message Template Auto Format enabled
+2022-01-22 10:46:57.7869 Info Loading assembly: NLog.Web.AspNetCore
+2022-01-22 10:46:57.7869 Info Adding target FileTarget(Name=allfile)
+2022-01-22 10:46:57.7869 Info Closing old configuration.
+2022-01-22 10:46:57.7869 Info Validating config: TargetNames=allfile, ConfigItems=24, FilePath=D:\vm3\vmhr\HrSystem\HrSystem\bin\Debug\netcoreapp3.1\nlog.config
+2022-01-22 10:46:57.7869 Info Configuring from an XML element in D:\vm3\vmhr\HrSystem\HrSystem\bin\Debug\netcoreapp3.1\nlog.config...
+2022-01-22 10:46:57.7869 Info Message Template Auto Format enabled
+2022-01-22 10:46:57.7869 Info Loading assembly: NLog.Web.AspNetCore
+2022-01-22 10:46:57.7869 Info Adding target FileTarget(Name=allfile)
+2022-01-22 10:46:57.7869 Info Closing old configuration.
+2022-01-22 10:46:57.7869 Info Validating config: TargetNames=allfile, ConfigItems=24, FilePath=D:\vm3\vmhr\HrSystem\HrSystem\bin\Debug\netcoreapp3.1\nlog.config
+2022-01-22 10:53:32.9788 Info Message Template Auto Format enabled
+2022-01-22 10:53:32.9788 Info Loading assembly: NLog.Web.AspNetCore
+2022-01-22 10:53:33.0308 Info Adding target FileTarget(Name=allfile)
+2022-01-22 10:53:33.0531 Info Validating config: TargetNames=allfile, ConfigItems=24, FilePath=D:\vm3\vmhr\HrSystem\HrSystem\bin\Debug\netcoreapp3.1\nlog.config
+2022-01-22 10:53:33.0869 Info Configuring from an XML element in D:\vm3\vmhr\HrSystem\HrSystem\bin\Debug\netcoreapp3.1\nlog.config...
+2022-01-22 10:53:33.0869 Info Message Template Auto Format enabled
+2022-01-22 10:53:33.0869 Info Loading assembly: NLog.Web.AspNetCore
+2022-01-22 10:53:33.0869 Info Adding target FileTarget(Name=allfile)
+2022-01-22 10:53:33.0869 Info Closing old configuration.
+2022-01-22 10:53:33.0869 Info Validating config: TargetNames=allfile, ConfigItems=24, FilePath=D:\vm3\vmhr\HrSystem\HrSystem\bin\Debug\netcoreapp3.1\nlog.config
+2022-01-22 10:53:33.4044 Info Configuring from an XML element in D:\vm3\vmhr\HrSystem\HrSystem\bin\Debug\netcoreapp3.1\nlog.config...
+2022-01-22 10:53:33.4044 Info Message Template Auto Format enabled
+2022-01-22 10:53:33.4044 Info Loading assembly: NLog.Web.AspNetCore
+2022-01-22 10:53:33.4044 Info Adding target FileTarget(Name=allfile)
+2022-01-22 10:53:33.4044 Info Closing old configuration.
+2022-01-22 10:53:33.4044 Info Validating config: TargetNames=allfile, ConfigItems=24, FilePath=D:\vm3\vmhr\HrSystem\HrSystem\bin\Debug\netcoreapp3.1\nlog.config
+2022-01-22 10:53:33.4044 Info Configuring from an XML element in D:\vm3\vmhr\HrSystem\HrSystem\bin\Debug\netcoreapp3.1\nlog.config...
+2022-01-22 10:53:33.4044 Info Message Template Auto Format enabled
+2022-01-22 10:53:33.4044 Info Loading assembly: NLog.Web.AspNetCore
+2022-01-22 10:53:33.4044 Info Adding target FileTarget(Name=allfile)
+2022-01-22 10:53:33.4044 Info Closing old configuration.
+2022-01-22 10:53:33.4044 Info Validating config: TargetNames=allfile, ConfigItems=24, FilePath=D:\vm3\vmhr\HrSystem\HrSystem\bin\Debug\netcoreapp3.1\nlog.config
