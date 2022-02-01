@@ -20,6 +20,7 @@ namespace HrSystem.ViewComponents
         }
         public async Task<ViewViewComponentResult> InvokeAsync(IStage stage)
         {
+         stage.StageId = 9;
             var stageList = await StageService.GetWithSelectAsync();
 
             ViewBag.StageId = stageList.Select(x => new SelectListItem(x.StatusLabel, x.Id.ToString()));

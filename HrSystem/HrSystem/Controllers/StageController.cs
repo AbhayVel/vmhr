@@ -7,6 +7,8 @@ using System.Linq;
 using HREntity;
 using HRModels;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using PageModel = HRModels.PageModel;
+using System.Threading.Tasks;
 
 namespace HrSystem.Controllers
 {
@@ -18,8 +20,7 @@ namespace HrSystem.Controllers
 
         {
          
-         
-         return View();
+         return  View();
 
         }
 

@@ -26,7 +26,7 @@ namespace HRDB
             }
 
 
-          var lstStage =   await hrdb.Stages.FromSqlRaw<Stage>("GetStage @Id", lst.ToArray()).ToListAsync();
+          var lstStage =   await hrdb.Stages.FromSqlRaw<Stage>("GetStage ", lst.ToArray()).ToListAsync();
             return lstStage;
         }
 

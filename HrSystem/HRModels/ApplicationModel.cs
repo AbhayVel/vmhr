@@ -7,7 +7,8 @@ namespace HRModels
 {
     public class ApplicationModel : BaseModel
     {
-        public string IdSearch { get; set; }
+      
+      public string IdSearch { get; set; }
 
         public string NameSearch { get; set; }
 
@@ -20,8 +21,10 @@ namespace HRModels
 
         public string Where() 
         {
+
             string where = "";
             ApplicationModel applicationModel = this;
+         
             if (!string.IsNullOrWhiteSpace(this.IdSearch))
             {
                 int value = 0;
