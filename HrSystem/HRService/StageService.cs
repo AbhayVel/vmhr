@@ -19,10 +19,17 @@ namespace HRService
       public async System.Threading.Tasks.Task<List<Stage>> GetAllAsync(StageModel stageModel, PageModel pageModel)
 
       {
+         
+
          return await StageRepository.GetAllAsync(stageModel, pageModel);
       }
 
-
+      //public async Task< List<Stage>>  GetAll(StageModel stageModel, PageModel pageModel)
+      //{
+      //   var lstStage=  StageRepository.GetAllAsync(stageModel, pageModel);
+        
+      //   return await lstStage;
+      //}
       public async Task<List<Stage>> GetWithSelectAsync()
 
       {

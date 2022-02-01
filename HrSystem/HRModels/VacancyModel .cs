@@ -30,8 +30,9 @@ namespace HRModels
         public string IdSearch { get; set; }
 
         public string PositionSearch { get; set; }
+      public string StatusSearch { get; set; }
 
-        public IEnumerable<T> Where<T>(IEnumerable<T> list) where T: Vacancy
+      public IEnumerable<T> Where<T>(IEnumerable<T> list) where T: Vacancy
         {
             VacancyModel vacancyModel = this;
             if (!string.IsNullOrWhiteSpace(IdSearch))
@@ -49,8 +50,12 @@ namespace HRModels
 
                 list = list.Where(x => x.Position.Contains(PositionSearch, StringComparison.OrdinalIgnoreCase));
             }
+         if (!string.IsNullOrWhiteSpace(StatusSearch))
+         {
 
-            return list;
+            list = list.Where(x => x.Status.Contains(StatusSearch, StringComparison.OrdinalIgnoreCase));
+         }
+         return list;
         }
         
         public IEnumerable<T> Sort<T>(IEnumerable<T> list) where T : Vacancy
@@ -81,7 +86,21 @@ namespace HRModels
                     list = list .OrderByDescending(x => x.Id).ToList();
                 }
             }
-            return list;
+
+         if ("status".Equals(ColumnName, StringComparison.OrdinalIgnoreCase))
+         {
+            if (OrderBy.Equals("asc"))
+            {
+               list = list.OrderBy(x => x.Status);
+            }
+
+            else
+            {
+               list = list.OrderByDescending(x => x.Status);
+            }
+         }
+         list = list.ToList();
+         return list;
         }
     }
 }

@@ -15,6 +15,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
+using HRDB;
 
 namespace HrSystem.Controllers
 {
@@ -115,7 +116,17 @@ namespace HrSystem.Controllers
          ViewBag.VacancyId = vacancyList.Select(x => new SelectListItem(x.Position, x.Id.ToString()));
          return View("Add", application);
       }
+      public IActionResult Details(int id)
 
+      {
+        
+         //using (HrSystemDBContext hrSystemDBContext = new HrSystemDBContext())
+
+
+         
+
+            return View();
+      }
 
       public IActionResult Delete(int id)
       {
@@ -175,7 +186,7 @@ namespace HrSystem.Controllers
             }
             var path = System.IO.Path.Combine(@"C:\AllFiles", application.Id.ToString(), name);
             //Save 
-            using var stream = new FileStream(path, FileMode.Open);
+            using var stream = new FileStream(path, FileMode.CreateNew);
             file.CopyTo(stream);
             application.Resume = name;
             ApplicationService.Save(application);

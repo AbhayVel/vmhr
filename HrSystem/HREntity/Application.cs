@@ -8,9 +8,11 @@ namespace HREntity
     [Table("application")]
     public class Application : IVacancy, IStage
     {
-        [Key]
-
+       
+      [Key]
         public int? Id { get; set; }
+      
+     
 
         [Required]
         [MinLength(2)]
@@ -43,12 +45,12 @@ namespace HREntity
         public DateTime DateCreated { get; set; }
 
 
-        [ForeignKey("VacancyId")]
+        [ForeignKey("VacancyId")] 
         public virtual Vacancy Vacancy { get; set; }
 
+     
 
-        
-        [ForeignKey("StageId")]
+      [ForeignKey("StageId")]
         public virtual Stage Stage { get; set; }
 
 

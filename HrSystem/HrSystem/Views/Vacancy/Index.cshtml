@@ -26,6 +26,13 @@
             </div>
         </div>
 
+         <div class="col-6">
+            <div class="form-group">
+                <label for="Status">Status:</label>
+                <input type="text" class="form-control" value="@vacancyModel.StatusSearch" name="statusSearch" id="StatusSearch">
+            </div>
+        </div>
+
      </div>   
 
         <input type="hidden" name="columnName" id="columnName" value="@ViewBag.columnName" />
@@ -40,7 +47,8 @@
                 <th><a onclick="sort('id','@ViewBag.orderBy')" href="/vacancy/index?columnName=id&orderBy=@ViewBag.orderBy">#</a></th>
                 <th><a onclick="sort('position','@ViewBag.orderBy')" href="/vacancy/index?columnName=position&orderBy=asc">Vacancy Information</a></th>
                 <th>Document</th>
-                <th>Status</th>
+                <th><a onclick="sort('status','@ViewBag.orderBy')" href="/vacancy/index?columnName=status&orderBy=asc">Status</a></th>
+                @*<th>Status</th>*@
                 <th>Action</th>
 
             </tr>
@@ -57,7 +65,7 @@
                     </td>
                      <td><a href="~/applications/add"><button type="button" class="btn btn-success">Add Applicant</button></a></td>
                     
-                    <td><span class="badge badge-success">Active</span></td>
+                    <td><span class="badge badge-success">@Model[i].Status</span></td>
                     <td>
                         <button type="button" class="btn btn-success">View</button>
                       <a href="~/Vacancy/Edit/@Model[i].Id"> <button type="button" class="btn btn-warning">Edit</button></a>
