@@ -39,8 +39,29 @@ namespace HRService
             }
         }
 
+        public ClaimsIdentity GetClaimIdentity(string userName, string password)
+        {
+            var user = UserRepository.Get(userName, password);
+            if (user is null)
+            {
+                return null;
+            }
+            else
+            {
+                user.Password = "";
+                user.IsAuthenticated = true;
+                user.AuthenticationType = "cookies";
 
-      public List<User> GetAll(UserModel userModel, PageModel pageModel)
+                ClaimsIdentity claimsIdentity = new ClaimsIdentity(user);
+                claimsIdentity.AddClaim(new Claim(ClaimTypes.Role, user.Role));
+                //ClaimsPrincipal claimsPrincipal = new ClaimsPrincipal(claimsIdentity);
+
+                return claimsIdentity;
+            }
+        }
+
+
+        public List<User> GetAll(UserModel userModel, PageModel pageModel)
       {
          return UserRepository.GetAll(userModel, pageModel);
       }

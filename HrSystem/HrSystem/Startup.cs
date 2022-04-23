@@ -28,7 +28,10 @@ namespace HrSystem
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddControllersWithViews((options)=> {
+         services.AddControllers()
+       .AddNewtonsoftJson();
+
+         services.AddControllersWithViews((options)=> {
              //   options.Filters.Add(new HRAuthrizationFiltter());
                 options.Filters.Add(new HRExceptionFilter());
                 options.Filters.Add(new HRActionFilter());
@@ -172,7 +175,9 @@ namespace HrSystem
             app.UseEndpoints(endpoints =>
             {
 
-                 
+                //endpoints.MapControllerRoute(
+                //  name: "default",
+                //  pattern: "{controller}/{action=Index}/{id?}");
 
                 endpoints.MapControllerRoute(
                     name: "default",

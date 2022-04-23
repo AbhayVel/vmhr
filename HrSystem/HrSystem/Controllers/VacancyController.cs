@@ -28,7 +28,7 @@ namespace HrSystem.Controllers
         public IActionResult Index(VacancyModel vacancyModel,PageModel pageModel)       
         {
             
-            pageModel.RowPerPage = 4 ;
+            pageModel.RowPerPage = 10 ;
             var lstVacancy = VacancyService.GetAll(vacancyModel,pageModel);
               ViewBag.orderBy = vacancyModel.OrderBy;
             ViewBag.vacancyModel = vacancyModel;
@@ -44,8 +44,10 @@ namespace HrSystem.Controllers
             var vacancyList = VacancyService.GetWithSelect();
            
             var vacancy = new Vacancy();
+ 
             ViewBag.position = vacancyList.Select(x => new SelectListItem(x.Position, x.Id.ToString()));
             ViewBag.status = vacancyList.Select(x => new SelectListItem(x.Status, x.Id.ToString()));
+ 
             return View(vacancy);
 
         }

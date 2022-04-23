@@ -14,7 +14,9 @@ namespace HRDB
         public HrSystemDBContext() : base()
         {
 
-             _connectionString = @"Data Source=DESKTOP-2DKE6C9\SQLEXPRESS;Initial Catalog=HRSystem;Integrated Security=True";
+
+            _connectionString = Environment.GetEnvironmentVariable("ConnectionString");
+
 
         }
 
@@ -35,6 +37,8 @@ namespace HRDB
         
         public DbSet<Stage> Stages { get; set; }
       public DbSet<LoginUser> LoginUser { get; set; }
+
+       
       
    }
 }

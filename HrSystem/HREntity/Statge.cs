@@ -7,6 +7,7 @@ namespace HREntity
 
     public interface IStage
     {
+        [Display(Name ="Stage")]
         public int? StageId { get; set; }
         public Stage Stage { get; set; }
     }
@@ -17,7 +18,7 @@ namespace HREntity
     {   [Key]
         public int Id { get; set; }
 
-        public int? Status { get; set; }
+        public string? Status { get; set; }
 
 
         public string StatusLabel { get; set; }

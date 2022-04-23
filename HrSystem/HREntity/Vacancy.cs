@@ -11,7 +11,7 @@ namespace HREntity
         public Vacancy Vacancy { get; set; }
     }
     [Table("vacancy")]
-    public class Vacancy
+    public class Vacancy  
     {   [Key]
         public int? Id { get; set; }
 
@@ -24,7 +24,10 @@ namespace HREntity
         public string Skills { get; set; }
 
 
-        public int Availability { get; set; }
+
+        
+
+        
 
         public string Description { get; set; }
 

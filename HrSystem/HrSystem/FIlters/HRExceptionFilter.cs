@@ -30,7 +30,7 @@ namespace HrSystem.FIlters
 
             string err = $"controllerName: {controllerName} ;actionName : {actionName};  path : {path};message : {message};stackTrace : {stackTrace};";
             _logger.Error(err);
-            context.Result = new RedirectResult("Exception/Index");
+            context.Result = new RedirectResult("/Exception/Index");
         }
         public override async Task OnExceptionAsync(ExceptionContext context)
         {

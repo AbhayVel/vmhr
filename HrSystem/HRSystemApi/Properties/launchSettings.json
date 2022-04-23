@@ -13,8 +13,13 @@
       "commandName": "IISExpress",
       "launchBrowser": true,
       "launchUrl": "weatherforecast",
-      "environmentVariables": {
-        "ASPNETCORE_ENVIRONMENT": "Development"
+                                            "environmentVariables": {
+                                                                                        "ASPNETCORE_ENVIRONMENT": "Development",
+
+
+                                                                                        
+                                                                                        "ConnectionString": "Data Source=DESKTOP-M39FDL2\\SQLEXPRESS;Initial Catalog=HRSystem;Integrated Security=True"
+                                            }
       }
     },
     "HRSystemApi": {

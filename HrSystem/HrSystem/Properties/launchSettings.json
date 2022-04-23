@@ -11,10 +11,12 @@
     "IIS Express": {
       "commandName": "IISExpress",
       "launchBrowser": true,
-      "environmentVariables": {
-        "ASPNETCORE_ENVIRONMENT": "Development",
-        "ASPNETCORE_HOSTINGSTARTUPASSEMBLIES": "Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation"
-      }
+                                            "environmentVariables": {
+                                                                                        "ASPNETCORE_ENVIRONMENT": "Development",
+                                                                                        "ASPNETCORE_HOSTINGSTARTUPASSEMBLIES": "Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation",
+                                                                                        
+                                                                                        "ConnectionString": "Data Source=DESKTOP-M39FDL2\\SQLEXPRESS;Initial Catalog=HRSystem;Integrated Security=True"
+                                            }
     },
     "HrSystem": {
       "commandName": "Project",

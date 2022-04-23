@@ -9,9 +9,12 @@ namespace HREntity
     public class Application : IVacancy, IStage
     {
        
-        [Key]
 
+      [Key]
+ 
         public int? Id { get; set; }
+      
+     
 
         [Required]
         [MinLength(2)]
@@ -36,17 +39,22 @@ namespace HREntity
         
        
         public string Resume { get; set; }
+
+        [Display(Name = "Vacancy")]
         public int? VacancyId { get; set; }
+
+        [Display(Name = "Stage")]
         public int? StageId { get; set; }
        
         public DateTime DateCreated { get; set; }
 
 
-        [ForeignKey("VacancyId")]
+        [ForeignKey("VacancyId")] 
         public virtual Vacancy Vacancy { get; set; }
 
+     
 
-        [ForeignKey("StageId")]
+      [ForeignKey("StageId")]
         public virtual Stage Stage { get; set; }
 
 

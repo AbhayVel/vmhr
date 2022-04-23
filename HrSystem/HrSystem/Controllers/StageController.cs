@@ -6,6 +6,9 @@ using System.Collections.Generic;
 using System.Linq;
 using HREntity;
 using HRModels;
+using Microsoft.AspNetCore.Mvc.RazorPages;
+using PageModel = HRModels.PageModel;
+using System.Threading.Tasks;
 
 namespace HrSystem.Controllers
 {
@@ -16,9 +19,8 @@ namespace HrSystem.Controllers
         public IActionResult Index()
 
         {
-
-            
-            return View(null);
+         
+         return  View();
 
         }
 

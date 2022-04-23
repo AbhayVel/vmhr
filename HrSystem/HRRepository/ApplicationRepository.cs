@@ -1,7 +1,9 @@
 ﻿using HRDB;
 using HREntity;
 using HRModels;
+using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,15 +13,17 @@ namespace HRRepository
 {
     public class ApplicationRepository : IApplicationRepository
     {
+     
 
-        public HrSystemDBContext HrSystemDBContext { get; set; } //Instance variable 
+   public HrSystemDBContext HrSystemDBContext { get; set; } //Instance variable 
 
        
 
 
         public ApplicationRepository (HrSystemDBContext hrSystemDBContext)
         {
-            HrSystemDBContext = hrSystemDBContext;
+        
+         HrSystemDBContext = hrSystemDBContext;
         }
 
         private string _query = @"Select   a.id, FirstName, MiddleName, LastName, Email, Phone, Gender, Address, a.Experience, a.Status, Resume, VacancyId, StageId, DateCreated   
@@ -47,11 +51,16 @@ namespace HRRepository
                 HrSystemDBContext.Attach(application);
                 HrSystemDBContext.Entry(application).State = EntityState.Modified;
             }
-
-            HrSystemDBContext.SaveChanges();
+         //var Application = new Application()
+         ////{
+         ////   Resume = Save(application.Resume)
+         //};
+         //HrSystemDBContext.Applications.Add(application);
+         HrSystemDBContext.SaveChanges();
 
             return application;
         }
+      
 
         public void Delete(Application application)
         {
@@ -73,10 +82,17 @@ namespace HRRepository
         {
             return HrSystemDBContext.Applications.FirstOrDefault(x => x.Id == id);
         }
+     //public Application Upload(Application application)
+     // {
+     //    var Application = new Application()
+     //    {
+     //       Resume = Save(application.Resume)
+     //    };
+     //    re
+     // }
 
 
-
-        public List<Application> GetAll(string columnName, string orderBy, string IdSearch, string NameSearch, PageModel pageModel)
+      public List<Application> GetAll(string columnName, string orderBy, string IdSearch, string NameSearch, PageModel pageModel)
         {
             return null;
         }
@@ -93,22 +109,23 @@ namespace HRRepository
             string where = applicationModel.Where();
             string sort = applicationModel.Sort();
 
-            var dbCOnnection = HrSystemDBContext.Database.GetDbConnection();
-            if (dbCOnnection.State != System.Data.ConnectionState.Open)
-            {
-                dbCOnnection.Open();
-            }
-
-            var dbCOmmand = dbCOnnection.CreateCommand();
-            dbCOmmand.CommandText = _queryCount + where;
-
-            var rowsCount = (int)dbCOmmand.ExecuteScalar();
+          
 
             string page = "";
 
 
             if (!(pageModel is null))
             {
+                var dbCOnnection = HrSystemDBContext.Database.GetDbConnection();
+                if (dbCOnnection.State != System.Data.ConnectionState.Open)
+                {
+                    dbCOnnection.Open();
+                }
+
+                var dbCOmmand = dbCOnnection.CreateCommand();
+                dbCOmmand.CommandText = _queryCount + where;
+
+                var rowsCount = (int)dbCOmmand.ExecuteScalar();
                 page = pageModel.SetValues(rowsCount);
             }
 

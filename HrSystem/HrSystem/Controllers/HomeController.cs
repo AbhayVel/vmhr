@@ -1,4 +1,6 @@
-﻿using HrSystem.Models;
+﻿using HRModels;
+using HRService;
+using HrSystem.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
@@ -11,7 +13,15 @@ namespace HrSystem.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
+      ApplicationService ApplicationService { get; set; }
+      StageService StageService { get; set; }
+      public HomeController(ApplicationService applicationService, StageService stageService)
+      {
+         ApplicationService = applicationService;
+         StageService = stageService;
+
+      }
+      private readonly ILogger<HomeController> _logger;
 
         public HomeController(ILogger<HomeController> logger)
         {
@@ -20,7 +30,10 @@ namespace HrSystem.Controllers
 
         public IActionResult Index()
         {
-            return View();
+         //var stageList = StageService.GetWithSelect();
+         //ViewBag.StageId = stageList.Select(x => new (x.StatusLabel, x.Id.ToString()));
+         
+         return View();
         }
 
         public IActionResult Privacy()

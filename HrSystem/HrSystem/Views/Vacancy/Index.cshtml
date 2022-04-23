@@ -1,12 +1,10 @@
-﻿
+
 @model List<Vacancy>
 @using HRModels;
 
 <center><h2>Vacancy List</h2></center>
-<center>
-    <a href="~/Vacancy/Add">
-    <button type="button" class="btn btn-primary">+ New Vacancy</button>
-        </a></center>
+<a href="~/Vacancy/Add">
+<center><button type="button" class="btn btn-primary">+ New Vacancy</button></center></a>
 <br>
 @{
     VacancyModel vacancyModel = ViewBag.vacancyModel as VacancyModel;
@@ -28,6 +26,13 @@
             </div>
         </div>
 
+         <div class="col-6">
+            <div class="form-group">
+                <label for="Status">Status:</label>
+                <input type="text" class="form-control" value="@vacancyModel.StatusSearch" name="statusSearch" id="StatusSearch">
+            </div>
+        </div>
+
      </div>   
 
         <input type="hidden" name="columnName" id="columnName" value="@ViewBag.columnName" />
@@ -39,10 +44,11 @@
     <table id="example" class="table table-striped table-bordered" style="width:100%">
         <thead> 
             <tr>
-                <th><a onclick="sort('id','@ViewBag.orderBy')" href="/vacancy/index?columnName=id&orderBy=@ViewBag.orderBy">Id</a></th>
+                <th><a onclick="sort('id','@ViewBag.orderBy')" href="/vacancy/index?columnName=id&orderBy=@ViewBag.orderBy">#</a></th>
                 <th><a onclick="sort('position','@ViewBag.orderBy')" href="/vacancy/index?columnName=position&orderBy=asc">Vacancy Information</a></th>
-                <th>Upload Resume</th>
-                <th>Status</th>
+                <th>Document</th>
+                <th><a onclick="sort('status','@ViewBag.orderBy')" href="/vacancy/index?columnName=status&orderBy=asc">Status</a></th>
+                @*<th>Status</th>*@
                 <th>Action</th>
 
             </tr>
@@ -50,6 +56,21 @@
         <tbody>
             @for (int i = 0; i < Model.Count; i = i + 1)
             {
+
+                <tr>
+                    <td>@Model[i].Id</td>
+                    <td>
+                        Position : @Model[i].Position<br>
+                        Skills :@Model[i].Skills<br>
+                        Experience : @Model[i].Experience <br>
+                    </td>
+                     <td><a href="~/applications/add"><button type="button" class="btn btn-success">Add Applicant</button></a></td>
+                    
+                    <td><span class="badge badge-success">@Model[i].Status</span></td>
+                    <td>
+                        <button type="button" class="btn btn-success">View</button>
+                      <a href="~/Vacancy/Edit/@Model[i].Id"> <button type="button" class="btn btn-warning">Edit</button></a>
+ 
             <tr>
                 <td>@Model[i].Id</td>
                 <td>
@@ -67,10 +88,11 @@
                 <td>
                     <button type="button" class="btn btn-success">View</button>
                     <a href="~/Vacancy/Edit/@Model[i].Id"> <button type="button" class="btn btn-warning">Edit</button></a>
-                    <a href="~/Vacancy/Delete/@Model[i].Id" onclick="isDelete()"> <button type="button" class="btn btn-warning">Delete</button></a>
-                </td>
 
-            </tr>
+                    <a href="~/Vacancy/Delete/@Model[i].Id" onclick="isDelete()"> <button type="button" class="btn btn-warning">Delete</button></a>
+                    </td>
+
+                </tr>
             }
 
 
@@ -81,7 +103,7 @@
             <tr>
                 <th>#</th>
                 <th>Vacancy Information</th>
-                <th>Upload Resume</th>
+                <th>Document</th>
                 <th>Status</th>
                 <th>Action</th>
 
@@ -131,15 +153,6 @@
         return false;
     }
 
-    function isDelete()
-    {
-        if (confirm("Do you want to delete user.")) { }
-        else {
-            event.preventDefault();
-            return false;
-        }
-
-    }
     function sort(columnName, orderBy) {
         event.preventDefault();
         document.getElementById("columnName").value = columnName;
@@ -158,4 +171,8 @@
 <script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
 <script src="https://cdn.datatables.net/1.10.24/js/dataTables.bootstrap4.min.js"></script>
 
-<script type="text/javascript" scr="~/js/jquery-ui.min.js"></script>
+
+        <script type="text/javascript" scr="~/js/jquery-ui.min.js"></script>
+
+
+ 

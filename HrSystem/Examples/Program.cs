@@ -2,6 +2,7 @@
 using HREntity;
 using Microsoft.EntityFrameworkCore;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -12,11 +13,14 @@ namespace Examples
 
       static void Main(string[] args)
       {
-
+            
          HrSystemDBContext hrdb = new HrSystemDBContext();
 
+            ArrayList l = new ArrayList();
 
+            l.Add(2); ///<- primitive to Object <-boxing
 
+            var i = (int) l[0];//<-- object to primitive type conversion Unboxing 
       }
    }
    }

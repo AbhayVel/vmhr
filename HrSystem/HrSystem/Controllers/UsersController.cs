@@ -76,7 +76,7 @@ namespace HrSystem.Controllers
          //PageModel pageModel = new PageModel();
          //pageModel.CurrentPage = 1;
          //pageModel.TotalRowCount = lstUser.Count;
-         pageModel.RowPerPage = 4;
+         pageModel.RowPerPage = 10;
          var lstUser = UserService.GetAll(userModel, pageModel);
 
          //if ("asc".Equals(userModel.OrderBy))
@@ -101,7 +101,8 @@ namespace HrSystem.Controllers
          var user = UserService.Get(id);
          if (user == null)
          {
-            return Redirect("/users/index");
+                //   return Redirect("/users/index");
+                return RedirectToAction("index", "users");
          }
 
 

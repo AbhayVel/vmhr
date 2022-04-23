@@ -10,11 +10,15 @@
   </ItemGroup>
 
   <ItemGroup>
+ 
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="3.1.22" />
+ 
     <PackageReference Include="bootstrap" Version="5.1.3" />
     <PackageReference Include="Bootstrap.v3.Datetimepicker" Version="4.17.49" />
     <PackageReference Include="Bootstrap.v3.Datetimepicker.CSS" Version="4.17.49" />
     <PackageReference Include="jQuery.UI.Combined" Version="1.13.0" />
     <PackageReference Include="jQueryUIHelpers.Mvc3" Version="3.0.0" />
+ 
     <PackageReference Include="Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation" Version="3.1.21" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="3.1.22">
       <PrivateAssets>all</PrivateAssets>
@@ -30,6 +34,10 @@
     <ProjectReference Include="..\HREntity\HREntity.csproj" />
     <ProjectReference Include="..\HRModels\HRModels.csproj" />
     <ProjectReference Include="..\HRService\HRService.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="wwwroot\Resume\" />
   </ItemGroup>
 
 </Project>
