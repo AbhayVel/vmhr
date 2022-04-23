@@ -11,14 +11,14 @@ namespace HrSystem.FIlters
 {
     public class HRActionFilter : Attribute, IActionFilter
     {
-        private readonly Logger _logger;
+            private readonly Logger _logger;
 
-        DateTime StartTime;
+            DateTime StartTime;
 
-       public HRActionFilter()
-        {
-            _logger = NLog.Web.NLogBuilder.ConfigureNLog("nlog.config").GetCurrentClassLogger();
-        }
+           public HRActionFilter()
+            {
+                _logger = NLog.Web.NLogBuilder.ConfigureNLog("nlog.config").GetCurrentClassLogger();
+            }
 
 
         public void OnActionExecuted(ActionExecutedContext context)

@@ -7,6 +7,7 @@ using HrSystem.Models;
 using Microsoft.AspNetCore.Http;
 
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -104,6 +105,7 @@ namespace HrSystem.Controllers
 
 
 
+
       [HRRoleAuthorization(Roles = "manager, hr, Admin")]
       public IActionResult Add()
 
@@ -128,6 +130,7 @@ namespace HrSystem.Controllers
             return View();
       }
 
+
       public IActionResult Delete(int id)
       {
          var application = ApplicationService.Get(id);
@@ -136,11 +139,13 @@ namespace HrSystem.Controllers
             return Redirect("/applications/index");
          }
 
+       
 
          ApplicationService.Delete(id);
          return Redirect("/applications/index");
       }
 
+ 
 
 
 

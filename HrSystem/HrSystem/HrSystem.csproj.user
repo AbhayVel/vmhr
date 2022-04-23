@@ -11,6 +11,10 @@
     <WebStackScaffolding_IsReferencingScriptLibrariesSelected>False</WebStackScaffolding_IsReferencingScriptLibrariesSelected>
     <WebStackScaffolding_LayoutPageFile />
     <WebStackScaffolding_DbContextTypeFullName>HRDB.HrSystemDBContext</WebStackScaffolding_DbContextTypeFullName>
+ 
     <NameOfLastUsedPublishProfile>D:\vm3\vmhr\HrSystem\HrSystem\Properties\PublishProfiles\FolderProfile.pubxml</NameOfLastUsedPublishProfile>
+ 
+    <ShowAllFiles>true</ShowAllFiles>
+ 
   </PropertyGroup>
 </Project>

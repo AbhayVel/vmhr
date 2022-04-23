@@ -1,4 +1,8 @@
-﻿<center><h2>Application List</h2></center>
+
+﻿@model List<Application>
+
+<center><h2>Application List</h2></center>
+
 <center><button type="button" class="btn btn-primary">+ New Applicant</button></center>
 <br>
 <hr>
@@ -7,6 +11,7 @@
     <table id="example" class="table table-striped table-bordered" style="width:100%">
         <thead>
             <tr>
+
                 <th>#</th>
                 <th>Applicant Information</th>
                 <th>document</th>
@@ -22,10 +27,31 @@
                 <th>Applicant Information</th>
                 <th>document</th>
                 <th>Stage</th>
+
+                <th>Id</th>
+                <th>Applicant Information</th>
+                <th>Document</th>
+                <th>Status</th>
+                <th>Action</th>
+
+            </tr>
+        </thead>
+
+
+        <tfoot>
+            <tr>
+                <th>Id</th>
+                <th>Applicant Information</th>
+                <th>Document</th>
+                <th>Status</th>
+                <th>Action</th>
+
+
             </tr>
         </tfoot>
     </table>
 </div>
+
 
 
 
@@ -81,5 +107,169 @@
     </script>
     }
 }
+
+=======
+<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+<script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.24/js/dataTables.bootstrap4.min.js"></script>
+
+
+
+<script src="https://cdn.datatables.net/1.11.3/css/jquery.dataTables.min.css"></script>
+<script src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
+
+<script>
+
+
+    var data1 = {
+        "applications": [
+            {
+                "id": 12,
+                "firstName": "Anushka",
+                "middleName": "s",
+                "lastName": "Joshi",
+                "email": "anushka@gmail.com",
+                "phone": "32653",
+                "gender": "F",
+                "address": "f         ",
+                "experience": 1,
+                "status": "Active",
+                "resume": "Manisha_Resume",
+                "vacancyId": 1,
+                "stageId": 3,
+                "dateCreated": "0001-01-01T00:00:00",
+                "vacancy": {
+                    "id": 1,
+                    "position": "JavaDevoloper",
+                    "skills": "java",
+                    "availability": 7,
+                    "description": "aa",
+                    "experience": 1.000,
+                    "status": "Active",
+                    "dateCreated": "2021-12-22T00:00:00"
+                },
+                "stage": {
+                    "id": 3,
+                    "status": 1,
+                    "statusLabel": "For Final Interview"
+                }
+            },
+            {
+                "id": 11,
+                "firstName": "Manish",
+                "middleName": "a",
+                "lastName": "Kulkarni",
+                "email": "manish@gmail.com",
+                "phone": "46323",
+                "gender": "M",
+                "address": "e         ",
+                "experience": 1,
+                "status": "Active",
+                "resume": "Manisha_Resume",
+                "vacancyId": 1,
+                "stageId": 3,
+                "dateCreated": "0001-01-01T00:00:00",
+                "vacancy": {
+                    "id": 1,
+                    "position": "JavaDevoloper",
+                    "skills": "java",
+                    "availability": 7,
+                    "description": "aa",
+                    "experience": 1.000,
+                    "status": "Active",
+                    "dateCreated": "2021-12-22T00:00:00"
+                },
+                "stage": {
+                    "id": 3,
+                    "status": 1,
+                    "statusLabel": "For Final Interview"
+                }
+            },
+            {
+                "id": 8,
+                "firstName": "Manisha ",
+                "middleName": "v",
+                "lastName": "Olimbe",
+                "email": "mo@gmail.com",
+                "phone": "657567",
+                "gender": "F",
+                "address": "d         ",
+                "experience": 1,
+                "status": "Active",
+                "resume": "Manisha_Resume",
+                "vacancyId": 1,
+                "stageId": 3,
+                "dateCreated": "0001-01-01T00:00:00",
+                "vacancy": {
+                    "id": 1,
+                    "position": "JavaDevoloper",
+                    "skills": "java",
+                    "availability": 7,
+                    "description": "aa",
+                    "experience": 1.000,
+                    "status": "Active",
+                    "dateCreated": "2021-12-22T00:00:00"
+                },
+                "stage": {
+                    "id": 3,
+                    "status": 1,
+                    "statusLabel": "For Final Interview"
+                }
+            },
+            {
+                "id": 7,
+                "firstName": "Pooja",
+                "middleName": "d",
+                "lastName": "Pagar",
+                "email": "p@gmail.com",
+                "phone": "3435465",
+                "gender": "F",
+                "address": "c         ",
+                "experience": 3,
+                "status": "Active",
+                "resume": "P",
+                "vacancyId": 3,
+                "stageId": 2,
+                "dateCreated": "2021-12-22T00:00:00",
+                "vacancy": {
+                    "id": 3,
+                    "position": "DotNetDevoloper",
+                    "skills": "c#",
+                    "availability": 10,
+                    "description": "cc",
+                    "experience": 3.000,
+                    "status": "Active",
+                    "dateCreated": "2021-12-22T09:12:19.04"
+                },
+                "stage": {
+                    "id": 2,
+                    "status": 1,
+                    "statusLabel": "For Initial Interview"
+                }
+            }
+        ]
+    }
+
+    $(document).ready(function () {
+
+
+        $('#example').DataTable({
+            data: data1,
+            "columns": [
+                { "data": "firstName", title: "Applicant Information " },
+                //{ "data": "vacancy" },
+                //{ "data": "Documents" },
+                //{ "data": "stage" },
+                //{ "data": "Action" }
+
+            ]
+        });
+    });
+
+</script>
+
+
+<script src="js/jquery.min.js" type="text/javascript"></script>
+
 
 

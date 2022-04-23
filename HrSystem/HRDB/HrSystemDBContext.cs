@@ -14,7 +14,9 @@ namespace HRDB
         public HrSystemDBContext() : base()
         {
 
+
             _connectionString = Environment.GetEnvironmentVariable("ConnectionString");
+
 
         }
 

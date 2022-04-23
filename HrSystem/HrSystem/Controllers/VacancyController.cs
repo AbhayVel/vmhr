@@ -8,6 +8,7 @@ using HREntity;
 using HRModels;
 using HrSystem.FIlters;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace HrSystem.Controllers
 {
@@ -40,9 +41,13 @@ namespace HrSystem.Controllers
 
         public IActionResult Add()
         {
+            var vacancyList = VacancyService.GetWithSelect();
+           
             var vacancy = new Vacancy();
-
-
+ 
+            ViewBag.position = vacancyList.Select(x => new SelectListItem(x.Position, x.Id.ToString()));
+            ViewBag.status = vacancyList.Select(x => new SelectListItem(x.Status, x.Id.ToString()));
+ 
             return View(vacancy);
 
         }
