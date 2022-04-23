@@ -44,8 +44,8 @@ namespace BasicExamplewith6
             // results = GreaterThen(nums, 6);
 
             // results = Condition(nums, (x) => x > 6);
-            float[] results = MyLinq.Condition(nums, (x) => x > 6);
-            Print(results);
+            //float[] results = MyLinq.Condition(nums, (x) => x > 6);
+          //  Print(results);
 
         }
 

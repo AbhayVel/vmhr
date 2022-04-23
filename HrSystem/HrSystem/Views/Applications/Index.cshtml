@@ -21,14 +21,8 @@
 
 @Html.Partial("Search")
 
-=======
-<br>
-<hr>
-@{
-
-    ApplicationModel applicationModel = ViewBag.applicationModel as ApplicationModel;
-    PageModel pageModel = ViewBag.pageModel as PageModel;
-}
+ 
+ 
 
 <form method="post" action="/Applications/Index">
     <div class="row">
@@ -112,11 +106,10 @@
                         <a href="~/Applications/delete/@Model[i].Id"  onclick="isDelete()">  <button type="button" class="btn btn-danger">Delete</button></a>
                     </td>
 
-                </tr>
-            }
+               
+           
  
-                        Stage : @Model[i]?.Stage?.StatusLabel<br>
-                    </td>
+                     
                     <td><a href="https://www.w3schools.com/">Smith_Resume</a></td>
                     <td><span class="badge badge-success">New</span></td>
                     <td>

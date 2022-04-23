@@ -57,20 +57,7 @@
             @for (int i = 0; i < Model.Count; i = i + 1)
             {
 
-                <tr>
-                    <td>@Model[i].Id</td>
-                    <td>
-                        Position : @Model[i].Position<br>
-                        Skills :@Model[i].Skills<br>
-                        Experience : @Model[i].Experience <br>
-                    </td>
-                     <td><a href="~/applications/add"><button type="button" class="btn btn-success">Add Applicant</button></a></td>
-                    
-                    <td><span class="badge badge-success">@Model[i].Status</span></td>
-                    <td>
-                        <button type="button" class="btn btn-success">View</button>
-                      <a href="~/Vacancy/Edit/@Model[i].Id"> <button type="button" class="btn btn-warning">Edit</button></a>
- 
+                
             <tr>
                 <td>@Model[i].Id</td>
                 <td>

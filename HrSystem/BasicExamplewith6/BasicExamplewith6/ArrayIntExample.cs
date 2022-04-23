@@ -53,7 +53,7 @@ namespace BasicExamplewith6
          results = GreaterThen(nums, 6);
 
             // results = Condition(nums, (x) => x > 6);
-            results = MyLinq.Condition( MyLinq.Condition(nums, (x) => x > 6), (x)=>x< 11);
+          //  results = MyLinq.Condition( MyLinq.Condition(nums, (x) => x > 6), (x)=>x< 11);
              nums.Condition((x) => x <6).Condition((x)=>x >0).Print();
 
             
