@@ -29,13 +29,16 @@
                 @Html.LabelFor(x => x.FirstName, new { @class = "control-label" })
                 @Html.TextBoxFor(x => x.FirstName, new { @class = "form-control" })
                 @Html.ValidationMessageFor(x => x.FirstName, "", new { @class = "text-danger" })
-            </div></div>
+            </div>
+            </div>
             <div id="MidName">
            <div class="form-group">
                 <label asp-for="MiddleName" class="control-label"></label>
                 <input asp-for="MiddleName" class="form-control" />
                 <span asp-validation-for="MiddleName" class="text-danger"></span>
-            </div></div>
+
+            </div>
+             
             <div id="LastName">
             <div class="form-group">
                 <label asp-for="LastName" class="control-label"></label>

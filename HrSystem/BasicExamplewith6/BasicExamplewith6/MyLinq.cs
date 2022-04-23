@@ -19,13 +19,13 @@ namespace BasicExamplewith6
             }
         }
 
-        public static void Print<T>(this IEnumerable<T> arr) //Extention method
-        {
-            foreach (var item in arr)
-            {
-                Console.WriteLine(item);
-            }
-        }
+        //public static void Print<T>(this IEnumerable<T> arr) //Extention method
+        //{
+        //    foreach (var item in arr)
+        //    {
+        //        Console.WriteLine(item);
+        //    }
+        //}
 
         public static T[] ToConvertArray<T>(this IEnumerable<T> arr) //Extention method
         {
