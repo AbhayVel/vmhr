@@ -1,0 +1,39 @@
+﻿h2 {
+    color: blue;
+    text-align: center;
+    font-size: 60px;
+}
+
+div {
+    text-align: center;
+    text-decoration: wavy;
+    margin-left: 150px;
+    margin-right: 150px;
+    font-size: 40px;
+
+}
+body {
+    background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRw1YPq_Mz6vltIBb86PZzfeB1RngrrgEpOqQ&usqp=CAU");
+    background-repeat:no-repeat;
+    background-size :cover;
+}
+
+.nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+}
+
+.nav li {
+    float: left;
+}
+
+.nav li a {
+        display: block;
+        color: white;
+        text-align: center;
+        padding: 14px 16px;
+        text-decoration: none;
+    }
