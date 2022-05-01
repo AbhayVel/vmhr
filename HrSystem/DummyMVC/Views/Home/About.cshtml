@@ -1,0 +1,23 @@
+﻿@model User
+ <div class="main-block" id="about">
+        <div class="left-part">
+            <i class="fas fa-envelope"></i>
+            <i class="fas fa-at"></i>
+            <i class="fas fa-mail-bulk"></i>
+        </div>
+        <form action="/home/Save"  method="post">
+            <h2>Contact Us</h2>
+            <div class="info">
+                <input class="fname" type="text" name="fname" placeholder="Full name"  value="@Model.FName">
+                <input type="text"  name="email" placeholder="Email" value="@Model.Email">
+                <input type="text" name="pnum" placeholder="Phone number" value="@Model.Pnum">
+                <input type="number" name="age" placeholder="Age" value="@Model.Age">
+            </div>
+            <p>Message</p>
+            <div>
+                <textarea  name="message" rows="4">@Model.Message</textarea>
+            </div>
+            <button>Submit</button>
+        </form>
+    </div>
+
