@@ -18,6 +18,8 @@ namespace Examples
 
             ArrayList l = new ArrayList();
 
+           List<string> lst= new List<string>();
+             
             l.Add(2); ///<- primitive to Object <-boxing
 
             var i = (int) l[0];//<-- object to primitive type conversion Unboxing 
