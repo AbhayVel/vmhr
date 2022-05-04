@@ -20,25 +20,40 @@ namespace HRDB
 
         }
 
+        public HrSystemDBContext(string connectionString) : base()
+        {
 
-        protected  override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+
+            _connectionString = connectionString;
+
+
+        }
+
+
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             if (!optionsBuilder.IsConfigured)
             {
                 optionsBuilder.UseSqlServer(_connectionString);
             }
         }
-       
-              public DbSet<User> Users { get; set; }
-      public DbSet<Application> Applications { get; set; }
+
+        public DbSet<User> Users { get; set; }
+        public DbSet<Application> Applications { get; set; }
 
         public DbSet<Vacancy> Vacancies { get; set; }
-        
-        
+
+
         public DbSet<Stage> Stages { get; set; }
-      public DbSet<LoginUser> LoginUser { get; set; }
+        public DbSet<LoginUser> LoginUser { get; set; }
+
+        public DbSet<Feed> Feeds { get; set; }
+
+        public DbSet<FeedType> FeedType { get; set; }
 
        
-      
-   }
+
+
+
+    }
 }
