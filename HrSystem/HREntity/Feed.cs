@@ -1,12 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
 
 namespace HREntity
 {
+
+    [Table("Feeds")]
     public class Feed
     {
-        public int Id { get; set; }
+
+        [Key]
+        public int? Id { get; set; } //Nullable
 
         public string TextData { get; set; }
 
