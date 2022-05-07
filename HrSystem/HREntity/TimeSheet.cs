@@ -26,5 +26,6 @@ namespace HREntity
         public DateTime TaskEndDate { get; set; }
 
         public DateTime TaskDate { get; set; }
+        
     }
 }
