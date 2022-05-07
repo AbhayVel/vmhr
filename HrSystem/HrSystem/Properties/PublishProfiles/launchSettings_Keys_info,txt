@@ -15,7 +15,7 @@
         "ASPNETCORE_ENVIRONMENT": "Development",
         "ASPNETCORE_HOSTINGSTARTUPASSEMBLIES": "Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation",
 
-        "ConnectionString": "Data Source=DESKTOP-0K1J33K\\SQLEXPRESS;Initial Catalog=HRSystem;Integrated Security=True"
+        "ConnectionString": "Data Source=DESKTOP-C0FBNF9\\SQLEXPRESS;Initial Catalog=HRSystem;Integrated Security=True"
       }
     },
     "HrSystem": {
