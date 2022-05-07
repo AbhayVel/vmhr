@@ -6,7 +6,17 @@ namespace HrSystem.Controllers
 {
     public class FeedTypeController : Controller
     {
-        public IActionResult Index()
+
+        public IActionResult Index3()
+        {
+            return View();
+        }
+
+        public IActionResult Index2()
+        {
+            return View();
+        }
+            public IActionResult Index()
         {
             List<FeedType> feedTypes = new List<FeedType>();
 

@@ -1,0 +1,71 @@
+﻿@model IEnumerable<HREntity.TimeSheet>
+
+@{
+    ViewData["Title"] = "Index3";
+}
+
+<h1>Index3</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.TextData)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Heading)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ShortNotes)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TimeSpend)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TaskStartDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TaskEndDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TaskDate)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.TextData)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Heading)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ShortNotes)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TimeSpend)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TaskStartDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TaskEndDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TaskDate)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
