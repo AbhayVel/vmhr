@@ -6,32 +6,56 @@
 
 <h1>Index</h1>
 
+@{
+    var timeSheetModel = ViewBag.Model as TimeSheetModel;
+}
+
 <p>
     <a asp-action="Create">Create New</a>
 </p>
-<table class="table">
+
+<form action="~/TimeSheet/Index" method="post">
+ 
+<div class="row">
+<div class="col-6">
+<div class="form-group">
+<lable for="Id">Id:</lable>
+<input type="text" class="form-control" value = "@timeSheetModel.IdSearch"  name="IdSearch" id="IdSearch"/>
+
+</div>
+
+</div>
+<div class="col-6">
+<div class="form-group">
+<lable for="Name">Name</lable>
+<input type="text" class="form-control" value = "@timeSheetModel.TextDataSearch"  name="TextDataSearch" id="TextDataSearch"/>
+
+</div>
+
+</div>
+</div>
+
+ 
+<button type="submit"  id="btnsub">Search</button>
+
+</form>
+
+
+        <div class="container">
+<table id="example" class="table table-striped table-bordered" style="width:100%">
     <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.TextData)
+        <tr> 
+             <th>
+              <a href="~/timeSheet/Index?orderBy=Id&orderType=@timeSheetModel.OrderType"> @Html.DisplayNameFor(model => model.Id)</a>
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Heading)
+                <a href="~/timeSheet/Index?orderBy=TextDataorderType=@timeSheetModel.OrderType"> @Html.DisplayNameFor(model => model.TextData)</a>
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.ShortNotes)
+              <a href="~/timeSheet/Index?orderBy=ShortNotes&orderType=@timeSheetModel.OrderType"> @Html.DisplayNameFor(model => model.ShortNotes)</a>
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.TimeSpend)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.TaskStartDate)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.TaskEndDate)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.TaskDate)
+              <a href="~/timeSheet/Index?orderBy=TimeSpend&orderType=@timeSheetModel.OrderType"> @Html.DisplayNameFor(model => model.TimeSpend)</a>
             </th>
             <th></th>
         </tr>
@@ -40,10 +64,10 @@
 @foreach (var item in Model) {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.TextData)
+                @Html.DisplayFor(modelItem => item.Id)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Heading)
+                @Html.DisplayFor(modelItem => item.TextData)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.ShortNotes)
@@ -52,20 +76,15 @@
                 @Html.DisplayFor(modelItem => item.TimeSpend)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.TaskStartDate)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.TaskEndDate)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.TaskDate)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                 <a href="~/Users/Edit/@item.Id"> <button type="button" class="btn btn-warning">Edit</button> </a>
+                  <a href="~/TimeSheet/Delete/@item.Id">
+                 <button type="button" class="btn btn-danger">Delete</button></a>
             </td>
         </tr>
 }
     </tbody>
 </table>
+</div>
+}
+ 
+
