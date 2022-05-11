@@ -55,44 +55,9 @@ namespace HrSystem.Controllers
         public IActionResult Index(FeedTypeModel feedTypeModel)
         {
             List<FeedType> feedTypes= GetFeedType();
-
-            if (!string.IsNullOrWhiteSpace(feedTypeModel.TypeTextSearch))
-            {
-                feedTypes= feedTypes.Where(x=>x.TypeText.Contains(feedTypeModel.TypeTextSearch)).ToList();
-            }
-
-            if (!string.IsNullOrWhiteSpace(feedTypeModel.IdSearch))
-            {
-
-                feedTypes = feedTypes.Where(x => x.Id.ToString()== feedTypeModel.IdSearch).ToList();
-            }
-
-            if ("asc".Equals(feedTypeModel.OrderType, System.StringComparison.OrdinalIgnoreCase))
-            {
-                if ("id".Equals(feedTypeModel.OrderBy, System.StringComparison.OrdinalIgnoreCase))
-                {
-                    feedTypes = feedTypes.OrderBy(x => x.Id).ToList();
-                }
-                else if ("TypeText".Equals(feedTypeModel.OrderBy, System.StringComparison.OrdinalIgnoreCase))
-                {
-                    feedTypes = feedTypes.OrderBy(x => x.TypeText).ToList();
-                }
-                feedTypeModel.OrderType = "desc";
-            } else
-            {
-                if ("id".Equals(feedTypeModel.OrderBy, System.StringComparison.OrdinalIgnoreCase))
-                {
-                    feedTypes = feedTypes.OrderByDescending(x => x.Id).ToList();
-                }
-                else if ("TypeText".Equals(feedTypeModel.OrderBy, System.StringComparison.OrdinalIgnoreCase))
-                {
-                    feedTypes = feedTypes.OrderByDescending(x => x.TypeText).ToList();
-                }
-                feedTypeModel.OrderType = "asc";
-            }
-
+            feedTypes = feedTypeModel.Where(feedTypes);
+            feedTypes = feedTypeModel.Sort(feedTypes);
             ViewBag.Model = feedTypeModel;
-
             return View(feedTypes);
         }
 

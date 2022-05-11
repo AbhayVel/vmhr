@@ -48,10 +48,10 @@
     <thead>
         <tr> 
              <th>
-              <a href="~/feedType/Index?orderBy=id&orderType=@feedTypeModel.OrderType"> @Html.DisplayNameFor(model => model.Id)</a>
+              <a href="~/feedType/Index?ColumnName=id&OrderBy=@feedTypeModel.OrderBy"> @Html.DisplayNameFor(model => model.Id)</a>
             </th>
             <th>
-                <a href="~/feedType/Index?orderBy=TypeText&orderType=@feedTypeModel.OrderType"> @Html.DisplayNameFor(model => model.TypeText)</a>
+                <a href="~/feedType/Index?ColumnName=TypeText&OrderBy=@feedTypeModel.OrderBy"> @Html.DisplayNameFor(model => model.TypeText)</a>
             </th>
             <th></th>
         </tr>
