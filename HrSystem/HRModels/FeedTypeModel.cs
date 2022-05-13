@@ -46,7 +46,7 @@ namespace HRModels
                 {
                     feedTypes = feedTypes.OrderBy(x => x.TypeText).ToList();
                 }
-                OrderBy = "desc";
+                 
             }
             else
             {
@@ -58,7 +58,7 @@ namespace HRModels
                 {
                     feedTypes = feedTypes.OrderByDescending(x => x.TypeText).ToList();
                 }
-                OrderBy = "asc";
+                
             }
 
             return feedTypes;
