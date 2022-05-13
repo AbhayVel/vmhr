@@ -47,6 +47,7 @@
     <ProjectReference Include="..\HREntity\HREntity.csproj" />
     <ProjectReference Include="..\HRModels\HRModels.csproj" />
     <ProjectReference Include="..\HRService\HRService.csproj" />
+    <ProjectReference Include="..\HRSystemApi\HRSystemApi.csproj" />
   </ItemGroup>
 
   <ItemGroup>
