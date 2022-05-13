@@ -6,14 +6,52 @@
 <div class="p-4">
 <h1>Index</h1>
 
+@{
+    var feedTypeModel = ViewBag.Model as FeedTypeModel;
+}
+
 <p>
     <a asp-action="Create">Create New</a>
 </p>
-<table class="table">
+
+<form action="~/FeedType/Index" method="post">
+ 
+<div class="row">
+<div class="col-6">
+<div class="form-group">
+<lable for="Id">Id:</lable>
+<input type="text" class="form-control" value="@feedTypeModel.IdSearch"  name="IdSearch" id="IdSearch"/>
+
+</div>
+
+</div>
+<div class="col-6">
+<div class="form-group">
+<lable for="Name">Name</lable>
+<input type="text" class="form-control" value="@feedTypeModel.TypeTextSearch"  name="TypeTextSearch" id="NameSearch"/>
+
+</div>
+
+</div>
+</div>
+
+ 
+<button type="submit"  id="btnsub">Search</button>
+
+</form>
+  
+
+ 
+
+<div class="container">
+<table id="example" class="table table-striped table-bordered" style="width:100%">
     <thead>
-        <tr>
+        <tr> 
+             <th>
+              <a href="~/feedType/Index?ColumnName=id&OrderBy=@feedTypeModel.OrderBy"> @Html.DisplayNameFor(model => model.Id)</a>
+            </th>
             <th>
-                @Html.DisplayNameFor(model => model.TypeText)
+                <a href="~/feedType/Index?ColumnName=TypeText&OrderBy=@feedTypeModel.OrderBy"> @Html.DisplayNameFor(model => model.TypeText)</a>
             </th>
             <th></th>
         </tr>
@@ -22,15 +60,20 @@
 @foreach (var item in Model) {
         <tr>
             <td>
+                @Html.DisplayFor(modelItem => item.Id)
+            </td>
+            <td>
                 @Html.DisplayFor(modelItem => item.TypeText)
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                 <a href="~/Users/Edit/@item.Id"> <button type="button" class="btn btn-warning">Edit</button> </a>
+                  <a href="~/FeedType/Delete/@item.Id">
+                 <button type="button" class="btn btn-danger">Delete</button></a>
             </td>
         </tr>
 }
     </tbody>
 </table>
 </div>
+
+
