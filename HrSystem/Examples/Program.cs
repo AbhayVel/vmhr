@@ -14,7 +14,7 @@ namespace Examples
       static void Main(string[] args)
       {
             
-         HrSystemDBContext hrdb = new HrSystemDBContext("Data Source=DESKTOP-C0FBNF9\\SQLEXPRESS;Initial Catalog=HRSystem;Integrated Security=True");
+         HrSystemDBContext hrdb = new HrSystemDBContext("Data Source=DESKTOP-V4CN1TU\\SQLEXPRESS;Initial Catalog=HRSystem;Integrated Security=True");
 
             //hrdb.FeedType.Add(new FeedType
             //{
