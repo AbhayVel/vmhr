@@ -27,7 +27,7 @@ namespace HREntity
 
         public string UserName { get; set; }
 
-        //public DateTime FeedDate { get; set; }
+        public DateTime FeedDate { get; set; }
 
     }
 }
