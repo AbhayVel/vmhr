@@ -52,51 +52,9 @@ namespace HrSystem.Controllers
 
             List < TimeSheet > timeSheets = GetTimeSheet();
 
-            
+            timeSheets = timeSheetModel.Where(timeSheets);
 
-            if (!string.IsNullOrWhiteSpace(timeSheetModel.IdSearch))
-            {
-                timeSheets = timeSheets.Where(x => x.Id.ToString() == timeSheetModel.IdSearch).ToList();
-            }
-            if (!string.IsNullOrWhiteSpace(timeSheetModel.TextDataSearch))
-            {
-                timeSheets = timeSheets.Where(x => x.TextData.Contains(timeSheetModel.TextDataSearch)).ToList();
-            }
-            if (!string.IsNullOrWhiteSpace(timeSheetModel.ShortNotesSearch))
-            {
-                timeSheets = timeSheets.Where(x => x.ShortNotes == timeSheetModel.ShortNotesSearch).ToList();
-            }
-            if (!string.IsNullOrWhiteSpace(timeSheetModel.TimeSpendSearch))
-            {
-                timeSheets = timeSheets.Where(x => x.TimeSpend.ToString() == timeSheetModel.TimeSpendSearch).ToList();
-            }
-
-            if ("asc".Equals(timeSheetModel.OrderType, System.StringComparison.OrdinalIgnoreCase))
-            {
-                if ("id".Equals(timeSheetModel.OrderBy, System.StringComparison.OrdinalIgnoreCase))
-                {
-                    timeSheets = timeSheets.OrderBy(x => x.Id).ToList();
-                }
-                else if ("TextData".Equals(timeSheetModel.OrderBy, System.StringComparison.OrdinalIgnoreCase))
-                {
-                    timeSheets = timeSheets.OrderBy(x => x.TextData).ToList();
-                }
-
-                timeSheetModel.OrderType = "desc";
-            }
-            else
-            {
-                if ("id".Equals(timeSheetModel.OrderBy, System.StringComparison.OrdinalIgnoreCase))
-                {
-                    timeSheets = timeSheets.OrderByDescending(x => x.Id).ToList();
-                }
-                else if ("TextData".Equals(timeSheetModel.OrderBy, System.StringComparison.OrdinalIgnoreCase))
-                {
-                    timeSheets = timeSheets.OrderByDescending(x => x.TextData).ToList();
-                }
-
-                timeSheetModel.OrderType = "asc";
-            }
+            timeSheets = timeSheetModel.Sort(timeSheets);
 
             ViewBag.Model = timeSheetModel;
 

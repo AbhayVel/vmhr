@@ -46,16 +46,16 @@
     <thead>
         <tr> 
              <th>
-              <a href="~/timeSheet/Index?orderBy=Id&orderType=@timeSheetModel.OrderType"> @Html.DisplayNameFor(model => model.Id)</a>
+              <a href="~/timeSheet/Index?ColumnName=Id&OrderType=@timeSheetModel.OrderBy"> @Html.DisplayNameFor(model => model.Id)</a>
             </th>
             <th>
-                <a href="~/timeSheet/Index?orderBy=TextDataorderType=@timeSheetModel.OrderType"> @Html.DisplayNameFor(model => model.TextData)</a>
+                <a href="~/timeSheet/Index?ColumnName=TextData&OrderType=@timeSheetModel.OrderBy"> @Html.DisplayNameFor(model => model.TextData)</a>
             </th>
             <th>
-              <a href="~/timeSheet/Index?orderBy=ShortNotes&orderType=@timeSheetModel.OrderType"> @Html.DisplayNameFor(model => model.ShortNotes)</a>
+              <a href="~/timeSheet/Index?ColumnName=ShortNotes&OrderType=@timeSheetModel.OrderBy"> @Html.DisplayNameFor(model => model.ShortNotes)</a>
             </th>
             <th>
-              <a href="~/timeSheet/Index?orderBy=TimeSpend&orderType=@timeSheetModel.OrderType"> @Html.DisplayNameFor(model => model.TimeSpend)</a>
+              <a href="~/timeSheet/Index?ColumnName=TimeSpend&OrderType=@timeSheetModel.OrderBy"> @Html.DisplayNameFor(model => model.TimeSpend)</a>
             </th>
             <th></th>
         </tr>
