@@ -7,6 +7,9 @@ namespace HrSystem.Controllers
 {
     public class FeedController : Controller
     {
+
+
+       
         public List<Feed> GetFeed() {
             List<Feed> feed = new List<Feed>();
 
