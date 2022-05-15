@@ -23,7 +23,7 @@ namespace HRModels
                 _currentPage = value;
             }
         }
-        public int RowPerPage { get; set; } = 10;
+        public int RowPerPage { get; set; } = 2;
 
         public int TotalRowCount { get; set; }
 

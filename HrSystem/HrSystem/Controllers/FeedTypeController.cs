@@ -57,6 +57,8 @@ namespace HrSystem.Controllers
             List<FeedType> feedTypes= GetFeedType();
             feedTypes = feedTypeModel.Where(feedTypes);
             feedTypes = feedTypeModel.Sort(feedTypes);
+            feedTypeModel.PageModel.SetValues(feedTypes);
+            feedTypes= feedTypes.Skip(feedTypeModel.PageModel.StartIndex).Take(feedTypeModel.PageModel.RowPerPage).ToList();
             ViewBag.Model = feedTypeModel;
             return View(feedTypes);
         }
