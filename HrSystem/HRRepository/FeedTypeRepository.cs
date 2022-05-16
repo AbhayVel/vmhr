@@ -23,12 +23,24 @@ namespace HRRepository
         }
 
 
-        public List<FeedType> GetAll(FeedTypeModel feedTypeModel)
+        public List<FeedType> GetAllQuery(FeedTypeModel feedTypeModel)
         {
             var countQuery = _queryCount + feedTypeModel.Where();
             var count = HrSystemDBContext.CountValue(countQuery);
             var query = _query + feedTypeModel.Where() + feedTypeModel.Sort() + feedTypeModel.PageModel.SetValues(count);
             var result = HrSystemDBContext.FeedType.FromSqlRaw(query).ToList();
+            return result;
+        }
+
+
+        public List<FeedType> GetAll(FeedTypeModel feedTypeModel)
+        {
+            IQueryable<FeedType> feedTypes = HrSystemDBContext.FeedType;
+            feedTypes= feedTypeModel.Where(feedTypes);
+            var count = feedTypes.Count();
+            feedTypes= feedTypeModel.Sort(feedTypes);
+            feedTypes = feedTypeModel.PageModel.SetValues(feedTypes, count);
+            var result = feedTypes.ToList();
             return result;
         }
 
