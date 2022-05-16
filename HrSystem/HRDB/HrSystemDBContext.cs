@@ -28,10 +28,7 @@ namespace HRDB
 
 
             _connectionString = connectionString;
-            if(string.IsNullOrEmpty(_connectionString))
-            {
-                _connectionString = "Data Source=DESKTOP-0K1J33K\\SQLEXPRESS;Initial Catalog=HRSystem;Integrated Security=True";
-            }
+
 
         }
 
@@ -57,7 +54,7 @@ namespace HRDB
 
         public DbSet<FeedType> FeedType { get; set; }
 
-
+       
 
         public DbSet<TimeSheet> TimeSheet { get; set; }
 

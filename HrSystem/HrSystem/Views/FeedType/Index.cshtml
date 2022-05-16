@@ -3,7 +3,7 @@
 @{
     ViewData["Title"] = "Index";
 }
-
+<div class="p-4">
 <h1>Index</h1>
 
 @{
@@ -35,6 +35,8 @@
 </div>
 </div>
 
+<input type="hidden" name="OrderBy" id="orderBy" value="@feedTypeModel.OrderBy" />
+<input type="hidden" name="ColumnName" id="columnName" value="@feedTypeModel.ColumnName" />
  
 <button type="submit"  id="btnsub">Search</button>
 
@@ -48,10 +50,10 @@
     <thead>
         <tr> 
              <th>
-              <a href="~/feedType/Index?ColumnName=id&OrderType=@feedTypeModel.OrderBy"> @Html.DisplayNameFor(model => model.Id)</a>
+              <a onclick="sort('@feedTypeModel.ColumnName', '@feedTypeModel.OrderBy')"> @Html.DisplayNameFor(model => model.Id)</a>
             </th>
             <th>
-                <a href="~/feedType/Index?ColumnName=TypeText&OrderType=@feedTypeModel.OrderBy"> @Html.DisplayNameFor(model => model.TypeText)</a>
+                <a onclick="sort('@feedTypeModel.ColumnName','@feedTypeModel.OrderBy')"> @Html.DisplayNameFor(model => model.TypeText)</a>
             </th>
             <th></th>
         </tr>
@@ -77,3 +79,20 @@
 </div>
 
 
+<script >
+
+
+function sort(columnName,orderBy){
+     event.preventDefault();
+    if(orderBy=='asc'){
+        orderBy='desc';
+    } else {
+        orderBy='asc';
+    }
+document.querySelector("#orderBy").value=orderBy;
+document.querySelector("#columnName").value=columnName;
+
+document.querySelector("#btnsub").click();
+
+}
+</script>

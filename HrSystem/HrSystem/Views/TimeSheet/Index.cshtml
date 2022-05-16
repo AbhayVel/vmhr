@@ -35,7 +35,9 @@
 </div>
 </div>
 
- 
+<input type="hidden" name="OrderBy" id="orderBy" value="@timeSheetModel.OrderBy" />
+<input type="hidden" name="ColumnName" id="columnName" value="@timeSheetModel.ColumnName" />
+
 <button type="submit"  id="btnsub">Search</button>
 
 </form>
@@ -46,10 +48,10 @@
     <thead>
         <tr> 
              <th>
-              <a href="~/timeSheet/Index?ColumnName=Id&OrderType=@timeSheetModel.OrderBy"> @Html.DisplayNameFor(model => model.Id)</a>
+              <a onclick="sort('@timeSheetModel.ColumnName','@timeSheetModel.OrderBy')"> @Html.DisplayNameFor(model => model.Id)</a>
             </th>
             <th>
-                <a href="~/timeSheet/Index?ColumnName=TextData&OrderType=@timeSheetModel.OrderBy"> @Html.DisplayNameFor(model => model.TextData)</a>
+                 <a onclick="sort('@timeSheetModel.ColumnName','@timeSheetModel.OrderBy')"> @Html.DisplayNameFor(model => model.TextData)</a>
             </th>
             <th>
               <a href="~/timeSheet/Index?ColumnName=ShortNotes&OrderType=@timeSheetModel.OrderBy"> @Html.DisplayNameFor(model => model.ShortNotes)</a>
@@ -85,6 +87,28 @@
     </tbody>
 </table>
 </div>
+
+<script>
+
+function sort(columnName,orderBy)
+{
+    event.preventDefault();
+    if(orderBy=='asc')
+    {
+        orderBy='desc'
+    }
+    else
+    {
+        orderBy='asc'
+    }
+document.querySelector('#orderBy').value=orderBy;
+document.querySelector('#columnName').value=columnName;
+
+document.querySelector("#btnsub").click();
+}
+
+</script>
+
 }
  
 

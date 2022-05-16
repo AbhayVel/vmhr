@@ -10,10 +10,32 @@ namespace Examples
 {
     class Program
     {
+        static Dictionary<string, string> TrValue = new Dictionary<string, string>()
+        {
+            {"sun","soleil" },
+            { "shines","brille"}
+        };
+        public static string Translet(string english)
+        {
+            string french = "";
+            string[] engArray=english.Split(' ');
+            for (int i = 0; i < engArray.Length; i++)
+            {
+                french+=" " + TrValue[engArray[i]].ToString();
+            }
+
+            return french;
+        }
 
       static void Main(string[] args)
       {
+         var output=   Translet("sun shines");
+
             
+
+             
+
+           
          HrSystemDBContext hrdb = new HrSystemDBContext("Data Source=DESKTOP-C0FBNF9\\SQLEXPRESS;Initial Catalog=HRSystem;Integrated Security=True");
 
             //hrdb.FeedType.Add(new FeedType

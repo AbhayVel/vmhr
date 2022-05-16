@@ -10,24 +10,21 @@ namespace HRModels
     {
         //string orderBy, string orderType, string IdSearch, string TypeTextSearch
 
-       
-
         public string IdSearch { get; set; }
 
         public string TypeTextSearch { get; set; }
 
         public List<FeedType> Where(List<FeedType> feedTypes)
         {
+            if (!string.IsNullOrWhiteSpace(IdSearch))
+            {
+                feedTypes = feedTypes.Where(x => x.Id.ToString() == IdSearch).ToList();
+            }
             if (!string.IsNullOrWhiteSpace(TypeTextSearch))
             {
                 feedTypes = feedTypes.Where(x => x.TypeText.Contains(TypeTextSearch)).ToList();
             }
-
-            if (!string.IsNullOrWhiteSpace(IdSearch))
-            {
-
-                feedTypes = feedTypes.Where(x => x.Id.ToString() == IdSearch).ToList();
-            }
+           
 
             return feedTypes;
         }
@@ -40,11 +37,12 @@ namespace HRModels
                 {
                     feedTypes = feedTypes.OrderBy(x => x.Id).ToList();
                 }
-                else if ("TypeText".Equals(ColumnName, System.StringComparison.OrdinalIgnoreCase))
+                else if ("TextData".Equals(ColumnName, System.StringComparison.OrdinalIgnoreCase))
                 {
                     feedTypes = feedTypes.OrderBy(x => x.TypeText).ToList();
                 }
-                OrderBy = "desc";
+
+
             }
             else
             {
@@ -52,19 +50,16 @@ namespace HRModels
                 {
                     feedTypes = feedTypes.OrderByDescending(x => x.Id).ToList();
                 }
-                else if ("TypeText".Equals(ColumnName, System.StringComparison.OrdinalIgnoreCase))
+                else if ("TextData".Equals(ColumnName, System.StringComparison.OrdinalIgnoreCase))
                 {
                     feedTypes = feedTypes.OrderByDescending(x => x.TypeText).ToList();
                 }
-                OrderBy = "asc";
+
+
             }
 
             return feedTypes;
-
-
-
         }
-
 
     }
 }

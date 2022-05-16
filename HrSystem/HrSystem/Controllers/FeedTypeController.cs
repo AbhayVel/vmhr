@@ -57,7 +57,6 @@ namespace HrSystem.Controllers
             List<FeedType> feedTypes= GetFeedType();
 
             feedTypes = feedTypeModel.Where(feedTypes);
-
             feedTypes = feedTypeModel.Sort(feedTypes);
 
             ViewBag.Model = feedTypeModel;

@@ -51,7 +51,7 @@ namespace HRModels
                     timeSheets = timeSheets.OrderBy(x => x.TextData).ToList();
                 }
 
-                OrderBy = "desc";
+                
             }
             else
             {
@@ -64,7 +64,7 @@ namespace HRModels
                     timeSheets = timeSheets.OrderByDescending(x => x.TextData).ToList();
                 }
 
-                OrderBy = "asc";
+                
             }
 
             return timeSheets;
