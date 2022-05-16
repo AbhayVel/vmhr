@@ -1,4 +1,5 @@
 ﻿using HREntity;
+using HRModels;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using System.Linq;
@@ -58,74 +59,14 @@ namespace HrSystem.Controllers
             });
             return feed;
         }
-        public IActionResult Index( string orderBy, string orderType, string IdSearch, string TextDataSearch)
+        public IActionResult Index( FeedModel feedModel)
         {
             List<Feed> feed = GetFeed();
-            if (!string.IsNullOrWhiteSpace(IdSearch))
-            {
-                feed = feed.Where(x => x.Id.ToString() == IdSearch).ToList();
-            }
-            if (!string.IsNullOrWhiteSpace(TextDataSearch))
-            {
-                feed = feed.Where(x => x.TextData.Contains(TextDataSearch)).ToList();
-            }
-            if ("asc".Equals(orderBy, System.StringComparison.OrdinalIgnoreCase))
-            {
-                if ("Id".Equals(orderBy, System.StringComparison.OrdinalIgnoreCase))
-                {
-                    feed = feed.OrderBy(x => x.Id).ToList();
-                }
-                else if ("TextData".Equals(orderBy, System.StringComparison.OrdinalIgnoreCase))
-                {
-                    feed = feed.OrderBy(x => x.TextData).ToList();
-                }
-                else if ("Heading".Equals(orderBy, System.StringComparison.OrdinalIgnoreCase))
-                {
-                    feed = feed.OrderBy(x => x.Heading).ToList();
-                }
-                else if ("ShortNotes".Equals(orderBy, System.StringComparison.OrdinalIgnoreCase))
-                {
-                    feed = feed.OrderBy(x => x.ShortNotes).ToList();
-                }
-                else if ("Link".Equals(orderBy, System.StringComparison.OrdinalIgnoreCase))
-                {
-                    feed = feed.OrderBy(x => x.Link).ToList();
-                }
-                else if ("UserName".Equals(orderBy, System.StringComparison.OrdinalIgnoreCase))
-                {
-                    feed = feed.OrderBy(x => x.UserName).ToList();
-                }
-                orderType = "desc";
-            }
-            else
-            {
-                if ("Id".Equals(orderBy, System.StringComparison.OrdinalIgnoreCase))
-                {
-                    feed = feed.OrderByDescending(x => x.Id).ToList();
-                }
-                else if ("TextData".Equals(orderBy, System.StringComparison.OrdinalIgnoreCase))
-                {
-                    feed = feed.OrderByDescending(x => x.TextData).ToList();
-                }
-                else if ("Heading".Equals(orderBy, System.StringComparison.OrdinalIgnoreCase))
-                {
-                    feed = feed.OrderByDescending(x => x.Heading).ToList();
-                }
-                else if ("ShortNotes".Equals(orderBy, System.StringComparison.OrdinalIgnoreCase))
-                {
-                    feed = feed.OrderByDescending(x => x.ShortNotes).ToList();
-                }
-                else if ("Link".Equals(orderBy, System.StringComparison.OrdinalIgnoreCase))
-                {
-                    feed = feed.OrderByDescending(x => x.Link).ToList();
-                }
-                else if ("UserName".Equals(orderBy, System.StringComparison.OrdinalIgnoreCase))
-                {
-                    feed = feed.OrderByDescending(x => x.UserName).ToList();
-                }
-                orderType = "asc";
-            }
-            ViewBag.OrderType = orderType;
+
+            feed = feedModel.Where(feed);
+            feed = feedModel.Sort(feed);
+
+            ViewBag.Model = feedModel;
             return View(feed);
         }
     }
