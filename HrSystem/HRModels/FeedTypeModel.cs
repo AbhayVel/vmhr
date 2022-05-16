@@ -14,6 +14,59 @@ namespace HRModels
 
         public string TypeTextSearch { get; set; }
 
+
+        public string Where()
+        {
+            string whereCondition=string.Empty;
+            if (!string.IsNullOrWhiteSpace(TypeTextSearch))
+            {
+                whereCondition = whereCondition + $"AND TypeText like '%{TypeTextSearch.Replace("'", "''")}%'";
+            }
+
+            if (!string.IsNullOrWhiteSpace(IdSearch))
+            {
+                int id = 0;
+                if (int.TryParse(IdSearch, out id))
+                {
+                    whereCondition = whereCondition + $"AND Id = {id}";
+                }                
+            }
+
+            return whereCondition;
+
+        }
+
+
+        public string Sort()
+        {
+            string orderByString = " Order By ";
+            if ("asc".Equals(OrderBy, System.StringComparison.OrdinalIgnoreCase))
+            {
+                if ("id".Equals(ColumnName, System.StringComparison.OrdinalIgnoreCase))
+                {
+                    return orderByString + " id asc ";
+                }
+                else if ("TypeText".Equals(ColumnName, System.StringComparison.OrdinalIgnoreCase))
+                {
+                    return orderByString + " TypeText asc ";
+                }
+            }
+            else
+            {
+                if ("id".Equals(ColumnName, System.StringComparison.OrdinalIgnoreCase))
+                {
+                    return orderByString + " id desc ";
+                }
+                else if ("TypeText".Equals(ColumnName, System.StringComparison.OrdinalIgnoreCase))
+                {
+                    return orderByString + " TypeText desc ";
+                }  
+            }
+
+            return orderByString + " id asc ";
+        }
+
+
         public List<FeedType> Where(List<FeedType> feedTypes)
         {
             if (!string.IsNullOrWhiteSpace(IdSearch))

@@ -1,5 +1,6 @@
 ﻿using HREntity;
 using HRModels;
+using HRRepository;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,6 +9,12 @@ namespace HrSystem.Controllers
 {
     public class FeedTypeController : Controller
     {
+        FeedTypeRepository _feedTypeRepository;
+
+        public FeedTypeController(FeedTypeRepository feedTypeRepository)
+        {
+            _feedTypeRepository = feedTypeRepository;
+        }
 
         public IActionResult Index3()
         {
@@ -54,10 +61,12 @@ namespace HrSystem.Controllers
         //public IActionResult Index(string orderBy, string orderType, string IdSearch, string TypeTextSearch)
         public IActionResult Index(FeedTypeModel feedTypeModel)
         {
-            List<FeedType> feedTypes= GetFeedType();
+            List<FeedType> feedTypes = _feedTypeRepository.GetAll(feedTypeModel);
+            //feedTypes = feedTypeModel.Where(feedTypes);
+            //feedTypes = feedTypeModel.Sort(feedTypes);
+            //feedTypeModel.PageModel.SetValues(feedTypes);
+            //feedTypes= feedTypes.Skip(feedTypeModel.PageModel.StartIndex).Take(feedTypeModel.PageModel.RowPerPage).ToList();
 
-            feedTypes = feedTypeModel.Where(feedTypes);
-            feedTypes = feedTypeModel.Sort(feedTypes);
 
             ViewBag.Model = feedTypeModel;
 
