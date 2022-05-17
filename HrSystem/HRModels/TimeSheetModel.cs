@@ -16,6 +16,30 @@ namespace HRModels
         public string TimeSpendSearch { get; set; }
         public string ShortNotesSearch { get; set; }
 
+        public IQueryable<TimeSheet> Where(IQueryable<TimeSheet> timeSheets)
+        {
+            // string whereCondition = string.Empty;
+            if (!string.IsNullOrWhiteSpace(TextDataSearch))
+            {
+
+                timeSheets = timeSheets.Where(x => x.TextData.Contains(TextDataSearch));
+
+                //whereCondition = whereCondition + $"AND TypeText like '%{TypeTextSearch.Replace("'", "''")}%'";
+            }
+
+            if (!string.IsNullOrWhiteSpace(IdSearch))
+            {
+                int id = 0;
+                if (int.TryParse(IdSearch, out id))
+                {
+                    timeSheets = timeSheets.Where(x => x.Id == id);
+                }
+            }
+
+            return timeSheets;
+
+        }
+
         public string Where()
         {
             string whereCondition = string.Empty;
@@ -46,6 +70,35 @@ namespace HRModels
             }
 
             return whereCondition;
+        }
+
+        public IQueryable<TimeSheet> Sort(IQueryable<TimeSheet> timeSheets)
+        {
+            string orderByString = " Order By ";
+            if ("asc".Equals(OrderBy, System.StringComparison.OrdinalIgnoreCase))
+            {
+                if ("id".Equals(ColumnName, System.StringComparison.OrdinalIgnoreCase))
+                {
+                    timeSheets = timeSheets.OrderBy(x => x.Id);
+                }
+                else if ("TypeText".Equals(ColumnName, System.StringComparison.OrdinalIgnoreCase))
+                {
+                    timeSheets = timeSheets.OrderBy(x => x.TextData);
+                }
+            }
+            else
+            {
+                if ("id".Equals(ColumnName, System.StringComparison.OrdinalIgnoreCase))
+                {
+                    timeSheets = timeSheets.OrderByDescending(x => x.Id);
+                }
+                else if ("TextData".Equals(ColumnName, System.StringComparison.OrdinalIgnoreCase))
+                {
+                    timeSheets = timeSheets.OrderByDescending(x => x.TextData);
+                }
+            }
+
+            return timeSheets;
         }
 
         public string Sort()
