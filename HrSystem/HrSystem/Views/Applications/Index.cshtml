@@ -5,24 +5,23 @@
 <center><h2>Application List</h2></center>
 <center>
     <a href="~/Applications/Add"><button type="button" class="btn btn-primary">+ New Applicant</button>
-       
+
     </a>
 </center>
 
-   
+
 <br>
 <hr>
-@{
+    @{
 
-    ApplicationModel applicationModel = ViewBag.applicationModel as ApplicationModel;
-    PageModel pageModel = ViewBag.pageModel as PageModel;
-}
- 
+        ApplicationModel applicationModel = ViewBag.applicationModel as ApplicationModel;
+        PageModel pageModel = ViewBag.pageModel as PageModel;
+    }
 
-@Html.Partial("Search")
 
- 
- 
+
+
+
 
 <form method="post" action="/Applications/Index">
     <div class="row">
@@ -62,72 +61,72 @@
     <button type="submit" id="btnSubmit">Search</button>
 
 </form>
- 
+
 <div class="container">
     <table id="example" class="table table-striped table-bordered" style="width:100%">
         <thead>
             <tr>
- 
+
                 <th><a onclick="sort('id', '@ViewBag.orderBy')" href="/applications/index?columnName=id&orderBy=@ViewBag.orderBy">#</a></th>
                 <th><a onclick="sort('name', '@ViewBag.orderBy')" href="/applications/index?columnName=name&orderBy=@ViewBag.orderBy">Applicant Information</a></th>
                 <th>Document</th>
                 <th>Stage</th>
- 
+
                 <th><a onclick="sort('id', '@ViewBag.orderBy')" href="/applications/index?columnName=id&orderBy=@ViewBag.orderBy">#</a></th>
                 <th><a onclick="sort('name', '@ViewBag.orderBy')" href="/applications/index?columnName=name&orderBy=@ViewBag.orderBy">Applicant Information</a></th>
                 <th>Document</th>
                 <th>Status</th>
- 
+
                 <th>Action</th>
 
             </tr>
         </thead>
         <tbody>
-            @for (int i = 0; i < Model.Count; i++)
-            {
-                <tr>
- 
-                    
-                    <td>@Model[i].Id</td>
+                @for (int i = 0; i < Model.Count; i++)
+                {
+                    <tr>
 
- 
-                    <td>
-                        Name : @Model[i].FirstName<br>
-                        Applied for : @Model[i]?.Vacancy?.Position<br>
-                        Experience : @Model[i]?.Experience <br>
- 
-                       
-                    </td>
-                    <td><a href="/Applications/Download/@Model[i].Id" download name="resume">@Model[i].Resume</a></td>
-                    <td><span class="badge badge-success"> @Model[i]?.Stage?.StatusLabel<br></span></td>
-                    <td>
-                        <button type="button" class="btn btn-success">View</button>
-                        <a href="~/Applications/Edit/@Model[i].Id">  <button type="button" class="btn btn-warning">Edit</button> </a>
-                        <a href="~/Applications/delete/@Model[i].Id"  onclick="isDelete()">  <button type="button" class="btn btn-danger">Delete</button></a>
-                    </td>
 
-               
-           
- 
-                     
-                    <td><a href="https://www.w3schools.com/">Smith_Resume</a></td>
-                    <td><span class="badge badge-success">New</span></td>
-                    <td>
-                        <button type="button" class="btn btn-success">View</button>
-                        @if (User.IsInRoleCheck("manager,hr,Admin"))
-                        {
-                            <a href="~/Applications/Edit/@Model[i].Id">
-                                <button type="button" class="btn btn-warning"> Edit</button>
-                            </a>
-                        }
+                        <td>@Model[i].Id</td>
 
-                        <a href="~/Applications/delete/@Model[i].Id" onclick="isDelete()"> <button type="button" class="btn btn-warning">  Delete</button></a>
-                    </td>
 
-                </tr>
-            }
+                        <td>
+                            Name : @Model[i].FirstName<br>
+                            Applied for : @Model[i]?.Vacancy?.Position<br>
+                            Experience : @Model[i]?.Experience <br>
 
- 
+
+                        </td>
+                        <td><a href="/Applications/Download/@Model[i].Id" download name="resume">@Model[i].Resume</a></td>
+                        <td><span class="badge badge-success"> @Model[i]?.Stage?.StatusLabel<br></span></td>
+                        <td>
+                            <button type="button" class="btn btn-success">View</button>
+                            <a href="~/Applications/Edit/@Model[i].Id">  <button type="button" class="btn btn-warning">Edit</button> </a>
+                            <a href="~/Applications/delete/@Model[i].Id"  onclick="isDelete()">  <button type="button" class="btn btn-danger">Delete</button></a>
+                        </td>
+
+
+
+
+
+                        <td><a href="https://www.w3schools.com/">Smith_Resume</a></td>
+                        <td><span class="badge badge-success">New</span></td>
+                        <td>
+                            <button type="button" class="btn btn-success">View</button>
+                            @if (User.IsInRoleCheck("manager,hr,Admin"))
+                            {
+                                    <a href="~/Applications/Edit/@Model[i].Id">
+                                        <button type="button" class="btn btn-warning"> Edit</button>
+                                    </a>
+                            }
+
+                            <a href="~/Applications/delete/@Model[i].Id" onclick="isDelete()"> <button type="button" class="btn btn-warning">  Delete</button></a>
+                        </td>
+
+                    </tr>
+                }
+
+
 
         </tbody>
         <tfoot>
@@ -151,20 +150,20 @@
                 <ul class="pagination">
                     <li class="paginate_button page-item previous" id="example_previous"><a href="#" aria-controls="example" data-dt-idx="0" tabindex="0" class="page-link">Previous</a></li>
 
-                    @for (int i = 1; i <= pageModel.PageCount; i = i + 1)
-                    {
-                        if (i == pageModel.CurrentPage)
+                        @for (int i = 1; i <= pageModel.PageCount; i = i + 1)
                         {
-                            <li class="paginate_button page-item active"><a onclick="pageChange('@i')" href="/applications/index?currentPage=@i" aria-controls="example" data-dt-idx="1" tabindex="0" class="page-link">@i</a></li>
+                            if (i == pageModel.CurrentPage)
+                            {
+                                    <li class="paginate_button page-item active"><a onclick="pageChange('@i')" href="/applications/index?currentPage=@i" aria-controls="example" data-dt-idx="1" tabindex="0" class="page-link">@i</a></li>
+
+                            }
+                            else
+                            {
+                                    <li class="paginate_button page-item"><a onclick="pageChange('@i')" href="/applications/index?currentPage=@i" aria-controls="example" data-dt-idx="1" tabindex="0" class="page-link">@i</a></li>
+
+                            }
 
                         }
-                        else
-                        {
-                            <li class="paginate_button page-item"><a onclick="pageChange('@i')" href="/applications/index?currentPage=@i" aria-controls="example" data-dt-idx="1" tabindex="0" class="page-link">@i</a></li>
-
-                        }
-
-                    }
                     <li class="paginate_button page-item next disabled" id="example_next"><a href="#" aria-controls="example" data-dt-idx="3" tabindex="0" class="page-link">Next</a></li>
                 </ul>
         </div>
@@ -172,12 +171,12 @@
     </div>
 
 </div>
- 
-</div>
- 
- 
 
- 
+</div>
+
+
+
+
 
 <script>
 
@@ -229,5 +228,5 @@
 
 
 <script type="text/javascript" scr="~/js/jquery-ui.min.js"></script>
- 
+
 

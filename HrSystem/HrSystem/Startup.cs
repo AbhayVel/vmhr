@@ -53,9 +53,12 @@ namespace HrSystem
             services.AddScoped<VacancyRepository, VacancyRepository>();
             services.AddScoped<IUserRepository, UserRepository>();
          services.AddScoped<IApplicationRepository, ApplicationRepository>();
-            services.AddScoped<FeedTypeRepository, FeedTypeRepository>();
+
             services.AddScoped<TimeSheetRepository, TimeSheetRepository>();
-            services.AddScoped<ApplicationService, ApplicationService>();
+            
+            services.AddScoped<IFeedTypeRepository, FeedTypeRepository>();
+         services.AddScoped<ApplicationService, ApplicationService>();
+ 
             services.AddScoped<VacancyService, VacancyService>();
             services.AddScoped<StageService, StageService>();
          services.AddScoped<IUserService, UserService>();
