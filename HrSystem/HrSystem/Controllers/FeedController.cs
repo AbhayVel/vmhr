@@ -65,7 +65,8 @@ namespace HrSystem.Controllers
 
             feed = feedModel.Where(feed);
             feed = feedModel.Sort(feed);
-
+            feedModel.PageModel.SetValues(feed);
+            feed = feed.Skip(feedModel.PageModel.StartIndex).Take(feedModel.PageModel.RowPerPage).ToList();
             ViewBag.Model = feedModel;
             return View(feed);
         }

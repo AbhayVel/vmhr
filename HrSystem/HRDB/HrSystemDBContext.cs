@@ -57,10 +57,6 @@ namespace HRDB
        
 
         public DbSet<TimeSheet> TimeSheet { get; set; }
-
-
-
-
-
+        public object Feed { get; set; }
     }
 }

@@ -13,5 +13,6 @@ namespace HREntity
         public int? Id { get; set; }
 
         public string TypeText { get; set; }
+        
     }
 }

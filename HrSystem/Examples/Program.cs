@@ -16,37 +16,62 @@ namespace Examples
             
          HrSystemDBContext hrdb = new HrSystemDBContext("Data Source=DESKTOP-V4CN1TU\\SQLEXPRESS;Initial Catalog=HRSystem;Integrated Security=True");
 
-            //hrdb.FeedType.Add(new FeedType
-            //{
-            //    TypeText = "Video"
-            //});
+            hrdb.Feeds.Add(new Feed
+            {
+                TextData = "C# Learning ",
+                Heading = "Python",
+                ShortNotes = "Python Learning Session",
+                FeedTypeId = 1,
+                Link = "#",
+                UserName = "Aditi"
+            });
 
-            //hrdb.FeedType.Add(new FeedType
-            //{
-            //    TypeText = "Image"
-            //});
+            hrdb.Feeds.Add(new Feed
+            {
+                TextData = "C# Learning ",
+                Heading = "C-sharp ",
+                ShortNotes = "Tutorial On C-Sharp",
+                FeedTypeId = 2,
+                Link = "#",
+                UserName = "Avi"
+            });
 
-            //hrdb.FeedType.Add(new FeedType
-            //{
-            //    TypeText = "Audio"
-            //});
+            hrdb.Feeds.Add(new Feed
+            {
+                TextData = "UI Design",
+                Heading = "Web Design",
+                ShortNotes = "Learn Website design",
+                FeedTypeId = 3,
+                Link = "#",
+                UserName = "Anvi"
+            });
 
-            //hrdb.FeedType.Add(new FeedType
-            //{
-            //    TypeText = "Text"
-            //});
+            hrdb.Feeds.Add(new Feed
+            {
+                TextData = ".Net Learning",
+                Heading = "Dot Net",
+                ShortNotes = "ASP .Net Learning Session",
+                FeedTypeId = 4,
+                Link = "#",
+                UserName = "ketaki"
+            });
 
-           var feed= hrdb.FeedType.Where(x=>x.TypeText.Equals("Audio1")).FirstOrDefault();
+            //var feed = hrdb.FeedType.Where(x=>x.TypeText.Equals("Audio1")).FirstOrDefault();
 
-            hrdb.FeedType.Remove(feed);
+            //hrdb.FeedType.Remove(feed);
 
 
             hrdb.SaveChanges();
-            var users = hrdb.FeedType.ToList();
+            var users = hrdb.Feeds.ToList();
 
             foreach (var item in users)
             {
-                Console.WriteLine(item.TypeText);
+                Console.WriteLine(item.TextData);
+                Console.WriteLine(item.Heading);
+                Console.WriteLine(item.ShortNotes);
+                Console.WriteLine(item.FeedTypeId);
+                Console.WriteLine(item.Link);
+                Console.WriteLine(item.UserName);
             }
 
            // ArrayList l = new ArrayList();
