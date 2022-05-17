@@ -9,9 +9,9 @@ namespace HrSystem.Controllers
 {
     public class FeedTypeController : Controller
     {
-        FeedTypeRepository _feedTypeRepository;
+        IFeedTypeRepository _feedTypeRepository;
 
-        public FeedTypeController(FeedTypeRepository feedTypeRepository)
+        public FeedTypeController(IFeedTypeRepository feedTypeRepository)
         {
             _feedTypeRepository = feedTypeRepository;
         }
@@ -26,6 +26,7 @@ namespace HrSystem.Controllers
             return View();
         }
 
+        //SOLID 
 
         public List<FeedType> GetFeedType()
         {
@@ -62,12 +63,6 @@ namespace HrSystem.Controllers
         public IActionResult Index(FeedTypeModel feedTypeModel)
         {
             List<FeedType> feedTypes = _feedTypeRepository.GetAll(feedTypeModel);
-            //feedTypes = feedTypeModel.Where(feedTypes);
-            //feedTypes = feedTypeModel.Sort(feedTypes);
-            //feedTypeModel.PageModel.SetValues(feedTypes);
-            //feedTypes= feedTypes.Skip(feedTypeModel.PageModel.StartIndex).Take(feedTypeModel.PageModel.RowPerPage).ToList();
-
-
             ViewBag.Model = feedTypeModel;
             return View(feedTypes);
         }
