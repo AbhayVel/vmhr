@@ -16,6 +16,70 @@ namespace HRModels
         public string TimeSpendSearch { get; set; }
         public string ShortNotesSearch { get; set; }
 
+        public string Where()
+        {
+            string whereCondition = string.Empty;
+
+            if (!string.IsNullOrWhiteSpace(IdSearch))
+            {
+                whereCondition = whereCondition + $"AND TextData like '%{TextDataSearch.Replace("'", "''")}%'";
+            }
+            if (!string.IsNullOrWhiteSpace(TextDataSearch))
+            {
+                int id = 0;
+                if (int.TryParse(IdSearch, out id))
+                {
+                    whereCondition = whereCondition + $"AND Id = {id}";
+                }
+            }
+            if (!string.IsNullOrWhiteSpace(ShortNotesSearch))
+            {
+                whereCondition = whereCondition + $"AND ShortNotes like '%{ShortNotesSearch.Replace("'", "''")}%'";
+            }
+            if (!string.IsNullOrWhiteSpace(TimeSpendSearch))
+            {
+                int timespend = 0;
+                if (int.TryParse(TimeSpendSearch, out timespend))
+                {
+                    whereCondition = whereCondition + $"AND Id = {timespend}";
+                }
+            }
+
+            return whereCondition;
+        }
+
+        public string Sort()
+        {
+            string orderByString = " Order By ";
+            if ("asc".Equals(OrderBy, System.StringComparison.OrdinalIgnoreCase))
+            {
+                if ("id".Equals(ColumnName, System.StringComparison.OrdinalIgnoreCase))
+                {
+                    return orderByString + " id asc ";
+                }
+                else if ("TextData".Equals(ColumnName, System.StringComparison.OrdinalIgnoreCase))
+                {
+                    return orderByString + " TextData asc ";
+                }
+
+
+            }
+            else
+            {
+                if ("id".Equals(ColumnName, System.StringComparison.OrdinalIgnoreCase))
+                {
+                    return orderByString + " id desc ";
+                }
+                else if ("TextData".Equals(ColumnName, System.StringComparison.OrdinalIgnoreCase))
+                {
+                    return orderByString + " TextData desc ";
+                }
+
+
+            }
+
+            return orderByString + " id asc ";
+        }
         public List<TimeSheet> Where(List<TimeSheet> timeSheets)
         {
             if (!string.IsNullOrWhiteSpace(IdSearch))

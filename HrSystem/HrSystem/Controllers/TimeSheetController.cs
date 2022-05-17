@@ -1,5 +1,6 @@
 ﻿using HREntity;
 using HRModels;
+using HRRepository;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,9 +9,17 @@ namespace HrSystem.Controllers
 {
     public class TimeSheetController : Controller
     {
+        TimeSheetRepository _timeSheetRepository;
+
+        public TimeSheetController(TimeSheetRepository timeSheetRepository)
+        {
+            _timeSheetRepository = timeSheetRepository;
+        }
 
         public List<TimeSheet> GetTimeSheet()
         {
+            
+
             List<TimeSheet> timeSheet = new List<TimeSheet>();
 
             timeSheet.Add(new TimeSheet
@@ -50,11 +59,15 @@ namespace HrSystem.Controllers
         public IActionResult Index(TimeSheetModel timeSheetModel)
         {
 
-            List < TimeSheet > timeSheets = GetTimeSheet();
+            List<TimeSheet> timeSheets = _timeSheetRepository.GetAll(timeSheetModel);
 
-            timeSheets = timeSheetModel.Where(timeSheets);
+            //timeSheets = timeSheetModel.Where(timeSheets);
 
-            timeSheets = timeSheetModel.Sort(timeSheets);
+            //timeSheets = timeSheetModel.Sort(timeSheets);
+
+            //timeSheetModel.PageModel.SetValues(timeSheets);
+
+            //timeSheets = timeSheets.Skip(timeSheetModel.PageModel.StartIndex).Take(timeSheetModel.PageModel.RowPerPage).ToList();
 
             ViewBag.Model = timeSheetModel;
 
