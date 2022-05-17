@@ -9,10 +9,10 @@ using System.Text;
 
 namespace HRRepository
 {
-    public class FeedTypeRepository
+    public class FeedTypeRepository : IFeedTypeRepository
     {
 
-        private string _query="Select Id,TypeText from FeedType Where  1=1";
+        private string _query = "Select Id,TypeText from FeedType Where  1=1";
 
         private string _queryCount = "Select Count(1) as count from FeedType Where  1=1";
         public HrSystemDBContext HrSystemDBContext { get; set; } //Instance variable 
@@ -36,9 +36,9 @@ namespace HRRepository
         public List<FeedType> GetAll(FeedTypeModel feedTypeModel)
         {
             IQueryable<FeedType> feedTypes = HrSystemDBContext.FeedType;
-            feedTypes= feedTypeModel.Where(feedTypes);
+            feedTypes = feedTypeModel.Where(feedTypes);
             var count = feedTypes.Count();
-            feedTypes= feedTypeModel.Sort(feedTypes);
+            feedTypes = feedTypeModel.Sort(feedTypes);
             feedTypes = feedTypeModel.PageModel.SetValues(feedTypes, count);
             var result = feedTypes.ToList();
             return result;

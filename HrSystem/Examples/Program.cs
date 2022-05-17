@@ -27,15 +27,47 @@ namespace Examples
             return french;
         }
 
+      static  void Print(IName iname)
+        {
+            Console.WriteLine(iname.Name);
+        }
+
+        //composition
+        //Association
+        //Messeging 
+        //Association+ Interface =>Dependency Inversion =>IOC
+        //||-> Dependency Injection -> Static /compile time 
+        //||-> 
+        //||-> Service Locator -> Dynamic /run time 
+
+
+        static int i = 1;
       static void Main(string[] args)
       {
+            
          var output=   Translet("sun shines");
+            Address address= new Address();
+            {
 
+                Person person = new Person(address);
+               // person.Address=address;
+               person.SetAddress(address);
+
+
+            }
+            Print(new Location());
+            //   PrintAddressName(new Location());
+            if (1 == i)
+            {
+                Print(new Location());
+            }
+            else
+            {
+                Print(new Address());
+            }
+            
             
 
-             
-
-           
          HrSystemDBContext hrdb = new HrSystemDBContext("Data Source=DESKTOP-C0FBNF9\\SQLEXPRESS;Initial Catalog=HRSystem;Integrated Security=True");
 
             //hrdb.FeedType.Add(new FeedType
