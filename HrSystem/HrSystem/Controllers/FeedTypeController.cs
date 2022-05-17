@@ -64,6 +64,7 @@ namespace HrSystem.Controllers
         {
             List<FeedType> feedTypes = _feedTypeRepository.GetAll(feedTypeModel);
             ViewBag.Model = feedTypeModel;
+
             return View(feedTypes);
         }
 
