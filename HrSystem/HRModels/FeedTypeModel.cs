@@ -15,6 +15,30 @@ namespace HRModels
         public string TypeTextSearch { get; set; }
 
 
+        public IQueryable<FeedType> Where(IQueryable<FeedType> feedTypes)
+        {
+           // string whereCondition = string.Empty;
+            if (!string.IsNullOrWhiteSpace(TypeTextSearch))
+            {
+
+                feedTypes= feedTypes.Where(x=>x.TypeText.Contains(TypeTextSearch));
+
+                //whereCondition = whereCondition + $"AND TypeText like '%{TypeTextSearch.Replace("'", "''")}%'";
+            }
+
+            if (!string.IsNullOrWhiteSpace(IdSearch))
+            {
+                int id = 0;
+                if (int.TryParse(IdSearch, out id))
+                {
+                    feedTypes = feedTypes.Where(x => x.Id==id);
+                }
+            }
+
+            return feedTypes;
+
+        }
+
         public string Where()
         {
             string whereCondition=string.Empty;
@@ -34,6 +58,35 @@ namespace HRModels
 
             return whereCondition;
 
+        }
+
+        public IQueryable<FeedType> Sort(IQueryable<FeedType> feedTypes)
+        {
+            string orderByString = " Order By ";
+            if ("asc".Equals(OrderBy, System.StringComparison.OrdinalIgnoreCase))
+            {
+                if ("id".Equals(ColumnName, System.StringComparison.OrdinalIgnoreCase))
+                {
+                    feedTypes= feedTypes.OrderBy(x => x.Id);
+                }
+                else if ("TypeText".Equals(ColumnName, System.StringComparison.OrdinalIgnoreCase))
+                {
+                    feedTypes = feedTypes.OrderBy(x => x.TypeText);
+                }
+            }
+            else
+            {
+                if ("id".Equals(ColumnName, System.StringComparison.OrdinalIgnoreCase))
+                {
+                    feedTypes = feedTypes.OrderByDescending(x => x.Id);
+                }
+                else if ("TypeText".Equals(ColumnName, System.StringComparison.OrdinalIgnoreCase))
+                {
+                    feedTypes = feedTypes.OrderByDescending(x => x.TypeText);
+                }
+            }
+
+            return feedTypes;
         }
 
 
