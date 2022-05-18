@@ -1,0 +1,30 @@
+﻿@model List<TimeSheet>
+
+
+
+    @{
+	Layout="_views";
+}
+<div class="col-sm-10">		
+	
+	@foreach (var item in Model)
+   {
+	    <div class="grid-item1">
+						<h4 class="text-muted">@item.Heading</h4>
+						 
+						  <div class="excerpt">
+						  <p>@item.ShortNotes</p>
+						  </div>
+						  <div class="grid-item2 mt-0">
+							  <label>@item.TaskStartDate</label> 
+							  to
+							  <label>@item.TaskEndDate</label> 
+
+						  </div>
+					</div>
+   }
+				
+
+
+					 
+</div>

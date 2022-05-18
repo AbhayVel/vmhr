@@ -19,7 +19,7 @@ namespace HREntity
 
         public string ShortNotes { get; set; }
 
-        public float? TimeSpend { get; set; }
+        public decimal? TimeSpend { get; set; }
 
         public DateTime? TaskStartDate { get; set; }
 
