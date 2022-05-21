@@ -18,7 +18,7 @@ namespace HRDB
             _connectionString = Environment.GetEnvironmentVariable("ConnectionString");
             if (string.IsNullOrEmpty(_connectionString))
             {
-                _connectionString = "Data Source=DESKTOP-V4CN1TU\\SQLEXPRESS;Initial Catalog=HRSystem;Integrated Security=True";
+                _connectionString = "Data Source=DESKTOP-0K1J33K\\SQLEXPRESS;Initial Catalog=HRSystem;Integrated Security=True";
             }
 
         }

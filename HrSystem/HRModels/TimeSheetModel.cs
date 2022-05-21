@@ -12,17 +12,17 @@ namespace HRModels
 
         public string IdSearch { get; set; }
 
-        public string TextDataSearch { get; set; }
+        public string UserNameSearch { get; set; }
         public string TimeSpendSearch { get; set; }
         public string ShortNotesSearch { get; set; }
 
         public IQueryable<TimeSheet> Where(IQueryable<TimeSheet> timeSheets)
         {
             // string whereCondition = string.Empty;
-            if (!string.IsNullOrWhiteSpace(TextDataSearch))
+            if (!string.IsNullOrWhiteSpace(UserNameSearch))
             {
 
-                timeSheets = timeSheets.Where(x => x.TextData.Contains(TextDataSearch));
+                timeSheets = timeSheets.Where(x => x.UserName.Contains(UserNameSearch));
 
                 //whereCondition = whereCondition + $"AND TypeText like '%{TypeTextSearch.Replace("'", "''")}%'";
             }
@@ -46,9 +46,9 @@ namespace HRModels
 
             if (!string.IsNullOrWhiteSpace(IdSearch))
             {
-                whereCondition = whereCondition + $"AND TextData like '%{TextDataSearch.Replace("'", "''")}%'";
+                whereCondition = whereCondition + $"AND TextData like '%{UserNameSearch.Replace("'", "''")}%'";
             }
-            if (!string.IsNullOrWhiteSpace(TextDataSearch))
+            if (!string.IsNullOrWhiteSpace(UserNameSearch))
             {
                 int id = 0;
                 if (int.TryParse(IdSearch, out id))
@@ -83,7 +83,7 @@ namespace HRModels
                 }
                 else if ("TypeText".Equals(ColumnName, System.StringComparison.OrdinalIgnoreCase))
                 {
-                    timeSheets = timeSheets.OrderBy(x => x.TextData);
+                    timeSheets = timeSheets.OrderBy(x => x.UserName);
                 }
             }
             else
@@ -94,7 +94,7 @@ namespace HRModels
                 }
                 else if ("TextData".Equals(ColumnName, System.StringComparison.OrdinalIgnoreCase))
                 {
-                    timeSheets = timeSheets.OrderByDescending(x => x.TextData);
+                    timeSheets = timeSheets.OrderByDescending(x => x.UserName);
                 }
             }
 
@@ -139,9 +139,9 @@ namespace HRModels
             {
                 timeSheets = timeSheets.Where(x => x.Id.ToString() == IdSearch).ToList();
             }
-            if (!string.IsNullOrWhiteSpace(TextDataSearch))
+            if (!string.IsNullOrWhiteSpace(UserNameSearch))
             {
-                timeSheets = timeSheets.Where(x => x.TextData.Contains(TextDataSearch)).ToList();
+                timeSheets = timeSheets.Where(x => x.UserName.Contains(UserNameSearch)).ToList();
             }
             if (!string.IsNullOrWhiteSpace(ShortNotesSearch))
             {
@@ -165,7 +165,7 @@ namespace HRModels
                 }
                 else if ("TextData".Equals(ColumnName, System.StringComparison.OrdinalIgnoreCase))
                 {
-                    timeSheets = timeSheets.OrderBy(x => x.TextData).ToList();
+                    timeSheets = timeSheets.OrderBy(x => x.UserName).ToList();
                 }
 
                 
@@ -178,7 +178,7 @@ namespace HRModels
                 }
                 else if ("TextData".Equals(ColumnName, System.StringComparison.OrdinalIgnoreCase))
                 {
-                    timeSheets = timeSheets.OrderByDescending(x => x.TextData).ToList();
+                    timeSheets = timeSheets.OrderByDescending(x => x.UserName).ToList();
                 }
 
                 

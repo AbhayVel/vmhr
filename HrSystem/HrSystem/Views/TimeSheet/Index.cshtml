@@ -30,7 +30,7 @@
 <div class="col-6">
 <div class="form-group">
 <lable for="Name">Name</lable>
-<input type="text" class="form-control" value = "@timeSheetModel.TextDataSearch"  name="TextDataSearch" id="TextDataSearch"/>
+<input type="text" class="form-control" value = "@timeSheetModel.UserNameSearch"  name="TextDataSearch" id="TextDataSearch"/>
 
 </div>
 
@@ -53,7 +53,7 @@
               <a onclick="sort('@timeSheetModel.ColumnName','@timeSheetModel.OrderBy')"> @Html.DisplayNameFor(model => model.Id)</a>
             </th>
             <th>
-                 <a onclick="sort('@timeSheetModel.ColumnName','@timeSheetModel.OrderBy')"> @Html.DisplayNameFor(model => model.TextData)</a>
+                 <a onclick="sort('@timeSheetModel.ColumnName','@timeSheetModel.OrderBy')"> @Html.DisplayNameFor(model => model.UserName)</a>
             </th>
             <th>
               <a href="~/timeSheet/Index?ColumnName=ShortNotes&OrderType=@timeSheetModel.OrderBy"> @Html.DisplayNameFor(model => model.ShortNotes)</a>
@@ -71,7 +71,7 @@
                 @Html.DisplayFor(modelItem => item.Id)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.TextData)
+                @Html.DisplayFor(modelItem => item.UserName)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.ShortNotes)

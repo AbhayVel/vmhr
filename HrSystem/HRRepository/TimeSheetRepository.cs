@@ -11,7 +11,7 @@ namespace HRRepository
 {
     public class TimeSheetRepository
     {
-        private string _query = "Select Id,TextData,Heading,ShortNotes,TimeSpend,TaskStartDate,TaskEndDate,TaskDate from TimeSheet Where  1=1";
+        private string _query = "Select Id,UserName,Heading,ShortNotes,TimeSpend,TaskStartDate,TaskEndDate,TaskDate from TimeSheet Where  1=1";
 
         private string _queryCount = "Select Count(1) as count from TimeSheet Where  1=1";
         public HrSystemDBContext HrSystemDBContext { get; set; }

@@ -25,7 +25,7 @@ namespace HrSystem.Controllers
             timeSheet.Add(new TimeSheet
             {
                 Id = 1,
-                TextData = "Working on .Net script",
+                UserName = "Working on .Net script",
                 ShortNotes = "FirstCol",
                 TimeSpend = 2
             });
@@ -33,7 +33,7 @@ namespace HrSystem.Controllers
             timeSheet.Add(new TimeSheet
             {
                 Id = 2,
-                TextData = "All task completed",
+                UserName = "All task completed",
                 ShortNotes = "SecondCol",
                 TimeSpend = 3
             });
@@ -41,7 +41,7 @@ namespace HrSystem.Controllers
             timeSheet.Add(new TimeSheet
             {
                 Id = 3,
-                TextData = "Making presentation for usecase1",
+                UserName = "Making presentation for usecase1",
                 ShortNotes = "ThirdCol",
                 TimeSpend = 2
             });
@@ -49,7 +49,7 @@ namespace HrSystem.Controllers
             timeSheet.Add(new TimeSheet
             {
                 Id = 4,
-                TextData = "Making presentation for usecase2",
+                UserName = "Making presentation for usecase2",
                 ShortNotes = "FourthCol",
                 TimeSpend = 3
             });

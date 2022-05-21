@@ -13,7 +13,7 @@ namespace HREntity
 
         [Key]
         public int? Id { get; set; }
-        public string TextData { get; set; }
+        public string UserName { get; set; }
 
         public string Heading { get; set; }
 
