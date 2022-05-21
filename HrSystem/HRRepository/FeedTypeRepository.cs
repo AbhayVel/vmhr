@@ -44,5 +44,57 @@ namespace HRRepository
             return result;
         }
 
+        public FeedType Get(int id)
+        {
+            var result = HrSystemDBContext.FeedType.FirstOrDefault(x => x.Id == id);
+            return result;
+        }
+
+
+        public bool Delete(int id)
+        {
+            var result = HrSystemDBContext.FeedType.FirstOrDefault(x => x.Id == id);
+
+            if(result != null)
+            {
+                HrSystemDBContext.FeedType.Remove(result);
+
+                HrSystemDBContext.SaveChanges();
+                return true;
+            }
+            return false;
+        }
+        public FeedType Save(FeedType feedType)
+        {
+
+            
+
+            if (!feedType.Id.HasValue || feedType.Id.Value == 0)
+            {
+                feedType.Id = null;
+                HrSystemDBContext.FeedType.Add(feedType);
+            } else
+            {
+               // var result = HrSystemDBContext.FeedType.AsNoTracking().FirstOrDefault(x => x.Id == feedType.Id);
+
+                var result =  HrSystemDBContext.FeedType.FirstOrDefault(x => x.Id == feedType.Id);
+                if( result != null)
+                {
+
+
+                    result.TypeText = feedType.TypeText;
+                    //HrSystemDBContext.Attach(feedType).State = EntityState.Modified;
+                }
+                else
+                {
+                    throw new Exception("Requested object doesnot exists");
+                }
+                
+            }
+            HrSystemDBContext.SaveChanges();
+           
+            return feedType;
+        }
+
     }
 }

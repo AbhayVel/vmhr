@@ -8,6 +8,7 @@ namespace HrSystem.Controllers
 {
     public class TimeViewController : Controller
     {
+        
         public TimeSheetRepository TimeSheetRepository { get; set; }
         public TimeViewController(TimeSheetRepository _timeSheetRepository)
         {

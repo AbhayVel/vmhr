@@ -12,7 +12,7 @@
     }
 
 <p>
-    <a asp-action="Create">Create New</a>
+    <a href="~/feedType/Edit/0">Create New</a>
 </p>
 
 <form action="~/FeedType/Index" method="post">
@@ -69,9 +69,10 @@
                 @Html.DisplayFor(modelItem => item.TypeText)
             </td>
             <td>
-                 <a href="~/Users/Edit/@item.Id"> <button type="button" class="btn btn-warning">Edit</button> </a>
+                 <a href="~/FeedType/Edit/@item.Id"> <button type="button" class="btn btn-warning">Edit</button> </a>
                   <a href="~/FeedType/Delete/@item.Id">
-                 <button type="button" class="btn btn-danger">Delete</button></a>
+                 <button type="button" class="btn btn-danger">Delete</button>
+                 </a>
             </td>
         </tr>
 }

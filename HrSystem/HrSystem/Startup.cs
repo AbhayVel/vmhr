@@ -138,8 +138,17 @@ namespace HrSystem
 
             ////////});
 
-
             app.Use(async (context, next) =>
+            {
+                DateTime StartDate= DateTime.Now; ;
+                await next();
+                DateTime EndDate = DateTime.Now;
+
+                var milli = (EndDate - StartDate).Milliseconds;
+                context.Response.Headers.Add("TimeTakenValue", milli.ToString());
+
+            });
+                app.Use(async (context, next) =>
             {
                 int i = 1;
                 if (context.Request.Path.ToString().ToLower().Equals("/")
