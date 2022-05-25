@@ -1,10 +1,12 @@
-﻿using System;
+﻿using HREntity;
+using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace HRModels
 {
-   public class BaseModel
+    public class BaseModel
     {
         protected string _columnName;
 
@@ -47,5 +49,7 @@ namespace HRModels
                 _orderBy = value;
             }
         }
+
+       
     }
 }

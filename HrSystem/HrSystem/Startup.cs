@@ -57,7 +57,8 @@ namespace HrSystem
             services.AddScoped<VacancyService, VacancyService>();
             services.AddScoped<StageService, StageService>();
          services.AddScoped<IUserService, UserService>();
-      }
+            services.AddScoped<IFeedRepository, FeedRepository>();
+        }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)

@@ -7,6 +7,11 @@
     var feedModel = ViewBag.Model as FeedModel;
     var pageModel = feedModel.PageModel; 
 }
+
+<p>
+    <a href="~/feed/Edit/0">Create New</a>
+</p>
+
 <div class="p-4">
     <form method="post" action="~/Feed/Index">
         <div class="row">
@@ -135,7 +140,7 @@
         document.querySelector("#currentPage").value = num;
         document.querySelector("#btnsub").click();
     }
-    function sort(columnName, orderBy) {
+    function Sort(columnName, orderBy) {
         
         event.preventDefault();
         if (orderBy == 'asc')

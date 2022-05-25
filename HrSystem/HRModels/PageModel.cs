@@ -1,5 +1,7 @@
-﻿using System;
+﻿using HREntity;
+using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace HRModels
@@ -33,6 +35,7 @@ namespace HRModels
 
         public int EndIndex { get; set; }
 
+        
 
         public string SetValues(int RowCount)
         {
@@ -61,6 +64,10 @@ namespace HRModels
             return $"  offset {startIndex} rows fetch next {pageModel.RowPerPage} rows only  ";
         }
 
+        public IQueryable<Feed> SetValues(IQueryable<Feed> feedTypes, int count)
+        {
+            throw new NotImplementedException();
+        }
 
         public void SetValues<T>(List<T> data)
         {

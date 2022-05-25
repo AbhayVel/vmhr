@@ -1,5 +1,6 @@
 ﻿using HREntity;
 using HRModels;
+using HRRepository;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,6 +9,13 @@ namespace HrSystem.Controllers
 {
     public class FeedController : Controller
     {
+        IFeedRepository _feedRepository;
+
+        public FeedController(IFeedRepository feedRepository)
+        {
+            _feedRepository = feedRepository;
+        }
+
         public List<Feed> GetFeed() {
             List<Feed> feed = new List<Feed>();
 
@@ -59,16 +67,51 @@ namespace HrSystem.Controllers
             });
             return feed;
         }
+       
         public IActionResult Index( FeedModel feedModel)
         {
-            List<Feed> feed = GetFeed();
-
-            feed = feedModel.Where(feed);
-            feed = feedModel.Sort(feed);
-            feedModel.PageModel.SetValues(feed);
-            feed = feed.Skip(feedModel.PageModel.StartIndex).Take(feedModel.PageModel.RowPerPage).ToList();
+            List<Feed> feed = _feedRepository.GetAll(feedModel);
             ViewBag.Model = feedModel;
+
+            //feed = feedModel.Where(feed);
+            //feed = feedModel.Sort(feed);
+            //feedModel.PageModel.SetValues(feed);
+            //feed = feed.Skip(feedModel.PageModel.StartIndex).Take(feedModel.PageModel.RowPerPage).ToList();
+            
             return View(feed);
         }
+        public IActionResult Edit(int id)
+        {
+            if (id == 0)
+            {
+                return View(new Feed());
+            }
+            var result = _feedRepository.Get(id);
+            if (result == null)
+            {
+                return View(new Feed());
+            }
+            return View(result);
+        }
+
+        public IActionResult Delete(int id)
+        {
+            var result = _feedRepository.Delete(id);
+            return new RedirectResult("~/feed/index");
+        }
+
+
+        [ValidateAntiForgeryToken]
+        public IActionResult Save(Feed feed)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View("Edit", feed);
+            }
+            var result = _feedRepository.Save(feed);
+            return new RedirectResult("~/feed/index");
+        }
+
+
     }
 }
