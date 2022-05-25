@@ -16,9 +16,9 @@ using System.Threading.Tasks;
 
 namespace HrSystem
 {
-    public class Startup
+    public class MainStartUp
     {
-        public Startup(IConfiguration configuration)
+        public MainStartUp(IConfiguration configuration)
         {
             Configuration = configuration;
         }
