@@ -1,0 +1,49 @@
+﻿@model FeedType
+
+@if(!Model.Id.HasValue || Model.Id==0)
+{
+     <h2> <center>Add FeedType</center></h2>
+} else
+{
+    <h2> <center>Edit FeedType</center></h2>
+    
+}
+
+
+<hr />
+<div class="row">
+    <div class="col-md-12">
+@*@using(Html.BeginForm("save", "Feedtype",FormMethod.Post)){*@
+    <form action="~/FeedType/Save" method="post">
+   
+    
+      <div id="Id">
+            <div class="form-group">
+                @Html.DisplayNameFor(x=>x.Id)<br>
+    @Html.TextBoxFor(X=>X.Id, "", new {@disabled="disabled"})
+    @Html.HiddenFor(X=>X.Id)
+    </div>
+    </div>
+
+    <div id="TypeText">
+            <div class="form-group">
+
+                @Html.DisplayNameFor(x=>x.TypeText)<br>
+     @Html.TextBoxFor(X=>X.TypeText) <br />
+
+     @Html.ValidationMessageFor(x=>x.TypeText, "", new { @class = "text-danger" })
+     </div>
+
+     
+     </div>
+
+
+    
+     <button type="submit">Save</button>
+
+     @Html.ActionLink("Go to List", "Index")
+     </form>
+@*}*@
+
+</div>
+</div>

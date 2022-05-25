@@ -6,12 +6,13 @@
 <div class="p-4">
 <h1>Index</h1>
 
-@{
-    var feedTypeModel = ViewBag.Model as FeedTypeModel;
-}
+    @{
+        var feedTypeModel = ViewBag.Model as FeedTypeModel;
+        var pageModel = feedTypeModel.PageModel;
+    }
 
 <p>
-    <a asp-action="Create">Create New</a>
+    <a href="~/feedType/Edit/0">Create New</a>
 </p>
 
 <form action="~/FeedType/Index" method="post">
@@ -35,7 +36,9 @@
 </div>
 </div>
 
- 
+<input type="hidden" name="OrderBy" id="orderBy" value="@feedTypeModel.OrderBy" />
+<input type="hidden" name="ColumnName" id="columnName" value="@feedTypeModel.ColumnName" />
+  <input type="hidden" name="pageModel.currentPage" id="currentPage" value="@pageModel.CurrentPage" />
 <button type="submit"  id="btnsub">Search</button>
 
 </form>
@@ -48,10 +51,10 @@
     <thead>
         <tr> 
              <th>
-              <a href="~/feedType/Index?ColumnName=id&OrderBy=@feedTypeModel.OrderBy"> @Html.DisplayNameFor(model => model.Id)</a>
+              <a onclick="sort('@feedTypeModel.ColumnName', '@feedTypeModel.OrderBy')"> @Html.DisplayNameFor(model => model.Id)</a>
             </th>
             <th>
-                <a href="~/feedType/Index?ColumnName=TypeText&OrderBy=@feedTypeModel.OrderBy"> @Html.DisplayNameFor(model => model.TypeText)</a>
+                <a onclick="sort('@feedTypeModel.ColumnName','@feedTypeModel.OrderBy')"> @Html.DisplayNameFor(model => model.TypeText)</a>
             </th>
             <th></th>
         </tr>
@@ -66,14 +69,71 @@
                 @Html.DisplayFor(modelItem => item.TypeText)
             </td>
             <td>
-                 <a href="~/Users/Edit/@item.Id"> <button type="button" class="btn btn-warning">Edit</button> </a>
+                 <a href="~/FeedType/Edit/@item.Id"> <button type="button" class="btn btn-warning">Edit</button> </a>
                   <a href="~/FeedType/Delete/@item.Id">
-                 <button type="button" class="btn btn-danger">Delete</button></a>
+                 <button type="button" class="btn btn-danger">Delete</button>
+                 </a>
             </td>
         </tr>
 }
     </tbody>
 </table>
+
+<div class="row">
+        <div class="col-sm-12 col-md-5">
+            <div class="dataTables_info" id="example_info" role="status" aria-live="polite">
+                Showing <span>@(pageModel.StartIndex +1)</span> to <span>@(pageModel.EndIndex +1)</span> of <span>@pageModel.TotalRowCount</span> entries
+            </div>
+        </div><div class="col-sm-12 col-md-7">
+            <div class="dataTables_paginate paging_simple_numbers" id="example_paginate">
+                <ul class="pagination">
+                    <li class="paginate_button page-item previous" id="example_previous"><a href="#" aria-controls="example" data-dt-idx="0" tabindex="0" class="page-link">Previous</a></li>
+
+                    @for (int i = 1; i <= pageModel.PageCount; i = i + 1)
+                    {
+                        if (i == pageModel.CurrentPage)
+                        {
+                            <li class="paginate_button page-item active"><a onclick="pageChange('@i')" href="/applications/index?currentPage=@i" aria-controls="example" data-dt-idx="1" tabindex="0" class="page-link">@i</a></li>
+
+                        }
+                        else
+                        {
+                            <li class="paginate_button page-item"><a onclick="pageChange('@i')" href="/applications/index?currentPage=@i" aria-controls="example" data-dt-idx="1" tabindex="0" class="page-link">@i</a></li>
+
+                        }
+
+                    }
+                    <li class="paginate_button page-item next disabled" id="example_next"><a href="#" aria-controls="example" data-dt-idx="3" tabindex="0" class="page-link">Next</a></li>
+                </ul>
+        </div>
+        </div>
+    </div>
 </div>
 
 
+
+
+<script >
+
+
+    function pageChange(num){
+         event.preventDefault();
+         debugger;
+         document.querySelector("#currentPage").value=num;
+         document.querySelector("#btnsub").click();
+    }
+
+function sort(columnName,orderBy){
+     event.preventDefault();
+    if(orderBy=='asc'){
+        orderBy='desc';
+    } else {
+        orderBy='asc';
+    }
+document.querySelector("#orderBy").value=orderBy;
+document.querySelector("#columnName").value=columnName;
+
+document.querySelector("#btnsub").click();
+
+}
+</script>

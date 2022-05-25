@@ -53,7 +53,12 @@ namespace HrSystem
             services.AddScoped<VacancyRepository, VacancyRepository>();
             services.AddScoped<IUserRepository, UserRepository>();
          services.AddScoped<IApplicationRepository, ApplicationRepository>();
+
+            services.AddScoped<TimeSheetRepository, TimeSheetRepository>();
+            
+            services.AddScoped<IFeedTypeRepository, FeedTypeRepository>();
          services.AddScoped<ApplicationService, ApplicationService>();
+ 
             services.AddScoped<VacancyService, VacancyService>();
             services.AddScoped<StageService, StageService>();
          services.AddScoped<IUserService, UserService>();
@@ -134,8 +139,17 @@ namespace HrSystem
 
             ////////});
 
-
             app.Use(async (context, next) =>
+            {
+                DateTime StartDate= DateTime.Now; ;
+                await next();
+                DateTime EndDate = DateTime.Now;
+
+                var milli = (EndDate - StartDate).Milliseconds;
+                context.Response.Headers.Add("TimeTakenValue", milli.ToString());
+
+            });
+                app.Use(async (context, next) =>
             {
                 int i = 1;
                 if (context.Request.Path.ToString().ToLower().Equals("/")
