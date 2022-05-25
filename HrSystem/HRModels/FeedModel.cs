@@ -11,18 +11,68 @@ namespace HRModels
 
         public string IdSearch { get; set; }
         public string TextDataSearch { get; set; }
-        public List<Feed> Where(List<Feed> feed)
+        //public List<Feed> Where(List<Feed> feed)
+        //{
+        //    if (!string.IsNullOrWhiteSpace(IdSearch))
+        //    {
+        //        feed = feed.Where(x => x.Id.ToString() == IdSearch).ToList();
+        //    }
+        //    if (!string.IsNullOrWhiteSpace(TextDataSearch))
+        //    {
+        //        feed = feed.Where(x => x.TextData.Contains(TextDataSearch)).ToList();
+        //    }
+        //    return feed;
+        //}
+
+        public IQueryable<Feed> Where(IQueryable<Feed> feeds)
         {
-            if (!string.IsNullOrWhiteSpace(IdSearch))
-            {
-                feed = feed.Where(x => x.Id.ToString() == IdSearch).ToList();
-            }
+            // string whereCondition = string.Empty;
             if (!string.IsNullOrWhiteSpace(TextDataSearch))
             {
-                feed = feed.Where(x => x.TextData.Contains(TextDataSearch)).ToList();
+
+                feeds = feeds.Where(x => x.TextData.Contains(TextDataSearch));
+
+                //whereCondition = whereCondition + $"AND TypeText like '%{TypeTextSearch.Replace("'", "''")}%'";
             }
-            return feed;
+
+            if (!string.IsNullOrWhiteSpace(IdSearch))
+            {
+                int id = 0;
+                if (int.TryParse(IdSearch, out id))
+                {
+                    feeds = feeds.Where(x => x.Id == id);
+                }
+            }
+
+            return feeds;
         }
+
+        public string Sort()
+        {
+            throw new NotImplementedException();
+        }
+
+        public string Where()
+        {
+            string whereCondition = string.Empty;
+            if (!string.IsNullOrWhiteSpace(TextDataSearch))
+            {
+                whereCondition = whereCondition + $"AND TextData like '%{TextDataSearch.Replace("'", "''")}%'";
+            }
+
+            if (!string.IsNullOrWhiteSpace(IdSearch))
+            {
+                int id = 0;
+                if (int.TryParse(IdSearch, out id))
+                {
+                    whereCondition = whereCondition + $"AND Id = {id}";
+                }
+            }
+
+            return whereCondition;
+
+        }
+
         public List<Feed> Sort(List<Feed> feed)
         {
             if ("asc".Equals(OrderBy, System.StringComparison.OrdinalIgnoreCase))
@@ -51,7 +101,7 @@ namespace HRModels
                 {
                     feed = feed.OrderBy(x => x.UserName).ToList();
                 }
-                
+
             }
             else
 
@@ -80,10 +130,82 @@ namespace HRModels
                 {
                     feed = feed.OrderByDescending(x => x.UserName).ToList();
                 }
-                
+
 
             }
             return feed;
+        }
+        public IQueryable<Feed> Sort(IQueryable<Feed> feed)
+        {
+           // string orderByString = " Order By ";
+           
+            if ("asc".Equals(OrderBy, System.StringComparison.OrdinalIgnoreCase))
+            {
+                if ("id".Equals(ColumnName, System.StringComparison.OrdinalIgnoreCase))
+                {
+                    feed = feed.OrderBy(x => x.Id);
+                }
+                else if ("TypeText".Equals(ColumnName, System.StringComparison.OrdinalIgnoreCase))
+                {
+                    feed = feed.OrderBy(x => x.TextData);
+                }
+            }
+            else
+            {
+                if ("id".Equals(ColumnName, System.StringComparison.OrdinalIgnoreCase))
+                {
+                    feed = feed.OrderByDescending(x => x.Id);
+                }
+                else if ("TypeText".Equals(ColumnName, System.StringComparison.OrdinalIgnoreCase))
+                {
+                    feed = feed.OrderByDescending(x => x.TextData);
+                }
+            }
+
+            return feed;
+        }
+        public List<Feed> Where(List<Feed> feeds)
+        {
+            if (!string.IsNullOrWhiteSpace(IdSearch))
+            {
+                feeds = feeds.Where(x => x.Id.ToString() == IdSearch).ToList();
+            }
+            if (!string.IsNullOrWhiteSpace(TextDataSearch))
+            {
+                feeds = feeds.Where(x => x.TextData.Contains(TextDataSearch)).ToList();
+            }
+
+
+            return feeds;
+        }
+        public List<Feed> sort(List<Feed> feeds)
+        {
+            if ("asc".Equals(OrderBy, System.StringComparison.OrdinalIgnoreCase))
+            {
+                if ("id".Equals(ColumnName, System.StringComparison.OrdinalIgnoreCase))
+                {
+                    feeds = feeds.OrderBy(x => x.Id).ToList();
+                }
+                else if ("TextData".Equals(ColumnName, System.StringComparison.OrdinalIgnoreCase))
+                {
+                    feeds = feeds.OrderBy(x => x.TextData).ToList();
+                }
+
+
+            }
+            else
+            {
+                if ("id".Equals(ColumnName, System.StringComparison.OrdinalIgnoreCase))
+                {
+                    feeds = feeds.OrderByDescending(x => x.Id).ToList();
+                }
+                else if ("TextData".Equals(ColumnName, System.StringComparison.OrdinalIgnoreCase))
+                {
+                    feeds = feeds.OrderByDescending(x => x.TextData).ToList();
+                }
+            }
+
+            return feeds;
         }
     }
 
