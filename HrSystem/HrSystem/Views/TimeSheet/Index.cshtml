@@ -13,28 +13,29 @@
     }
 
 <p>
-    <a asp-action="Create">Create New</a>
+    <a href="~/timeSheet/Edit/0">Create New</a>
 </p>
 
 <form action="~/TimeSheet/Index" method="post">
  
 <div class="row">
+
 <div class="col-6">
 <div class="form-group">
 <lable for="Id">Id:</lable>
 <input type="text" class="form-control" value = "@timeSheetModel.IdSearch"  name="IdSearch" id="IdSearch"/>
 
 </div>
-
 </div>
+
 <div class="col-6">
 <div class="form-group">
 <lable for="Name">Name</lable>
 <input type="text" class="form-control" value = "@timeSheetModel.UserNameSearch"  name="TextDataSearch" id="TextDataSearch"/>
 
 </div>
-
 </div>
+
 </div>
 
 <input type="hidden" name="OrderBy" id="orderBy" value="@timeSheetModel.OrderBy" />
@@ -56,11 +57,24 @@
                  <a onclick="sort('@timeSheetModel.ColumnName','@timeSheetModel.OrderBy')"> @Html.DisplayNameFor(model => model.UserName)</a>
             </th>
             <th>
-              <a href="~/timeSheet/Index?ColumnName=ShortNotes&OrderType=@timeSheetModel.OrderBy"> @Html.DisplayNameFor(model => model.ShortNotes)</a>
+              <a onclick="sort('@timeSheetModel.ColumnName','@timeSheetModel.OrderBy')"> @Html.DisplayNameFor(model => model.Heading)</a>
             </th>
             <th>
-              <a href="~/timeSheet/Index?ColumnName=TimeSpend&OrderType=@timeSheetModel.OrderBy"> @Html.DisplayNameFor(model => model.TimeSpend)</a>
+              <a onclick="sort('@timeSheetModel.ColumnName','@timeSheetModel.OrderBy')"> @Html.DisplayNameFor(model => model.ShortNotes)</a>
             </th>
+            <th>
+              <a onclick="sort('@timeSheetModel.ColumnName','@timeSheetModel.OrderBy')"> @Html.DisplayNameFor(model => model.TimeSpend)</a>
+            </th>
+            <th>
+              <a onclick="sort('@timeSheetModel.ColumnName','@timeSheetModel.OrderBy')"> @Html.DisplayNameFor(model => model.TaskStartDate)</a>
+            </th>
+            <th>
+              <a onclick="sort('@timeSheetModel.ColumnName','@timeSheetModel.OrderBy')"> @Html.DisplayNameFor(model => model.TaskEndDate)</a>
+            </th>
+            <th>
+              <a onclick="sort('@timeSheetModel.ColumnName','@timeSheetModel.OrderBy')"> @Html.DisplayNameFor(model => model.TaskDate)</a>
+            </th>
+
             <th></th>
         </tr>
     </thead>
@@ -74,13 +88,25 @@
                 @Html.DisplayFor(modelItem => item.UserName)
             </td>
             <td>
+                @Html.DisplayFor(modelItem => item.Heading)
+            </td>
+            <td>
                 @Html.DisplayFor(modelItem => item.ShortNotes)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.TimeSpend)
             </td>
             <td>
-                 <a href="~/Users/Edit/@item.Id"> <button type="button" class="btn btn-warning">Edit</button> </a>
+                @Html.DisplayFor(modelItem => item.TaskStartDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TaskEndDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TaskDate)
+            </td>
+            <td>
+                 <a href="~/TimeSheet/Edit/@item.Id"> <button type="button" class="btn btn-warning">Edit</button> </a>
                   <a href="~/TimeSheet/Delete/@item.Id">
                  <button type="button" class="btn btn-danger">Delete</button></a>
             </td>

@@ -69,5 +69,37 @@ namespace HrSystem.Controllers
         }
 
 
+        public IActionResult Edit(int id)
+        {
+            if(id == 0)
+            {
+                return View(new FeedType());
+            }
+            var result = _feedTypeRepository.Get(id);
+            if(result == null)
+            {
+                return View(new FeedType());
+            }
+            return View(result);
+        }
+
+        public IActionResult Delete(int id)
+        {
+            var result = _feedTypeRepository.Delete(id);
+            return new RedirectResult("~/feedType/index");
+        }
+
+
+        [ValidateAntiForgeryToken]
+        public IActionResult Save(FeedType feedType)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View("Edit", feedType);
+            }
+            var result = _feedTypeRepository.Save(feedType);
+            return new RedirectResult("~/feedType/index");
+        }
+
     }
 }

@@ -40,5 +40,58 @@ namespace HRRepository
             var result = timeSheets.ToList();
             return result;
         }
+
+        public TimeSheet Get(int id)
+        {
+            var result = HrSystemDBContext.TimeSheet.FirstOrDefault(x => x.Id == id);
+            return result;
+        }
+
+
+        public bool Delete(int id)
+        {
+            var result = HrSystemDBContext.TimeSheet.FirstOrDefault(x => x.Id == id);
+
+            if (result != null)
+            {
+                HrSystemDBContext.TimeSheet.Remove(result);
+
+                HrSystemDBContext.SaveChanges();
+                return true;
+            }
+            return false;
+        }
+        public TimeSheet Save(TimeSheet timeSheet)
+        {
+
+
+
+            if (!timeSheet.Id.HasValue || timeSheet.Id.Value == 0)
+            {
+                timeSheet.Id = null;
+                HrSystemDBContext.TimeSheet.Add(timeSheet);
+            }
+            else
+            {
+                // var result = HrSystemDBContext.FeedType.AsNoTracking().FirstOrDefault(x => x.Id == feedType.Id);
+
+                var result = HrSystemDBContext.TimeSheet.FirstOrDefault(x => x.Id == timeSheet.Id);
+                if (result != null)
+                {
+
+
+                    result.UserName = timeSheet.UserName;
+                    //HrSystemDBContext.Attach(feedType).State = EntityState.Modified;
+                }
+                else
+                {
+                    throw new Exception("Requested object doesnot exists");
+                }
+
+            }
+            HrSystemDBContext.SaveChanges();
+
+            return timeSheet;
+        }
     }
 }
