@@ -1,0 +1,23 @@
+﻿@model DummyMVC.Controllers.XYZ
+
+@using DummyMVC.Controllers
+@{
+    ViewData["Title"] = "Index";
+}
+
+@*@using(){
+
+}*@
+
+@using (Html.BeginForm("save", "Login", new { ReturnUrl=ViewBag.ReturnUrl }, FormMethod.Post,true, new { @ReturnUrl=ViewBag.ReturnUrl} ))
+{
+   
+    <label >User Name</label>
+    <input type="text" name="userName" value="@Model.UserName"/>
+    <label >Password</label>
+        @Html.PasswordFor(X=>X.Password)
+
+<button type="submit" >Login</button>
+}
+
+

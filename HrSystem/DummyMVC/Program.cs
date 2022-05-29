@@ -1,8 +1,23 @@
+using DummyMVC.filters;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews().AddRazorRuntimeCompilation();
 
+builder.Services.AddMvcCore((o) =>
+{
+    o.Filters.Add(new MyResultActionFIlter());
+});
+
+builder.Services.AddAuthentication("cookies").AddCookie("cookies",(x) =>
+{
+    x.LoginPath = "/Login/Index";
+    x.LogoutPath = "/Login/Logout";
+    x.ExpireTimeSpan = TimeSpan.FromMinutes(2);
+
+   
+});
 
 
 var app = builder.Build();
@@ -56,6 +71,7 @@ if (!app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 app.UseStaticFiles();
 
+app.UseAuthentication();
 app.UseRouting();
 
 app.UseAuthorization();
