@@ -1,0 +1,33 @@
+﻿@model UIproject.Controllers.XYZ
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+@using (Html.BeginForm("Save","Login"))
+{
+
+    <label>UserName</label>
+<input type="text" name="userName" value = "@Model.UserName" />
+@*@Html.TextBoxFor(x=>x.UserName)*@
+    <label>Password</label>
+@*<input type="text" name="password" />*@
+@Html.PasswordFor(x=>x.password)
+
+<br />
+
+<button type="submit">Login</button>
+
+}
+
+@*@Html.BeginForm("save","Login")
+
+<form action="/Login/save" method="post">
+
+<input type="text" name="username" />
+
+<input type="text" name="password" />
+
+<button type="submit">Login</button>
+
+</form>*@
