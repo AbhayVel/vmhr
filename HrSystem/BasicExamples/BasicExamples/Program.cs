@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace BasicExamples
@@ -40,6 +41,12 @@ namespace BasicExamples
         }
         static void Main(string[] args)
         {
+
+
+            Dictionary<string, Dictionary<string,string>> sessions = new Dictionary<string, Dictionary<string,string>>();
+            int[] arr = { 1, 5, 9 };
+            int i = 1;
+            arr[i++]=arr[i]+10;
             try
             {
                 UseStartUp<StartUp>();

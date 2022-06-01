@@ -1,4 +1,6 @@
-﻿using DummyMVC.Models;
+﻿using DummyMVC.filters;
+using DummyMVC.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 
@@ -10,7 +12,12 @@ namespace DummyMVC.Controllers
     /// </summary>
     /// 
     //Name +"Controller"
-    public class HomeController : Controller
+
+
+    [Authorize]
+    [ExceptionFIlter]
+     [MyActionFIlter(Name ="Home")]
+    public class HomeController : Base
     {
         private readonly ILogger<HomeController> _logger;
 
@@ -19,18 +26,26 @@ namespace DummyMVC.Controllers
             _logger = logger;
         }
 
+
+    
         public IActionResult Index()
         {
             return View();
         }
 
-
+        [MyAuthFIlter(Role ="Admin", Claim = "CanSeeFeeds")]
         public IActionResult Features()
         {
+              
             return View();
         }
 
         public IActionResult Design()
+        {
+            return View();
+        }
+
+        public IActionResult UnAuth()
         {
             return View();
         }

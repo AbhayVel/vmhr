@@ -17,16 +17,16 @@ namespace HrSystem.Controllers
       StageService StageService { get; set; }
       public HomeController(ApplicationService applicationService, StageService stageService)
       {
-         ApplicationService = applicationService;
-         StageService = stageService;
+         //ApplicationService = applicationService;
+         //StageService = stageService;
 
       }
       private readonly ILogger<HomeController> _logger;
 
-        public HomeController(ILogger<HomeController> logger)
-        {
-            _logger = logger;
-        }
+        //public HomeController()
+        //{
+        // //   _logger = logger;
+        //}
 
         public IActionResult Index()
         {

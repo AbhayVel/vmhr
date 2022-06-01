@@ -18,6 +18,8 @@ namespace HrSystem
 {
     public class MainStartUp
     {
+
+        static int isCount=0;
         public MainStartUp(IConfiguration configuration)
         {
             Configuration = configuration;
@@ -68,9 +70,28 @@ namespace HrSystem
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+            string strPosition = "";
+
+            app.UseExceptionHandler("/Home/Error");
+
+            //app.Use(async (context, next) =>
+            //{
+            //    try
+            //    {
+            //        strPosition = "I am in Box 1 Before";
+            //        await next();
+            //    }
+            //    catch (Exception ex)
+            //    {
+            //        context.Response.Redirect("/Home/Error");
+            //       await Task.CompletedTask;
+            //    }
+
+
+            //});
             if (env.IsDevelopment())
             {
-                app.UseDeveloperExceptionPage();
+               // app.UseDeveloperExceptionPage();
             }
             else
             {
@@ -78,12 +99,44 @@ namespace HrSystem
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
+
+            app.Use(async (context, next) =>
+            {
+                Console.WriteLine("I am start");
+                strPosition = "I am in Box 1 Before";
+                if (isCount == 0)
+                {
+                    isCount = isCount + 1;
+                   // throw new Exception("I am in EXception");
+                }
+                await next();
+                strPosition = "I am in Box 1 After";
+                Console.WriteLine("I am End");
+            });
+
+           
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseSession();
+           
+
             app.Use(async (context, next) =>
             {
+            //    Console.WriteLine("I am start");
+                strPosition = "I am in Box 2 Before";
                 await next();
+                strPosition = "I am in Box 2 After";
+              //  Console.WriteLine("I am End");
+            });
+
+            app.Use(async (context, next) =>
+            {
+              //  Console.WriteLine("I am start");
+                strPosition = "I am in Box 3 Before";
+                
+                await next();
+                strPosition = "I am in Box 3 After";
+                //Console.WriteLine("I am End");
             });
 
             //app.Use(async (context, next) =>
@@ -139,35 +192,35 @@ namespace HrSystem
 
             ////////});
 
-            app.Use(async (context, next) =>
-            {
-                DateTime StartDate= DateTime.Now; ;
-                await next();
-                DateTime EndDate = DateTime.Now;
+            //app.Use(async (context, next) =>
+            //{
+            //    DateTime StartDate= DateTime.Now; ;
+            //    await next();
+            //    DateTime EndDate = DateTime.Now;
 
-                var milli = (EndDate - StartDate).Milliseconds;
-                context.Response.Headers.Add("TimeTakenValue", milli.ToString());
+            //    var milli = (EndDate - StartDate).Milliseconds;
+            //    context.Response.Headers.Add("TimeTakenValue", milli.ToString());
 
-            });
-                app.Use(async (context, next) =>
-            {
-                int i = 1;
-                if (context.Request.Path.ToString().ToLower().Equals("/")
-               )
-                {
+            //});
+            //    app.Use(async (context, next) =>
+            //{
+            //    int i = 1;
+            //    if (context.Request.Path.ToString().ToLower().Equals("/")
+            //   )
+            //    {
 
-                     context.Response.Redirect("/Users/Login");
+            //         context.Response.Redirect("/Users/Login");
 
 
-                }
-                else
-                {
-                    await next();
-                }
+            //    }
+            //    else
+            //    {
+            //        await next();
+            //    }
 
-                i = i + 1;
+            //    i = i + 1;
 
-            });
+            //});
 
 
             //app.Run(async (context) =>
@@ -179,9 +232,6 @@ namespace HrSystem
            
             app.UseRouting();
             app.UseAuthorization();
-
-
-
 
             //app.UseMvc((x) =>
             //{
@@ -196,7 +246,7 @@ namespace HrSystem
 
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller}/{action=Index}/{id?}");
+                    pattern: "{controller=Home}/{action=Index}/{id?}");
             });
         }
     }
