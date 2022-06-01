@@ -55,7 +55,7 @@ namespace DummyMVC.Controllers
                 user2.AuthenticationType = "cookies";
                 user2.IsAuthenticated = true;
                 ClaimsIdentity claimsIdentity = new ClaimsIdentity(user2);
-                claimsIdentity.AddClaim(new Claim("Role","Admin"));
+                claimsIdentity.AddClaim(new Claim(ClaimTypes.Role,"Admin"));
                 claimsIdentity.AddClaim(new Claim("CanSeeFeeds","Yes"));
                 ClaimsPrincipal claimsPrincipal = new ClaimsPrincipal(claimsIdentity);
 
@@ -70,6 +70,31 @@ namespace DummyMVC.Controllers
                     return Redirect(ReturnUrl);
                 }
                 
+            }
+
+
+            if ("ketaki".Equals(userName) && password == "abc")
+            {
+                User2 user2 = new User2();
+                user2.UserName = userName; ;
+                user2.AuthenticationType = "cookies";
+                user2.IsAuthenticated = true;
+                ClaimsIdentity claimsIdentity = new ClaimsIdentity(user2);
+                claimsIdentity.AddClaim(new Claim(ClaimTypes.Role, "Sales"));
+                claimsIdentity.AddClaim(new Claim("CanSeeFeeds", "No"));
+                ClaimsPrincipal claimsPrincipal = new ClaimsPrincipal(claimsIdentity);
+
+                await HttpContext.SignInAsync("cookies", claimsPrincipal);
+                HttpContext.User = claimsPrincipal;
+                if (string.IsNullOrEmpty(ReturnUrl))
+                {
+                    return Redirect("/Home/Index");
+                }
+                else
+                {
+                    return Redirect(ReturnUrl);
+                }
+
             }
 
             return View("Index");

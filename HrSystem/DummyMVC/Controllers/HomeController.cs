@@ -33,7 +33,7 @@ namespace DummyMVC.Controllers
             return View();
         }
 
-
+        [MyAuthFIlter(Role ="Admin", Claim = "CanSeeFeeds")]
         public IActionResult Features()
         {
               
@@ -41,6 +41,11 @@ namespace DummyMVC.Controllers
         }
 
         public IActionResult Design()
+        {
+            return View();
+        }
+
+        public IActionResult UnAuth()
         {
             return View();
         }

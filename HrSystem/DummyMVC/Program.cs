@@ -14,8 +14,9 @@ builder.Services.AddAuthentication("cookies").AddCookie("cookies",(x) =>
 {
     x.LoginPath = "/Login/Index";
     x.LogoutPath = "/Login/Logout";
-    x.ExpireTimeSpan = TimeSpan.FromMinutes(2);
-
+    x.ExpireTimeSpan = TimeSpan.FromMinutes(20);
+    x.AccessDeniedPath = "/home/UnAuth";
+    x.SlidingExpiration = true;
    
 });
 
