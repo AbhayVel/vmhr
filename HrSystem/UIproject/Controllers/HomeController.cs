@@ -1,9 +1,11 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 using UIproject.Models;
 
 namespace UIproject.Controllers
 {
+    [Authorize]
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
@@ -26,6 +28,27 @@ namespace UIproject.Controllers
         {
             return View();
         }
+        public IActionResult Home()
+        {
+            return View();
+        }
+        public IActionResult Features()
+        {
+            return View();
+        }
+        public IActionResult Design()
+        {
+            return View();
+        }
+        public IActionResult Price()
+        {
+            return View();
+        }
+        public IActionResult Contact()
+        {
+            return View();
+        }
+
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {

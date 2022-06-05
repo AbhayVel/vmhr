@@ -1,0 +1,113 @@
+﻿@model TimeSheet
+
+@if(!Model.Id.HasValue || Model.Id==0)
+{
+     <h2> <center>Add TimeSheet</center></h2>
+} else
+{
+    <h2> <center>Edit TimeSheet</center></h2>
+    
+}
+
+<hr />
+<div class="row">
+    <div class="col-md-12">
+@*@using(Html.BeginForm("save", "TimeSheet",FormMethod.Post)){*@
+<form action="~/TimeSheet/save" method="post">
+
+	<div id="Id">
+    <div class="form-group">
+                @Html.DisplayNameFor(x=>x.Id)<br>
+	@Html.TextBoxFor(X=>X.Id, "", new {@disabled="readonly"})
+	@Html.HiddenFor(X=>X.Id)
+	</div>
+	</div>
+
+	<div id="UserName">
+    <div class="form-group">
+                @Html.DisplayNameFor(x=>x.UserName)<br>
+	@Html.TextBoxFor(X=>X.UserName)<br />
+	@Html.ValidationMessageFor(x=>x.UserName, "", new { @class = "text-danger" })
+     </div>
+     </div>
+
+	<div id="Heading">
+    <div class="form-group">
+                @Html.DisplayNameFor(x=>x.Heading)<br>
+	@Html.TextBoxFor(X=>X.Heading)
+	@Html.ValidationMessageFor(x=>x.Heading, "", new { @class = "text-danger" })
+     </div>
+     </div>
+
+	<div id="ShortNotes">
+    <div class="form-group">
+                @Html.DisplayNameFor(x=>x.ShortNotes)<br>
+	@Html.TextBoxFor(X=>X.ShortNotes)
+	@Html.ValidationMessageFor(x=>x.ShortNotes, "", new { @class = "text-danger" })
+     </div>
+     </div>
+
+	<div id="TimeSpend">
+    <div class="form-group">
+                @Html.DisplayNameFor(x=>x.TimeSpend)<br>
+	@Html.TextBoxFor(X=>X.TimeSpend)
+	@Html.ValidationMessageFor(x=>x.TimeSpend, "", new { @class = "text-danger" })
+     </div>
+     </div>
+
+	<div id="TaskStartDate">
+    <div class="form-group">
+                @Html.DisplayNameFor(x=>x.TaskStartDate)<br>
+	@Html.TextBoxFor(X=>X.TaskStartDate)
+    @Html.ValidationMessageFor(x=>x.TaskStartDate, "", new { @class = "text-danger" })
+     </div>
+     </div>
+
+	<div id="TaskEndDate">
+    <div class="form-group">
+                @Html.DisplayNameFor(x=>x.TaskEndDate)<br>
+	@Html.TextBoxFor(X=>X.TaskEndDate)
+    @Html.ValidationMessageFor(x=>x.TaskEndDate, "", new { @class = "text-danger" })
+     </div>
+     </div>
+
+	<div id="TaskDate">
+            <div class="form-group">
+ 
+
+                <label asp-for="TaskDate" class="control-label"></label>
+                <input asp-for="TaskDate" class="form-control" type="text" />
+                <span asp-validation-for="TaskDate" class="text-danger"></span>
+            </div> </div>
+            <div id="submit">
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div> </div>
+
+	
+	@Html.ValidationMessageFor(x=>x.UserName)
+
+	<button type="submit">Save</button>
+	
+	@Html.ActionLink("Go to List", "Index")
+     </form>
+@*}*@
+
+</div>
+</div>
+
+
+@section Scripts {
+<script>
+
+        $(document).ready(function () {
+            $("#TaskDate").datepicker({
+                dateFormat: 'dd-mm-yy',
+                changeMonth: true,
+                changeYear: true,
+                yearRange: "2020:2030"
+            });
+
+        });
+</script>
+}

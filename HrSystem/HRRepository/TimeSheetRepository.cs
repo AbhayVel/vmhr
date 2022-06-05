@@ -11,7 +11,7 @@ namespace HRRepository
 {
     public class TimeSheetRepository
     {
-        private string _query = "Select Id,TextData,Heading,ShortNotes,TimeSpend,TaskStartDate,TaskEndDate,TaskDate from TimeSheet Where  1=1";
+        private string _query = "Select Id,UserName,Heading,ShortNotes,TimeSpend,TaskStartDate,TaskEndDate,TaskDate from TimeSheet Where  1=1";
 
         private string _queryCount = "Select Count(1) as count from TimeSheet Where  1=1";
         public HrSystemDBContext HrSystemDBContext { get; set; }
@@ -39,6 +39,59 @@ namespace HRRepository
             timeSheets = timeSheetModel.PageModel.SetValues(timeSheets, count);
             var result = timeSheets.ToList();
             return result;
+        }
+
+        public TimeSheet Get(int id)
+        {
+            var result = HrSystemDBContext.TimeSheet.FirstOrDefault(x => x.Id == id);
+            return result;
+        }
+
+
+        public bool Delete(int id)
+        {
+            var result = HrSystemDBContext.TimeSheet.FirstOrDefault(x => x.Id == id);
+
+            if (result != null)
+            {
+                HrSystemDBContext.TimeSheet.Remove(result);
+
+                HrSystemDBContext.SaveChanges();
+                return true;
+            }
+            return false;
+        }
+        public TimeSheet Save(TimeSheet timeSheet)
+        {
+
+
+
+            if (!timeSheet.Id.HasValue || timeSheet.Id.Value == 0)
+            {
+                timeSheet.Id = null;
+                HrSystemDBContext.TimeSheet.Add(timeSheet);
+            }
+            else
+            {
+                // var result = HrSystemDBContext.FeedType.AsNoTracking().FirstOrDefault(x => x.Id == feedType.Id);
+
+                var result = HrSystemDBContext.TimeSheet.FirstOrDefault(x => x.Id == timeSheet.Id);
+                if (result != null)
+                {
+
+
+                    result.UserName = timeSheet.UserName;
+                    //HrSystemDBContext.Attach(feedType).State = EntityState.Modified;
+                }
+                else
+                {
+                    throw new Exception("Requested object doesnot exists");
+                }
+
+            }
+            HrSystemDBContext.SaveChanges();
+
+            return timeSheet;
         }
     }
 }

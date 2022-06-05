@@ -13,7 +13,11 @@ namespace HREntity
 
         [Key]
         public int? Id { get; set; }
-        public string TextData { get; set; }
+
+        [Required]
+        [MinLength(3,ErrorMessage ="UserName can have max 20 char long")]
+        [MaxLength(20, ErrorMessage = "UserName Should 3 character long")]
+        public string UserName { get; set; }
 
         public string Heading { get; set; }
 
@@ -25,7 +29,8 @@ namespace HREntity
 
         public DateTime? TaskEndDate { get; set; }
 
-        public DateTime? TaskDate { get; set; }
-        
+        public DateTime TaskDate { get; set; }
+
+
     }
 }
