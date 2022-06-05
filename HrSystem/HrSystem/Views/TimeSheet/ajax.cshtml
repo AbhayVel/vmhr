@@ -1,0 +1,12 @@
+﻿@model  IEnumerable<HREntity.TimeSheet>
+@{
+        var timeSheetModel = ViewBag.Model as TimeSheetModel;
+        var pageModel = timeSheetModel.PageModel;
+}
+
+@(await Html.PartialAsync("Search",timeSheetModel))
+<div class="container">
+@(await Html.PartialAsync("Table",Model))
+@(await Html.PartialAsync("Paging",timeSheetModel))
+</div>
+ 

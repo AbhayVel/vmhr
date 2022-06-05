@@ -1,6 +1,7 @@
 ﻿using HREntity;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 
@@ -9,9 +10,10 @@ namespace HRModels
     public class TimeSheetModel : BaseModel
     {
         
-
+       
         public string IdSearch { get; set; }
 
+        [MinLength(2)]
         public string UserNameSearch { get; set; }
 
         public string HeadingSearch { get; set; }

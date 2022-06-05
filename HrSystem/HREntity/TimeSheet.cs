@@ -8,14 +8,14 @@ namespace HREntity
 {
 
     [Table("TimeSheet")]
-    public class TimeSheet
+    public class TimeSheet : IUserName
     {
 
         [Key]
         public int? Id { get; set; }
 
         [Required]
-        [MinLength(3,ErrorMessage ="UserName can have max 20 char long")]
+        [MinLength(1,ErrorMessage ="UserName can have max 20 char long")]
         [MaxLength(20, ErrorMessage = "UserName Should 3 character long")]
         public string UserName { get; set; }
 

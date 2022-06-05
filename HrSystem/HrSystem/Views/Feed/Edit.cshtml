@@ -77,13 +77,7 @@ else
             </div>
 
             <div id="UserName">
-                <div class="form-group">
-
-                    @Html.DisplayNameFor(x=>x.UserName)<br>
-                    @Html.TextBoxFor(X=>X.UserName) <br />
-
-                    @Html.ValidationMessageFor(x=>x.UserName, "", new { @class = "text-danger" })
-                </div>
+               @await Component.InvokeAsync("UserDropDown",Model) 
             </div>
 
 

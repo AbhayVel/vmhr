@@ -8,7 +8,7 @@ namespace HREntity
 {
 
     [Table("Feeds")]
-    public class Feed
+    public class Feed : IUserName
     {
 
         [Key]

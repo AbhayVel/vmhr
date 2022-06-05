@@ -94,10 +94,7 @@ namespace HRModels
             return $"  offset {startIndex} rows fetch next {pageModel.RowPerPage} rows only  ";
         }
 
-        public IQueryable<Feed> SetValues(IQueryable<Feed> feedTypes, int count)
-        {
-            throw new NotImplementedException();
-        }
+        
 
         public void SetValues<T>(List<T> data)
         {
