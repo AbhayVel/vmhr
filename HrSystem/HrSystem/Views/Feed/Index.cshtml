@@ -125,7 +125,20 @@
                             }
 
                         }
-                    <li class="paginate_button page-item next disabled" id="example_next"><a href="#" aria-controls="example" data-dt-idx="3" tabindex="0" class="page-link">Next</a></li>
+
+                        @if(pageModel.CurrentPage == pageModel.PageCount)
+                        {
+                              <li class="paginate_button page-item next " id="example_next">
+                        
+                                <a href="#" aria-controls="example" data-dt-idx="3" tabindex="0" class="page-link">Next</a></li>
+                        } else
+                        {
+                              <li class="paginate_button page-item next " id="example_next">
+                        
+                        <a href="#" onclick="pageChange('@(pageModel.CurrentPage+1)')" aria-controls="example" data-dt-idx="3" tabindex="0" class="page-link">Next</a></li>
+                        }
+
+                  
                 </ul>
             </div>
         </div>

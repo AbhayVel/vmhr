@@ -8,6 +8,11 @@ using System.Text;
 namespace HREntity
 {
 
+  public  interface IUserName
+    {
+        public string UserName { get; set; }
+    }
+
     [Table("User")]
    public class User : IIdentity
     {

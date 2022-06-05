@@ -1,0 +1,58 @@
+﻿@model  BaseModel
+@{
+    var pageModel = Model.PageModel;
+}
+
+ 
+<div class="row">
+        <div class="col-sm-12 col-md-5">
+            <div class="dataTables_info" id="example_info" role="status" aria-live="polite">
+                Showing <span>@(pageModel.StartIndex +1)</span> to <span>@(pageModel.EndIndex +1)</span> of <span>@pageModel.TotalRowCount</span> entries
+            </div>
+        </div><div class="col-sm-12 col-md-7">
+            <div class="dataTables_paginate paging_simple_numbers" id="example_paginate">
+                <ul class="pagination">
+                   
+                     @if(pageModel.CurrentPage == 1)
+                        {
+                           <li class="paginate_button page-item previous disabled" id="example_previous"><a href="#" aria-controls="example" data-dt-idx="0" tabindex="0" disabled class="page-link">Previous</a></li>
+
+                        } else
+                        {
+                              <li class="paginate_button page-item previous" id="example_previous"><a href="#" onclick="pageChange('@(pageModel.CurrentPage-1)')" aria-controls="example" data-dt-idx="0" tabindex="0" class="page-link">Previous</a></li>
+
+                        }
+
+
+                    @for (int i = 1; i <= pageModel.PageCount; i = i + 1)
+                    {
+                        if (i == pageModel.CurrentPage)
+                        {
+                            <li class="paginate_button page-item active"><a onclick="pageChange('@(i)')" href="/applications/index?currentPage=@i" aria-controls="example" data-dt-idx="1" tabindex="0" class="page-link">@i</a></li>
+
+                        }
+                        else
+                        {
+                            <li class="paginate_button page-item"><a onclick="pageChange('@i')" href="/applications/index?currentPage=@i" aria-controls="example" data-dt-idx="1" tabindex="0" class="page-link">@i</a></li>
+
+                        }
+
+                    }
+                   
+                    @if(pageModel.CurrentPage == pageModel.PageCount)
+                        {
+                              <li class="paginate_button page-item next disabled" id="example_next">
+                        
+                                <a href="#" aria-controls="example" data-dt-idx="3" disabled tabindex="0" class="page-link">Next</a></li>
+                        } else
+                        {
+                              <li class="paginate_button page-item next " id="example_next">
+                        
+                        <a href="#" onclick="pageChange('@(pageModel.CurrentPage+1)')" aria-controls="example" data-dt-idx="3" tabindex="0" class="page-link">Next</a></li>
+                        }
+                
+                
+                </ul>
+        </div>
+        </div>
+  

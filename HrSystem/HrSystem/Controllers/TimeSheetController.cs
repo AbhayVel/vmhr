@@ -1,19 +1,26 @@
 ﻿using HREntity;
 using HRModels;
 using HRRepository;
+using HRService;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace HrSystem.Controllers
 {
     public class TimeSheetController : Controller
     {
-        TimeSheetRepository _timeSheetRepository;
 
-        public TimeSheetController(TimeSheetRepository timeSheetRepository)
+       
+        TimeSheetRepository _timeSheetRepository;
+        IUserService _userService;
+
+        public TimeSheetController(TimeSheetRepository timeSheetRepository, IUserService UserService)
         {
             _timeSheetRepository = timeSheetRepository;
+            _userService = UserService;
         }
 
         public List<TimeSheet> GetTimeSheet()
@@ -56,8 +63,25 @@ namespace HrSystem.Controllers
 
             return timeSheet;
         }
-        public IActionResult Index(TimeSheetModel timeSheetModel)
+
+        [Route("{controller}")]
+        [Route("{controller}/Json")]
+        [Route("TimeSheet/onlyTable")]
+        [Route("TimeSheet/Index")]
+        public async Task<IActionResult> Index()
         {
+
+            TimeSheetModel timeSheetModel = new TimeSheetModel();
+
+            bool isPost=false;
+           // timeSheetModel.UserNameSearch = "c";
+            var output = TryValidateModel(timeSheetModel);
+            if (Request.Method.Equals("POST", System.StringComparison.OrdinalIgnoreCase))
+            {
+                isPost=true;
+                 await TryUpdateModelAsync(timeSheetModel);
+               
+            }
 
             List<TimeSheet> timeSheets = _timeSheetRepository.GetAll(timeSheetModel);
 
@@ -70,21 +94,37 @@ namespace HrSystem.Controllers
             //timeSheets = timeSheets.Skip(timeSheetModel.PageModel.StartIndex).Take(timeSheetModel.PageModel.RowPerPage).ToList();
 
             ViewBag.Model = timeSheetModel;
+            if (isPost)
+            {
+                return PartialView("ajax",timeSheets);
+            }
 
+            if (Request.Path.Value.Contains("Json"))
+            {
+                return Json(timeSheets);
+            }
+            if (Request.Path.Value.Contains("onlyTable"))
+            {
+                return View("table", timeSheets);
+            }
             return View(timeSheets);
         }
 
+       
         public IActionResult Edit(int id)
         {
+           
+
             if (id == 0)
             {
-                return View(new TimeSheet());
             }
+
             var result = _timeSheetRepository.Get(id);
             if (result == null)
             {
                 return View(new TimeSheet());
             }
+        
             return View(result);
         }
 
@@ -100,6 +140,7 @@ namespace HrSystem.Controllers
         {
             if (!ModelState.IsValid)
             {
+                
                 return View("Edit", timeSheet);
             }
             var result = _timeSheetRepository.Save(timeSheet);
