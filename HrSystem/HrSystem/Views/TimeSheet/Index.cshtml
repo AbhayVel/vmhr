@@ -123,7 +123,16 @@
         </div><div class="col-sm-12 col-md-7">
             <div class="dataTables_paginate paging_simple_numbers" id="example_paginate">
                 <ul class="pagination">
-                    <li class="paginate_button page-item previous" id="example_previous"><a href="#" aria-controls="example" data-dt-idx="0" tabindex="0" class="page-link">Previous</a></li>
+                    
+
+                    @if(pageModel.CurrentPage == pageModel.PageCount)
+                    {
+                        <li class="paginate_button page-item previous disabled" id="example_previous"><a href="#" aria-controls="example" data-dt-idx="0" tabindex="0" disabled class="page-link">Previous</a></li>
+                    }
+                    else
+                    {
+                        <li class="paginate_button page-item previous" id="example_previous"><a href="#" onclick="pageChange('@(pageModel.CurrentPage-1)')" aria-controls="example" data-dt-idx="0" tabindex="0" class="page-link">Previous</a></li>
+                    }
 
                     @for (int i = 1; i <= pageModel.PageCount; i = i + 1)
                     {
@@ -139,7 +148,15 @@
                         }
 
                     }
-                    <li class="paginate_button page-item next disabled" id="example_next"><a href="#" aria-controls="example" data-dt-idx="3" tabindex="0" class="page-link">Next</a></li>
+                    @if(pageModel.CurrentPage == pageModel.PageCount)
+                    {
+                        <li class="paginate_button page-item next disabled" id="example_next"><a href="#" aria-controls="example" data-dt-idx="3" tabindex="0" class="page-link">Next</a></li>
+                    }
+                    else
+                    {
+                        <li class="paginate_button page-item next disabled" id="example_next"><a href="#" onclick="pageChange('@(pageModel.CurrentPage+1)')" aria-controls="example" data-dt-idx="3" tabindex="0" class="page-link">Next</a></li>
+                    }
+
                 </ul>
         </div>
         </div>

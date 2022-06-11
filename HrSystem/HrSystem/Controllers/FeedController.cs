@@ -9,6 +9,11 @@ namespace HrSystem.Controllers
 {
     public class FeedController : Controller
     {
+        IFeedRepository _feedRepository;
+        public FeedController (FeedRepository feedRepository)
+        {
+            _feedRepository = feedRepository;
+        }
         public List<Feed> GetFeed() {
             List<Feed> feed = new List<Feed>();
 
