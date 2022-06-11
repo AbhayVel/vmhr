@@ -15,6 +15,41 @@
     <a href="~/feedType/Edit/0">Create New</a>
 </p>
 
+<p> I am Temp Data : </p> 
+    @if (TempData["FeedTypeSaveT"] != null)
+    {
+        <span>@TempData["FeedTypeSaveT"]</span>
+         TempData.Keep();
+         <span>@TempData["FeedTypeSaveT"]</span>
+    }
+    <p> I am View Data : </p> 
+     @if (ViewData["FeedTypeSaveV"] != null)
+    {
+        <span>@ViewData["FeedTypeSaveV"]</span>
+    }
+
+
+    @{
+        var keys =new string[] { "show", "FeedTypeSaveV" };
+
+        for(var i = 0; i < keys.Length; i++)
+        {
+            <span>@ViewData[keys[i]]</span>
+        }
+    }
+
+    @{
+        var keys2 =new string[] { "show" };
+
+        for(var i = 0; i < keys2.Length; i++)
+        {
+            <span>@ViewBag.Data[keys2[i]]</span>
+        }
+    }
+
+
+    <p>@ViewData["show"]</p> <br />
+    <p>@ViewBag.show</p> <br />
 <form action="~/FeedType/Index" method="post">
  
 <div class="row">
@@ -79,35 +114,7 @@
     </tbody>
 </table>
 
-<div class="row">
-        <div class="col-sm-12 col-md-5">
-            <div class="dataTables_info" id="example_info" role="status" aria-live="polite">
-                Showing <span>@(pageModel.StartIndex +1)</span> to <span>@(pageModel.EndIndex +1)</span> of <span>@pageModel.TotalRowCount</span> entries
-            </div>
-        </div><div class="col-sm-12 col-md-7">
-            <div class="dataTables_paginate paging_simple_numbers" id="example_paginate">
-                <ul class="pagination">
-                    <li class="paginate_button page-item previous" id="example_previous"><a href="#" aria-controls="example" data-dt-idx="0" tabindex="0" class="page-link">Previous</a></li>
-
-                    @for (int i = 1; i <= pageModel.PageCount; i = i + 1)
-                    {
-                        if (i == pageModel.CurrentPage)
-                        {
-                            <li class="paginate_button page-item active"><a onclick="pageChange('@i')" href="/applications/index?currentPage=@i" aria-controls="example" data-dt-idx="1" tabindex="0" class="page-link">@i</a></li>
-
-                        }
-                        else
-                        {
-                            <li class="paginate_button page-item"><a onclick="pageChange('@i')" href="/applications/index?currentPage=@i" aria-controls="example" data-dt-idx="1" tabindex="0" class="page-link">@i</a></li>
-
-                        }
-
-                    }
-                    <li class="paginate_button page-item next disabled" id="example_next"><a href="#" aria-controls="example" data-dt-idx="3" tabindex="0" class="page-link">Next</a></li>
-                </ul>
-        </div>
-        </div>
-    </div>
+ @(await Html.PartialAsync("Paging",feedTypeModel))
 </div>
 
 

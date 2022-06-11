@@ -10,9 +10,9 @@ namespace HrSystem.Controllers
     public class FeedController : Controller
     {
         IFeedRepository _feedRepository;
-        public FeedController (FeedRepository feedRepository)
+        public FeedController(IFeedRepository feedRepository)
         {
-            _feedRepository = feedRepository;
+            _feedRepository=feedRepository;
         }
         public List<Feed> GetFeed() {
             List<Feed> feed = new List<Feed>();
@@ -80,6 +80,12 @@ namespace HrSystem.Controllers
         }
         public IActionResult Edit(int id)
         {
+         //   UserModel u = new UserModel();
+         //   var userList = _userService.GetAll(u, null);
+         //   var userData = userList.Select(
+         //(x) => new SelectListItem(value: x.UserName, text: x.Name, selected: x.UserName == result.UserName)).ToList();
+
+         //   ViewBag.UserList = userData;
             if (id == 0)
             {
                 return View(new Feed());

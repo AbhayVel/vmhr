@@ -14,9 +14,9 @@
    
     <label >User Name</label>
     <input type="text" name="userName" value="@Model.UserName"/>
-    <label >Password</label>
-        @Html.PasswordFor(X=>X.Password)
+    @Html.ValidationMessageFor(X=>X.UserName)
 
+        @Html.EditorFor(X=>X.Password);
 <button type="submit" >Login</button>
 }
 

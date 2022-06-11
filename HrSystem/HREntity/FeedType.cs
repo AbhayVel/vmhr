@@ -7,7 +7,7 @@ using System.Text;
 namespace HREntity
 {
     [Table("FeedType")]
-    public class FeedType
+    public class FeedType 
     {
         [Key]
         public int? Id { get; set; }

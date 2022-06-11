@@ -35,7 +35,7 @@ namespace HrSystem
 
          services.AddControllersWithViews((options)=> {
              //   options.Filters.Add(new HRAuthrizationFiltter());
-                options.Filters.Add(new HRExceptionFilter());
+             //   options.Filters.Add(new HRExceptionFilter());
                 options.Filters.Add(new HRActionFilter());
             });
             services.AddSession();
@@ -59,7 +59,8 @@ namespace HrSystem
             services.AddScoped<TimeSheetRepository, TimeSheetRepository>();
             
             services.AddScoped<IFeedTypeRepository, FeedTypeRepository>();
-         services.AddScoped<ApplicationService, ApplicationService>();
+            services.AddScoped<IFeedRepository, FeedRepository>();
+            services.AddScoped<ApplicationService, ApplicationService>();
  
             services.AddScoped<VacancyService, VacancyService>();
             services.AddScoped<StageService, StageService>();
@@ -72,7 +73,7 @@ namespace HrSystem
         {
             string strPosition = "";
 
-            app.UseExceptionHandler("/Home/Error");
+           // app.UseExceptionHandler("/Home/Error");
 
             //app.Use(async (context, next) =>
             //{
@@ -91,7 +92,7 @@ namespace HrSystem
             //});
             if (env.IsDevelopment())
             {
-               // app.UseDeveloperExceptionPage();
+                app.UseDeveloperExceptionPage();
             }
             else
             {

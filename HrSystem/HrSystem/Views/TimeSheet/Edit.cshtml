@@ -12,7 +12,7 @@
 <hr />
 <div class="row">
     <div class="col-md-12">
-@*@using(Html.BeginForm("save", "TimeSheet",FormMethod.Post)){*@
+ 
 <form action="~/TimeSheet/save" method="post">
 
 	<div id="Id">
@@ -24,11 +24,9 @@
 	</div>
 
 	<div id="UserName">
-    <div class="form-group">
-                @Html.DisplayNameFor(x=>x.UserName)<br>
-	@Html.TextBoxFor(X=>X.UserName)<br />
-	@Html.ValidationMessageFor(x=>x.UserName, "", new { @class = "text-danger" })
-     </div>
+
+ 
+        @await Component.InvokeAsync("UserDropDown",Model) 
      </div>
 
 	<div id="Heading">

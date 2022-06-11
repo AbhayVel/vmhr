@@ -59,17 +59,18 @@ namespace HRDB
         public DbSet<TimeSheet> TimeSheet { get; set; }
         public object Feed { get; set; }
 
+
         public int CountValue(string Query)
         {
-            var dbConnection = this.Database.GetDbConnection();
-            if(dbConnection.State != System.Data.ConnectionState.Open)
+            var dbCOnnection = this.Database.GetDbConnection();
+
+            if (dbCOnnection.State != System.Data.ConnectionState.Open)
             {
-                dbConnection.Open();
+                dbCOnnection.Open();
             }
-            var command = dbConnection.CreateCommand();
+            var command = dbCOnnection.CreateCommand();
             command.CommandText = Query;
             var count = (int)command.ExecuteScalar();
-
             return count;
         }
     }

@@ -1,5 +1,8 @@
-﻿using Microsoft.AspNetCore.Authentication;
+﻿using DummyMVC.Models;
+using DummyMVC.Services;
+using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Mvc;
+using System.ComponentModel.DataAnnotations;
 using System.Security.Claims;
 using System.Security.Principal;
 
@@ -28,12 +31,29 @@ namespace DummyMVC.Controllers
 
     public class XYZ
     {
+        [My3CharValidation(ErrorMessage ="Please enter at least 3 char.")]
         public string UserName { get; set; }
 
+        [UIHint("pass")]
+        [Required]
         public string Password { get; set; }
     }
     public class LoginController : Controller
     {
+        ScopedClass ScopedClass;
+        SingoltoneClassExample SingoltoneClassExample;
+        TransientClass TransientClass;
+        LoginService LoginService;
+        public LoginController(ScopedClass ScopedClass, SingoltoneClassExample SingoltoneClassExample, TransientClass TransientClass, LoginService LoginService)
+        {
+            this.LoginService =LoginService;
+            this.ScopedClass = ScopedClass;
+            this.SingoltoneClassExample = SingoltoneClassExample;
+            this.TransientClass = TransientClass;
+            this.ScopedClass.Count++;
+            this.SingoltoneClassExample.Count++;
+            this.TransientClass.Count++;
+        }
         public IActionResult Index(string ReturnUrl)
         {
             ViewBag.ReturnUrl= ReturnUrl;
@@ -48,6 +68,10 @@ namespace DummyMVC.Controllers
          }
             public async Task<ActionResult> Save(string userName, string password, string ReturnUrl, XYZ xyz, Dirty dirty)
         {
+            if (ModelState.IsValid)
+            {
+
+            }
             if("abhay".Equals(userName) && password == "abc")
             {
                 User2 user2 = new User2();
@@ -97,7 +121,7 @@ namespace DummyMVC.Controllers
 
             }
 
-            return View("Index");
+            return View("Index", xyz);
         }
     }
 }
