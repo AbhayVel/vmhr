@@ -15,6 +15,41 @@
     <a href="~/feedType/Edit/0">Create New</a>
 </p>
 
+<p> I am Temp Data : </p> 
+    @if (TempData["FeedTypeSaveT"] != null)
+    {
+        <span>@TempData["FeedTypeSaveT"]</span>
+         TempData.Keep();
+         <span>@TempData["FeedTypeSaveT"]</span>
+    }
+    <p> I am View Data : </p> 
+     @if (ViewData["FeedTypeSaveV"] != null)
+    {
+        <span>@ViewData["FeedTypeSaveV"]</span>
+    }
+
+
+    @{
+        var keys =new string[] { "show", "FeedTypeSaveV" };
+
+        for(var i = 0; i < keys.Length; i++)
+        {
+            <span>@ViewData[keys[i]]</span>
+        }
+    }
+
+    @{
+        var keys2 =new string[] { "show" };
+
+        for(var i = 0; i < keys2.Length; i++)
+        {
+            <span>@ViewBag.Data[keys2[i]]</span>
+        }
+    }
+
+
+    <p>@ViewData["show"]</p> <br />
+    <p>@ViewBag.show</p> <br />
 <form action="~/FeedType/Index" method="post">
  
 <div class="row">

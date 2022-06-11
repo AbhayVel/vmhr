@@ -1,4 +1,6 @@
 using DummyMVC.filters;
+using DummyMVC.Models;
+using DummyMVC.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -20,7 +22,10 @@ builder.Services.AddAuthentication("cookies").AddCookie("cookies",(x) =>
    
 });
 
-
+builder.Services.AddScoped<ScopedClass, ScopedClass>(); //one instance per request 
+builder.Services.AddSingleton<SingoltoneClassExample, SingoltoneClassExample>();// one instance for running application 
+builder.Services.AddTransient<TransientClass, TransientClass>(); // individiual instance for each refrence. 
+builder.Services.AddScoped<LoginService, LoginService>();
 var app = builder.Build();
 
 Dictionary<string, int> keyValues =new Dictionary<string, int>();
