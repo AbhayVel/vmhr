@@ -7,13 +7,13 @@ using System.Text;
 namespace HRModels
 {
 
-    public class UserModel : BaseModel
+    public class UserModel : BaseModel, IUserName
     {
 
 
         public string IdSearch { get; set; }
         public string NameSearch { get; set; }
-
+        public string UserName { get ; set ; }
 
         public IEnumerable<T> Where<T>(IEnumerable<T> list) where T : User
         {

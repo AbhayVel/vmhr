@@ -7,7 +7,7 @@ using System.Text;
 
 namespace HRModels
 {
-    public class TimeSheetModel : BaseModel
+    public class TimeSheetModel : BaseModel, IUserName
     {
         
        
@@ -25,7 +25,7 @@ namespace HRModels
         public string TaskEndDateSearch { get; set; }
 
         public string TaskDateSearch { get; set; }
-        
+        public string UserName { get ; set ; }
 
         public IQueryable<TimeSheet> Where(IQueryable<TimeSheet> timeSheets)
         {
@@ -34,6 +34,14 @@ namespace HRModels
             {
 
                 timeSheets = timeSheets.Where(x => x.UserName.Contains(UserNameSearch));
+
+                //whereCondition = whereCondition + $"AND TypeText like '%{TypeTextSearch.Replace("'", "''")}%'";
+            }
+
+            if (!string.IsNullOrWhiteSpace(UserName))
+            {
+
+                timeSheets = timeSheets.Where(x => x.UserName==UserName);
 
                 //whereCondition = whereCondition + $"AND TypeText like '%{TypeTextSearch.Replace("'", "''")}%'";
             }

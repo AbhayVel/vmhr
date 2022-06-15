@@ -9,12 +9,11 @@ using System.Text;
 
 namespace HRRepository
 {
-   public class UserRepository : IUserRepository
-   
+   public class UserRepository : IUserRepository   
    {
       public HrSystemDBContext HrSystemDBContext { get; set; } //Instance variable 
 
-
+        private string _queryWithChild = "with usertbl as ( Select UserName, ReportsTo, 0 as level From [dbo].[user] Where userName='{0}' Union ALl Select u.UserName, u.ReportsTo ,ut.level+1 From [dbo].[user] u  inner Join usertbl ut on ut.UserName=u.ReportsTo ) Select u.* from [dbo].[user] u inner join usertbl ut on u.UserName=ut.UserName ";
       public UserRepository(HrSystemDBContext hrSystemDBContext)
       {
          HrSystemDBContext = hrSystemDBContext;
@@ -86,8 +85,14 @@ namespace HRRepository
 
       }
 
+        public List<User> GetWithChild(IUserName userModel, PageModel pageModel)
+        {
+            var str = string.Format(_queryWithChild, userModel.UserName);
+            var lstUser = HrSystemDBContext.Users.FromSqlRaw(str).ToList();
 
-   }
+            return lstUser.ToList();
+        }
+    }
 
 
 

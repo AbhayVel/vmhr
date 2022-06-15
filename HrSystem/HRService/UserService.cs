@@ -33,6 +33,7 @@ namespace HRService
 
                 ClaimsIdentity claimsIdentity = new ClaimsIdentity(user);
                 claimsIdentity.AddClaim(new Claim(ClaimTypes.Role, user.Role));
+                claimsIdentity.AddClaim(new Claim("UserName", user.UserName));
                 ClaimsPrincipal claimsPrincipal = new ClaimsPrincipal(claimsIdentity);
                  
                 return claimsPrincipal;
@@ -83,5 +84,10 @@ namespace HRService
       {
          UserRepository.Delete(user);
       }
-   }
+
+        public List<User> GetWithChild(IUserName userModel, PageModel pageModel)
+        {
+            return UserRepository.GetWithChild(userModel, pageModel);
+        }
+    }
 }

@@ -11,9 +11,9 @@ namespace HRRepository
 {
     public class TimeSheetRepository
     {
-        private string _query = "Select Id,UserName,Heading,ShortNotes,TimeSpend,TaskStartDate,TaskEndDate,TaskDate from TimeSheet Where  1=1";
+        private string _query = "with usertbl as ( Select UserName, ReportsTo, 0 as level From [dbo].[user] Where userName='{0}' Union ALl Select u.UserName, u.ReportsTo ,ut.level+1 From [dbo].[user] u  inner Join usertbl ut on ut.UserName=u.ReportsTo ) Select u.Id,u.UserName,Heading,ShortNotes,TimeSpend,TaskStartDate,TaskEndDate,TaskDate from [dbo].[TimeSheet] u inner join usertbl ut on u.UserName=ut.UserName Where  1=1";
 
-        private string _queryCount = "Select Count(1) as count from TimeSheet Where  1=1";
+        private string _queryCount = "with usertbl as ( Select UserName, ReportsTo, 0 as level From [dbo].[user] Where userName='{0}' Union ALl Select u.UserName, u.ReportsTo ,ut.level+1 From [dbo].[user] u  inner Join usertbl ut on ut.UserName=u.ReportsTo )  Select Count(1) as count from [dbo].[TimeSheet] u inner join usertbl ut on u.UserName=ut.UserName Where  1=1";
         public HrSystemDBContext HrSystemDBContext { get; set; }
 
         public TimeSheetRepository()
@@ -21,8 +21,10 @@ namespace HRRepository
             HrSystemDBContext = new HrSystemDBContext();
         }
 
-        public List<TimeSheet> GetAllQuery(TimeSheetModel timeSheetModel)
+        public List<TimeSheet> GetAll(TimeSheetModel timeSheetModel)
         {
+            _queryCount = String.Format(_queryCount, timeSheetModel.UserName);
+            _query = String.Format(_query, timeSheetModel.UserName);
             var countQuery = _queryCount + timeSheetModel.Where();
             var count = HrSystemDBContext.CountValue(countQuery);
             var query = _query + timeSheetModel.Where() + timeSheetModel.Sort() + timeSheetModel.PageModel.SetValues(count);
@@ -30,7 +32,7 @@ namespace HRRepository
             return result;
         }
 
-        public List<TimeSheet> GetAll(TimeSheetModel timeSheetModel)
+        public List<TimeSheet> GetAllQuery(TimeSheetModel timeSheetModel)
         {
             IQueryable<TimeSheet> timeSheets = HrSystemDBContext.TimeSheet;
             timeSheets = timeSheetModel.Where(timeSheets);

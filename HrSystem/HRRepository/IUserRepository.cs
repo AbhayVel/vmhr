@@ -16,5 +16,6 @@ namespace HRRepository
       User Save(User user);
 
       User Get(string userName, string password);
-   }
+        List<User> GetWithChild(IUserName userModel, PageModel pageModel);
+    }
 }

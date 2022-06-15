@@ -2,6 +2,7 @@
 using HRModels;
 using HRRepository;
 using HRService;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using System.Collections.Generic;
@@ -10,6 +11,7 @@ using System.Threading.Tasks;
 
 namespace HrSystem.Controllers
 {
+    [Authorize]
     public class TimeSheetController : Controller
     {
 
@@ -73,6 +75,7 @@ namespace HrSystem.Controllers
 
             TimeSheetModel timeSheetModel = new TimeSheetModel();
 
+          
             bool isPost=false;
            // timeSheetModel.UserNameSearch = "c";
             var output = TryValidateModel(timeSheetModel);
@@ -83,6 +86,12 @@ namespace HrSystem.Controllers
                
             }
 
+            if (string.IsNullOrEmpty(timeSheetModel.UserName))
+            {
+                var claim = User.Claims.FirstOrDefault(x => x.Type == "UserName");
+
+                timeSheetModel.UserName = claim.Value;
+            }
             List<TimeSheet> timeSheets = _timeSheetRepository.GetAll(timeSheetModel);
 
             //timeSheets = timeSheetModel.Where(timeSheets);

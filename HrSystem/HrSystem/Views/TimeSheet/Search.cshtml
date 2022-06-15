@@ -1,4 +1,4 @@
-﻿@model  TimeSheetModel
+﻿@model TimeSheetModel
 @{
     var timeSheetModel = Model;
     var pageModel = Model.PageModel;
@@ -6,33 +6,39 @@
 
 
 <form action="~/TimeSheet/Index" method="post">
- 
-<div class="row">
 
-<div class="col-6">
-<div class="form-group">
-<lable for="Id">Id:</lable>
-<input type="text" class="form-control" value = "@timeSheetModel.IdSearch"  name="IdSearch" id="IdSearch"/>
+    <div class="row">
 
-</div>
-</div>
+        <div class="col-6">
+            <div class="form-group">
+                <lable for="Id">Id:</lable>
+                <input type="text" class="form-control" value="@timeSheetModel.IdSearch" name="IdSearch" id="IdSearch" />
 
-<div class="col-6">
-<div class="form-group">
-<lable for="Name">Name</lable>
-<input type="text" class="form-control" value = "@timeSheetModel.UserNameSearch"  name="UserNameSearch" id="UserNameSearch"/>
+            </div>
+        </div>
+        <div class="col-6">
+            <div class="form-group">
+                <lable for="Name">Name</lable>
+                <input type="text" class="form-control" value="@timeSheetModel.UserNameSearch" name="UserNameSearch" id="UserNameSearch" />
 
-</div>
-</div>
+            </div>
+        </div>
 
-</div>
+        <div class="col-6">
+            <div class="form-group">
+                <lable for="Name">User Name</lable>
+             @(await  Component.InvokeAsync("UserDropDown",Model))
+            </div>
+        </div>
 
-<input type="hidden" name="OrderBy" id="orderBy" value="@timeSheetModel.OrderBy" />
-<input type="hidden" name="ColumnName" id="columnName" value="@timeSheetModel.ColumnName" />
-<input type="hidden" name="pageModel.currentPage" id="currentPage" value="@pageModel.CurrentPage" />
-<button type="button" onclick="pageSubmit()"  id="btnSubmit">Search</button>
+    </div>
+
+    <input type="hidden" name="OrderBy" id="orderBy" value="@timeSheetModel.OrderBy" />
+    <input type="hidden" name="ColumnName" id="columnName" value="@timeSheetModel.ColumnName" />
+    <input type="hidden" name="pageModel.currentPage" id="currentPage" value="@pageModel.CurrentPage" />
+    <button type="button" onclick="pageSubmit()" id="btnSubmit">Search</button>
 
 </form>
 
 
-       
+

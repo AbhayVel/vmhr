@@ -22,7 +22,11 @@ namespace HrSystem.ViewComponents
         public async Task<ViewViewComponentResult> InvokeAsync(IUserName IUserName)
         {
             UserModel u = new UserModel();
-            var userList = UserService.GetAll(u, null);
+            var claim = UserClaimsPrincipal.Claims.FirstOrDefault(x => x.Type == "UserName");
+
+            u.UserName = claim.Value;
+            var userList = UserService.GetWithChild(u, null);
+             
             var userData = userList.Select(
               (x) => new SelectListItem(value: x.UserName, text: x.Name, selected: x.UserName == IUserName.UserName)).ToList();
 

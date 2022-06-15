@@ -11,7 +11,7 @@ namespace HRRepository
 {
     public class FeedTypeRepository : IFeedTypeRepository
     {
-
+        
         private string _query = "Select Id,TypeText from FeedType Where  1=1";
 
         private string _queryCount = "Select Count(1) as count from FeedType Where  1=1";
