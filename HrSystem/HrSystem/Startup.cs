@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.DependencyInjection.Extensions;
 using Microsoft.Extensions.Hosting;
 using System;
 using System.Collections.Generic;
@@ -47,6 +48,11 @@ namespace HrSystem
                     x.LogoutPath = "/Users/logout";
                     x.ExpireTimeSpan = TimeSpan.FromMinutes(20);
                 });
+
+
+            // services.AddScoped<HttpContext, HttpContext>();
+
+            services.TryAddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 
             services.AddScoped<HrSystemDBContext, HrSystemDBContext>();
             

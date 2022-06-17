@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 
 namespace HrSystem.Controllers
@@ -86,12 +87,16 @@ namespace HrSystem.Controllers
                
             }
 
+            var claim = User.Claims.FirstOrDefault(x => x.Type == ClaimTypes.Role);
+            timeSheetModel.Role = claim.Value; //Not 
             if (string.IsNullOrEmpty(timeSheetModel.UserName))
             {
-                var claim = User.Claims.FirstOrDefault(x => x.Type == "UserName");
+                 claim = User.Claims.FirstOrDefault(x => x.Type == "UserName");
 
                 timeSheetModel.UserName = claim.Value;
             }
+             
+
             List<TimeSheet> timeSheets = _timeSheetRepository.GetAll(timeSheetModel);
 
             //timeSheets = timeSheetModel.Where(timeSheets);

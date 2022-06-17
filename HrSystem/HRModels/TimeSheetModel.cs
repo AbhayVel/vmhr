@@ -27,6 +27,8 @@ namespace HRModels
         public string TaskDateSearch { get; set; }
         public string UserName { get ; set ; }
 
+        public string Role { get; set; }
+
         public IQueryable<TimeSheet> Where(IQueryable<TimeSheet> timeSheets)
         {
             // string whereCondition = string.Empty;
