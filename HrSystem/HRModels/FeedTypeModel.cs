@@ -9,7 +9,7 @@ namespace HRModels
     public class FeedTypeModel : BaseModel
     {
         //string orderBy, string orderType, string IdSearch, string TypeTextSearch
-
+       public List<FeedType> FeedType { get; set; }
         public string IdSearch { get; set; }
 
         public string TypeTextSearch { get; set; }

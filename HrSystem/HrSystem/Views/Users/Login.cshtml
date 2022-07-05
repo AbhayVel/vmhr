@@ -11,5 +11,47 @@
         <input type="password" name="Password" placeholder="Password" />
         <button type="submit">Login</button>
         <p>Forgot Username / Password?</p>
+
+        <button type="button" onclick="callAPi()">Call</button>
     </form>
+
+
 </div>
+
+<script>
+    function callAPi(){
+        var http= new XMLHttpRequest();
+        
+        http.open("post", "https://localhost:44367/api/FeedType");
+        http.onreadystatechange= function(){
+            if(this.readyState==4){
+                debugger;
+                if(this.status==200){
+                    debugger;
+                }else {
+                    debugger;
+                }
+            }
+        }
+        var obj={
+    "feedType": [],
+    "idSearch": "8",
+    "typeTextSearch": null,
+    "pageModel": {
+        "currentPage": 1,
+        "rowPerPage": 2,
+        "totalRowCount": 0,
+        "pageCount": 0,
+        "startIndex": 0,
+        "endIndex": -1
+    },
+    "columnName": "Id",
+    "orderBy": "desc"
+}
+
+debugger;
+       http.send(JSON.stringify({}));
+     //  http.send( obj);
+    }
+
+</script>
