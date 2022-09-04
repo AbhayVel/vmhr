@@ -23,6 +23,10 @@ namespace BasicExamples
     {
         public void Main()
         {
+
+        }
+            public void Main2()
+        {
             Dummy d=new Dummy();
 
             d.UserName = "AJ";
@@ -75,7 +79,13 @@ namespace BasicExamples
                 main.Invoke(startUpType, null);
             }
         }
-        static void Main(string[] args)
+
+        static void Main3(string[] args)
+        {
+             //
+
+        }
+            static void Main2(string[] args)
         {
 
 
